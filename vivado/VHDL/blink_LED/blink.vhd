@@ -5,8 +5,8 @@ use ieee.std_logic_unsigned.all;
 
 entity blink is
 	port (CLK : in std_logic;
-		  RST : in std_logic;
-		  LED : out std_logic_vector(3 downto 0));
+        RST : in std_logic;
+        LED : out std_logic_vector(3 downto 0));
 end blink;
 
 architecture Behavioral of blink is
