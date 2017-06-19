@@ -5,14 +5,13 @@ use ieee.std_logic_unsigned.all;
 
 entity blink is
 	port (CLK : in std_logic;
-			RST : in std_logic;
-			LED : out std_logic_vector(3 downto 0));
+		  RST : in std_logic;
+		  LED : out std_logic_vector(3 downto 0));
 end blink;
 
 architecture Behavioral of blink is
 	signal cnt23 : std_logic_vector(22 downto 0);
 	signal cnt3 : std_logic_vector(2 downto 0);
-	
 
 begin
 
