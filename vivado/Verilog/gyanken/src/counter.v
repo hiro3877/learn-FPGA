@@ -25,8 +25,9 @@
 
 module counter(
 
-    input  wire clk,
-    input  wire rst_,
+    //input  wire clk,
+    //input  wire rst_,
+    input  wire gtp_,
     input  wire counter_in_,
     output wire [`G_CounterBus] counter_out
 
@@ -37,8 +38,10 @@ module counter(
     
     /*******1加算されていく度にグーチョキパーが変わっていく*******/
     
-    always @(posedge clk or negedge rst_) begin
-        if(rst_==`ENABLE_) begin         //非同期リセット
+    
+    /*
+    always @(posedge clk and negedge counter_in_) begin
+        if(gtp_==`ENABLE_) begin         //同期リセット
             counter_out_reg <= 2'b0;
         end else begin
             if(!counter_in_) begin
@@ -46,7 +49,20 @@ module counter(
             end
         end
     end
-          
-            
+    */
+    
+    
+    
+    always @(negedge counter_in_ or negedge gtp_) begin
+        if(gtp_==`ENABLE_)         //非同期リセット
+            counter_out_reg <= 2'b0;
+        else if (!counter_in_) begin
+            if (counter_out_reg == 2'b11)
+                counter_out_reg <= 2'b01;
+            else 
+            counter_out_reg <= counter_out_reg + 1'b1;
+        end
+    end
+    
            
 endmodule

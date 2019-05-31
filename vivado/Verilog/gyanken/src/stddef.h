@@ -23,7 +23,7 @@
     
     `define G_CounterBus        1:0         //1人のじゃんけん判断するやつのバス
     
-    `define D_DataBus           31:0         //7segLED×4のデータのバス
+    `define L_DataBus           31:0         //7segLED×4のデータのバス
                    
     
     /**********グー(G)チョキ(T)パー(P)************/
