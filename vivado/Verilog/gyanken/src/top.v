@@ -38,6 +38,7 @@ module top(
     wire d_in_chat_,gtp_chat_;
     
     
+	/***************ì‚Á‚½ƒ‚ƒWƒ…[ƒ‹‚Â‚È‚¬‚Ü‚­‚é*********************/
     chat chat_d_in_ (
         .clk(clk),
         .in(d_in_),

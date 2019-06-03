@@ -54,7 +54,7 @@ module counter(
     
     
     always @(negedge counter_in_ or negedge gtp_) begin
-        if(gtp_==`ENABLE_)         //非同期リセット
+        if(gtp_==`ENABLE_)         //リセット
             counter_out_reg <= 2'b0;
         else if (!counter_in_) begin
             if (counter_out_reg == 2'b11)
