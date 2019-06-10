@@ -7,7 +7,7 @@ entity top_full_adder is
 	     HEX0,HEX1,HEX3,HEX4,HEX5 : out std_logic_vector(6 downto 0));
 end top_full_adder;
 
---------------------?????????----------------------
+--------------------call module----------------------
 
 architecture RTL of top_full_adder is
 	
@@ -17,17 +17,15 @@ architecture RTL of top_full_adder is
 	end component;
 	
 	component Bit_7segLED
-		port(sin : in std_logic;								--sin (sum input)
+		port(sin : in std_logic;					--sin (sum input)
 		     seg : out std_logic_vector(6 downto 0));
 	end component;
 	
-----------------------?????---------------------------
+----------------------define signal--------------------------
 
 signal s_sig, co_sig : std_logic;
 
------------------------??????????------------------------
-
----------------?????? : ????(A,B,C)=>??????????=>????(full_adder)=>7seg????-------------------
+-----------------------connection-----------------------
 
 begin
 		

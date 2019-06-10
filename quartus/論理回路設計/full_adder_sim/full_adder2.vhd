@@ -17,7 +17,7 @@ begin
 
 	INPUT <= CIN & B & A;
 	
-	process (INPUT) begin		--process (??????????????()??????????????
+	process (INPUT) begin
 		case INPUT is
 		
 			when "000" => CO <= '0'; S <= '0';
@@ -29,7 +29,7 @@ begin
 			when "110" => CO <= '1'; S <= '0';
 			when "111" => CO <= '1'; S <= '1';
 			
-			when others => CO <='X'; S <= 'X';			--when others (????) 'X' (???)
+			when others => CO <='X'; S <= 'X';
 
 		end case;
 	end process;

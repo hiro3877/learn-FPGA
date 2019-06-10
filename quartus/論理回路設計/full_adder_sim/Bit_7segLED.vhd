@@ -16,9 +16,9 @@ begin
 	process (sin) begin
 		case sin is
 		
-			when '0'		=> seg <= "1000000";				--0 DE0-CV?7segLED????????0(??)?1(??)
-			when '1'		=> seg <= "1111001";				--1
-			when others => seg <= "1111001";				--????(???)
+			when '0'		=> seg <= "1000000";				--0(7segLED) 0(ON) 1(OFF)
+			when '1'		=> seg <= "1111001";				--1(7segLED)
+			when others => seg <= "1111001";
 			
 		end case;
 	end process;
