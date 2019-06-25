@@ -28,24 +28,24 @@
 `include "./std_define.h"
 
 module MULT(
-    input  wire [15:0]       in2_r,
-    input  wire [15:0]       in2_i,
+    input  wire [`InBus]       in2_r,
+    input  wire [`InBus]       in2_i,
     
-    output wire [15:0]       out1,
-    output wire [15:0]       out2,
+    output wire [`OutBus]      out_r,
+    output wire [`OutBus]      out_i,
     
-    input  wire [15:0]       W_real,
-    input  wire [15:0]       W_imag
+    input  wire [`WBus]        W_real,
+    input  wire [`WBus]        W_imag
     );
 
 /*************define reg temp***********/
-    reg [15:0] out1_temp;
-    reg [15:0] out2_temp;
+    reg [`OutBus] out_r_temp;
+    reg [`OutBus] out_i_temp;
     
-    reg [15:0] mult0;
-    reg [15:0] mult1;
-    reg [15:0] mult2;
-    reg [15:0] mult3;
+    reg [`MultBus] mult0;
+    reg [`MultBus] mult1;
+    reg [`MultBus] mult2;
+    reg [`MultBus] mult3;
     
     
     /*(ax + jay) * (bx + jby) = (axbx - ayby) + j(axby + aybx)*/
@@ -55,9 +55,13 @@ module MULT(
         mult2 <= in2_r * W_imag;        //axby
         mult3 <= in2_i * W_real;        //byax
         
-        out1_temp <= mult0 - mult1;    //(axbx - ayby)
-        out2_temp <= mult2 + mult3;    //j(axby + aybx)
+        out_r_temp <= mult0 - mult1;    //(axbx - ayby)
+        out_i_temp <= mult2 + mult3;    //j(axby + aybx)
     end
-
+    
+    
+/**************connect wire to buffer************/
+    assign out_r = out_r_temp;
+    assign out_i = out_i_temp;
         
 endmodule
