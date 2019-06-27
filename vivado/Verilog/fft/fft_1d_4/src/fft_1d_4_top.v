@@ -108,7 +108,9 @@ module fft_1d_4_top(
         .in2_r(temp_r1_1_r),
         .in2_i(temp_r1_1_i),
         .out1_r(temp_r2_1_r),
+        //.out1_r(out0_r),
         .out1_i(temp_r2_1_i),
+        //.out1_i(out0_i),
         .out2_r(temp_r2_2_r),
         .out2_i(temp_r2_2_i)
         );
@@ -119,7 +121,9 @@ module fft_1d_4_top(
         .in2_r(temp_m1_r),
         .in2_i(temp_m1_i),
         .out1_r(temp_r3_1_r),
+        //.out1_r(out1_r),
         .out1_i(temp_r3_1_i),
+        //.out1_i(out1_i),
         .out2_r(temp_r3_2_r),
         .out2_i(temp_r3_2_i)
         );
@@ -148,7 +152,9 @@ module fft_1d_4_top(
         .in2_r(temp_r2_2_r),
         .in2_i(temp_r2_2_i),
         .out_r(temp_m2_r),
+        //.out_r(out2_r),
         .out_i(temp_m2_i),
+        //.out_i(out2_i),
         .W_real(`W2_real),
         .W_imag(`W2_imag)
         );
@@ -157,7 +163,9 @@ module fft_1d_4_top(
         .in2_r(temp_r3_2_r),
         .in2_i(temp_r3_2_i),
         .out_r(temp_m3_r),
+        //.out_r(out3_r),
         .out_i(temp_m3_i),
+        //.out_i(out3_i),
         .W_real(`W3_real),
         .W_imag(`W3_imag)
         );
@@ -171,11 +179,11 @@ module fft_1d_4_top(
     assign out1_r = temp_r3_1_r;
     assign out1_i = temp_r3_1_i;
     
-    assign out2_r = temp_r2_2_r;
-    assign out2_i = temp_r2_2_i;
+    assign out2_r = temp_m2_r;
+    assign out2_i = temp_m2_i;
             
+    assign out3_r = temp_m3_r;
+    assign out3_i = temp_m3_i;
     
-    assign out3_r = temp_r3_2_r;
-    assign out3_i = temp_r3_2_i;
     
 endmodule

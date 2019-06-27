@@ -39,8 +39,8 @@ module MULT(
     );
 
 /*************define reg temp***********/
-    reg [`OutBus] out_r_temp;
-    reg [`OutBus] out_i_temp;
+    reg [`MultBus] out_r_temp;
+    reg [`MultBus] out_i_temp;
     
     reg [`MultBus] mult0;
     reg [`MultBus] mult1;
@@ -49,7 +49,7 @@ module MULT(
     
     
     /*(ax + jay) * (bx + jby) = (axbx - ayby) + j(axby + aybx)*/
-    always @(*) begin
+    always @(in2_r,in2_i,mult0,mult1,mult2,mult3) begin
         mult0 <= in2_r * W_real;        //axbx
         mult1 <= in2_i * W_imag;        //ayby
         mult2 <= in2_r * W_imag;        //axby
@@ -60,8 +60,12 @@ module MULT(
     end
     
     
-/**************connect wire to buffer************/
-    assign out_r = out_r_temp;
-    assign out_i = out_i_temp;
+/**************connect reg to buffer************/
+
+    //assign out_r = out_r_temp;
+    //assign out_i = out_i_temp;
+    
+    assign out_r = {out_r_temp[23:16],out_r_temp[7:0]};
+    assign out_i = {out_i_temp[23:16],out_i_temp[7:0]};
         
 endmodule

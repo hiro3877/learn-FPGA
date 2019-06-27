@@ -52,7 +52,7 @@ module radix2(
     end
     
         
-    /**************connect wire to buffer************/
+    /**************connect reg to buffer************/
     assign out1_r = out1_r_tmp;
     assign out1_i = out1_i_tmp;
     assign out2_r = out2_r_tmp;

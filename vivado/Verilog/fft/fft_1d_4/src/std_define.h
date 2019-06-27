@@ -9,7 +9,7 @@
     `define WBus                15:0
     
     `define CalcTempBus         15:0
-    `define MultBus             15:0
+    `define MultBus             31:0
     
     /**********define rotation factor*************/
      `define W0_real        16'b0000000100000000        //1.0 (00000001.00000000)
