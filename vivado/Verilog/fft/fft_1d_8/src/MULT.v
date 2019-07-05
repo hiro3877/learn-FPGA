@@ -28,24 +28,24 @@
 `include "./std_define.h"
 
 module MULT(
-    input  wire [`InBus]       in2_r,
-    input  wire [`InBus]       in2_i,
+    input  wire signed [`InBus]       in2_r,
+    input  wire signed [`InBus]       in2_i,
     
-    output wire [`OutBus]      out_r,
-    output wire [`OutBus]      out_i,
+    output wire signed [`OutBus]      out_r,
+    output wire signed [`OutBus]      out_i,
     
-    input  wire [`WBus]        W_real,
-    input  wire [`WBus]        W_imag
+    input  wire signed [`WBus]        W_real,
+    input  wire signed [`WBus]        W_imag
     );
 
 /*************define reg temp***********/
-    reg [`MultBus] out_r_temp;
-    reg [`MultBus] out_i_temp;
+    reg signed [`MultBus] out_r_temp;
+    reg signed [`MultBus] out_i_temp;
     
-    reg [`MultBus] mult0;
-    reg [`MultBus] mult1;
-    reg [`MultBus] mult2;
-    reg [`MultBus] mult3;
+    reg signed [`MultBus] mult0;
+    reg signed [`MultBus] mult1;
+    reg signed [`MultBus] mult2;
+    reg signed [`MultBus] mult3;
     
     
     /*(ax + jay) * (bx + jby) = (axbx - ayby) + j(axby + aybx)*/

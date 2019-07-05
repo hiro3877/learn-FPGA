@@ -25,39 +25,39 @@
 module fft_1d_8_top_sim();
 
 
-reg [`InBus] in0_r;
-reg [`InBus] in0_i;
-reg [`InBus] in1_r;
-reg [`InBus] in1_i;
-reg [`InBus] in2_r;
-reg [`InBus] in2_i;
-reg [`InBus] in3_r;
-reg [`InBus] in3_i;
-reg [`InBus] in4_r;
-reg [`InBus] in4_i;
-reg [`InBus] in5_r;
-reg [`InBus] in5_i;
-reg [`InBus] in6_r;
-reg [`InBus] in6_i;
-reg [`InBus] in7_r;
-reg [`InBus] in7_i;
+reg signed [`InBus] in0_r;
+reg signed [`InBus] in0_i;
+reg signed [`InBus] in1_r;
+reg signed [`InBus] in1_i;
+reg signed [`InBus] in2_r;
+reg signed [`InBus] in2_i;
+reg signed [`InBus] in3_r;
+reg signed [`InBus] in3_i;
+reg signed [`InBus] in4_r;
+reg signed [`InBus] in4_i;
+reg signed [`InBus] in5_r;
+reg signed [`InBus] in5_i;
+reg signed [`InBus] in6_r;
+reg signed [`InBus] in6_i;
+reg signed [`InBus] in7_r;
+reg signed [`InBus] in7_i;
 
-wire [`OutBus] out0_r;
-wire [`OutBus] out0_i;
-wire [`OutBus] out1_r;
-wire [`OutBus] out1_i;
-wire [`OutBus] out2_r;
-wire [`OutBus] out2_i;
-wire [`OutBus] out3_r;
-wire [`OutBus] out3_i;
-wire [`OutBus] out4_r;
-wire [`OutBus] out4_i;
-wire [`OutBus] out5_r;
-wire [`OutBus] out5_i;
-wire [`OutBus] out6_r;
-wire [`OutBus] out6_i;
-wire [`OutBus] out7_r;
-wire [`OutBus] out7_i;
+wire signed [`OutBus] out0_r;
+wire signed [`OutBus] out0_i;
+wire signed [`OutBus] out1_r;
+wire signed [`OutBus] out1_i;
+wire signed [`OutBus] out2_r;
+wire signed [`OutBus] out2_i;
+wire signed [`OutBus] out3_r;
+wire signed [`OutBus] out3_i;
+wire signed [`OutBus] out4_r;
+wire signed [`OutBus] out4_i;
+wire signed [`OutBus] out5_r;
+wire signed [`OutBus] out5_i;
+wire signed [`OutBus] out6_r;
+wire signed [`OutBus] out6_i;
+wire signed [`OutBus] out7_r;
+wire signed [`OutBus] out7_i;
 
 
 fft_1d_8_top top_sim (in0_r,in0_i,in1_r,in1_i,in2_r,in2_i,in3_r,in3_i,in4_r,in4_i,in5_r,in5_i,in6_r,in6_i,in7_r,in7_i,
@@ -66,29 +66,29 @@ fft_1d_8_top top_sim (in0_r,in0_i,in1_r,in1_i,in2_r,in2_i,in3_r,in3_i,in4_r,in4_
     
     initial begin
     
-        in0_r <= 16'b0000000000000000;
-        in0_i <= 16'b0000000000000000;
+        in0_r <= 16'sb0000000000000000;
+        in0_i <= 16'sb0000000000000000;
         
-        in1_r <= 16'b0000000100000000;
-        in1_i <= 16'b0000000100000000;
+        in1_r <= 16'sb0000000100000000;
+        in1_i <= 16'sb0000000100000000;
         
-        in2_r <= 16'b0000001000000000;
-        in2_i <= 16'b0000001000000000;
+        in2_r <= 16'sb0000001000000000;
+        in2_i <= 16'sb0000001000000000;
         
-        in3_r <= 16'b0000001100000000;
-        in3_i <= 16'b0000001100000000;
+        in3_r <= 16'sb0000001100000000;
+        in3_i <= 16'sb0000001100000000;
         
-        in4_r <= 16'b0000010000000000;
-        in4_i <= 16'b0000010000000000;
+        in4_r <= 16'sb0000010000000000;
+        in4_i <= 16'sb0000010000000000;
         
-        in5_r <= 16'b0000010100000000;
-        in5_i <= 16'b0000010100000000;
+        in5_r <= 16'sb0000010100000000;
+        in5_i <= 16'sb0000010100000000;
         
-        in6_r <= 16'b0000011000000000;
-        in6_i <= 16'b0000011000000000;
+        in6_r <= 16'sb0000011000000000;
+        in6_i <= 16'sb0000011000000000;
         
-        in7_r <= 16'b0000011100000000;
-        in7_i <= 16'b0000011100000000;
+        in7_r <= 16'sb0000011100000000;
+        in7_i <= 16'sb0000011100000000;
         
         #100      
         $finish;

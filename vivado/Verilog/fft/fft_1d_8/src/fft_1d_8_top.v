@@ -23,139 +23,139 @@
 `include "./std_define.h"
 
 module fft_1d_8_top(
-    input wire [`InBus]            in0_r,
-    input wire [`InBus]            in0_i,
-    input wire [`InBus]            in1_r,
-    input wire [`InBus]            in1_i,
-    input wire [`InBus]            in2_r,
-    input wire [`InBus]            in2_i,
-    input wire [`InBus]            in3_r,
-    input wire [`InBus]            in3_i,
-    input wire [`InBus]            in4_r,
-    input wire [`InBus]            in4_i,
-    input wire [`InBus]            in5_r,
-    input wire [`InBus]            in5_i,
-    input wire [`InBus]            in6_r,
-    input wire [`InBus]            in6_i,
-    input wire [`InBus]            in7_r,
-    input wire [`InBus]            in7_i,
+    input wire signed [`InBus]            in0_r,
+    input wire signed [`InBus]            in0_i,
+    input wire signed [`InBus]            in1_r,
+    input wire signed [`InBus]            in1_i,
+    input wire signed [`InBus]            in2_r,
+    input wire signed [`InBus]            in2_i,
+    input wire signed [`InBus]            in3_r,
+    input wire signed [`InBus]            in3_i,
+    input wire signed [`InBus]            in4_r,
+    input wire signed [`InBus]            in4_i,
+    input wire signed [`InBus]            in5_r,
+    input wire signed [`InBus]            in5_i,
+    input wire signed [`InBus]            in6_r,
+    input wire signed [`InBus]            in6_i,
+    input wire signed [`InBus]            in7_r,
+    input wire signed [`InBus]            in7_i,
     
-    output wire [`OutBus]          out0_r,
-    output wire [`OutBus]          out0_i,
-    output wire [`OutBus]          out1_r,
-    output wire [`OutBus]          out1_i,
-    output wire [`OutBus]          out2_r,
-    output wire [`OutBus]          out2_i,
-    output wire [`OutBus]          out3_r,
-    output wire [`OutBus]          out3_i,
-    output wire [`OutBus]          out4_r,
-    output wire [`OutBus]          out4_i,
-    output wire [`OutBus]          out5_r,
-    output wire [`OutBus]          out5_i,
-    output wire [`OutBus]          out6_r,
-    output wire [`OutBus]          out6_i,
-    output wire [`OutBus]          out7_r,
-    output wire [`OutBus]          out7_i
+    output wire signed [`OutBus]          out0_r,
+    output wire signed [`OutBus]          out0_i,
+    output wire signed [`OutBus]          out1_r,
+    output wire signed [`OutBus]          out1_i,
+    output wire signed [`OutBus]          out2_r,
+    output wire signed [`OutBus]          out2_i,
+    output wire signed [`OutBus]          out3_r,
+    output wire signed [`OutBus]          out3_i,
+    output wire signed [`OutBus]          out4_r,
+    output wire signed [`OutBus]          out4_i,
+    output wire signed [`OutBus]          out5_r,
+    output wire signed [`OutBus]          out5_i,
+    output wire signed [`OutBus]          out6_r,
+    output wire signed [`OutBus]          out6_i,
+    output wire signed [`OutBus]          out7_r,
+    output wire signed [`OutBus]          out7_i
     );
     
     
     /*************define Radix2 out temp***************/
-    wire [`CalcTempBus]          temp_r0_1_r;     //r0_1_r (Radix2_0 out1_r)
-    wire [`CalcTempBus]          temp_r0_1_i;
-    wire [`CalcTempBus]          temp_r0_2_r;
-    wire [`CalcTempBus]          temp_r0_2_i;
+    wire signed [`CalcTempBus]          temp_r0_1_r;     //r0_1_r (Radix2_0 out1_r)
+    wire signed [`CalcTempBus]          temp_r0_1_i;
+    wire signed [`CalcTempBus]          temp_r0_2_r;
+    wire signed [`CalcTempBus]          temp_r0_2_i;
     
-    wire [`CalcTempBus]          temp_r1_1_r;
-    wire [`CalcTempBus]          temp_r1_1_i;
-    wire [`CalcTempBus]          temp_r1_2_r;
-    wire [`CalcTempBus]          temp_r1_2_i;
+    wire signed [`CalcTempBus]          temp_r1_1_r;
+    wire signed [`CalcTempBus]          temp_r1_1_i;
+    wire signed [`CalcTempBus]          temp_r1_2_r;
+    wire signed [`CalcTempBus]          temp_r1_2_i;
         
-    wire  [`CalcTempBus]         temp_r2_1_r;
-    wire [`CalcTempBus]          temp_r2_1_i;
-    wire [`CalcTempBus]          temp_r2_2_r;
-    wire [`CalcTempBus]          temp_r2_2_i;
+    wire signed [`CalcTempBus]         temp_r2_1_r;
+    wire signed [`CalcTempBus]          temp_r2_1_i;
+    wire signed [`CalcTempBus]          temp_r2_2_r;
+    wire signed [`CalcTempBus]          temp_r2_2_i;
         
-    wire [`CalcTempBus]          temp_r3_1_r;
-    wire [`CalcTempBus]          temp_r3_1_i;
-    wire [`CalcTempBus]          temp_r3_2_r;
-    wire [`CalcTempBus]          temp_r3_2_i;
+    wire signed [`CalcTempBus]          temp_r3_1_r;
+    wire signed [`CalcTempBus]          temp_r3_1_i;
+    wire signed [`CalcTempBus]          temp_r3_2_r;
+    wire signed [`CalcTempBus]          temp_r3_2_i;
     
-    wire [`CalcTempBus]          temp_r4_1_r;
-    wire [`CalcTempBus]          temp_r4_1_i;
-    wire [`CalcTempBus]          temp_r4_2_r;
-    wire [`CalcTempBus]          temp_r4_2_i;
+    wire signed [`CalcTempBus]          temp_r4_1_r;
+    wire signed [`CalcTempBus]          temp_r4_1_i;
+    wire signed [`CalcTempBus]          temp_r4_2_r;
+    wire signed [`CalcTempBus]          temp_r4_2_i;
     
-    wire [`CalcTempBus]          temp_r5_1_r;
-    wire [`CalcTempBus]          temp_r5_1_i;
-    wire [`CalcTempBus]          temp_r5_2_r;
-    wire [`CalcTempBus]          temp_r5_2_i;
+    wire signed [`CalcTempBus]          temp_r5_1_r;
+    wire signed [`CalcTempBus]          temp_r5_1_i;
+    wire signed [`CalcTempBus]          temp_r5_2_r;
+    wire signed [`CalcTempBus]          temp_r5_2_i;
         
-    wire  [`CalcTempBus]         temp_r6_1_r;
-    wire [`CalcTempBus]          temp_r6_1_i;
-    wire [`CalcTempBus]          temp_r6_2_r;
-    wire [`CalcTempBus]          temp_r6_2_i;
+    wire signed [`CalcTempBus]         temp_r6_1_r;
+    wire signed [`CalcTempBus]          temp_r6_1_i;
+    wire signed [`CalcTempBus]          temp_r6_2_r;
+    wire signed [`CalcTempBus]          temp_r6_2_i;
         
-    wire [`CalcTempBus]          temp_r7_1_r;
-    wire [`CalcTempBus]          temp_r7_1_i;
-    wire [`CalcTempBus]          temp_r7_2_r;
-    wire [`CalcTempBus]          temp_r7_2_i;
+    wire signed [`CalcTempBus]          temp_r7_1_r;
+    wire signed [`CalcTempBus]          temp_r7_1_i;
+    wire signed [`CalcTempBus]          temp_r7_2_r;
+    wire signed [`CalcTempBus]          temp_r7_2_i;
     
-    wire [`CalcTempBus]          temp_r8_1_r;
-    wire [`CalcTempBus]          temp_r8_1_i;
-    wire [`CalcTempBus]          temp_r8_2_r;
-    wire [`CalcTempBus]          temp_r8_2_i;
+    wire signed [`CalcTempBus]          temp_r8_1_r;
+    wire signed [`CalcTempBus]          temp_r8_1_i;
+    wire signed [`CalcTempBus]          temp_r8_2_r;
+    wire signed [`CalcTempBus]          temp_r8_2_i;
     
-    wire [`CalcTempBus]          temp_r9_1_r;
-    wire [`CalcTempBus]          temp_r9_1_i;
-    wire [`CalcTempBus]          temp_r9_2_r;
-    wire [`CalcTempBus]          temp_r9_2_i;
+    wire signed [`CalcTempBus]          temp_r9_1_r;
+    wire signed [`CalcTempBus]          temp_r9_1_i;
+    wire signed [`CalcTempBus]          temp_r9_2_r;
+    wire signed [`CalcTempBus]          temp_r9_2_i;
         
-    wire  [`CalcTempBus]         temp_r10_1_r;
-    wire [`CalcTempBus]          temp_r10_1_i;
-    wire [`CalcTempBus]          temp_r10_2_r;
-    wire [`CalcTempBus]          temp_r10_2_i;
+    wire signed [`CalcTempBus]          temp_r10_1_r;
+    wire signed [`CalcTempBus]          temp_r10_1_i;
+    wire signed [`CalcTempBus]          temp_r10_2_r;
+    wire signed [`CalcTempBus]          temp_r10_2_i;
         
-    wire [`CalcTempBus]          temp_r11_1_r;
-    wire [`CalcTempBus]          temp_r11_1_i;
-    wire [`CalcTempBus]          temp_r11_2_r;
-    wire [`CalcTempBus]          temp_r11_2_i;
+    wire signed [`CalcTempBus]          temp_r11_1_r;
+    wire signed [`CalcTempBus]          temp_r11_1_i;
+    wire signed [`CalcTempBus]          temp_r11_2_r;
+    wire signed [`CalcTempBus]          temp_r11_2_i;
     
     /***************define Mult out temp*************/
-    wire[`CalcTempBus]           temp_m0_r;      //m0_1 (Mult0 out_r)
-    wire[`CalcTempBus]           temp_m0_i;
+    wire signed [`CalcTempBus]           temp_m0_r;      //m0_1 (Mult0 out_r)
+    wire signed [`CalcTempBus]           temp_m0_i;
     
-    wire[`CalcTempBus]           temp_m1_r;
-    wire[`CalcTempBus]           temp_m1_i;
+    wire signed [`CalcTempBus]           temp_m1_r;
+    wire signed [`CalcTempBus]           temp_m1_i;
     
-    wire[`CalcTempBus]           temp_m2_r;
-    wire[`CalcTempBus]           temp_m2_i;
+    wire signed [`CalcTempBus]           temp_m2_r;
+    wire signed [`CalcTempBus]           temp_m2_i;
     
-    wire[`CalcTempBus]           temp_m3_r;
-    wire[`CalcTempBus]           temp_m3_i;
+    wire signed [`CalcTempBus]           temp_m3_r;
+    wire signed [`CalcTempBus]           temp_m3_i;
     
-    wire[`CalcTempBus]           temp_m4_r;
-    wire[`CalcTempBus]           temp_m4_i;
+    wire signed [`CalcTempBus]           temp_m4_r;
+    wire signed [`CalcTempBus]           temp_m4_i;
     
-    wire[`CalcTempBus]           temp_m5_r;
-    wire[`CalcTempBus]           temp_m5_i;
+    wire signed [`CalcTempBus]           temp_m5_r;
+    wire signed [`CalcTempBus]           temp_m5_i;
     
-    wire[`CalcTempBus]           temp_m6_r;
-    wire[`CalcTempBus]           temp_m6_i;
+    wire signed [`CalcTempBus]           temp_m6_r;
+    wire signed [`CalcTempBus]           temp_m6_i;
     
-    wire[`CalcTempBus]           temp_m7_r;
-    wire[`CalcTempBus]           temp_m7_i;
+    wire signed [`CalcTempBus]           temp_m7_r;
+    wire signed [`CalcTempBus]           temp_m7_i;
     
-    wire[`CalcTempBus]           temp_m8_r;
-    wire[`CalcTempBus]           temp_m8_i;
+    wire signed [`CalcTempBus]           temp_m8_r;
+    wire signed [`CalcTempBus]           temp_m8_i;
     
-    wire[`CalcTempBus]           temp_m9_r;
-    wire[`CalcTempBus]           temp_m9_i;
+    wire signed [`CalcTempBus]           temp_m9_r;
+    wire signed [`CalcTempBus]           temp_m9_i;
     
-    wire[`CalcTempBus]           temp_m10_r;
-    wire[`CalcTempBus]           temp_m10_i;
+    wire signed [`CalcTempBus]           temp_m10_r;
+    wire signed [`CalcTempBus]           temp_m10_i;
     
-    wire[`CalcTempBus]           temp_m11_r;
-    wire[`CalcTempBus]           temp_m11_i;
+    wire signed [`CalcTempBus]           temp_m11_r;
+    wire signed [`CalcTempBus]           temp_m11_i;
             
     /***************connection module****************/
     
@@ -432,3 +432,4 @@ module fft_1d_8_top(
     
     
 endmodule
+

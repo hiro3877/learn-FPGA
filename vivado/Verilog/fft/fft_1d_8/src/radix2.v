@@ -23,24 +23,24 @@
 `include "./std_define.h"
 
 module radix2(
-    input  wire [`InBus]       in1_r,
-    input  wire [`InBus]       in1_i,
-    input  wire [`InBus]       in2_r,
-    input  wire [`InBus]       in2_i,
+    input  wire signed [`InBus]       in1_r,
+    input  wire signed [`InBus]       in1_i,
+    input  wire signed [`InBus]       in2_r,
+    input  wire signed [`InBus]       in2_i,
     
-    output wire [`OutBus]      out1_r,
-    output wire [`OutBus]      out1_i,
-    output wire [`OutBus]      out2_r,
-    output wire [`OutBus]      out2_i
+    output wire signed [`OutBus]      out1_r,
+    output wire signed [`OutBus]      out1_i,
+    output wire signed [`OutBus]      out2_r,
+    output wire signed [`OutBus]      out2_i
     );
     
     
     
     /*************define output buffer*************/
-    reg [`OutBus]  out1_r_tmp;
-    reg [`OutBus]  out1_i_tmp;
-    reg [`OutBus]  out2_r_tmp;
-    reg [`OutBus]  out2_i_tmp;
+    reg signed [`OutBus]  out1_r_tmp;
+    reg signed [`OutBus]  out1_i_tmp;
+    reg signed [`OutBus]  out2_r_tmp;
+    reg signed [`OutBus]  out2_i_tmp;
         
     
     /************add and sub****************/
