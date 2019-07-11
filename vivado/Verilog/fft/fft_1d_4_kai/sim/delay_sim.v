@@ -33,7 +33,7 @@ module delay_sim();
     
     initial begin
         clk  <= 0;
-        dnum <= 4'b0100;
+        dnum <= 4'd4;
         in   <= 16'sb1111111101001011;        //-0.7071... (11111111.01001011)
         
         #200

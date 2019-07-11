@@ -36,7 +36,7 @@ module W_control1(
     
     /***********counter**************/
     always @(posedge clk) begin
-        if (count == 3'b101) begin
+        if (count == 3'b110) begin
             count <= 3'b0;
         end else begin
             count <= count + 3'b001;

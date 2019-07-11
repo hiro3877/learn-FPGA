@@ -31,7 +31,7 @@ module mux(
     
 );
 
-    always @(sel) begin
+    always @(*) begin
         case(sel)
             2'b00   : dout <= d0;
             2'b01   : dout <= d1;

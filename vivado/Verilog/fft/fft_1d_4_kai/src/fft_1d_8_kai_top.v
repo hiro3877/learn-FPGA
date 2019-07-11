@@ -22,7 +22,7 @@
 `include "./nettype.h"
 `include "./std_define.h"
 
-module fft_1d_8_kai_top(
+module fft_1d_8_kai_top(        //8 => 4
 
     input  wire clk,
 
@@ -94,14 +94,16 @@ module fft_1d_8_kai_top(
     W_control2 W_control2 (clk,temp_w2_r,temp_w2_i);
     
     /***********************delay**************************/
-    delay delay0 (clk,4'b0010,in_r,temp_d0);
-    delay delay1 (clk,4'b0010,in_i,temp_d1);
-    delay delay2 (clk,4'b0010,temp_m0_r,temp_d2);
-    delay delay3 (clk,4'b0010,temp_m0_i,temp_d3);
-    delay delay4 (clk,4'b0001,temp_mux1,temp_d4);
-    delay delay5 (clk,4'b0001,temp_mux2,temp_d5);
-    delay delay6 (clk,4'b0001,temp_m1_r,temp_d6);
-    delay delay7 (clk,4'b0001,temp_m1_i,temp_d7);
+    //delay delay0 (clk,4'd2,in_r,temp_d0);
+    delay delay0 (clk,4'd3,in_r,temp_d0);       //sim dato saisyo 1clk delay sinai node , 1clk oomeni delay siteru
+    //delay delay1 (clk,4'd2,in_i,temp_d1);
+    delay delay1 (clk,4'd3,in_i,temp_d1);       //sim dato saisyo 1clk delay sinai node , 1clk oomeni delay siteru
+    delay delay2 (clk,4'd2,temp_m0_r,temp_d2);
+    delay delay3 (clk,4'd2,temp_m0_i,temp_d3);
+    delay delay4 (clk,4'd1,temp_mux1,temp_d4);
+    delay delay5 (clk,4'd1,temp_mux2,temp_d5);
+    delay delay6 (clk,4'd1,temp_m1_r,temp_d6);
+    delay delay7 (clk,4'd1,temp_m1_i,temp_d7);
     
     /**********************mux*****************************/
     mux mux1 (temp_muxc1,temp_r0_1_r,temp_d2,16'b0,temp_mux1);

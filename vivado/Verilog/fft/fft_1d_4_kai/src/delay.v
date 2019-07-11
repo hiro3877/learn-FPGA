@@ -30,12 +30,36 @@ module delay(
     output reg  signed [`CalcTempBus]       out
     );
     
-
+    
+    /************define delay temp*************/
+    
+    wire signed [`CalcTempBus] temp2;       //delay2
+    wire signed [`CalcTempBus] temp3;       //delay3
+    //wire signed [`CalcTempBus] temp4;
+    
+    /**********connection delay_base******************/
+    
+    delay_base delay1 (clk,in,temp2);
+    delay_base delay2 (clk,temp2,temp3);
+    //delay_base delay3 (clk,temp1,temp2);
+    
+    /***************control delay*********************/
+    
+    always @(posedge clk) begin
+        case (dnum)
+            4'd1    : out <= in;        //delay1
+            4'd2    : out <= temp2;     //delay2
+            4'd3    : out <= temp3;     //delay3
+            default : out <= 16'b0;
+        endcase
+    end
+             
 /***************define wire and reg********************/
-    reg [`DNumBus] count = 4'b0;
+    //reg [`DNumBus] count = 4'b0;
     
     
     /***********counter**************/
+    /*
     always @(posedge clk) begin
         if (count == dnum) begin
             count <= 4'b0;
@@ -45,5 +69,6 @@ module delay(
             count <= count + 4'b001;
         end
     end
+    */
                                 
 endmodule
