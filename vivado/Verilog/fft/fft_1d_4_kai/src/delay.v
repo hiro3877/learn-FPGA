@@ -33,21 +33,22 @@ module delay(
     
     /************define delay temp*************/
     
+    wire signed [`CalcTempBus] temp1;       //delay1
     wire signed [`CalcTempBus] temp2;       //delay2
     wire signed [`CalcTempBus] temp3;       //delay3
     //wire signed [`CalcTempBus] temp4;
     
     /**********connection delay_base******************/
     
-    delay_base delay1 (clk,in,temp2);
-    delay_base delay2 (clk,temp2,temp3);
-    //delay_base delay3 (clk,temp1,temp2);
+    delay_base delay1 (clk,in,temp1);
+    delay_base delay2 (clk,temp1,temp2);
+    delay_base delay3 (clk,temp2,temp3);
     
     /***************control delay*********************/
     
-    always @(posedge clk) begin
+    always @(*) begin
         case (dnum)
-            4'd1    : out <= in;        //delay1
+            4'd1    : out <= temp1;      //delay1
             4'd2    : out <= temp2;     //delay2
             4'd3    : out <= temp3;     //delay3
             default : out <= 16'b0;
