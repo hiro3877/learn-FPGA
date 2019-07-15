@@ -4,10 +4,11 @@
 #define NUM 8
 #define DNumBus 4
 #define CalcTempBus 16
+#define MuxCountBus 5
 
 int main()
 {
-	int i,j;
+	int i,j,k,l,m,n;
 
 	int dnum = (NUM/2) + 1;		//delay number
 	int rnum1 = log2(NUM);		//radix number
@@ -95,6 +96,7 @@ int main()
 		printf("wire signed [`WBus]                 temp_w%d_i;\n",i);
 	}
 	
+	printf ("\n");
 	
 	printf("*********************port map*******************\n\n");
 	
@@ -172,6 +174,19 @@ int main()
 		printf("MULT MULT%d (temp_r%d_2_r,temp_r%d_2_i,temp_m%d_r,temp_m%d_i,temp_w%d_r,temp_w%d_i);\n",i,i,i,i,i,i+1,i+1);
 	}
 	
+	printf ("\n");
+	
+	printf("*********************MUX_control*******************\n\n");
+	
+	printf ("\n");
+	
+	int mux1 = NUM/2;
+	int mux2 = NUM/2;
+	for(i=0; i<rnum1; i++){
+		mux2 += 1;
+		for(j=0; j<mux1; j++){
+			printf("%d'd%d : sel <= 2'd0;\n",MuxCountBus,mux2);
+		
 	
 	return 0;
 }
