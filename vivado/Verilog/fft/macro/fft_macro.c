@@ -1,14 +1,18 @@
 #include <stdio.h>
 #include <math.h>
 
+#include "w8.h"
+
 #define NUM 8
 #define DNumBus 4
 #define CalcTempBus 16
 #define MuxCountBus 5
+#define WCountBus 5
 
 int main()
 {
 	int i,j,k,l,m,n;
+	int num2 = NUM/2;
 
 	int dnum = (NUM/2) + 1;		//delay number
 	int rnum1 = log2(NUM);		//radix number
@@ -180,13 +184,127 @@ int main()
 	
 	printf ("\n");
 	
-	int mux1 = NUM/2;
-	int mux2 = NUM/2;
+	int mux1 = 2;				//roop count
+	int mux2 = NUM/2;			//roop nai count
+	int mux3 = NUM/2 +1;		//start point
+	int mux4 = 1;				// 0 or 1
+	int mux5 = 0;				//delay input 5 7 8 (0 2 1)
 	for(i=0; i<rnum1; i++){
-		mux2 += 1;
+		printf("\n");
 		for(j=0; j<mux1; j++){
-			printf("%d'd%d : sel <= 2'd0;\n",MuxCountBus,mux2);
+			if(mux4 == 1){
+				mux4 = 0;
+			}else if(mux4 == 0){
+				mux4 = 1;
+			}
+			for(k=0; k<mux2; k++){
+				printf("%d'd%d : sel <= 2'd%d;\n",MuxCountBus,mux3,mux4);
+				mux3++;
+			}
+		}
+		mux1 *= 2;
+		mux2 /= 2; 
+		mux5 += mux2;
+		mux3 = NUM/2 + 1 + mux5;
+	}
+	
+	printf ("\n");
+	
+	printf("*********************W_control*******************\n\n");
+	
+	printf ("\n");
+	
+	int w1 = 1;
+	int w2 = NUM/2;			//roop nai count
+	int w3 = NUM/2 +1;		//start point
+	int w4 = 1;				// 0 or 1
+	int w5 = 0;				//delay input 5 7 8 (0 2 1)
+	int w6 = log2(NUM);		//w_count
+	int w7 = 0;
+	for(i=0; i<rnum1; i++){
+		w7 = i;
+		printf("\n");
+		for(j=0; j<w1; j++){
+			for(k=0; k<w2; k++){
+				printf("%d'd%d : begin\n",WCountBus,w3);
+				printf("W_real <= `W%d_real;\n",w7);
+				printf("W_imag <= `W%d_imag;\n",w7);
+				printf("end\n");
+				w3++;
+				w7 += w6;
+			}
+			w3 += w2;
+		}
+		printf("\n**************************************************\n");
+		w1 *= 2;
+		w2 /= 2; 
+		w5 += w2;
+		w3 = NUM/2 + 1 + w5;
+	}
+	
+	printf ("\n");
+	
+	printf("*********************top_sim*******************\n\n");
+	
+	printf ("\n");
+	
+	int decimal;
+	int binary;
+	int base;
+	int sim1 = 0;
+	for(i=0; i<NUM; i++){
 		
+		//decimal => binary
+		decimal = i;
+		binary = 0;
+		base = 1;
+		while(decimal>0){
+			binary = binary + ( decimal % 2 ) * base;
+			decimal = decimal / 2;
+			base = base * 10;
+		}
+		printf("#10//%d\n",i);
+		printf("in_r <= 16'sb%08d%08d;\n",binary,sim1);
+		printf("in_i <= 16'sb%08d%08d;\n\n",binary,sim1);
+	}
+	
+	printf ("\n");
+	
+	printf("*********************std_define.h*******************\n\n");
+	
+	printf ("\n");
+	
+	int wnum1[rnum1][num2];		//rotation factor address
+	int wnum2 = 0;		
+	int wnum3 = 1;
+	for(i=0; i<rnum1; i++){
+		for(j=0; j<num2; j++){
+			if(wnum2 >= num2){
+				wnum2 -= num2;
+				wnum1[i][j] = wnum2;
+				wnum2 += wnum3;
+			}	
+			else{
+				wnum1[i][j] = wnum2;
+				wnum2 += wnum3;
+			}
+		}
+		wnum2 = 0;
+		wnum3 *= 2;
+	}
+	
+	w8(wnum1);
+	
+	for(i=0; i<rnum1; i++){
+		for(j=0; j<num2; j++){
+			printf("wnum1[%d][%d] = %d\n",i,j,wnum1[i][j]);
+		}
+	}
+			
+			
+	
+	
+	
 	
 	return 0;
 }
