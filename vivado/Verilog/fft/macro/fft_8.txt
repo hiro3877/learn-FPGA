@@ -1,0 +1,267 @@
+*********************delay.v_macro*******************
+
+wire signed [`CalcTempBus] temp1;
+wire signed [`CalcTempBus] temp2;
+wire signed [`CalcTempBus] temp3;
+wire signed [`CalcTempBus] temp4;
+wire signed [`CalcTempBus] temp5;
+
+delay_base delay1 (clk,in,temp1);
+delay_base delay2 (clk,temp1,temp2);
+delay_base delay3 (clk,temp2,temp3);
+delay_base delay4 (clk,temp3,temp4);
+delay_base delay5 (clk,temp4,temp5);
+
+4'd1	: out <= temp1;
+4'd2	: out <= temp2;
+4'd3	: out <= temp3;
+4'd4	: out <= temp4;
+4'd5	: out <= temp5;
+
+*********************top.v_macro*******************
+
+wire signed [`CalcTempBus]          temp_r0_1_r;
+wire signed [`CalcTempBus]          temp_r0_1_i;
+wire signed [`CalcTempBus]          temp_r0_2_r;
+wire signed [`CalcTempBus]          temp_r0_2_i;
+wire signed [`CalcTempBus]          temp_r1_1_r;
+wire signed [`CalcTempBus]          temp_r1_1_i;
+wire signed [`CalcTempBus]          temp_r1_2_r;
+wire signed [`CalcTempBus]          temp_r1_2_i;
+wire signed [`CalcTempBus]          temp_r2_1_r;
+wire signed [`CalcTempBus]          temp_r2_1_i;
+wire signed [`CalcTempBus]          temp_r2_2_r;
+wire signed [`CalcTempBus]          temp_r2_2_i;
+
+wire signed [`CalcTempBus]          temp_m0_r;
+wire signed [`CalcTempBus]          temp_m0_i;
+wire signed [`CalcTempBus]          temp_m1_r;
+wire signed [`CalcTempBus]          temp_m1_i;
+wire signed [`CalcTempBus]          temp_m2_r;
+wire signed [`CalcTempBus]          temp_m2_i;
+
+wire signed [`CalcTempBus]          temp_d0;
+wire signed [`CalcTempBus]          temp_d1;
+wire signed [`CalcTempBus]          temp_d2;
+wire signed [`CalcTempBus]          temp_d3;
+wire signed [`CalcTempBus]          temp_d4;
+wire signed [`CalcTempBus]          temp_d5;
+wire signed [`CalcTempBus]          temp_d6;
+wire signed [`CalcTempBus]          temp_d7;
+wire signed [`CalcTempBus]          temp_d8;
+wire signed [`CalcTempBus]          temp_d9;
+wire signed [`CalcTempBus]          temp_d10;
+wire signed [`CalcTempBus]          temp_d11;
+
+wire signed [`CalcTempBus]          temp_mux1; 
+wire signed [`CalcTempBus]          temp_mux2; 
+wire signed [`CalcTempBus]          temp_mux3; 
+wire signed [`CalcTempBus]          temp_mux4; 
+wire signed [`CalcTempBus]          temp_mux5; 
+wire signed [`CalcTempBus]          temp_mux6; 
+
+wire [`MuxControlBus]               temp_muxc1;
+wire [`MuxControlBus]               temp_muxc2;
+wire [`MuxControlBus]               temp_muxc3;
+
+wire signed [`WBus]                 temp_w1_r;
+wire signed [`WBus]                 temp_w1_i;
+wire signed [`WBus]                 temp_w2_r;
+wire signed [`WBus]                 temp_w2_i;
+wire signed [`WBus]                 temp_w3_r;
+wire signed [`WBus]                 temp_w3_i;
+
+*********************port map*******************
+
+MUX_control1 MUX_control1 (clk,temp_muxc1);
+MUX_control2 MUX_control2 (clk,temp_muxc2);
+MUX_control3 MUX_control3 (clk,temp_muxc3);
+
+W_control1 W_control1 (clk,temp_w1_r,temp_w1_i);
+W_control2 W_control2 (clk,temp_w2_r,temp_w2_i);
+W_control3 W_control3 (clk,temp_w3_r,temp_w3_i);
+
+delay delay0 (clk,4'd5,in_r,temp_d0);
+delay delay1 (clk,4'd5,in_i,temp_d1);
+
+delay delay2 (clk,4'd4,temp_m0_r,temp_d2);
+delay delay3 (clk,4'd4,temp_m0_i,temp_d3);
+delay delay4 (clk,4'd2,temp_mux1,temp_d4);
+delay delay5 (clk,4'd2,temp_mux2,temp_d5);
+delay delay6 (clk,4'd2,temp_m1_r,temp_d6);
+delay delay7 (clk,4'd2,temp_m1_i,temp_d7);
+delay delay8 (clk,4'd1,temp_mux3,temp_d8);
+delay delay9 (clk,4'd1,temp_mux4,temp_d9);
+delay delay10 (clk,4'd1,temp_m2_r,temp_d10);
+delay delay11 (clk,4'd1,temp_m2_i,temp_d11);
+
+mux mux1 (temp_muxc1,temp_r0_1_r,temp_d2,16'b0,temp_mux1);
+mux mux2 (temp_muxc1,temp_r0_1_i,temp_d3,16'b0,temp_mux2);
+mux mux3 (temp_muxc2,temp_r1_1_r,temp_d6,16'b0,temp_mux3);
+mux mux4 (temp_muxc2,temp_r1_1_i,temp_d7,16'b0,temp_mux4);
+mux mux5 (temp_muxc3,temp_r2_1_r,temp_d10,16'b0,temp_mux5);
+mux mux6 (temp_muxc3,temp_r2_1_i,temp_d11,16'b0,temp_mux6);
+
+radix2 radix2_0 (temp_d0,temp_d1,in_r,in_i,temp_r0_1_r,temp_r0_1_i,temp_r0_2_r,temp_r0_2_i);
+radix2 radix2_1 (temp_d4,temp_d5,temp_mux1,temp_mux2,temp_r1_1_r,temp_r1_1_i,temp_r1_2_r,temp_r1_2_i);
+radix2 radix2_2 (temp_d8,temp_d9,temp_mux3,temp_mux4,temp_r2_1_r,temp_r2_1_i,temp_r2_2_r,temp_r2_2_i);
+
+MULT MULT0 (temp_r0_2_r,temp_r0_2_i,temp_m0_r,temp_m0_i,temp_w1_r,temp_w1_i);
+MULT MULT1 (temp_r1_2_r,temp_r1_2_i,temp_m1_r,temp_m1_i,temp_w2_r,temp_w2_i);
+MULT MULT2 (temp_r2_2_r,temp_r2_2_i,temp_m2_r,temp_m2_i,temp_w3_r,temp_w3_i);
+
+*********************MUX_control*******************
+
+
+
+5'd5 : sel <= 2'd0;
+5'd6 : sel <= 2'd0;
+5'd7 : sel <= 2'd0;
+5'd8 : sel <= 2'd0;
+5'd9 : sel <= 2'd1;
+5'd10 : sel <= 2'd1;
+5'd11 : sel <= 2'd1;
+5'd12 : sel <= 2'd1;
+
+5'd7 : sel <= 2'd0;
+5'd8 : sel <= 2'd0;
+5'd9 : sel <= 2'd1;
+5'd10 : sel <= 2'd1;
+5'd11 : sel <= 2'd0;
+5'd12 : sel <= 2'd0;
+5'd13 : sel <= 2'd1;
+5'd14 : sel <= 2'd1;
+
+5'd8 : sel <= 2'd0;
+5'd9 : sel <= 2'd1;
+5'd10 : sel <= 2'd0;
+5'd11 : sel <= 2'd1;
+5'd12 : sel <= 2'd0;
+5'd13 : sel <= 2'd1;
+5'd14 : sel <= 2'd0;
+5'd15 : sel <= 2'd1;
+
+*********************W_control*******************
+
+
+
+5'd5 : begin
+W_real <= `W0_real;
+W_imag <= `W0_imag;
+end
+5'd6 : begin
+W_real <= `W1_real;
+W_imag <= `W1_imag;
+end
+5'd7 : begin
+W_real <= `W2_real;
+W_imag <= `W2_imag;
+end
+5'd8 : begin
+W_real <= `W3_real;
+W_imag <= `W3_imag;
+end
+
+**************************************************
+
+5'd7 : begin
+W_real <= `W4_real;
+W_imag <= `W4_imag;
+end
+5'd8 : begin
+W_real <= `W5_real;
+W_imag <= `W5_imag;
+end
+5'd11 : begin
+W_real <= `W6_real;
+W_imag <= `W6_imag;
+end
+5'd12 : begin
+W_real <= `W7_real;
+W_imag <= `W7_imag;
+end
+
+**************************************************
+
+5'd8 : begin
+W_real <= `W8_real;
+W_imag <= `W8_imag;
+end
+5'd10 : begin
+W_real <= `W9_real;
+W_imag <= `W9_imag;
+end
+5'd12 : begin
+W_real <= `W10_real;
+W_imag <= `W10_imag;
+end
+5'd14 : begin
+W_real <= `W11_real;
+W_imag <= `W11_imag;
+end
+
+**************************************************
+
+*********************top_sim*******************
+
+
+#10//0
+in_r <= 16'sb0000000000000000;
+in_i <= 16'sb0000000000000000;
+
+#10//1
+in_r <= 16'sb0000000100000000;
+in_i <= 16'sb0000000100000000;
+
+#10//2
+in_r <= 16'sb0000001000000000;
+in_i <= 16'sb0000001000000000;
+
+#10//3
+in_r <= 16'sb0000001100000000;
+in_i <= 16'sb0000001100000000;
+
+#10//4
+in_r <= 16'sb0000010000000000;
+in_i <= 16'sb0000010000000000;
+
+#10//5
+in_r <= 16'sb0000010100000000;
+in_i <= 16'sb0000010100000000;
+
+#10//6
+in_r <= 16'sb0000011000000000;
+in_i <= 16'sb0000011000000000;
+
+#10//7
+in_r <= 16'sb0000011100000000;
+in_i <= 16'sb0000011100000000;
+
+
+*********************std_define.h*******************
+
+
+`define W0_real        16'sb0000000100000000
+`define W0_imag        16'sb0000000000000000
+`define W1_real        16'sb0000000010110101
+`define W1_imag        16'sb1111111101001011
+`define W2_real        16'sb0000000000000000
+`define W2_imag        16'sb1111111100000000
+`define W3_real        16'sb1111111101001011
+`define W3_imag        16'sb1111111101001011
+`define W4_real        16'sb0000000100000000
+`define W4_imag        16'sb0000000000000000
+`define W5_real        16'sb0000000000000000
+`define W5_imag        16'sb1111111100000000
+`define W6_real        16'sb0000000100000000
+`define W6_imag        16'sb0000000000000000
+`define W7_real        16'sb0000000000000000
+`define W7_imag        16'sb1111111100000000
+`define W8_real        16'sb0000000100000000
+`define W8_imag        16'sb0000000000000000
+`define W9_real        16'sb0000000100000000
+`define W9_imag        16'sb0000000000000000
+`define W10_real        16'sb0000000100000000
+`define W10_imag        16'sb0000000000000000
+`define W11_real        16'sb0000000100000000
+`define W11_imag        16'sb0000000000000000

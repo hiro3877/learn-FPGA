@@ -2,12 +2,14 @@
 #include <math.h>
 
 #include "w8.h"
+#include "w16.h"
 
-#define NUM 8
+
+#define NUM 128
 #define DNumBus 4
 #define CalcTempBus 16
-#define MuxCountBus 5
-#define WCountBus 5
+#define MuxCountBus 6
+#define WCountBus 6
 
 int main()
 {
@@ -45,7 +47,7 @@ int main()
 
 	for (i=1; i<=dnum; i++)
 	{
-		printf("%d'd%d	: out <= temp%d\n",DNumBus,i,i);
+		printf("%d'd%d	: out <= temp%d;\n",DNumBus,i,i);
 	}
 
 	printf ("\n");
@@ -222,7 +224,7 @@ int main()
 	int w6 = log2(NUM);		//w_count
 	int w7 = 0;
 	for(i=0; i<rnum1; i++){
-		w7 = i;
+		//w7 = i;
 		printf("\n");
 		for(j=0; j<w1; j++){
 			for(k=0; k<w2; k++){
@@ -231,7 +233,8 @@ int main()
 				printf("W_imag <= `W%d_imag;\n",w7);
 				printf("end\n");
 				w3++;
-				w7 += w6;
+				//w7 += w6;
+				w7++;
 			}
 			w3 += w2;
 		}
@@ -293,13 +296,20 @@ int main()
 		wnum3 *= 2;
 	}
 	
-	w8(wnum1);
+	
+	long long int outr[rnum1][num2];
+	long long int outi[rnum1][num2];
+	k=0;
+	w16(wnum1,outr,outi);
 	
 	for(i=0; i<rnum1; i++){
 		for(j=0; j<num2; j++){
-			printf("wnum1[%d][%d] = %d\n",i,j,wnum1[i][j]);
+			printf("`define W%d_real        16'sb%016lld\n",j+k,outr[i][j]);
+			printf("`define W%d_imag        16'sb%016lld\n",j+k,outi[i][j]);
 		}
+		k += num2;
 	}
+	
 			
 			
 	
