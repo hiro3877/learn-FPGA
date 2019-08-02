@@ -5,7 +5,7 @@
 #include "w16.h"
 
 
-#define NUM 128
+#define NUM 8
 #define DNumBus 4
 #define CalcTempBus 16
 #define MuxCountBus 6
@@ -266,6 +266,7 @@ int main()
 			decimal = decimal / 2;
 			base = base * 10;
 		}
+		//end decimal => binary
 		printf("#10//%d\n",i);
 		printf("in_r <= 16'sb%08d%08d;\n",binary,sim1);
 		printf("in_i <= 16'sb%08d%08d;\n\n",binary,sim1);
@@ -280,6 +281,9 @@ int main()
 	int wnum1[rnum1][num2];		//rotation factor address
 	int wnum2 = 0;		
 	int wnum3 = 1;
+	double wcalc_r = 0.0;
+	double wcalc_i = 0.0;
+	double PI = 3.1415926535;
 	for(i=0; i<rnum1; i++){
 		for(j=0; j<num2; j++){
 			if(wnum2 >= num2){
@@ -291,16 +295,24 @@ int main()
 				wnum1[i][j] = wnum2;
 				wnum2 += wnum3;
 			}
+			printf("wnum = %d\n",wnum1[i][j]);
+			
+			wcalc_r = cos((2 * PI * wnum1[i][j]) / NUM);
+			wcalc_i = -sin((2 * PI * wnum1[i][j]) / NUM);
+			
+			printf("wcalc_r = %lf , wcalc_i = %lf\n",wcalc_r,wcalc_i);
 		}
 		wnum2 = 0;
 		wnum3 *= 2;
 	}
 	
+	printf("\n");
+	
 	
 	long long int outr[rnum1][num2];
 	long long int outi[rnum1][num2];
 	k=0;
-	w16(wnum1,outr,outi);
+	w8(wnum1,outr,outi);
 	
 	for(i=0; i<rnum1; i++){
 		for(j=0; j<num2; j++){

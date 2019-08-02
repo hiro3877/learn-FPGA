@@ -6,11 +6,11 @@
 #include <bitset>
 
 #define NUM 128
-#define DNumBus 4
+#define DNumBus 7
 #define WBus 16
 #define CalcTempBus 16
-#define MuxCountBus 6
-#define WCountBus 6
+#define MuxCountBus 9
+#define WCountBus 9
 
 int mult2(int x, int y){
 	return x*y;
@@ -22,7 +22,7 @@ int mult2(int x, int y){
 		int i;
 		int x[WBus] = {0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0};
 		double inbuf;
-		int flag;
+		int flag = 0;
 		
 		if(in < 0){
 			inbuf = (-1)*in;
@@ -337,6 +337,7 @@ int main()
 	int sim1 = 0;
 	for(i=0; i<NUM; i++){
 		
+		
 		//decimal => binary
 		decimal = i;
 		binary = 0;
@@ -347,9 +348,25 @@ int main()
 			base = base * 10;
 		}
 		//end decimal => binary
+		
 		printf("#10//%d\n",i);
 		printf("in_r <= 16'sb%08d%08d;\n",binary,sim1);
 		printf("in_i <= 16'sb%08d%08d;\n\n",binary,sim1);
+		
+		
+		
+		/*
+		if(i < 20){
+			printf("#10//%d\n",i);
+			printf("in_r <= 16'sb00000010%08d;\n",sim1);
+			printf("in_i <= 16'sb00000001%08d;\n\n",sim1);
+		}else{
+			printf("#10//%d\n",i);
+			printf("in_r <= 16'sb00000000%08d;\n",sim1);
+			printf("in_i <= 16'sb00000000%08d;\n\n",sim1);
+		}
+		*/
+		
 	}
 	
 	printf ("\n");
@@ -366,6 +383,7 @@ int main()
 	double wcalc_r = 0.0;
 	double wcalc_i = 0.0;
 	double PI = 3.1415926535;
+	l=0;
 	for(i=0; i<rnum1; i++){
 		for(j=0; j<num2; j++){
 			if(wnum2 >= num2){
@@ -377,18 +395,19 @@ int main()
 				wnum1[i][j] = wnum2;
 				wnum2 += wnum3;
 			}
-			printf("wnum = %d\n",wnum1[i][j]);
+			//printf("wnum = %d\n",wnum1[i][j]);
 			
 			wcalc_r = cos((2 * PI * wnum1[i][j]) / NUM);
 			wcalc_i = -sin((2 * PI * wnum1[i][j]) / NUM);
 			
 			
-			printf("wcalc_r = %lf , wcalc_i = %lf\n",wcalc_r,wcalc_i);
+			printf("//wcalc_r = %lf , wcalc_i = %lf\n",wcalc_r,wcalc_i);
 			
 			
 			binary1(wcalc_r ,out);
 			
-			printf("int out = ");
+			//printf("int out = ");
+			printf("`define W%d_real        16'sb",j+l);
 			for(k=0; k<WBus; k++){
 				printf("%d",out[k]);
 			}
@@ -396,7 +415,8 @@ int main()
 			
 			binary1(wcalc_i ,out);
 			
-			printf("int out = ");
+			//printf("int out = ");
+			printf("`define W%d_imag        16'sb",j+l);
 			for(k=0; k<WBus; k++){
 				printf("%d",out[k]);
 			}
@@ -406,6 +426,7 @@ int main()
 		}
 		wnum2 = 0;
 		wnum3 *= 2;
+		l += num2;
 	}
 	
 	printf("\n");

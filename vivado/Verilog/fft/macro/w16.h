@@ -11,7 +11,7 @@ int w16(int wnum1[][8],long long int outr[][8],long long int outi[][8]){
 					outi[i][j] = 0LL;
 					break;
 				case 1:// 0.9239 -0.3827
-					outr[i][j] = 11001100LL;
+					outr[i][j] = 11101100LL;
 					outi[i][j] = 1111111110011110LL;
 					break;
 				case 2://0.7071 -0.7071

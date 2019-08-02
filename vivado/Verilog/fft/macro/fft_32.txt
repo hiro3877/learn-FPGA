@@ -1,0 +1,1090 @@
+*********************delay.v_macro*******************
+
+wire signed [`CalcTempBus] temp1;
+wire signed [`CalcTempBus] temp2;
+wire signed [`CalcTempBus] temp3;
+wire signed [`CalcTempBus] temp4;
+wire signed [`CalcTempBus] temp5;
+wire signed [`CalcTempBus] temp6;
+wire signed [`CalcTempBus] temp7;
+wire signed [`CalcTempBus] temp8;
+wire signed [`CalcTempBus] temp9;
+wire signed [`CalcTempBus] temp10;
+wire signed [`CalcTempBus] temp11;
+wire signed [`CalcTempBus] temp12;
+wire signed [`CalcTempBus] temp13;
+wire signed [`CalcTempBus] temp14;
+wire signed [`CalcTempBus] temp15;
+wire signed [`CalcTempBus] temp16;
+wire signed [`CalcTempBus] temp17;
+
+delay_base delay1 (clk,in,temp1);
+delay_base delay2 (clk,temp1,temp2);
+delay_base delay3 (clk,temp2,temp3);
+delay_base delay4 (clk,temp3,temp4);
+delay_base delay5 (clk,temp4,temp5);
+delay_base delay6 (clk,temp5,temp6);
+delay_base delay7 (clk,temp6,temp7);
+delay_base delay8 (clk,temp7,temp8);
+delay_base delay9 (clk,temp8,temp9);
+delay_base delay10 (clk,temp9,temp10);
+delay_base delay11 (clk,temp10,temp11);
+delay_base delay12 (clk,temp11,temp12);
+delay_base delay13 (clk,temp12,temp13);
+delay_base delay14 (clk,temp13,temp14);
+delay_base delay15 (clk,temp14,temp15);
+delay_base delay16 (clk,temp15,temp16);
+delay_base delay17 (clk,temp16,temp17);
+
+5'd1	: out <= temp1;
+5'd2	: out <= temp2;
+5'd3	: out <= temp3;
+5'd4	: out <= temp4;
+5'd5	: out <= temp5;
+5'd6	: out <= temp6;
+5'd7	: out <= temp7;
+5'd8	: out <= temp8;
+5'd9	: out <= temp9;
+5'd10	: out <= temp10;
+5'd11	: out <= temp11;
+5'd12	: out <= temp12;
+5'd13	: out <= temp13;
+5'd14	: out <= temp14;
+5'd15	: out <= temp15;
+5'd16	: out <= temp16;
+5'd17	: out <= temp17;
+
+*********************top.v_macro*******************
+
+wire signed [`CalcTempBus]          temp_r0_1_r;
+wire signed [`CalcTempBus]          temp_r0_1_i;
+wire signed [`CalcTempBus]          temp_r0_2_r;
+wire signed [`CalcTempBus]          temp_r0_2_i;
+wire signed [`CalcTempBus]          temp_r1_1_r;
+wire signed [`CalcTempBus]          temp_r1_1_i;
+wire signed [`CalcTempBus]          temp_r1_2_r;
+wire signed [`CalcTempBus]          temp_r1_2_i;
+wire signed [`CalcTempBus]          temp_r2_1_r;
+wire signed [`CalcTempBus]          temp_r2_1_i;
+wire signed [`CalcTempBus]          temp_r2_2_r;
+wire signed [`CalcTempBus]          temp_r2_2_i;
+wire signed [`CalcTempBus]          temp_r3_1_r;
+wire signed [`CalcTempBus]          temp_r3_1_i;
+wire signed [`CalcTempBus]          temp_r3_2_r;
+wire signed [`CalcTempBus]          temp_r3_2_i;
+wire signed [`CalcTempBus]          temp_r4_1_r;
+wire signed [`CalcTempBus]          temp_r4_1_i;
+wire signed [`CalcTempBus]          temp_r4_2_r;
+wire signed [`CalcTempBus]          temp_r4_2_i;
+
+wire signed [`CalcTempBus]          temp_m0_r;
+wire signed [`CalcTempBus]          temp_m0_i;
+wire signed [`CalcTempBus]          temp_m1_r;
+wire signed [`CalcTempBus]          temp_m1_i;
+wire signed [`CalcTempBus]          temp_m2_r;
+wire signed [`CalcTempBus]          temp_m2_i;
+wire signed [`CalcTempBus]          temp_m3_r;
+wire signed [`CalcTempBus]          temp_m3_i;
+wire signed [`CalcTempBus]          temp_m4_r;
+wire signed [`CalcTempBus]          temp_m4_i;
+
+wire signed [`CalcTempBus]          temp_d0;
+wire signed [`CalcTempBus]          temp_d1;
+wire signed [`CalcTempBus]          temp_d2;
+wire signed [`CalcTempBus]          temp_d3;
+wire signed [`CalcTempBus]          temp_d4;
+wire signed [`CalcTempBus]          temp_d5;
+wire signed [`CalcTempBus]          temp_d6;
+wire signed [`CalcTempBus]          temp_d7;
+wire signed [`CalcTempBus]          temp_d8;
+wire signed [`CalcTempBus]          temp_d9;
+wire signed [`CalcTempBus]          temp_d10;
+wire signed [`CalcTempBus]          temp_d11;
+wire signed [`CalcTempBus]          temp_d12;
+wire signed [`CalcTempBus]          temp_d13;
+wire signed [`CalcTempBus]          temp_d14;
+wire signed [`CalcTempBus]          temp_d15;
+wire signed [`CalcTempBus]          temp_d16;
+wire signed [`CalcTempBus]          temp_d17;
+wire signed [`CalcTempBus]          temp_d18;
+wire signed [`CalcTempBus]          temp_d19;
+
+wire signed [`CalcTempBus]          temp_mux1; 
+wire signed [`CalcTempBus]          temp_mux2; 
+wire signed [`CalcTempBus]          temp_mux3; 
+wire signed [`CalcTempBus]          temp_mux4; 
+wire signed [`CalcTempBus]          temp_mux5; 
+wire signed [`CalcTempBus]          temp_mux6; 
+wire signed [`CalcTempBus]          temp_mux7; 
+wire signed [`CalcTempBus]          temp_mux8; 
+wire signed [`CalcTempBus]          temp_mux9; 
+wire signed [`CalcTempBus]          temp_mux10; 
+
+wire [`MuxControlBus]               temp_muxc1;
+wire [`MuxControlBus]               temp_muxc2;
+wire [`MuxControlBus]               temp_muxc3;
+wire [`MuxControlBus]               temp_muxc4;
+wire [`MuxControlBus]               temp_muxc5;
+
+wire signed [`WBus]                 temp_w1_r;
+wire signed [`WBus]                 temp_w1_i;
+wire signed [`WBus]                 temp_w2_r;
+wire signed [`WBus]                 temp_w2_i;
+wire signed [`WBus]                 temp_w3_r;
+wire signed [`WBus]                 temp_w3_i;
+wire signed [`WBus]                 temp_w4_r;
+wire signed [`WBus]                 temp_w4_i;
+wire signed [`WBus]                 temp_w5_r;
+wire signed [`WBus]                 temp_w5_i;
+
+*********************port map*******************
+
+MUX_control1 MUX_control1 (clk,temp_muxc1);
+MUX_control2 MUX_control2 (clk,temp_muxc2);
+MUX_control3 MUX_control3 (clk,temp_muxc3);
+MUX_control4 MUX_control4 (clk,temp_muxc4);
+MUX_control5 MUX_control5 (clk,temp_muxc5);
+
+W_control1 W_control1 (clk,temp_w1_r,temp_w1_i);
+W_control2 W_control2 (clk,temp_w2_r,temp_w2_i);
+W_control3 W_control3 (clk,temp_w3_r,temp_w3_i);
+W_control4 W_control4 (clk,temp_w4_r,temp_w4_i);
+W_control5 W_control5 (clk,temp_w5_r,temp_w5_i);
+
+delay delay0 (clk,5'd17,in_r,temp_d0);
+delay delay1 (clk,5'd17,in_i,temp_d1);
+
+delay delay2 (clk,5'd16,temp_m0_r,temp_d2);
+delay delay3 (clk,5'd16,temp_m0_i,temp_d3);
+delay delay4 (clk,5'd8,temp_mux1,temp_d4);
+delay delay5 (clk,5'd8,temp_mux2,temp_d5);
+delay delay6 (clk,5'd8,temp_m1_r,temp_d6);
+delay delay7 (clk,5'd8,temp_m1_i,temp_d7);
+delay delay8 (clk,5'd4,temp_mux3,temp_d8);
+delay delay9 (clk,5'd4,temp_mux4,temp_d9);
+delay delay10 (clk,5'd4,temp_m2_r,temp_d10);
+delay delay11 (clk,5'd4,temp_m2_i,temp_d11);
+delay delay12 (clk,5'd2,temp_mux5,temp_d12);
+delay delay13 (clk,5'd2,temp_mux6,temp_d13);
+delay delay14 (clk,5'd2,temp_m3_r,temp_d14);
+delay delay15 (clk,5'd2,temp_m3_i,temp_d15);
+delay delay16 (clk,5'd1,temp_mux7,temp_d16);
+delay delay17 (clk,5'd1,temp_mux8,temp_d17);
+delay delay18 (clk,5'd1,temp_m4_r,temp_d18);
+delay delay19 (clk,5'd1,temp_m4_i,temp_d19);
+
+mux mux1 (temp_muxc1,temp_r0_1_r,temp_d2,16'b0,temp_mux1);
+mux mux2 (temp_muxc1,temp_r0_1_i,temp_d3,16'b0,temp_mux2);
+mux mux3 (temp_muxc2,temp_r1_1_r,temp_d6,16'b0,temp_mux3);
+mux mux4 (temp_muxc2,temp_r1_1_i,temp_d7,16'b0,temp_mux4);
+mux mux5 (temp_muxc3,temp_r2_1_r,temp_d10,16'b0,temp_mux5);
+mux mux6 (temp_muxc3,temp_r2_1_i,temp_d11,16'b0,temp_mux6);
+mux mux7 (temp_muxc4,temp_r3_1_r,temp_d14,16'b0,temp_mux7);
+mux mux8 (temp_muxc4,temp_r3_1_i,temp_d15,16'b0,temp_mux8);
+mux mux9 (temp_muxc5,temp_r4_1_r,temp_d18,16'b0,temp_mux9);
+mux mux10 (temp_muxc5,temp_r4_1_i,temp_d19,16'b0,temp_mux10);
+
+radix2 radix2_0 (temp_d0,temp_d1,in_r,in_i,temp_r0_1_r,temp_r0_1_i,temp_r0_2_r,temp_r0_2_i);
+radix2 radix2_1 (temp_d4,temp_d5,temp_mux1,temp_mux2,temp_r1_1_r,temp_r1_1_i,temp_r1_2_r,temp_r1_2_i);
+radix2 radix2_2 (temp_d8,temp_d9,temp_mux3,temp_mux4,temp_r2_1_r,temp_r2_1_i,temp_r2_2_r,temp_r2_2_i);
+radix2 radix2_3 (temp_d12,temp_d13,temp_mux5,temp_mux6,temp_r3_1_r,temp_r3_1_i,temp_r3_2_r,temp_r3_2_i);
+radix2 radix2_4 (temp_d16,temp_d17,temp_mux7,temp_mux8,temp_r4_1_r,temp_r4_1_i,temp_r4_2_r,temp_r4_2_i);
+
+MULT MULT0 (temp_r0_2_r,temp_r0_2_i,temp_m0_r,temp_m0_i,temp_w1_r,temp_w1_i);
+MULT MULT1 (temp_r1_2_r,temp_r1_2_i,temp_m1_r,temp_m1_i,temp_w2_r,temp_w2_i);
+MULT MULT2 (temp_r2_2_r,temp_r2_2_i,temp_m2_r,temp_m2_i,temp_w3_r,temp_w3_i);
+MULT MULT3 (temp_r3_2_r,temp_r3_2_i,temp_m3_r,temp_m3_i,temp_w4_r,temp_w4_i);
+MULT MULT4 (temp_r4_2_r,temp_r4_2_i,temp_m4_r,temp_m4_i,temp_w5_r,temp_w5_i);
+
+*********************MUX_control*******************
+
+
+
+7'd17 : sel <= 2'd0;
+7'd18 : sel <= 2'd0;
+7'd19 : sel <= 2'd0;
+7'd20 : sel <= 2'd0;
+7'd21 : sel <= 2'd0;
+7'd22 : sel <= 2'd0;
+7'd23 : sel <= 2'd0;
+7'd24 : sel <= 2'd0;
+7'd25 : sel <= 2'd0;
+7'd26 : sel <= 2'd0;
+7'd27 : sel <= 2'd0;
+7'd28 : sel <= 2'd0;
+7'd29 : sel <= 2'd0;
+7'd30 : sel <= 2'd0;
+7'd31 : sel <= 2'd0;
+7'd32 : sel <= 2'd0;
+7'd33 : sel <= 2'd1;
+7'd34 : sel <= 2'd1;
+7'd35 : sel <= 2'd1;
+7'd36 : sel <= 2'd1;
+7'd37 : sel <= 2'd1;
+7'd38 : sel <= 2'd1;
+7'd39 : sel <= 2'd1;
+7'd40 : sel <= 2'd1;
+7'd41 : sel <= 2'd1;
+7'd42 : sel <= 2'd1;
+7'd43 : sel <= 2'd1;
+7'd44 : sel <= 2'd1;
+7'd45 : sel <= 2'd1;
+7'd46 : sel <= 2'd1;
+7'd47 : sel <= 2'd1;
+7'd48 : sel <= 2'd1;
+
+7'd25 : sel <= 2'd0;
+7'd26 : sel <= 2'd0;
+7'd27 : sel <= 2'd0;
+7'd28 : sel <= 2'd0;
+7'd29 : sel <= 2'd0;
+7'd30 : sel <= 2'd0;
+7'd31 : sel <= 2'd0;
+7'd32 : sel <= 2'd0;
+7'd33 : sel <= 2'd1;
+7'd34 : sel <= 2'd1;
+7'd35 : sel <= 2'd1;
+7'd36 : sel <= 2'd1;
+7'd37 : sel <= 2'd1;
+7'd38 : sel <= 2'd1;
+7'd39 : sel <= 2'd1;
+7'd40 : sel <= 2'd1;
+7'd41 : sel <= 2'd0;
+7'd42 : sel <= 2'd0;
+7'd43 : sel <= 2'd0;
+7'd44 : sel <= 2'd0;
+7'd45 : sel <= 2'd0;
+7'd46 : sel <= 2'd0;
+7'd47 : sel <= 2'd0;
+7'd48 : sel <= 2'd0;
+7'd49 : sel <= 2'd1;
+7'd50 : sel <= 2'd1;
+7'd51 : sel <= 2'd1;
+7'd52 : sel <= 2'd1;
+7'd53 : sel <= 2'd1;
+7'd54 : sel <= 2'd1;
+7'd55 : sel <= 2'd1;
+7'd56 : sel <= 2'd1;
+
+7'd29 : sel <= 2'd0;
+7'd30 : sel <= 2'd0;
+7'd31 : sel <= 2'd0;
+7'd32 : sel <= 2'd0;
+7'd33 : sel <= 2'd1;
+7'd34 : sel <= 2'd1;
+7'd35 : sel <= 2'd1;
+7'd36 : sel <= 2'd1;
+7'd37 : sel <= 2'd0;
+7'd38 : sel <= 2'd0;
+7'd39 : sel <= 2'd0;
+7'd40 : sel <= 2'd0;
+7'd41 : sel <= 2'd1;
+7'd42 : sel <= 2'd1;
+7'd43 : sel <= 2'd1;
+7'd44 : sel <= 2'd1;
+7'd45 : sel <= 2'd0;
+7'd46 : sel <= 2'd0;
+7'd47 : sel <= 2'd0;
+7'd48 : sel <= 2'd0;
+7'd49 : sel <= 2'd1;
+7'd50 : sel <= 2'd1;
+7'd51 : sel <= 2'd1;
+7'd52 : sel <= 2'd1;
+7'd53 : sel <= 2'd0;
+7'd54 : sel <= 2'd0;
+7'd55 : sel <= 2'd0;
+7'd56 : sel <= 2'd0;
+7'd57 : sel <= 2'd1;
+7'd58 : sel <= 2'd1;
+7'd59 : sel <= 2'd1;
+7'd60 : sel <= 2'd1;
+
+7'd31 : sel <= 2'd0;
+7'd32 : sel <= 2'd0;
+7'd33 : sel <= 2'd1;
+7'd34 : sel <= 2'd1;
+7'd35 : sel <= 2'd0;
+7'd36 : sel <= 2'd0;
+7'd37 : sel <= 2'd1;
+7'd38 : sel <= 2'd1;
+7'd39 : sel <= 2'd0;
+7'd40 : sel <= 2'd0;
+7'd41 : sel <= 2'd1;
+7'd42 : sel <= 2'd1;
+7'd43 : sel <= 2'd0;
+7'd44 : sel <= 2'd0;
+7'd45 : sel <= 2'd1;
+7'd46 : sel <= 2'd1;
+7'd47 : sel <= 2'd0;
+7'd48 : sel <= 2'd0;
+7'd49 : sel <= 2'd1;
+7'd50 : sel <= 2'd1;
+7'd51 : sel <= 2'd0;
+7'd52 : sel <= 2'd0;
+7'd53 : sel <= 2'd1;
+7'd54 : sel <= 2'd1;
+7'd55 : sel <= 2'd0;
+7'd56 : sel <= 2'd0;
+7'd57 : sel <= 2'd1;
+7'd58 : sel <= 2'd1;
+7'd59 : sel <= 2'd0;
+7'd60 : sel <= 2'd0;
+7'd61 : sel <= 2'd1;
+7'd62 : sel <= 2'd1;
+
+7'd32 : sel <= 2'd0;
+7'd33 : sel <= 2'd1;
+7'd34 : sel <= 2'd0;
+7'd35 : sel <= 2'd1;
+7'd36 : sel <= 2'd0;
+7'd37 : sel <= 2'd1;
+7'd38 : sel <= 2'd0;
+7'd39 : sel <= 2'd1;
+7'd40 : sel <= 2'd0;
+7'd41 : sel <= 2'd1;
+7'd42 : sel <= 2'd0;
+7'd43 : sel <= 2'd1;
+7'd44 : sel <= 2'd0;
+7'd45 : sel <= 2'd1;
+7'd46 : sel <= 2'd0;
+7'd47 : sel <= 2'd1;
+7'd48 : sel <= 2'd0;
+7'd49 : sel <= 2'd1;
+7'd50 : sel <= 2'd0;
+7'd51 : sel <= 2'd1;
+7'd52 : sel <= 2'd0;
+7'd53 : sel <= 2'd1;
+7'd54 : sel <= 2'd0;
+7'd55 : sel <= 2'd1;
+7'd56 : sel <= 2'd0;
+7'd57 : sel <= 2'd1;
+7'd58 : sel <= 2'd0;
+7'd59 : sel <= 2'd1;
+7'd60 : sel <= 2'd0;
+7'd61 : sel <= 2'd1;
+7'd62 : sel <= 2'd0;
+7'd63 : sel <= 2'd1;
+
+*********************W_control*******************
+
+
+
+7'd17 : begin
+W_real <= `W0_real;
+W_imag <= `W0_imag;
+end
+7'd18 : begin
+W_real <= `W1_real;
+W_imag <= `W1_imag;
+end
+7'd19 : begin
+W_real <= `W2_real;
+W_imag <= `W2_imag;
+end
+7'd20 : begin
+W_real <= `W3_real;
+W_imag <= `W3_imag;
+end
+7'd21 : begin
+W_real <= `W4_real;
+W_imag <= `W4_imag;
+end
+7'd22 : begin
+W_real <= `W5_real;
+W_imag <= `W5_imag;
+end
+7'd23 : begin
+W_real <= `W6_real;
+W_imag <= `W6_imag;
+end
+7'd24 : begin
+W_real <= `W7_real;
+W_imag <= `W7_imag;
+end
+7'd25 : begin
+W_real <= `W8_real;
+W_imag <= `W8_imag;
+end
+7'd26 : begin
+W_real <= `W9_real;
+W_imag <= `W9_imag;
+end
+7'd27 : begin
+W_real <= `W10_real;
+W_imag <= `W10_imag;
+end
+7'd28 : begin
+W_real <= `W11_real;
+W_imag <= `W11_imag;
+end
+7'd29 : begin
+W_real <= `W12_real;
+W_imag <= `W12_imag;
+end
+7'd30 : begin
+W_real <= `W13_real;
+W_imag <= `W13_imag;
+end
+7'd31 : begin
+W_real <= `W14_real;
+W_imag <= `W14_imag;
+end
+7'd32 : begin
+W_real <= `W15_real;
+W_imag <= `W15_imag;
+end
+
+**************************************************
+
+7'd25 : begin
+W_real <= `W16_real;
+W_imag <= `W16_imag;
+end
+7'd26 : begin
+W_real <= `W17_real;
+W_imag <= `W17_imag;
+end
+7'd27 : begin
+W_real <= `W18_real;
+W_imag <= `W18_imag;
+end
+7'd28 : begin
+W_real <= `W19_real;
+W_imag <= `W19_imag;
+end
+7'd29 : begin
+W_real <= `W20_real;
+W_imag <= `W20_imag;
+end
+7'd30 : begin
+W_real <= `W21_real;
+W_imag <= `W21_imag;
+end
+7'd31 : begin
+W_real <= `W22_real;
+W_imag <= `W22_imag;
+end
+7'd32 : begin
+W_real <= `W23_real;
+W_imag <= `W23_imag;
+end
+7'd41 : begin
+W_real <= `W24_real;
+W_imag <= `W24_imag;
+end
+7'd42 : begin
+W_real <= `W25_real;
+W_imag <= `W25_imag;
+end
+7'd43 : begin
+W_real <= `W26_real;
+W_imag <= `W26_imag;
+end
+7'd44 : begin
+W_real <= `W27_real;
+W_imag <= `W27_imag;
+end
+7'd45 : begin
+W_real <= `W28_real;
+W_imag <= `W28_imag;
+end
+7'd46 : begin
+W_real <= `W29_real;
+W_imag <= `W29_imag;
+end
+7'd47 : begin
+W_real <= `W30_real;
+W_imag <= `W30_imag;
+end
+7'd48 : begin
+W_real <= `W31_real;
+W_imag <= `W31_imag;
+end
+
+**************************************************
+
+7'd29 : begin
+W_real <= `W32_real;
+W_imag <= `W32_imag;
+end
+7'd30 : begin
+W_real <= `W33_real;
+W_imag <= `W33_imag;
+end
+7'd31 : begin
+W_real <= `W34_real;
+W_imag <= `W34_imag;
+end
+7'd32 : begin
+W_real <= `W35_real;
+W_imag <= `W35_imag;
+end
+7'd37 : begin
+W_real <= `W36_real;
+W_imag <= `W36_imag;
+end
+7'd38 : begin
+W_real <= `W37_real;
+W_imag <= `W37_imag;
+end
+7'd39 : begin
+W_real <= `W38_real;
+W_imag <= `W38_imag;
+end
+7'd40 : begin
+W_real <= `W39_real;
+W_imag <= `W39_imag;
+end
+7'd45 : begin
+W_real <= `W40_real;
+W_imag <= `W40_imag;
+end
+7'd46 : begin
+W_real <= `W41_real;
+W_imag <= `W41_imag;
+end
+7'd47 : begin
+W_real <= `W42_real;
+W_imag <= `W42_imag;
+end
+7'd48 : begin
+W_real <= `W43_real;
+W_imag <= `W43_imag;
+end
+7'd53 : begin
+W_real <= `W44_real;
+W_imag <= `W44_imag;
+end
+7'd54 : begin
+W_real <= `W45_real;
+W_imag <= `W45_imag;
+end
+7'd55 : begin
+W_real <= `W46_real;
+W_imag <= `W46_imag;
+end
+7'd56 : begin
+W_real <= `W47_real;
+W_imag <= `W47_imag;
+end
+
+**************************************************
+
+7'd31 : begin
+W_real <= `W48_real;
+W_imag <= `W48_imag;
+end
+7'd32 : begin
+W_real <= `W49_real;
+W_imag <= `W49_imag;
+end
+7'd35 : begin
+W_real <= `W50_real;
+W_imag <= `W50_imag;
+end
+7'd36 : begin
+W_real <= `W51_real;
+W_imag <= `W51_imag;
+end
+7'd39 : begin
+W_real <= `W52_real;
+W_imag <= `W52_imag;
+end
+7'd40 : begin
+W_real <= `W53_real;
+W_imag <= `W53_imag;
+end
+7'd43 : begin
+W_real <= `W54_real;
+W_imag <= `W54_imag;
+end
+7'd44 : begin
+W_real <= `W55_real;
+W_imag <= `W55_imag;
+end
+7'd47 : begin
+W_real <= `W56_real;
+W_imag <= `W56_imag;
+end
+7'd48 : begin
+W_real <= `W57_real;
+W_imag <= `W57_imag;
+end
+7'd51 : begin
+W_real <= `W58_real;
+W_imag <= `W58_imag;
+end
+7'd52 : begin
+W_real <= `W59_real;
+W_imag <= `W59_imag;
+end
+7'd55 : begin
+W_real <= `W60_real;
+W_imag <= `W60_imag;
+end
+7'd56 : begin
+W_real <= `W61_real;
+W_imag <= `W61_imag;
+end
+7'd59 : begin
+W_real <= `W62_real;
+W_imag <= `W62_imag;
+end
+7'd60 : begin
+W_real <= `W63_real;
+W_imag <= `W63_imag;
+end
+
+**************************************************
+
+7'd32 : begin
+W_real <= `W64_real;
+W_imag <= `W64_imag;
+end
+7'd34 : begin
+W_real <= `W65_real;
+W_imag <= `W65_imag;
+end
+7'd36 : begin
+W_real <= `W66_real;
+W_imag <= `W66_imag;
+end
+7'd38 : begin
+W_real <= `W67_real;
+W_imag <= `W67_imag;
+end
+7'd40 : begin
+W_real <= `W68_real;
+W_imag <= `W68_imag;
+end
+7'd42 : begin
+W_real <= `W69_real;
+W_imag <= `W69_imag;
+end
+7'd44 : begin
+W_real <= `W70_real;
+W_imag <= `W70_imag;
+end
+7'd46 : begin
+W_real <= `W71_real;
+W_imag <= `W71_imag;
+end
+7'd48 : begin
+W_real <= `W72_real;
+W_imag <= `W72_imag;
+end
+7'd50 : begin
+W_real <= `W73_real;
+W_imag <= `W73_imag;
+end
+7'd52 : begin
+W_real <= `W74_real;
+W_imag <= `W74_imag;
+end
+7'd54 : begin
+W_real <= `W75_real;
+W_imag <= `W75_imag;
+end
+7'd56 : begin
+W_real <= `W76_real;
+W_imag <= `W76_imag;
+end
+7'd58 : begin
+W_real <= `W77_real;
+W_imag <= `W77_imag;
+end
+7'd60 : begin
+W_real <= `W78_real;
+W_imag <= `W78_imag;
+end
+7'd62 : begin
+W_real <= `W79_real;
+W_imag <= `W79_imag;
+end
+
+**************************************************
+
+*********************top_sim*******************
+
+
+#10//0
+in_r <= 16'sb0000000000000000;
+in_i <= 16'sb0000000000000000;
+
+#10//1
+in_r <= 16'sb0000000100000000;
+in_i <= 16'sb0000000100000000;
+
+#10//2
+in_r <= 16'sb0000001000000000;
+in_i <= 16'sb0000001000000000;
+
+#10//3
+in_r <= 16'sb0000001100000000;
+in_i <= 16'sb0000001100000000;
+
+#10//4
+in_r <= 16'sb0000010000000000;
+in_i <= 16'sb0000010000000000;
+
+#10//5
+in_r <= 16'sb0000010100000000;
+in_i <= 16'sb0000010100000000;
+
+#10//6
+in_r <= 16'sb0000011000000000;
+in_i <= 16'sb0000011000000000;
+
+#10//7
+in_r <= 16'sb0000011100000000;
+in_i <= 16'sb0000011100000000;
+
+#10//8
+in_r <= 16'sb0000100000000000;
+in_i <= 16'sb0000100000000000;
+
+#10//9
+in_r <= 16'sb0000100100000000;
+in_i <= 16'sb0000100100000000;
+
+#10//10
+in_r <= 16'sb0000101000000000;
+in_i <= 16'sb0000101000000000;
+
+#10//11
+in_r <= 16'sb0000101100000000;
+in_i <= 16'sb0000101100000000;
+
+#10//12
+in_r <= 16'sb0000110000000000;
+in_i <= 16'sb0000110000000000;
+
+#10//13
+in_r <= 16'sb0000110100000000;
+in_i <= 16'sb0000110100000000;
+
+#10//14
+in_r <= 16'sb0000111000000000;
+in_i <= 16'sb0000111000000000;
+
+#10//15
+in_r <= 16'sb0000111100000000;
+in_i <= 16'sb0000111100000000;
+
+#10//16
+in_r <= 16'sb0001000000000000;
+in_i <= 16'sb0001000000000000;
+
+#10//17
+in_r <= 16'sb0001000100000000;
+in_i <= 16'sb0001000100000000;
+
+#10//18
+in_r <= 16'sb0001001000000000;
+in_i <= 16'sb0001001000000000;
+
+#10//19
+in_r <= 16'sb0001001100000000;
+in_i <= 16'sb0001001100000000;
+
+#10//20
+in_r <= 16'sb0001010000000000;
+in_i <= 16'sb0001010000000000;
+
+#10//21
+in_r <= 16'sb0001010100000000;
+in_i <= 16'sb0001010100000000;
+
+#10//22
+in_r <= 16'sb0001011000000000;
+in_i <= 16'sb0001011000000000;
+
+#10//23
+in_r <= 16'sb0001011100000000;
+in_i <= 16'sb0001011100000000;
+
+#10//24
+in_r <= 16'sb0001100000000000;
+in_i <= 16'sb0001100000000000;
+
+#10//25
+in_r <= 16'sb0001100100000000;
+in_i <= 16'sb0001100100000000;
+
+#10//26
+in_r <= 16'sb0001101000000000;
+in_i <= 16'sb0001101000000000;
+
+#10//27
+in_r <= 16'sb0001101100000000;
+in_i <= 16'sb0001101100000000;
+
+#10//28
+in_r <= 16'sb0001110000000000;
+in_i <= 16'sb0001110000000000;
+
+#10//29
+in_r <= 16'sb0001110100000000;
+in_i <= 16'sb0001110100000000;
+
+#10//30
+in_r <= 16'sb0001111000000000;
+in_i <= 16'sb0001111000000000;
+
+#10//31
+in_r <= 16'sb0001111100000000;
+in_i <= 16'sb0001111100000000;
+
+
+*********************std_define.h*******************
+
+
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W0_real        16'sb0000000100000000
+`define W0_imag        16'sb0000000000000000
+//wcalc_r = 0.980785 , wcalc_i = -0.195090
+`define W1_real        16'sb0000000011111011
+`define W1_imag        16'sb1111111111001111
+//wcalc_r = 0.923880 , wcalc_i = -0.382683
+`define W2_real        16'sb0000000011101100
+`define W2_imag        16'sb1111111110011111
+//wcalc_r = 0.831470 , wcalc_i = -0.555570
+`define W3_real        16'sb0000000011010100
+`define W3_imag        16'sb1111111101110010
+//wcalc_r = 0.707107 , wcalc_i = -0.707107
+`define W4_real        16'sb0000000010110101
+`define W4_imag        16'sb1111111101001011
+//wcalc_r = 0.555570 , wcalc_i = -0.831470
+`define W5_real        16'sb0000000010001110
+`define W5_imag        16'sb1111111100101100
+//wcalc_r = 0.382683 , wcalc_i = -0.923880
+`define W6_real        16'sb0000000001100001
+`define W6_imag        16'sb1111111100010100
+//wcalc_r = 0.195090 , wcalc_i = -0.980785
+`define W7_real        16'sb0000000000110001
+`define W7_imag        16'sb1111111100000101
+//wcalc_r = 0.000000 , wcalc_i = -1.000000
+`define W8_real        16'sb0000000000000000
+`define W8_imag        16'sb1111111100000000
+//wcalc_r = -0.195090 , wcalc_i = -0.980785
+`define W9_real        16'sb1111111111001111
+`define W9_imag        16'sb1111111100000101
+//wcalc_r = -0.382683 , wcalc_i = -0.923880
+`define W10_real        16'sb1111111110011111
+`define W10_imag        16'sb1111111100010100
+//wcalc_r = -0.555570 , wcalc_i = -0.831470
+`define W11_real        16'sb1111111101110010
+`define W11_imag        16'sb1111111100101100
+//wcalc_r = -0.707107 , wcalc_i = -0.707107
+`define W12_real        16'sb1111111101001011
+`define W12_imag        16'sb1111111101001011
+//wcalc_r = -0.831470 , wcalc_i = -0.555570
+`define W13_real        16'sb1111111100101100
+`define W13_imag        16'sb1111111101110010
+//wcalc_r = -0.923880 , wcalc_i = -0.382683
+`define W14_real        16'sb1111111100010100
+`define W14_imag        16'sb1111111110011111
+//wcalc_r = -0.980785 , wcalc_i = -0.195090
+`define W15_real        16'sb1111111100000101
+`define W15_imag        16'sb1111111111001111
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W16_real        16'sb0000000100000000
+`define W16_imag        16'sb0000000000000000
+//wcalc_r = 0.923880 , wcalc_i = -0.382683
+`define W17_real        16'sb0000000011101100
+`define W17_imag        16'sb1111111110011111
+//wcalc_r = 0.707107 , wcalc_i = -0.707107
+`define W18_real        16'sb0000000010110101
+`define W18_imag        16'sb1111111101001011
+//wcalc_r = 0.382683 , wcalc_i = -0.923880
+`define W19_real        16'sb0000000001100001
+`define W19_imag        16'sb1111111100010100
+//wcalc_r = 0.000000 , wcalc_i = -1.000000
+`define W20_real        16'sb0000000000000000
+`define W20_imag        16'sb1111111100000000
+//wcalc_r = -0.382683 , wcalc_i = -0.923880
+`define W21_real        16'sb1111111110011111
+`define W21_imag        16'sb1111111100010100
+//wcalc_r = -0.707107 , wcalc_i = -0.707107
+`define W22_real        16'sb1111111101001011
+`define W22_imag        16'sb1111111101001011
+//wcalc_r = -0.923880 , wcalc_i = -0.382683
+`define W23_real        16'sb1111111100010100
+`define W23_imag        16'sb1111111110011111
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W24_real        16'sb0000000100000000
+`define W24_imag        16'sb0000000000000000
+//wcalc_r = 0.923880 , wcalc_i = -0.382683
+`define W25_real        16'sb0000000011101100
+`define W25_imag        16'sb1111111110011111
+//wcalc_r = 0.707107 , wcalc_i = -0.707107
+`define W26_real        16'sb0000000010110101
+`define W26_imag        16'sb1111111101001011
+//wcalc_r = 0.382683 , wcalc_i = -0.923880
+`define W27_real        16'sb0000000001100001
+`define W27_imag        16'sb1111111100010100
+//wcalc_r = 0.000000 , wcalc_i = -1.000000
+`define W28_real        16'sb0000000000000000
+`define W28_imag        16'sb1111111100000000
+//wcalc_r = -0.382683 , wcalc_i = -0.923880
+`define W29_real        16'sb1111111110011111
+`define W29_imag        16'sb1111111100010100
+//wcalc_r = -0.707107 , wcalc_i = -0.707107
+`define W30_real        16'sb1111111101001011
+`define W30_imag        16'sb1111111101001011
+//wcalc_r = -0.923880 , wcalc_i = -0.382683
+`define W31_real        16'sb1111111100010100
+`define W31_imag        16'sb1111111110011111
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W32_real        16'sb0000000100000000
+`define W32_imag        16'sb0000000000000000
+//wcalc_r = 0.707107 , wcalc_i = -0.707107
+`define W33_real        16'sb0000000010110101
+`define W33_imag        16'sb1111111101001011
+//wcalc_r = 0.000000 , wcalc_i = -1.000000
+`define W34_real        16'sb0000000000000000
+`define W34_imag        16'sb1111111100000000
+//wcalc_r = -0.707107 , wcalc_i = -0.707107
+`define W35_real        16'sb1111111101001011
+`define W35_imag        16'sb1111111101001011
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W36_real        16'sb0000000100000000
+`define W36_imag        16'sb0000000000000000
+//wcalc_r = 0.707107 , wcalc_i = -0.707107
+`define W37_real        16'sb0000000010110101
+`define W37_imag        16'sb1111111101001011
+//wcalc_r = 0.000000 , wcalc_i = -1.000000
+`define W38_real        16'sb0000000000000000
+`define W38_imag        16'sb1111111100000000
+//wcalc_r = -0.707107 , wcalc_i = -0.707107
+`define W39_real        16'sb1111111101001011
+`define W39_imag        16'sb1111111101001011
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W40_real        16'sb0000000100000000
+`define W40_imag        16'sb0000000000000000
+//wcalc_r = 0.707107 , wcalc_i = -0.707107
+`define W41_real        16'sb0000000010110101
+`define W41_imag        16'sb1111111101001011
+//wcalc_r = 0.000000 , wcalc_i = -1.000000
+`define W42_real        16'sb0000000000000000
+`define W42_imag        16'sb1111111100000000
+//wcalc_r = -0.707107 , wcalc_i = -0.707107
+`define W43_real        16'sb1111111101001011
+`define W43_imag        16'sb1111111101001011
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W44_real        16'sb0000000100000000
+`define W44_imag        16'sb0000000000000000
+//wcalc_r = 0.707107 , wcalc_i = -0.707107
+`define W45_real        16'sb0000000010110101
+`define W45_imag        16'sb1111111101001011
+//wcalc_r = 0.000000 , wcalc_i = -1.000000
+`define W46_real        16'sb0000000000000000
+`define W46_imag        16'sb1111111100000000
+//wcalc_r = -0.707107 , wcalc_i = -0.707107
+`define W47_real        16'sb1111111101001011
+`define W47_imag        16'sb1111111101001011
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W48_real        16'sb0000000100000000
+`define W48_imag        16'sb0000000000000000
+//wcalc_r = 0.000000 , wcalc_i = -1.000000
+`define W49_real        16'sb0000000000000000
+`define W49_imag        16'sb1111111100000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W50_real        16'sb0000000100000000
+`define W50_imag        16'sb0000000000000000
+//wcalc_r = 0.000000 , wcalc_i = -1.000000
+`define W51_real        16'sb0000000000000000
+`define W51_imag        16'sb1111111100000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W52_real        16'sb0000000100000000
+`define W52_imag        16'sb0000000000000000
+//wcalc_r = 0.000000 , wcalc_i = -1.000000
+`define W53_real        16'sb0000000000000000
+`define W53_imag        16'sb1111111100000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W54_real        16'sb0000000100000000
+`define W54_imag        16'sb0000000000000000
+//wcalc_r = 0.000000 , wcalc_i = -1.000000
+`define W55_real        16'sb0000000000000000
+`define W55_imag        16'sb1111111100000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W56_real        16'sb0000000100000000
+`define W56_imag        16'sb0000000000000000
+//wcalc_r = 0.000000 , wcalc_i = -1.000000
+`define W57_real        16'sb0000000000000000
+`define W57_imag        16'sb1111111100000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W58_real        16'sb0000000100000000
+`define W58_imag        16'sb0000000000000000
+//wcalc_r = 0.000000 , wcalc_i = -1.000000
+`define W59_real        16'sb0000000000000000
+`define W59_imag        16'sb1111111100000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W60_real        16'sb0000000100000000
+`define W60_imag        16'sb0000000000000000
+//wcalc_r = 0.000000 , wcalc_i = -1.000000
+`define W61_real        16'sb0000000000000000
+`define W61_imag        16'sb1111111100000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W62_real        16'sb0000000100000000
+`define W62_imag        16'sb0000000000000000
+//wcalc_r = 0.000000 , wcalc_i = -1.000000
+`define W63_real        16'sb0000000000000000
+`define W63_imag        16'sb1111111100000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W64_real        16'sb0000000100000000
+`define W64_imag        16'sb0000000000000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W65_real        16'sb0000000100000000
+`define W65_imag        16'sb0000000000000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W66_real        16'sb0000000100000000
+`define W66_imag        16'sb0000000000000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W67_real        16'sb0000000100000000
+`define W67_imag        16'sb0000000000000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W68_real        16'sb0000000100000000
+`define W68_imag        16'sb0000000000000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W69_real        16'sb0000000100000000
+`define W69_imag        16'sb0000000000000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W70_real        16'sb0000000100000000
+`define W70_imag        16'sb0000000000000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W71_real        16'sb0000000100000000
+`define W71_imag        16'sb0000000000000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W72_real        16'sb0000000100000000
+`define W72_imag        16'sb0000000000000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W73_real        16'sb0000000100000000
+`define W73_imag        16'sb0000000000000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W74_real        16'sb0000000100000000
+`define W74_imag        16'sb0000000000000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W75_real        16'sb0000000100000000
+`define W75_imag        16'sb0000000000000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W76_real        16'sb0000000100000000
+`define W76_imag        16'sb0000000000000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W77_real        16'sb0000000100000000
+`define W77_imag        16'sb0000000000000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W78_real        16'sb0000000100000000
+`define W78_imag        16'sb0000000000000000
+//wcalc_r = 1.000000 , wcalc_i = -0.000000
+`define W79_real        16'sb0000000100000000
+`define W79_imag        16'sb0000000000000000
+
+test1_2 = b , test1_16 = 10
+test2_2 = b , test2_16 = a
+10
+00010000
+a
+00001010
+a0
+10100000
