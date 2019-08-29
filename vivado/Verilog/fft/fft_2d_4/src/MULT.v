@@ -90,7 +90,7 @@ module MULT(
 	
 	/*(ax + jay) * (bx + jby) = (axbx - ayby) + j(axby + aybx)*/
 	/*F[0][1]*/
-    always @(clk) begin
+    always @(posedge clk) begin
         mult_1_2_1 <= in_1_2_r * W_real_2;        //axbx
         mult_1_2_2 <= in_1_2_i * W_imag_2;        //ayby
         mult_1_2_3 <= in_1_2_r * W_imag_2;        //axby
@@ -101,7 +101,7 @@ module MULT(
     end
 	
 	/*F[1][0]*/
-	always @(clk) begin
+	always @(posedge clk) begin
         mult_2_1_1 <= in_2_1_r * W_real_3;        //axbx
         mult_2_1_2 <= in_2_1_i * W_imag_3;        //ayby
         mult_2_1_3 <= in_2_1_r * W_imag_3;        //axby
@@ -112,7 +112,7 @@ module MULT(
     end
 	
 	/*F[1][1]*/
-	always @(clk) begin
+	always @(posedge clk) begin
         mult_2_2_1 <= in_2_2_r * W_real_4;        //axbx
         mult_2_2_2 <= in_2_2_i * W_imag_4;        //ayby
         mult_2_2_3 <= in_2_2_r * W_imag_4;        //axby

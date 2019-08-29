@@ -34,14 +34,14 @@ module butterfly(
     input  wire signed [`InBus]       in_2_2_r,
     input  wire signed [`InBus]       in_2_2_i,
     
-    output  wire signed [`InBus]       out_1_1_r,
-    output  wire signed [`InBus]       out_1_1_i,
-    output  wire signed [`InBus]       out_1_2_r,
-    output  wire signed [`InBus]       out_1_2_i,
-    output  wire signed [`InBus]       out_2_1_r,
-    output  wire signed [`InBus]       out_2_1_i,
-    output  wire signed [`InBus]       out_2_2_r,
-    output  wire signed [`InBus]       out_2_2_i
+    output  wire signed [`OutBus]       out_1_1_r,
+    output  wire signed [`OutBus]       out_1_1_i,
+    output  wire signed [`OutBus]       out_1_2_r,
+    output  wire signed [`OutBus]       out_1_2_i,
+    output  wire signed [`OutBus]       out_2_1_r,
+    output  wire signed [`OutBus]       out_2_1_i,
+    output  wire signed [`OutBus]       out_2_2_r,
+    output  wire signed [`OutBus]       out_2_2_i
     );
     
 	
@@ -56,7 +56,7 @@ module butterfly(
     reg signed [`OutBus]  out_2_2_i_tmp;
 	
 	/************add and sub****************/
-    always @(clk) begin
+    always @(posedge clk) begin
         out_1_1_r_tmp <= in_1_1_r + in_1_2_r + in_2_1_r + in_2_2_r;
         out_1_1_i_tmp <= in_1_1_i + in_1_2_i + in_2_1_i + in_2_2_i;
         out_1_2_r_tmp <= in_1_1_r - in_1_2_r + in_2_1_r - in_2_2_r;

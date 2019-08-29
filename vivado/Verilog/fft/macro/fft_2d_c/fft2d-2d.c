@@ -1,10 +1,9 @@
 #include <math.h>
 #include <stdio.h>
 
-#define N 4
-#define M 2
-#define M2 1
-
+#define N 32
+#define M 5
+#define M2 2
 
 
 void FFT2JT(double Fr[N][N],double Fi[N][N])
@@ -18,6 +17,9 @@ void FFT2JT(double Fr[N][N],double Fi[N][N])
   char KF,K1,K2,K3,K4,IP,JP,IM,KI,JM,KJ,KK;
 
   //start bit reverse
+  
+  
+  /*
   for (L=0;L<M2;L++){
 	  I1=1<<L;
 	  I2=N/I1;
@@ -50,6 +52,8 @@ void FFT2JT(double Fr[N][N],double Fi[N][N])
 		  }
 	  }
   }
+  */
+  
 
   //end bit reverse
  
@@ -111,6 +115,8 @@ void FFT2JT(double Fr[N][N],double Fi[N][N])
 
 int main()
 {
+	double starttime1,endtime1;
+	
 	double Fr[N][N],Fi[N][N];
 	int i,j;
 	//input DATA
@@ -128,7 +134,7 @@ int main()
 	
 	for (i=0;i<N;i++){
 		for (j=0;j<N;j++){
-			Fr[i][j]=i+j,Fi[i][j]=i-j;
+			Fr[i][j]=(0.00390625*i)+(0.00390625*j)+(0.00390625*2),Fi[i][j]=(0.00390625*i)+(0.00390625*j)+(0.00390625*2);
 		}
 	}
 	
@@ -140,14 +146,25 @@ int main()
     }
 	
 	printf("\n");
+	
+
 
 	FFT2JT(Fr,Fi);
-  
+	
+
+
     for (i=0;i<N;i++){
 		for (j=0;j<N;j++){
     	  printf("Fr[%d][%d] = %lf ,Fi[%d][%d] = %lf\n",i,j,Fr[i][j],i,j,Fi[i][j]);
       }
     }
+	
+	for (i=0;i<N;i++){
+		for (j=0;j<N;j++){
+    	  printf("%lf\n%lf\n",Fr[i][j],Fi[i][j]);
+      }
+    }
+
   
 }
 
