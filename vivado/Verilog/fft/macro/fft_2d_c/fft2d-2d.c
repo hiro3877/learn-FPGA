@@ -1,9 +1,9 @@
 #include <math.h>
 #include <stdio.h>
 
-#define N 32
-#define M 5
-#define M2 2
+#define N 4
+#define M 2
+#define M2 1
 
 
 void FFT2JT(double Fr[N][N],double Fi[N][N])
@@ -131,10 +131,17 @@ int main()
 	*/
 	
 	
-	
+	/*
 	for (i=0;i<N;i++){
 		for (j=0;j<N;j++){
 			Fr[i][j]=(0.00390625*i)+(0.00390625*j)+(0.00390625*2),Fi[i][j]=(0.00390625*i)+(0.00390625*j)+(0.00390625*2);
+		}
+	}
+	*/
+	
+	for (i=0;i<N;i++){
+		for (j=0;j<N;j++){
+			Fr[i][j]=(i+1)+(j+1),Fi[i][j]=(i+1)+(j+1);
 		}
 	}
 	

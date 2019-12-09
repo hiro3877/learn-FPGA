@@ -5,7 +5,7 @@
 #include <iostream>
 #include <bitset>
 
-#define NUM 64
+#define NUM 8
 
 #define BNUM 2
 

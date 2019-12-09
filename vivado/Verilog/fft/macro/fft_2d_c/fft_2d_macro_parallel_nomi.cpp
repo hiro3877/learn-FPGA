@@ -5,9 +5,9 @@
 #include <iostream>
 #include <bitset>
 
-#define NUM 4
+#define NUM 64
 
-#define BNUM 2
+#define BNUM 1
 
 #define DNumBus 7
 #define WBus 16

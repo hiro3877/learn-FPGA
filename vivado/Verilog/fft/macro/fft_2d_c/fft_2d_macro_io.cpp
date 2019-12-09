@@ -5,7 +5,7 @@
 #include <iostream>
 #include <bitset>
 
-#define NUM 32
+#define NUM 4
 
 #define BNUM 2
 
