@@ -296,6 +296,7 @@ int main()
 	
 	printf ("\n");
 	
+	
 	int w1 = 1;
 	int w2 = NUM/2;			//roop nai count
 	int w3 = NUM/2 +1;		//start point

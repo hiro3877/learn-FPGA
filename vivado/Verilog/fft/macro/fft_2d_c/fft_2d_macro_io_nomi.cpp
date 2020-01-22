@@ -5,7 +5,7 @@
 #include <iostream>
 #include <bitset>
 
-#define NUM 8
+#define NUM 4
 
 #define BNUM 2
 
@@ -351,93 +351,6 @@ int main(){
 			printf("assign out_%d_%d_i = temp_b%d_%d_%d_i;\n",i,j,n3,i,j);
 		}
 	}
-	
-	printf("\n");
-	
-	
-	printf("/*********************sim*************************/\n");
-	
-	/*
-	
-	printf ("\n");
-	
-	printf("reg		clk;\n\n");
-	
-	for(i=1;i<=NUM;i++){
-		for(j=1;j<=NUM;j++){
-			printf("reg signed [`InBus]		in_%d_%d_r;\n",i,j);
-			printf("reg signed [`InBus]		in_%d_%d_i;\n",i,j);
-		}
-	}
-	
-	printf("\n");
-	
-	for(i=1;i<=NUM;i++){
-		for(j=1;j<=NUM;j++){
-			printf("wire signed [`OutBus]		out_%d_%d_r;\n",i,j);
-			printf("wire signed [`OutBus]		out_%d_%d_i;\n",i,j);
-		}
-	}
-	
-	printf("\n");
-	
-	printf("top sim (clk,");
-	
-	for(i=1;i<=NUM;i++){
-		for(j=1;j<=NUM;j++){
-			printf("in_%d_%d_r,in_%d_%d_i,",i,j,i,j);
-		}
-	}
-	
-	for(i=1;i<=NUM;i++){
-		for(j=1;j<=NUM;j++){
-			printf("out_%d_%d_r,out_%d_%d_i,",i,j,i,j);
-		}
-	}
-	
-	printf(");");
-	
-	printf("\n\n");
-	
-	int decimal;
-	int binary;
-	int base;
-	int sim1 = 0;
-	for(i=1; i<=NUM; i++){
-		for(j=1; j<=NUM; j++){
-		
-		
-		//decimal => binary
-		decimal = i+j;
-		binary = 0;
-		base = 1;
-		while(decimal>0){
-			binary = binary + ( decimal % 2 ) * base;
-			decimal = decimal / 2;
-			base = base * 10;
-		}
-		//end decimal => binary
-		
-		printf("in_%d_%d_r <= 16'sb%08d%08d;\n",i,j,binary,sim1);
-		printf("in_%d_%d_i <= 16'sb%08d%08d;\n\n",i,j,binary,sim1);
-		
-		
-		
-		/*
-		if(i < 20){
-			printf("#10//%d\n",i);
-			printf("in_r <= 16'sb00000010%08d;\n",sim1);
-			printf("in_i <= 16'sb00000001%08d;\n\n",sim1);
-		}else{
-			printf("#10//%d\n",i);
-			printf("in_r <= 16'sb00000000%08d;\n",sim1);
-			printf("in_i <= 16'sb00000000%08d;\n\n",sim1);
-		}
-		*/
-		
-	
-	
-
 
 	return 0;
 }

@@ -1,0 +1,3975 @@
+
+/*******************rotation factor********************/
+
+//Xr[0] = 1.000000 , Xi[0] = 0.000000
+`define W0_real        16'sb0000000100000000
+`define W0_imag        16'sb0000000000000000
+
+//Xr[1] = 0.707107 , Xi[1] = -0.707107
+`define W1_real        16'sb0000000010110101
+`define W1_imag        16'sb1111111101001011
+
+//Xr[2] = 0.000000 , Xi[2] = -1.000000
+`define W2_real        16'sb0000000000000000
+`define W2_imag        16'sb1111111100000000
+
+//Xr[3] = -0.707107 , Xi[3] = -0.707107
+`define W3_real        16'sb1111111101001011
+`define W3_imag        16'sb1111111101001011
+
+//Xr[4] = -1.000000 , Xi[4] = -0.000000
+`define W4_real        16'sb1111111100000000
+`define W4_imag        16'sb0000000000000000
+
+//Xr[5] = -0.707107 , Xi[5] = 0.707107
+`define W5_real        16'sb1111111101001011
+`define W5_imag        16'sb0000000010110101
+
+//Xr[6] = -0.000000 , Xi[6] = 1.000000
+`define W6_real        16'sb0000000000000000
+`define W6_imag        16'sb0000000100000000
+
+/************************top***********************/
+/************************temp in out***********************/
+/************************input => input_selecter***********************/
+wire signed [`InBus]		in_1_1_r;
+wire signed [`InBus]		in_1_1_i;
+wire signed [`InBus]		in_1_2_r;
+wire signed [`InBus]		in_1_2_i;
+wire signed [`InBus]		in_1_3_r;
+wire signed [`InBus]		in_1_3_i;
+wire signed [`InBus]		in_1_4_r;
+wire signed [`InBus]		in_1_4_i;
+wire signed [`InBus]		in_1_5_r;
+wire signed [`InBus]		in_1_5_i;
+wire signed [`InBus]		in_1_6_r;
+wire signed [`InBus]		in_1_6_i;
+wire signed [`InBus]		in_1_7_r;
+wire signed [`InBus]		in_1_7_i;
+wire signed [`InBus]		in_1_8_r;
+wire signed [`InBus]		in_1_8_i;
+wire signed [`InBus]		in_2_1_r;
+wire signed [`InBus]		in_2_1_i;
+wire signed [`InBus]		in_2_2_r;
+wire signed [`InBus]		in_2_2_i;
+wire signed [`InBus]		in_2_3_r;
+wire signed [`InBus]		in_2_3_i;
+wire signed [`InBus]		in_2_4_r;
+wire signed [`InBus]		in_2_4_i;
+wire signed [`InBus]		in_2_5_r;
+wire signed [`InBus]		in_2_5_i;
+wire signed [`InBus]		in_2_6_r;
+wire signed [`InBus]		in_2_6_i;
+wire signed [`InBus]		in_2_7_r;
+wire signed [`InBus]		in_2_7_i;
+wire signed [`InBus]		in_2_8_r;
+wire signed [`InBus]		in_2_8_i;
+wire signed [`InBus]		in_3_1_r;
+wire signed [`InBus]		in_3_1_i;
+wire signed [`InBus]		in_3_2_r;
+wire signed [`InBus]		in_3_2_i;
+wire signed [`InBus]		in_3_3_r;
+wire signed [`InBus]		in_3_3_i;
+wire signed [`InBus]		in_3_4_r;
+wire signed [`InBus]		in_3_4_i;
+wire signed [`InBus]		in_3_5_r;
+wire signed [`InBus]		in_3_5_i;
+wire signed [`InBus]		in_3_6_r;
+wire signed [`InBus]		in_3_6_i;
+wire signed [`InBus]		in_3_7_r;
+wire signed [`InBus]		in_3_7_i;
+wire signed [`InBus]		in_3_8_r;
+wire signed [`InBus]		in_3_8_i;
+wire signed [`InBus]		in_4_1_r;
+wire signed [`InBus]		in_4_1_i;
+wire signed [`InBus]		in_4_2_r;
+wire signed [`InBus]		in_4_2_i;
+wire signed [`InBus]		in_4_3_r;
+wire signed [`InBus]		in_4_3_i;
+wire signed [`InBus]		in_4_4_r;
+wire signed [`InBus]		in_4_4_i;
+wire signed [`InBus]		in_4_5_r;
+wire signed [`InBus]		in_4_5_i;
+wire signed [`InBus]		in_4_6_r;
+wire signed [`InBus]		in_4_6_i;
+wire signed [`InBus]		in_4_7_r;
+wire signed [`InBus]		in_4_7_i;
+wire signed [`InBus]		in_4_8_r;
+wire signed [`InBus]		in_4_8_i;
+wire signed [`InBus]		in_5_1_r;
+wire signed [`InBus]		in_5_1_i;
+wire signed [`InBus]		in_5_2_r;
+wire signed [`InBus]		in_5_2_i;
+wire signed [`InBus]		in_5_3_r;
+wire signed [`InBus]		in_5_3_i;
+wire signed [`InBus]		in_5_4_r;
+wire signed [`InBus]		in_5_4_i;
+wire signed [`InBus]		in_5_5_r;
+wire signed [`InBus]		in_5_5_i;
+wire signed [`InBus]		in_5_6_r;
+wire signed [`InBus]		in_5_6_i;
+wire signed [`InBus]		in_5_7_r;
+wire signed [`InBus]		in_5_7_i;
+wire signed [`InBus]		in_5_8_r;
+wire signed [`InBus]		in_5_8_i;
+wire signed [`InBus]		in_6_1_r;
+wire signed [`InBus]		in_6_1_i;
+wire signed [`InBus]		in_6_2_r;
+wire signed [`InBus]		in_6_2_i;
+wire signed [`InBus]		in_6_3_r;
+wire signed [`InBus]		in_6_3_i;
+wire signed [`InBus]		in_6_4_r;
+wire signed [`InBus]		in_6_4_i;
+wire signed [`InBus]		in_6_5_r;
+wire signed [`InBus]		in_6_5_i;
+wire signed [`InBus]		in_6_6_r;
+wire signed [`InBus]		in_6_6_i;
+wire signed [`InBus]		in_6_7_r;
+wire signed [`InBus]		in_6_7_i;
+wire signed [`InBus]		in_6_8_r;
+wire signed [`InBus]		in_6_8_i;
+wire signed [`InBus]		in_7_1_r;
+wire signed [`InBus]		in_7_1_i;
+wire signed [`InBus]		in_7_2_r;
+wire signed [`InBus]		in_7_2_i;
+wire signed [`InBus]		in_7_3_r;
+wire signed [`InBus]		in_7_3_i;
+wire signed [`InBus]		in_7_4_r;
+wire signed [`InBus]		in_7_4_i;
+wire signed [`InBus]		in_7_5_r;
+wire signed [`InBus]		in_7_5_i;
+wire signed [`InBus]		in_7_6_r;
+wire signed [`InBus]		in_7_6_i;
+wire signed [`InBus]		in_7_7_r;
+wire signed [`InBus]		in_7_7_i;
+wire signed [`InBus]		in_7_8_r;
+wire signed [`InBus]		in_7_8_i;
+wire signed [`InBus]		in_8_1_r;
+wire signed [`InBus]		in_8_1_i;
+wire signed [`InBus]		in_8_2_r;
+wire signed [`InBus]		in_8_2_i;
+wire signed [`InBus]		in_8_3_r;
+wire signed [`InBus]		in_8_3_i;
+wire signed [`InBus]		in_8_4_r;
+wire signed [`InBus]		in_8_4_i;
+wire signed [`InBus]		in_8_5_r;
+wire signed [`InBus]		in_8_5_i;
+wire signed [`InBus]		in_8_6_r;
+wire signed [`InBus]		in_8_6_i;
+wire signed [`InBus]		in_8_7_r;
+wire signed [`InBus]		in_8_7_i;
+wire signed [`InBus]		in_8_8_r;
+wire signed [`InBus]		in_8_8_i;
+
+/************************output***********************/
+wire signed [`OutBus]		out_1_1_r;
+wire signed [`OutBus]		out_1_1_i;
+wire signed [`OutBus]		out_1_2_r;
+wire signed [`OutBus]		out_1_2_i;
+wire signed [`OutBus]		out_1_3_r;
+wire signed [`OutBus]		out_1_3_i;
+wire signed [`OutBus]		out_1_4_r;
+wire signed [`OutBus]		out_1_4_i;
+wire signed [`OutBus]		out_1_5_r;
+wire signed [`OutBus]		out_1_5_i;
+wire signed [`OutBus]		out_1_6_r;
+wire signed [`OutBus]		out_1_6_i;
+wire signed [`OutBus]		out_1_7_r;
+wire signed [`OutBus]		out_1_7_i;
+wire signed [`OutBus]		out_1_8_r;
+wire signed [`OutBus]		out_1_8_i;
+wire signed [`OutBus]		out_2_1_r;
+wire signed [`OutBus]		out_2_1_i;
+wire signed [`OutBus]		out_2_2_r;
+wire signed [`OutBus]		out_2_2_i;
+wire signed [`OutBus]		out_2_3_r;
+wire signed [`OutBus]		out_2_3_i;
+wire signed [`OutBus]		out_2_4_r;
+wire signed [`OutBus]		out_2_4_i;
+wire signed [`OutBus]		out_2_5_r;
+wire signed [`OutBus]		out_2_5_i;
+wire signed [`OutBus]		out_2_6_r;
+wire signed [`OutBus]		out_2_6_i;
+wire signed [`OutBus]		out_2_7_r;
+wire signed [`OutBus]		out_2_7_i;
+wire signed [`OutBus]		out_2_8_r;
+wire signed [`OutBus]		out_2_8_i;
+wire signed [`OutBus]		out_3_1_r;
+wire signed [`OutBus]		out_3_1_i;
+wire signed [`OutBus]		out_3_2_r;
+wire signed [`OutBus]		out_3_2_i;
+wire signed [`OutBus]		out_3_3_r;
+wire signed [`OutBus]		out_3_3_i;
+wire signed [`OutBus]		out_3_4_r;
+wire signed [`OutBus]		out_3_4_i;
+wire signed [`OutBus]		out_3_5_r;
+wire signed [`OutBus]		out_3_5_i;
+wire signed [`OutBus]		out_3_6_r;
+wire signed [`OutBus]		out_3_6_i;
+wire signed [`OutBus]		out_3_7_r;
+wire signed [`OutBus]		out_3_7_i;
+wire signed [`OutBus]		out_3_8_r;
+wire signed [`OutBus]		out_3_8_i;
+wire signed [`OutBus]		out_4_1_r;
+wire signed [`OutBus]		out_4_1_i;
+wire signed [`OutBus]		out_4_2_r;
+wire signed [`OutBus]		out_4_2_i;
+wire signed [`OutBus]		out_4_3_r;
+wire signed [`OutBus]		out_4_3_i;
+wire signed [`OutBus]		out_4_4_r;
+wire signed [`OutBus]		out_4_4_i;
+wire signed [`OutBus]		out_4_5_r;
+wire signed [`OutBus]		out_4_5_i;
+wire signed [`OutBus]		out_4_6_r;
+wire signed [`OutBus]		out_4_6_i;
+wire signed [`OutBus]		out_4_7_r;
+wire signed [`OutBus]		out_4_7_i;
+wire signed [`OutBus]		out_4_8_r;
+wire signed [`OutBus]		out_4_8_i;
+wire signed [`OutBus]		out_5_1_r;
+wire signed [`OutBus]		out_5_1_i;
+wire signed [`OutBus]		out_5_2_r;
+wire signed [`OutBus]		out_5_2_i;
+wire signed [`OutBus]		out_5_3_r;
+wire signed [`OutBus]		out_5_3_i;
+wire signed [`OutBus]		out_5_4_r;
+wire signed [`OutBus]		out_5_4_i;
+wire signed [`OutBus]		out_5_5_r;
+wire signed [`OutBus]		out_5_5_i;
+wire signed [`OutBus]		out_5_6_r;
+wire signed [`OutBus]		out_5_6_i;
+wire signed [`OutBus]		out_5_7_r;
+wire signed [`OutBus]		out_5_7_i;
+wire signed [`OutBus]		out_5_8_r;
+wire signed [`OutBus]		out_5_8_i;
+wire signed [`OutBus]		out_6_1_r;
+wire signed [`OutBus]		out_6_1_i;
+wire signed [`OutBus]		out_6_2_r;
+wire signed [`OutBus]		out_6_2_i;
+wire signed [`OutBus]		out_6_3_r;
+wire signed [`OutBus]		out_6_3_i;
+wire signed [`OutBus]		out_6_4_r;
+wire signed [`OutBus]		out_6_4_i;
+wire signed [`OutBus]		out_6_5_r;
+wire signed [`OutBus]		out_6_5_i;
+wire signed [`OutBus]		out_6_6_r;
+wire signed [`OutBus]		out_6_6_i;
+wire signed [`OutBus]		out_6_7_r;
+wire signed [`OutBus]		out_6_7_i;
+wire signed [`OutBus]		out_6_8_r;
+wire signed [`OutBus]		out_6_8_i;
+wire signed [`OutBus]		out_7_1_r;
+wire signed [`OutBus]		out_7_1_i;
+wire signed [`OutBus]		out_7_2_r;
+wire signed [`OutBus]		out_7_2_i;
+wire signed [`OutBus]		out_7_3_r;
+wire signed [`OutBus]		out_7_3_i;
+wire signed [`OutBus]		out_7_4_r;
+wire signed [`OutBus]		out_7_4_i;
+wire signed [`OutBus]		out_7_5_r;
+wire signed [`OutBus]		out_7_5_i;
+wire signed [`OutBus]		out_7_6_r;
+wire signed [`OutBus]		out_7_6_i;
+wire signed [`OutBus]		out_7_7_r;
+wire signed [`OutBus]		out_7_7_i;
+wire signed [`OutBus]		out_7_8_r;
+wire signed [`OutBus]		out_7_8_i;
+wire signed [`OutBus]		out_8_1_r;
+wire signed [`OutBus]		out_8_1_i;
+wire signed [`OutBus]		out_8_2_r;
+wire signed [`OutBus]		out_8_2_i;
+wire signed [`OutBus]		out_8_3_r;
+wire signed [`OutBus]		out_8_3_i;
+wire signed [`OutBus]		out_8_4_r;
+wire signed [`OutBus]		out_8_4_i;
+wire signed [`OutBus]		out_8_5_r;
+wire signed [`OutBus]		out_8_5_i;
+wire signed [`OutBus]		out_8_6_r;
+wire signed [`OutBus]		out_8_6_i;
+wire signed [`OutBus]		out_8_7_r;
+wire signed [`OutBus]		out_8_7_i;
+wire signed [`OutBus]		out_8_8_r;
+wire signed [`OutBus]		out_8_8_i;
+
+/************************input_selecter => Radix2-2***********************/
+wire signed [`OutBus]		I_out_1_1_r;
+wire signed [`OutBus]		I_out_1_1_i;
+wire signed [`OutBus]		I_out_1_2_r;
+wire signed [`OutBus]		I_out_1_2_i;
+wire signed [`OutBus]		I_out_1_3_r;
+wire signed [`OutBus]		I_out_1_3_i;
+wire signed [`OutBus]		I_out_1_4_r;
+wire signed [`OutBus]		I_out_1_4_i;
+wire signed [`OutBus]		I_out_1_5_r;
+wire signed [`OutBus]		I_out_1_5_i;
+wire signed [`OutBus]		I_out_1_6_r;
+wire signed [`OutBus]		I_out_1_6_i;
+wire signed [`OutBus]		I_out_1_7_r;
+wire signed [`OutBus]		I_out_1_7_i;
+wire signed [`OutBus]		I_out_1_8_r;
+wire signed [`OutBus]		I_out_1_8_i;
+wire signed [`OutBus]		I_out_2_1_r;
+wire signed [`OutBus]		I_out_2_1_i;
+wire signed [`OutBus]		I_out_2_2_r;
+wire signed [`OutBus]		I_out_2_2_i;
+wire signed [`OutBus]		I_out_2_3_r;
+wire signed [`OutBus]		I_out_2_3_i;
+wire signed [`OutBus]		I_out_2_4_r;
+wire signed [`OutBus]		I_out_2_4_i;
+wire signed [`OutBus]		I_out_2_5_r;
+wire signed [`OutBus]		I_out_2_5_i;
+wire signed [`OutBus]		I_out_2_6_r;
+wire signed [`OutBus]		I_out_2_6_i;
+wire signed [`OutBus]		I_out_2_7_r;
+wire signed [`OutBus]		I_out_2_7_i;
+wire signed [`OutBus]		I_out_2_8_r;
+wire signed [`OutBus]		I_out_2_8_i;
+wire signed [`OutBus]		I_out_3_1_r;
+wire signed [`OutBus]		I_out_3_1_i;
+wire signed [`OutBus]		I_out_3_2_r;
+wire signed [`OutBus]		I_out_3_2_i;
+wire signed [`OutBus]		I_out_3_3_r;
+wire signed [`OutBus]		I_out_3_3_i;
+wire signed [`OutBus]		I_out_3_4_r;
+wire signed [`OutBus]		I_out_3_4_i;
+wire signed [`OutBus]		I_out_3_5_r;
+wire signed [`OutBus]		I_out_3_5_i;
+wire signed [`OutBus]		I_out_3_6_r;
+wire signed [`OutBus]		I_out_3_6_i;
+wire signed [`OutBus]		I_out_3_7_r;
+wire signed [`OutBus]		I_out_3_7_i;
+wire signed [`OutBus]		I_out_3_8_r;
+wire signed [`OutBus]		I_out_3_8_i;
+wire signed [`OutBus]		I_out_4_1_r;
+wire signed [`OutBus]		I_out_4_1_i;
+wire signed [`OutBus]		I_out_4_2_r;
+wire signed [`OutBus]		I_out_4_2_i;
+wire signed [`OutBus]		I_out_4_3_r;
+wire signed [`OutBus]		I_out_4_3_i;
+wire signed [`OutBus]		I_out_4_4_r;
+wire signed [`OutBus]		I_out_4_4_i;
+wire signed [`OutBus]		I_out_4_5_r;
+wire signed [`OutBus]		I_out_4_5_i;
+wire signed [`OutBus]		I_out_4_6_r;
+wire signed [`OutBus]		I_out_4_6_i;
+wire signed [`OutBus]		I_out_4_7_r;
+wire signed [`OutBus]		I_out_4_7_i;
+wire signed [`OutBus]		I_out_4_8_r;
+wire signed [`OutBus]		I_out_4_8_i;
+wire signed [`OutBus]		I_out_5_1_r;
+wire signed [`OutBus]		I_out_5_1_i;
+wire signed [`OutBus]		I_out_5_2_r;
+wire signed [`OutBus]		I_out_5_2_i;
+wire signed [`OutBus]		I_out_5_3_r;
+wire signed [`OutBus]		I_out_5_3_i;
+wire signed [`OutBus]		I_out_5_4_r;
+wire signed [`OutBus]		I_out_5_4_i;
+wire signed [`OutBus]		I_out_5_5_r;
+wire signed [`OutBus]		I_out_5_5_i;
+wire signed [`OutBus]		I_out_5_6_r;
+wire signed [`OutBus]		I_out_5_6_i;
+wire signed [`OutBus]		I_out_5_7_r;
+wire signed [`OutBus]		I_out_5_7_i;
+wire signed [`OutBus]		I_out_5_8_r;
+wire signed [`OutBus]		I_out_5_8_i;
+wire signed [`OutBus]		I_out_6_1_r;
+wire signed [`OutBus]		I_out_6_1_i;
+wire signed [`OutBus]		I_out_6_2_r;
+wire signed [`OutBus]		I_out_6_2_i;
+wire signed [`OutBus]		I_out_6_3_r;
+wire signed [`OutBus]		I_out_6_3_i;
+wire signed [`OutBus]		I_out_6_4_r;
+wire signed [`OutBus]		I_out_6_4_i;
+wire signed [`OutBus]		I_out_6_5_r;
+wire signed [`OutBus]		I_out_6_5_i;
+wire signed [`OutBus]		I_out_6_6_r;
+wire signed [`OutBus]		I_out_6_6_i;
+wire signed [`OutBus]		I_out_6_7_r;
+wire signed [`OutBus]		I_out_6_7_i;
+wire signed [`OutBus]		I_out_6_8_r;
+wire signed [`OutBus]		I_out_6_8_i;
+wire signed [`OutBus]		I_out_7_1_r;
+wire signed [`OutBus]		I_out_7_1_i;
+wire signed [`OutBus]		I_out_7_2_r;
+wire signed [`OutBus]		I_out_7_2_i;
+wire signed [`OutBus]		I_out_7_3_r;
+wire signed [`OutBus]		I_out_7_3_i;
+wire signed [`OutBus]		I_out_7_4_r;
+wire signed [`OutBus]		I_out_7_4_i;
+wire signed [`OutBus]		I_out_7_5_r;
+wire signed [`OutBus]		I_out_7_5_i;
+wire signed [`OutBus]		I_out_7_6_r;
+wire signed [`OutBus]		I_out_7_6_i;
+wire signed [`OutBus]		I_out_7_7_r;
+wire signed [`OutBus]		I_out_7_7_i;
+wire signed [`OutBus]		I_out_7_8_r;
+wire signed [`OutBus]		I_out_7_8_i;
+wire signed [`OutBus]		I_out_8_1_r;
+wire signed [`OutBus]		I_out_8_1_i;
+wire signed [`OutBus]		I_out_8_2_r;
+wire signed [`OutBus]		I_out_8_2_i;
+wire signed [`OutBus]		I_out_8_3_r;
+wire signed [`OutBus]		I_out_8_3_i;
+wire signed [`OutBus]		I_out_8_4_r;
+wire signed [`OutBus]		I_out_8_4_i;
+wire signed [`OutBus]		I_out_8_5_r;
+wire signed [`OutBus]		I_out_8_5_i;
+wire signed [`OutBus]		I_out_8_6_r;
+wire signed [`OutBus]		I_out_8_6_i;
+wire signed [`OutBus]		I_out_8_7_r;
+wire signed [`OutBus]		I_out_8_7_i;
+wire signed [`OutBus]		I_out_8_8_r;
+wire signed [`OutBus]		I_out_8_8_i;
+
+/************************W_real , W_imag***********************/
+wire signed [`WBus]		W_real_1_2;
+wire signed [`WBus]		W_imag_1_2;
+wire signed [`WBus]		W_real_1_3;
+wire signed [`WBus]		W_imag_1_3;
+wire signed [`WBus]		W_real_1_4;
+wire signed [`WBus]		W_imag_1_4;
+wire signed [`WBus]		W_real_2_2;
+wire signed [`WBus]		W_imag_2_2;
+wire signed [`WBus]		W_real_2_3;
+wire signed [`WBus]		W_imag_2_3;
+wire signed [`WBus]		W_real_2_4;
+wire signed [`WBus]		W_imag_2_4;
+wire signed [`WBus]		W_real_3_2;
+wire signed [`WBus]		W_imag_3_2;
+wire signed [`WBus]		W_real_3_3;
+wire signed [`WBus]		W_imag_3_3;
+wire signed [`WBus]		W_real_3_4;
+wire signed [`WBus]		W_imag_3_4;
+wire signed [`WBus]		W_real_4_2;
+wire signed [`WBus]		W_imag_4_2;
+wire signed [`WBus]		W_real_4_3;
+wire signed [`WBus]		W_imag_4_3;
+wire signed [`WBus]		W_real_4_4;
+wire signed [`WBus]		W_imag_4_4;
+wire signed [`WBus]		W_real_5_2;
+wire signed [`WBus]		W_imag_5_2;
+wire signed [`WBus]		W_real_5_3;
+wire signed [`WBus]		W_imag_5_3;
+wire signed [`WBus]		W_real_5_4;
+wire signed [`WBus]		W_imag_5_4;
+wire signed [`WBus]		W_real_6_2;
+wire signed [`WBus]		W_imag_6_2;
+wire signed [`WBus]		W_real_6_3;
+wire signed [`WBus]		W_imag_6_3;
+wire signed [`WBus]		W_real_6_4;
+wire signed [`WBus]		W_imag_6_4;
+wire signed [`WBus]		W_real_7_2;
+wire signed [`WBus]		W_imag_7_2;
+wire signed [`WBus]		W_real_7_3;
+wire signed [`WBus]		W_imag_7_3;
+wire signed [`WBus]		W_real_7_4;
+wire signed [`WBus]		W_imag_7_4;
+wire signed [`WBus]		W_real_8_2;
+wire signed [`WBus]		W_imag_8_2;
+wire signed [`WBus]		W_real_8_3;
+wire signed [`WBus]		W_imag_8_3;
+wire signed [`WBus]		W_real_8_4;
+wire signed [`WBus]		W_imag_8_4;
+wire signed [`WBus]		W_real_9_2;
+wire signed [`WBus]		W_imag_9_2;
+wire signed [`WBus]		W_real_9_3;
+wire signed [`WBus]		W_imag_9_3;
+wire signed [`WBus]		W_real_9_4;
+wire signed [`WBus]		W_imag_9_4;
+wire signed [`WBus]		W_real_10_2;
+wire signed [`WBus]		W_imag_10_2;
+wire signed [`WBus]		W_real_10_3;
+wire signed [`WBus]		W_imag_10_3;
+wire signed [`WBus]		W_real_10_4;
+wire signed [`WBus]		W_imag_10_4;
+wire signed [`WBus]		W_real_11_2;
+wire signed [`WBus]		W_imag_11_2;
+wire signed [`WBus]		W_real_11_3;
+wire signed [`WBus]		W_imag_11_3;
+wire signed [`WBus]		W_real_11_4;
+wire signed [`WBus]		W_imag_11_4;
+wire signed [`WBus]		W_real_12_2;
+wire signed [`WBus]		W_imag_12_2;
+wire signed [`WBus]		W_real_12_3;
+wire signed [`WBus]		W_imag_12_3;
+wire signed [`WBus]		W_real_12_4;
+wire signed [`WBus]		W_imag_12_4;
+wire signed [`WBus]		W_real_13_2;
+wire signed [`WBus]		W_imag_13_2;
+wire signed [`WBus]		W_real_13_3;
+wire signed [`WBus]		W_imag_13_3;
+wire signed [`WBus]		W_real_13_4;
+wire signed [`WBus]		W_imag_13_4;
+wire signed [`WBus]		W_real_14_2;
+wire signed [`WBus]		W_imag_14_2;
+wire signed [`WBus]		W_real_14_3;
+wire signed [`WBus]		W_imag_14_3;
+wire signed [`WBus]		W_real_14_4;
+wire signed [`WBus]		W_imag_14_4;
+wire signed [`WBus]		W_real_15_2;
+wire signed [`WBus]		W_imag_15_2;
+wire signed [`WBus]		W_real_15_3;
+wire signed [`WBus]		W_imag_15_3;
+wire signed [`WBus]		W_real_15_4;
+wire signed [`WBus]		W_imag_15_4;
+wire signed [`WBus]		W_real_16_2;
+wire signed [`WBus]		W_imag_16_2;
+wire signed [`WBus]		W_real_16_3;
+wire signed [`WBus]		W_imag_16_3;
+wire signed [`WBus]		W_real_16_4;
+wire signed [`WBus]		W_imag_16_4;
+
+/************************Radix2-2 => output_selecter***********************/
+wire signed [`CalcTempBus]		temp_b_1_1_r;
+wire signed [`CalcTempBus]		temp_b_1_1_i;
+wire signed [`CalcTempBus]		temp_b_1_2_r;
+wire signed [`CalcTempBus]		temp_b_1_2_i;
+wire signed [`CalcTempBus]		temp_b_1_3_r;
+wire signed [`CalcTempBus]		temp_b_1_3_i;
+wire signed [`CalcTempBus]		temp_b_1_4_r;
+wire signed [`CalcTempBus]		temp_b_1_4_i;
+wire signed [`CalcTempBus]		temp_b_1_5_r;
+wire signed [`CalcTempBus]		temp_b_1_5_i;
+wire signed [`CalcTempBus]		temp_b_1_6_r;
+wire signed [`CalcTempBus]		temp_b_1_6_i;
+wire signed [`CalcTempBus]		temp_b_1_7_r;
+wire signed [`CalcTempBus]		temp_b_1_7_i;
+wire signed [`CalcTempBus]		temp_b_1_8_r;
+wire signed [`CalcTempBus]		temp_b_1_8_i;
+wire signed [`CalcTempBus]		temp_b_2_1_r;
+wire signed [`CalcTempBus]		temp_b_2_1_i;
+wire signed [`CalcTempBus]		temp_b_2_2_r;
+wire signed [`CalcTempBus]		temp_b_2_2_i;
+wire signed [`CalcTempBus]		temp_b_2_3_r;
+wire signed [`CalcTempBus]		temp_b_2_3_i;
+wire signed [`CalcTempBus]		temp_b_2_4_r;
+wire signed [`CalcTempBus]		temp_b_2_4_i;
+wire signed [`CalcTempBus]		temp_b_2_5_r;
+wire signed [`CalcTempBus]		temp_b_2_5_i;
+wire signed [`CalcTempBus]		temp_b_2_6_r;
+wire signed [`CalcTempBus]		temp_b_2_6_i;
+wire signed [`CalcTempBus]		temp_b_2_7_r;
+wire signed [`CalcTempBus]		temp_b_2_7_i;
+wire signed [`CalcTempBus]		temp_b_2_8_r;
+wire signed [`CalcTempBus]		temp_b_2_8_i;
+wire signed [`CalcTempBus]		temp_b_3_1_r;
+wire signed [`CalcTempBus]		temp_b_3_1_i;
+wire signed [`CalcTempBus]		temp_b_3_2_r;
+wire signed [`CalcTempBus]		temp_b_3_2_i;
+wire signed [`CalcTempBus]		temp_b_3_3_r;
+wire signed [`CalcTempBus]		temp_b_3_3_i;
+wire signed [`CalcTempBus]		temp_b_3_4_r;
+wire signed [`CalcTempBus]		temp_b_3_4_i;
+wire signed [`CalcTempBus]		temp_b_3_5_r;
+wire signed [`CalcTempBus]		temp_b_3_5_i;
+wire signed [`CalcTempBus]		temp_b_3_6_r;
+wire signed [`CalcTempBus]		temp_b_3_6_i;
+wire signed [`CalcTempBus]		temp_b_3_7_r;
+wire signed [`CalcTempBus]		temp_b_3_7_i;
+wire signed [`CalcTempBus]		temp_b_3_8_r;
+wire signed [`CalcTempBus]		temp_b_3_8_i;
+wire signed [`CalcTempBus]		temp_b_4_1_r;
+wire signed [`CalcTempBus]		temp_b_4_1_i;
+wire signed [`CalcTempBus]		temp_b_4_2_r;
+wire signed [`CalcTempBus]		temp_b_4_2_i;
+wire signed [`CalcTempBus]		temp_b_4_3_r;
+wire signed [`CalcTempBus]		temp_b_4_3_i;
+wire signed [`CalcTempBus]		temp_b_4_4_r;
+wire signed [`CalcTempBus]		temp_b_4_4_i;
+wire signed [`CalcTempBus]		temp_b_4_5_r;
+wire signed [`CalcTempBus]		temp_b_4_5_i;
+wire signed [`CalcTempBus]		temp_b_4_6_r;
+wire signed [`CalcTempBus]		temp_b_4_6_i;
+wire signed [`CalcTempBus]		temp_b_4_7_r;
+wire signed [`CalcTempBus]		temp_b_4_7_i;
+wire signed [`CalcTempBus]		temp_b_4_8_r;
+wire signed [`CalcTempBus]		temp_b_4_8_i;
+wire signed [`CalcTempBus]		temp_b_5_1_r;
+wire signed [`CalcTempBus]		temp_b_5_1_i;
+wire signed [`CalcTempBus]		temp_b_5_2_r;
+wire signed [`CalcTempBus]		temp_b_5_2_i;
+wire signed [`CalcTempBus]		temp_b_5_3_r;
+wire signed [`CalcTempBus]		temp_b_5_3_i;
+wire signed [`CalcTempBus]		temp_b_5_4_r;
+wire signed [`CalcTempBus]		temp_b_5_4_i;
+wire signed [`CalcTempBus]		temp_b_5_5_r;
+wire signed [`CalcTempBus]		temp_b_5_5_i;
+wire signed [`CalcTempBus]		temp_b_5_6_r;
+wire signed [`CalcTempBus]		temp_b_5_6_i;
+wire signed [`CalcTempBus]		temp_b_5_7_r;
+wire signed [`CalcTempBus]		temp_b_5_7_i;
+wire signed [`CalcTempBus]		temp_b_5_8_r;
+wire signed [`CalcTempBus]		temp_b_5_8_i;
+wire signed [`CalcTempBus]		temp_b_6_1_r;
+wire signed [`CalcTempBus]		temp_b_6_1_i;
+wire signed [`CalcTempBus]		temp_b_6_2_r;
+wire signed [`CalcTempBus]		temp_b_6_2_i;
+wire signed [`CalcTempBus]		temp_b_6_3_r;
+wire signed [`CalcTempBus]		temp_b_6_3_i;
+wire signed [`CalcTempBus]		temp_b_6_4_r;
+wire signed [`CalcTempBus]		temp_b_6_4_i;
+wire signed [`CalcTempBus]		temp_b_6_5_r;
+wire signed [`CalcTempBus]		temp_b_6_5_i;
+wire signed [`CalcTempBus]		temp_b_6_6_r;
+wire signed [`CalcTempBus]		temp_b_6_6_i;
+wire signed [`CalcTempBus]		temp_b_6_7_r;
+wire signed [`CalcTempBus]		temp_b_6_7_i;
+wire signed [`CalcTempBus]		temp_b_6_8_r;
+wire signed [`CalcTempBus]		temp_b_6_8_i;
+wire signed [`CalcTempBus]		temp_b_7_1_r;
+wire signed [`CalcTempBus]		temp_b_7_1_i;
+wire signed [`CalcTempBus]		temp_b_7_2_r;
+wire signed [`CalcTempBus]		temp_b_7_2_i;
+wire signed [`CalcTempBus]		temp_b_7_3_r;
+wire signed [`CalcTempBus]		temp_b_7_3_i;
+wire signed [`CalcTempBus]		temp_b_7_4_r;
+wire signed [`CalcTempBus]		temp_b_7_4_i;
+wire signed [`CalcTempBus]		temp_b_7_5_r;
+wire signed [`CalcTempBus]		temp_b_7_5_i;
+wire signed [`CalcTempBus]		temp_b_7_6_r;
+wire signed [`CalcTempBus]		temp_b_7_6_i;
+wire signed [`CalcTempBus]		temp_b_7_7_r;
+wire signed [`CalcTempBus]		temp_b_7_7_i;
+wire signed [`CalcTempBus]		temp_b_7_8_r;
+wire signed [`CalcTempBus]		temp_b_7_8_i;
+wire signed [`CalcTempBus]		temp_b_8_1_r;
+wire signed [`CalcTempBus]		temp_b_8_1_i;
+wire signed [`CalcTempBus]		temp_b_8_2_r;
+wire signed [`CalcTempBus]		temp_b_8_2_i;
+wire signed [`CalcTempBus]		temp_b_8_3_r;
+wire signed [`CalcTempBus]		temp_b_8_3_i;
+wire signed [`CalcTempBus]		temp_b_8_4_r;
+wire signed [`CalcTempBus]		temp_b_8_4_i;
+wire signed [`CalcTempBus]		temp_b_8_5_r;
+wire signed [`CalcTempBus]		temp_b_8_5_i;
+wire signed [`CalcTempBus]		temp_b_8_6_r;
+wire signed [`CalcTempBus]		temp_b_8_6_i;
+wire signed [`CalcTempBus]		temp_b_8_7_r;
+wire signed [`CalcTempBus]		temp_b_8_7_i;
+wire signed [`CalcTempBus]		temp_b_8_8_r;
+wire signed [`CalcTempBus]		temp_b_8_8_i;
+
+/************************port map***********************/
+/************************input delay***********************/
+delay delay_in_1_1_r (clk,7'd1,in_r,in_1_1_r);
+delay delay_in_1_1_i (clk,7'd1,in_i,in_1_1_i);
+delay delay_in_1_2_r (clk,7'd2,in_r,in_1_2_r);
+delay delay_in_1_2_i (clk,7'd2,in_i,in_1_2_i);
+delay delay_in_1_3_r (clk,7'd3,in_r,in_1_3_r);
+delay delay_in_1_3_i (clk,7'd3,in_i,in_1_3_i);
+delay delay_in_1_4_r (clk,7'd4,in_r,in_1_4_r);
+delay delay_in_1_4_i (clk,7'd4,in_i,in_1_4_i);
+delay delay_in_1_5_r (clk,7'd5,in_r,in_1_5_r);
+delay delay_in_1_5_i (clk,7'd5,in_i,in_1_5_i);
+delay delay_in_1_6_r (clk,7'd6,in_r,in_1_6_r);
+delay delay_in_1_6_i (clk,7'd6,in_i,in_1_6_i);
+delay delay_in_1_7_r (clk,7'd7,in_r,in_1_7_r);
+delay delay_in_1_7_i (clk,7'd7,in_i,in_1_7_i);
+delay delay_in_1_8_r (clk,7'd8,in_r,in_1_8_r);
+delay delay_in_1_8_i (clk,7'd8,in_i,in_1_8_i);
+delay delay_in_2_1_r (clk,7'd9,in_r,in_2_1_r);
+delay delay_in_2_1_i (clk,7'd9,in_i,in_2_1_i);
+delay delay_in_2_2_r (clk,7'd10,in_r,in_2_2_r);
+delay delay_in_2_2_i (clk,7'd10,in_i,in_2_2_i);
+delay delay_in_2_3_r (clk,7'd11,in_r,in_2_3_r);
+delay delay_in_2_3_i (clk,7'd11,in_i,in_2_3_i);
+delay delay_in_2_4_r (clk,7'd12,in_r,in_2_4_r);
+delay delay_in_2_4_i (clk,7'd12,in_i,in_2_4_i);
+delay delay_in_2_5_r (clk,7'd13,in_r,in_2_5_r);
+delay delay_in_2_5_i (clk,7'd13,in_i,in_2_5_i);
+delay delay_in_2_6_r (clk,7'd14,in_r,in_2_6_r);
+delay delay_in_2_6_i (clk,7'd14,in_i,in_2_6_i);
+delay delay_in_2_7_r (clk,7'd15,in_r,in_2_7_r);
+delay delay_in_2_7_i (clk,7'd15,in_i,in_2_7_i);
+delay delay_in_2_8_r (clk,7'd16,in_r,in_2_8_r);
+delay delay_in_2_8_i (clk,7'd16,in_i,in_2_8_i);
+delay delay_in_3_1_r (clk,7'd17,in_r,in_3_1_r);
+delay delay_in_3_1_i (clk,7'd17,in_i,in_3_1_i);
+delay delay_in_3_2_r (clk,7'd18,in_r,in_3_2_r);
+delay delay_in_3_2_i (clk,7'd18,in_i,in_3_2_i);
+delay delay_in_3_3_r (clk,7'd19,in_r,in_3_3_r);
+delay delay_in_3_3_i (clk,7'd19,in_i,in_3_3_i);
+delay delay_in_3_4_r (clk,7'd20,in_r,in_3_4_r);
+delay delay_in_3_4_i (clk,7'd20,in_i,in_3_4_i);
+delay delay_in_3_5_r (clk,7'd21,in_r,in_3_5_r);
+delay delay_in_3_5_i (clk,7'd21,in_i,in_3_5_i);
+delay delay_in_3_6_r (clk,7'd22,in_r,in_3_6_r);
+delay delay_in_3_6_i (clk,7'd22,in_i,in_3_6_i);
+delay delay_in_3_7_r (clk,7'd23,in_r,in_3_7_r);
+delay delay_in_3_7_i (clk,7'd23,in_i,in_3_7_i);
+delay delay_in_3_8_r (clk,7'd24,in_r,in_3_8_r);
+delay delay_in_3_8_i (clk,7'd24,in_i,in_3_8_i);
+delay delay_in_4_1_r (clk,7'd25,in_r,in_4_1_r);
+delay delay_in_4_1_i (clk,7'd25,in_i,in_4_1_i);
+delay delay_in_4_2_r (clk,7'd26,in_r,in_4_2_r);
+delay delay_in_4_2_i (clk,7'd26,in_i,in_4_2_i);
+delay delay_in_4_3_r (clk,7'd27,in_r,in_4_3_r);
+delay delay_in_4_3_i (clk,7'd27,in_i,in_4_3_i);
+delay delay_in_4_4_r (clk,7'd28,in_r,in_4_4_r);
+delay delay_in_4_4_i (clk,7'd28,in_i,in_4_4_i);
+delay delay_in_4_5_r (clk,7'd29,in_r,in_4_5_r);
+delay delay_in_4_5_i (clk,7'd29,in_i,in_4_5_i);
+delay delay_in_4_6_r (clk,7'd30,in_r,in_4_6_r);
+delay delay_in_4_6_i (clk,7'd30,in_i,in_4_6_i);
+delay delay_in_4_7_r (clk,7'd31,in_r,in_4_7_r);
+delay delay_in_4_7_i (clk,7'd31,in_i,in_4_7_i);
+delay delay_in_4_8_r (clk,7'd32,in_r,in_4_8_r);
+delay delay_in_4_8_i (clk,7'd32,in_i,in_4_8_i);
+delay delay_in_5_1_r (clk,7'd33,in_r,in_5_1_r);
+delay delay_in_5_1_i (clk,7'd33,in_i,in_5_1_i);
+delay delay_in_5_2_r (clk,7'd34,in_r,in_5_2_r);
+delay delay_in_5_2_i (clk,7'd34,in_i,in_5_2_i);
+delay delay_in_5_3_r (clk,7'd35,in_r,in_5_3_r);
+delay delay_in_5_3_i (clk,7'd35,in_i,in_5_3_i);
+delay delay_in_5_4_r (clk,7'd36,in_r,in_5_4_r);
+delay delay_in_5_4_i (clk,7'd36,in_i,in_5_4_i);
+delay delay_in_5_5_r (clk,7'd37,in_r,in_5_5_r);
+delay delay_in_5_5_i (clk,7'd37,in_i,in_5_5_i);
+delay delay_in_5_6_r (clk,7'd38,in_r,in_5_6_r);
+delay delay_in_5_6_i (clk,7'd38,in_i,in_5_6_i);
+delay delay_in_5_7_r (clk,7'd39,in_r,in_5_7_r);
+delay delay_in_5_7_i (clk,7'd39,in_i,in_5_7_i);
+delay delay_in_5_8_r (clk,7'd40,in_r,in_5_8_r);
+delay delay_in_5_8_i (clk,7'd40,in_i,in_5_8_i);
+delay delay_in_6_1_r (clk,7'd41,in_r,in_6_1_r);
+delay delay_in_6_1_i (clk,7'd41,in_i,in_6_1_i);
+delay delay_in_6_2_r (clk,7'd42,in_r,in_6_2_r);
+delay delay_in_6_2_i (clk,7'd42,in_i,in_6_2_i);
+delay delay_in_6_3_r (clk,7'd43,in_r,in_6_3_r);
+delay delay_in_6_3_i (clk,7'd43,in_i,in_6_3_i);
+delay delay_in_6_4_r (clk,7'd44,in_r,in_6_4_r);
+delay delay_in_6_4_i (clk,7'd44,in_i,in_6_4_i);
+delay delay_in_6_5_r (clk,7'd45,in_r,in_6_5_r);
+delay delay_in_6_5_i (clk,7'd45,in_i,in_6_5_i);
+delay delay_in_6_6_r (clk,7'd46,in_r,in_6_6_r);
+delay delay_in_6_6_i (clk,7'd46,in_i,in_6_6_i);
+delay delay_in_6_7_r (clk,7'd47,in_r,in_6_7_r);
+delay delay_in_6_7_i (clk,7'd47,in_i,in_6_7_i);
+delay delay_in_6_8_r (clk,7'd48,in_r,in_6_8_r);
+delay delay_in_6_8_i (clk,7'd48,in_i,in_6_8_i);
+delay delay_in_7_1_r (clk,7'd49,in_r,in_7_1_r);
+delay delay_in_7_1_i (clk,7'd49,in_i,in_7_1_i);
+delay delay_in_7_2_r (clk,7'd50,in_r,in_7_2_r);
+delay delay_in_7_2_i (clk,7'd50,in_i,in_7_2_i);
+delay delay_in_7_3_r (clk,7'd51,in_r,in_7_3_r);
+delay delay_in_7_3_i (clk,7'd51,in_i,in_7_3_i);
+delay delay_in_7_4_r (clk,7'd52,in_r,in_7_4_r);
+delay delay_in_7_4_i (clk,7'd52,in_i,in_7_4_i);
+delay delay_in_7_5_r (clk,7'd53,in_r,in_7_5_r);
+delay delay_in_7_5_i (clk,7'd53,in_i,in_7_5_i);
+delay delay_in_7_6_r (clk,7'd54,in_r,in_7_6_r);
+delay delay_in_7_6_i (clk,7'd54,in_i,in_7_6_i);
+delay delay_in_7_7_r (clk,7'd55,in_r,in_7_7_r);
+delay delay_in_7_7_i (clk,7'd55,in_i,in_7_7_i);
+delay delay_in_7_8_r (clk,7'd56,in_r,in_7_8_r);
+delay delay_in_7_8_i (clk,7'd56,in_i,in_7_8_i);
+delay delay_in_8_1_r (clk,7'd57,in_r,in_8_1_r);
+delay delay_in_8_1_i (clk,7'd57,in_i,in_8_1_i);
+delay delay_in_8_2_r (clk,7'd58,in_r,in_8_2_r);
+delay delay_in_8_2_i (clk,7'd58,in_i,in_8_2_i);
+delay delay_in_8_3_r (clk,7'd59,in_r,in_8_3_r);
+delay delay_in_8_3_i (clk,7'd59,in_i,in_8_3_i);
+delay delay_in_8_4_r (clk,7'd60,in_r,in_8_4_r);
+delay delay_in_8_4_i (clk,7'd60,in_i,in_8_4_i);
+delay delay_in_8_5_r (clk,7'd61,in_r,in_8_5_r);
+delay delay_in_8_5_i (clk,7'd61,in_i,in_8_5_i);
+delay delay_in_8_6_r (clk,7'd62,in_r,in_8_6_r);
+delay delay_in_8_6_i (clk,7'd62,in_i,in_8_6_i);
+delay delay_in_8_7_r (clk,7'd63,in_r,in_8_7_r);
+delay delay_in_8_7_i (clk,7'd63,in_i,in_8_7_i);
+delay delay_in_8_8_r (clk,7'd64,in_r,in_8_8_r);
+delay delay_in_8_8_i (clk,7'd64,in_i,in_8_8_i);
+
+/************************input => input_selecter***********************/
+input_selecter_top input_selecter (clk,in_1_1_r,in_1_1_i,in_1_2_r,in_1_2_i,in_1_3_r,in_1_3_i,in_1_4_r,in_1_4_i,in_1_5_r,in_1_5_i,in_1_6_r,in_1_6_i,in_1_7_r,in_1_7_i,in_1_8_r,in_1_8_i,in_2_1_r,in_2_1_i,in_2_2_r,in_2_2_i,in_2_3_r,in_2_3_i,in_2_4_r,in_2_4_i,in_2_5_r,in_2_5_i,in_2_6_r,in_2_6_i,in_2_7_r,in_2_7_i,in_2_8_r,in_2_8_i,in_3_1_r,in_3_1_i,in_3_2_r,in_3_2_i,in_3_3_r,in_3_3_i,in_3_4_r,in_3_4_i,in_3_5_r,in_3_5_i,in_3_6_r,in_3_6_i,in_3_7_r,in_3_7_i,in_3_8_r,in_3_8_i,in_4_1_r,in_4_1_i,in_4_2_r,in_4_2_i,in_4_3_r,in_4_3_i,in_4_4_r,in_4_4_i,in_4_5_r,in_4_5_i,in_4_6_r,in_4_6_i,in_4_7_r,in_4_7_i,in_4_8_r,in_4_8_i,in_5_1_r,in_5_1_i,in_5_2_r,in_5_2_i,in_5_3_r,in_5_3_i,in_5_4_r,in_5_4_i,in_5_5_r,in_5_5_i,in_5_6_r,in_5_6_i,in_5_7_r,in_5_7_i,in_5_8_r,in_5_8_i,in_6_1_r,in_6_1_i,in_6_2_r,in_6_2_i,in_6_3_r,in_6_3_i,in_6_4_r,in_6_4_i,in_6_5_r,in_6_5_i,in_6_6_r,in_6_6_i,in_6_7_r,in_6_7_i,in_6_8_r,in_6_8_i,in_7_1_r,in_7_1_i,in_7_2_r,in_7_2_i,in_7_3_r,in_7_3_i,in_7_4_r,in_7_4_i,in_7_5_r,in_7_5_i,in_7_6_r,in_7_6_i,in_7_7_r,in_7_7_i,in_7_8_r,in_7_8_i,in_8_1_r,in_8_1_i,in_8_2_r,in_8_2_i,in_8_3_r,in_8_3_i,in_8_4_r,in_8_4_i,in_8_5_r,in_8_5_i,in_8_6_r,in_8_6_i,in_8_7_r,in_8_7_i,in_8_8_r,in_8_8_i,temp_b_1_1_r,temp_b_1_1_i,temp_b_1_2_r,temp_b_1_2_i,temp_b_1_3_r,temp_b_1_3_i,temp_b_1_4_r,temp_b_1_4_i,temp_b_1_5_r,temp_b_1_5_i,temp_b_1_6_r,temp_b_1_6_i,temp_b_1_7_r,temp_b_1_7_i,temp_b_1_8_r,temp_b_1_8_i,temp_b_2_1_r,temp_b_2_1_i,temp_b_2_2_r,temp_b_2_2_i,temp_b_2_3_r,temp_b_2_3_i,temp_b_2_4_r,temp_b_2_4_i,temp_b_2_5_r,temp_b_2_5_i,temp_b_2_6_r,temp_b_2_6_i,temp_b_2_7_r,temp_b_2_7_i,temp_b_2_8_r,temp_b_2_8_i,temp_b_3_1_r,temp_b_3_1_i,temp_b_3_2_r,temp_b_3_2_i,temp_b_3_3_r,temp_b_3_3_i,temp_b_3_4_r,temp_b_3_4_i,temp_b_3_5_r,temp_b_3_5_i,temp_b_3_6_r,temp_b_3_6_i,temp_b_3_7_r,temp_b_3_7_i,temp_b_3_8_r,temp_b_3_8_i,temp_b_4_1_r,temp_b_4_1_i,temp_b_4_2_r,temp_b_4_2_i,temp_b_4_3_r,temp_b_4_3_i,temp_b_4_4_r,temp_b_4_4_i,temp_b_4_5_r,temp_b_4_5_i,temp_b_4_6_r,temp_b_4_6_i,temp_b_4_7_r,temp_b_4_7_i,temp_b_4_8_r,temp_b_4_8_i,temp_b_5_1_r,temp_b_5_1_i,temp_b_5_2_r,temp_b_5_2_i,temp_b_5_3_r,temp_b_5_3_i,temp_b_5_4_r,temp_b_5_4_i,temp_b_5_5_r,temp_b_5_5_i,temp_b_5_6_r,temp_b_5_6_i,temp_b_5_7_r,temp_b_5_7_i,temp_b_5_8_r,temp_b_5_8_i,temp_b_6_1_r,temp_b_6_1_i,temp_b_6_2_r,temp_b_6_2_i,temp_b_6_3_r,temp_b_6_3_i,temp_b_6_4_r,temp_b_6_4_i,temp_b_6_5_r,temp_b_6_5_i,temp_b_6_6_r,temp_b_6_6_i,temp_b_6_7_r,temp_b_6_7_i,temp_b_6_8_r,temp_b_6_8_i,temp_b_7_1_r,temp_b_7_1_i,temp_b_7_2_r,temp_b_7_2_i,temp_b_7_3_r,temp_b_7_3_i,temp_b_7_4_r,temp_b_7_4_i,temp_b_7_5_r,temp_b_7_5_i,temp_b_7_6_r,temp_b_7_6_i,temp_b_7_7_r,temp_b_7_7_i,temp_b_7_8_r,temp_b_7_8_i,temp_b_8_1_r,temp_b_8_1_i,temp_b_8_2_r,temp_b_8_2_i,temp_b_8_3_r,temp_b_8_3_i,temp_b_8_4_r,temp_b_8_4_i,temp_b_8_5_r,temp_b_8_5_i,temp_b_8_6_r,temp_b_8_6_i,temp_b_8_7_r,temp_b_8_7_i,temp_b_8_8_r,temp_b_8_8_i,I_out_1_1_r,I_out_1_1_i,I_out_1_2_r,I_out_1_2_i,I_out_1_3_r,I_out_1_3_i,I_out_1_4_r,I_out_1_4_i,I_out_1_5_r,I_out_1_5_i,I_out_1_6_r,I_out_1_6_i,I_out_1_7_r,I_out_1_7_i,I_out_1_8_r,I_out_1_8_i,I_out_2_1_r,I_out_2_1_i,I_out_2_2_r,I_out_2_2_i,I_out_2_3_r,I_out_2_3_i,I_out_2_4_r,I_out_2_4_i,I_out_2_5_r,I_out_2_5_i,I_out_2_6_r,I_out_2_6_i,I_out_2_7_r,I_out_2_7_i,I_out_2_8_r,I_out_2_8_i,I_out_3_1_r,I_out_3_1_i,I_out_3_2_r,I_out_3_2_i,I_out_3_3_r,I_out_3_3_i,I_out_3_4_r,I_out_3_4_i,I_out_3_5_r,I_out_3_5_i,I_out_3_6_r,I_out_3_6_i,I_out_3_7_r,I_out_3_7_i,I_out_3_8_r,I_out_3_8_i,I_out_4_1_r,I_out_4_1_i,I_out_4_2_r,I_out_4_2_i,I_out_4_3_r,I_out_4_3_i,I_out_4_4_r,I_out_4_4_i,I_out_4_5_r,I_out_4_5_i,I_out_4_6_r,I_out_4_6_i,I_out_4_7_r,I_out_4_7_i,I_out_4_8_r,I_out_4_8_i,I_out_5_1_r,I_out_5_1_i,I_out_5_2_r,I_out_5_2_i,I_out_5_3_r,I_out_5_3_i,I_out_5_4_r,I_out_5_4_i,I_out_5_5_r,I_out_5_5_i,I_out_5_6_r,I_out_5_6_i,I_out_5_7_r,I_out_5_7_i,I_out_5_8_r,I_out_5_8_i,I_out_6_1_r,I_out_6_1_i,I_out_6_2_r,I_out_6_2_i,I_out_6_3_r,I_out_6_3_i,I_out_6_4_r,I_out_6_4_i,I_out_6_5_r,I_out_6_5_i,I_out_6_6_r,I_out_6_6_i,I_out_6_7_r,I_out_6_7_i,I_out_6_8_r,I_out_6_8_i,I_out_7_1_r,I_out_7_1_i,I_out_7_2_r,I_out_7_2_i,I_out_7_3_r,I_out_7_3_i,I_out_7_4_r,I_out_7_4_i,I_out_7_5_r,I_out_7_5_i,I_out_7_6_r,I_out_7_6_i,I_out_7_7_r,I_out_7_7_i,I_out_7_8_r,I_out_7_8_i,I_out_8_1_r,I_out_8_1_i,I_out_8_2_r,I_out_8_2_i,I_out_8_3_r,I_out_8_3_i,I_out_8_4_r,I_out_8_4_i,I_out_8_5_r,I_out_8_5_i,I_out_8_6_r,I_out_8_6_i,I_out_8_7_r,I_out_8_7_i,I_out_8_8_r,I_out_8_8_i);
+
+/************************W_selecter => temp***********************/
+W_selecter_top W_selecter (clk,W_real_1_2,W_imag_1_2,W_real_1_3,W_imag_1_3,W_real_1_4,W_imag_1_4,W_real_2_2,W_imag_2_2,W_real_2_3,W_imag_2_3,W_real_2_4,W_imag_2_4,W_real_3_2,W_imag_3_2,W_real_3_3,W_imag_3_3,W_real_3_4,W_imag_3_4,W_real_4_2,W_imag_4_2,W_real_4_3,W_imag_4_3,W_real_4_4,W_imag_4_4,W_real_5_2,W_imag_5_2,W_real_5_3,W_imag_5_3,W_real_5_4,W_imag_5_4,W_real_6_2,W_imag_6_2,W_real_6_3,W_imag_6_3,W_real_6_4,W_imag_6_4,W_real_7_2,W_imag_7_2,W_real_7_3,W_imag_7_3,W_real_7_4,W_imag_7_4,W_real_8_2,W_imag_8_2,W_real_8_3,W_imag_8_3,W_real_8_4,W_imag_8_4,W_real_9_2,W_imag_9_2,W_real_9_3,W_imag_9_3,W_real_9_4,W_imag_9_4,W_real_10_2,W_imag_10_2,W_real_10_3,W_imag_10_3,W_real_10_4,W_imag_10_4,W_real_11_2,W_imag_11_2,W_real_11_3,W_imag_11_3,W_real_11_4,W_imag_11_4,W_real_12_2,W_imag_12_2,W_real_12_3,W_imag_12_3,W_real_12_4,W_imag_12_4,W_real_13_2,W_imag_13_2,W_real_13_3,W_imag_13_3,W_real_13_4,W_imag_13_4,W_real_14_2,W_imag_14_2,W_real_14_3,W_imag_14_3,W_real_14_4,W_imag_14_4,W_real_15_2,W_imag_15_2,W_real_15_3,W_imag_15_3,W_real_15_4,W_imag_15_4,W_real_16_2,W_imag_16_2,W_real_16_3,W_imag_16_3,W_real_16_4,W_imag_16_4);
+
+/************************input_selecter => Radix2-2***********************/
+radix2_2 radix2_2_1 (clk,I_out_1_1_r,I_out_1_1_i,I_out_1_2_r,I_out_1_2_i,I_out_1_3_r,I_out_1_3_i,I_out_1_4_r,I_out_1_4_i,temp_b_1_1_r,temp_b_1_1_i,temp_b_1_2_r,temp_b_1_2_i,temp_b_1_3_r,temp_b_1_3_i,temp_b_1_4_r,temp_b_1_4_i,W_real_1_2,W_imag_1_2,W_real_1_3,W_imag_1_3,W_real_1_4,W_imag_1_4);
+
+radix2_2 radix2_2_2 (clk,I_out_1_5_r,I_out_1_5_i,I_out_1_6_r,I_out_1_6_i,I_out_1_7_r,I_out_1_7_i,I_out_1_8_r,I_out_1_8_i,temp_b_1_5_r,temp_b_1_5_i,temp_b_1_6_r,temp_b_1_6_i,temp_b_1_7_r,temp_b_1_7_i,temp_b_1_8_r,temp_b_1_8_i,W_real_2_2,W_imag_2_2,W_real_2_3,W_imag_2_3,W_real_2_4,W_imag_2_4);
+
+radix2_2 radix2_2_3 (clk,I_out_2_1_r,I_out_2_1_i,I_out_2_2_r,I_out_2_2_i,I_out_2_3_r,I_out_2_3_i,I_out_2_4_r,I_out_2_4_i,temp_b_2_1_r,temp_b_2_1_i,temp_b_2_2_r,temp_b_2_2_i,temp_b_2_3_r,temp_b_2_3_i,temp_b_2_4_r,temp_b_2_4_i,W_real_3_2,W_imag_3_2,W_real_3_3,W_imag_3_3,W_real_3_4,W_imag_3_4);
+
+radix2_2 radix2_2_4 (clk,I_out_2_5_r,I_out_2_5_i,I_out_2_6_r,I_out_2_6_i,I_out_2_7_r,I_out_2_7_i,I_out_2_8_r,I_out_2_8_i,temp_b_2_5_r,temp_b_2_5_i,temp_b_2_6_r,temp_b_2_6_i,temp_b_2_7_r,temp_b_2_7_i,temp_b_2_8_r,temp_b_2_8_i,W_real_4_2,W_imag_4_2,W_real_4_3,W_imag_4_3,W_real_4_4,W_imag_4_4);
+
+radix2_2 radix2_2_5 (clk,I_out_3_1_r,I_out_3_1_i,I_out_3_2_r,I_out_3_2_i,I_out_3_3_r,I_out_3_3_i,I_out_3_4_r,I_out_3_4_i,temp_b_3_1_r,temp_b_3_1_i,temp_b_3_2_r,temp_b_3_2_i,temp_b_3_3_r,temp_b_3_3_i,temp_b_3_4_r,temp_b_3_4_i,W_real_5_2,W_imag_5_2,W_real_5_3,W_imag_5_3,W_real_5_4,W_imag_5_4);
+
+radix2_2 radix2_2_6 (clk,I_out_3_5_r,I_out_3_5_i,I_out_3_6_r,I_out_3_6_i,I_out_3_7_r,I_out_3_7_i,I_out_3_8_r,I_out_3_8_i,temp_b_3_5_r,temp_b_3_5_i,temp_b_3_6_r,temp_b_3_6_i,temp_b_3_7_r,temp_b_3_7_i,temp_b_3_8_r,temp_b_3_8_i,W_real_6_2,W_imag_6_2,W_real_6_3,W_imag_6_3,W_real_6_4,W_imag_6_4);
+
+radix2_2 radix2_2_7 (clk,I_out_4_1_r,I_out_4_1_i,I_out_4_2_r,I_out_4_2_i,I_out_4_3_r,I_out_4_3_i,I_out_4_4_r,I_out_4_4_i,temp_b_4_1_r,temp_b_4_1_i,temp_b_4_2_r,temp_b_4_2_i,temp_b_4_3_r,temp_b_4_3_i,temp_b_4_4_r,temp_b_4_4_i,W_real_7_2,W_imag_7_2,W_real_7_3,W_imag_7_3,W_real_7_4,W_imag_7_4);
+
+radix2_2 radix2_2_8 (clk,I_out_4_5_r,I_out_4_5_i,I_out_4_6_r,I_out_4_6_i,I_out_4_7_r,I_out_4_7_i,I_out_4_8_r,I_out_4_8_i,temp_b_4_5_r,temp_b_4_5_i,temp_b_4_6_r,temp_b_4_6_i,temp_b_4_7_r,temp_b_4_7_i,temp_b_4_8_r,temp_b_4_8_i,W_real_8_2,W_imag_8_2,W_real_8_3,W_imag_8_3,W_real_8_4,W_imag_8_4);
+
+radix2_2 radix2_2_9 (clk,I_out_5_1_r,I_out_5_1_i,I_out_5_2_r,I_out_5_2_i,I_out_5_3_r,I_out_5_3_i,I_out_5_4_r,I_out_5_4_i,temp_b_5_1_r,temp_b_5_1_i,temp_b_5_2_r,temp_b_5_2_i,temp_b_5_3_r,temp_b_5_3_i,temp_b_5_4_r,temp_b_5_4_i,W_real_9_2,W_imag_9_2,W_real_9_3,W_imag_9_3,W_real_9_4,W_imag_9_4);
+
+radix2_2 radix2_2_10 (clk,I_out_5_5_r,I_out_5_5_i,I_out_5_6_r,I_out_5_6_i,I_out_5_7_r,I_out_5_7_i,I_out_5_8_r,I_out_5_8_i,temp_b_5_5_r,temp_b_5_5_i,temp_b_5_6_r,temp_b_5_6_i,temp_b_5_7_r,temp_b_5_7_i,temp_b_5_8_r,temp_b_5_8_i,W_real_10_2,W_imag_10_2,W_real_10_3,W_imag_10_3,W_real_10_4,W_imag_10_4);
+
+radix2_2 radix2_2_11 (clk,I_out_6_1_r,I_out_6_1_i,I_out_6_2_r,I_out_6_2_i,I_out_6_3_r,I_out_6_3_i,I_out_6_4_r,I_out_6_4_i,temp_b_6_1_r,temp_b_6_1_i,temp_b_6_2_r,temp_b_6_2_i,temp_b_6_3_r,temp_b_6_3_i,temp_b_6_4_r,temp_b_6_4_i,W_real_11_2,W_imag_11_2,W_real_11_3,W_imag_11_3,W_real_11_4,W_imag_11_4);
+
+radix2_2 radix2_2_12 (clk,I_out_6_5_r,I_out_6_5_i,I_out_6_6_r,I_out_6_6_i,I_out_6_7_r,I_out_6_7_i,I_out_6_8_r,I_out_6_8_i,temp_b_6_5_r,temp_b_6_5_i,temp_b_6_6_r,temp_b_6_6_i,temp_b_6_7_r,temp_b_6_7_i,temp_b_6_8_r,temp_b_6_8_i,W_real_12_2,W_imag_12_2,W_real_12_3,W_imag_12_3,W_real_12_4,W_imag_12_4);
+
+radix2_2 radix2_2_13 (clk,I_out_7_1_r,I_out_7_1_i,I_out_7_2_r,I_out_7_2_i,I_out_7_3_r,I_out_7_3_i,I_out_7_4_r,I_out_7_4_i,temp_b_7_1_r,temp_b_7_1_i,temp_b_7_2_r,temp_b_7_2_i,temp_b_7_3_r,temp_b_7_3_i,temp_b_7_4_r,temp_b_7_4_i,W_real_13_2,W_imag_13_2,W_real_13_3,W_imag_13_3,W_real_13_4,W_imag_13_4);
+
+radix2_2 radix2_2_14 (clk,I_out_7_5_r,I_out_7_5_i,I_out_7_6_r,I_out_7_6_i,I_out_7_7_r,I_out_7_7_i,I_out_7_8_r,I_out_7_8_i,temp_b_7_5_r,temp_b_7_5_i,temp_b_7_6_r,temp_b_7_6_i,temp_b_7_7_r,temp_b_7_7_i,temp_b_7_8_r,temp_b_7_8_i,W_real_14_2,W_imag_14_2,W_real_14_3,W_imag_14_3,W_real_14_4,W_imag_14_4);
+
+radix2_2 radix2_2_15 (clk,I_out_8_1_r,I_out_8_1_i,I_out_8_2_r,I_out_8_2_i,I_out_8_3_r,I_out_8_3_i,I_out_8_4_r,I_out_8_4_i,temp_b_8_1_r,temp_b_8_1_i,temp_b_8_2_r,temp_b_8_2_i,temp_b_8_3_r,temp_b_8_3_i,temp_b_8_4_r,temp_b_8_4_i,W_real_15_2,W_imag_15_2,W_real_15_3,W_imag_15_3,W_real_15_4,W_imag_15_4);
+
+radix2_2 radix2_2_16 (clk,I_out_8_5_r,I_out_8_5_i,I_out_8_6_r,I_out_8_6_i,I_out_8_7_r,I_out_8_7_i,I_out_8_8_r,I_out_8_8_i,temp_b_8_5_r,temp_b_8_5_i,temp_b_8_6_r,temp_b_8_6_i,temp_b_8_7_r,temp_b_8_7_i,temp_b_8_8_r,temp_b_8_8_i,W_real_16_2,W_imag_16_2,W_real_16_3,W_imag_16_3,W_real_16_4,W_imag_16_4);
+
+
+/************************output delay***********************/
+delay delay_out_1_1_r (clk,7'd1,temp_b_1_1_r,out_1_1_r);
+delay delay_out_1_1_i (clk,7'd1,temp_b_1_1_i,out_1_1_i);
+delay delay_out_1_5_r (clk,7'd5,temp_b_1_2_r,out_1_5_r);
+delay delay_out_1_5_i (clk,7'd5,temp_b_1_2_i,out_1_5_i);
+delay delay_out_5_1_r (clk,7'd33,temp_b_1_3_r,out_5_1_r);
+delay delay_out_5_1_i (clk,7'd33,temp_b_1_3_i,out_5_1_i);
+delay delay_out_5_5_r (clk,7'd37,temp_b_1_4_r,out_5_5_r);
+delay delay_out_5_5_i (clk,7'd37,temp_b_1_4_i,out_5_5_i);
+
+delay delay_out_1_2_r (clk,7'd2,temp_b_1_5_r,out_1_2_r);
+delay delay_out_1_2_i (clk,7'd2,temp_b_1_5_i,out_1_2_i);
+delay delay_out_1_6_r (clk,7'd6,temp_b_1_6_r,out_1_6_r);
+delay delay_out_1_6_i (clk,7'd6,temp_b_1_6_i,out_1_6_i);
+delay delay_out_5_2_r (clk,7'd34,temp_b_1_7_r,out_5_2_r);
+delay delay_out_5_2_i (clk,7'd34,temp_b_1_7_i,out_5_2_i);
+delay delay_out_5_6_r (clk,7'd38,temp_b_1_8_r,out_5_6_r);
+delay delay_out_5_6_i (clk,7'd38,temp_b_1_8_i,out_5_6_i);
+
+delay delay_out_1_3_r (clk,7'd3,temp_b_2_1_r,out_1_3_r);
+delay delay_out_1_3_i (clk,7'd3,temp_b_2_1_i,out_1_3_i);
+delay delay_out_1_7_r (clk,7'd7,temp_b_2_2_r,out_1_7_r);
+delay delay_out_1_7_i (clk,7'd7,temp_b_2_2_i,out_1_7_i);
+delay delay_out_5_3_r (clk,7'd35,temp_b_2_3_r,out_5_3_r);
+delay delay_out_5_3_i (clk,7'd35,temp_b_2_3_i,out_5_3_i);
+delay delay_out_5_7_r (clk,7'd39,temp_b_2_4_r,out_5_7_r);
+delay delay_out_5_7_i (clk,7'd39,temp_b_2_4_i,out_5_7_i);
+
+delay delay_out_1_4_r (clk,7'd4,temp_b_2_5_r,out_1_4_r);
+delay delay_out_1_4_i (clk,7'd4,temp_b_2_5_i,out_1_4_i);
+delay delay_out_1_8_r (clk,7'd8,temp_b_2_6_r,out_1_8_r);
+delay delay_out_1_8_i (clk,7'd8,temp_b_2_6_i,out_1_8_i);
+delay delay_out_5_4_r (clk,7'd36,temp_b_2_7_r,out_5_4_r);
+delay delay_out_5_4_i (clk,7'd36,temp_b_2_7_i,out_5_4_i);
+delay delay_out_5_8_r (clk,7'd40,temp_b_2_8_r,out_5_8_r);
+delay delay_out_5_8_i (clk,7'd40,temp_b_2_8_i,out_5_8_i);
+
+delay delay_out_2_1_r (clk,7'd9,temp_b_3_1_r,out_2_1_r);
+delay delay_out_2_1_i (clk,7'd9,temp_b_3_1_i,out_2_1_i);
+delay delay_out_2_5_r (clk,7'd13,temp_b_3_2_r,out_2_5_r);
+delay delay_out_2_5_i (clk,7'd13,temp_b_3_2_i,out_2_5_i);
+delay delay_out_6_1_r (clk,7'd41,temp_b_3_3_r,out_6_1_r);
+delay delay_out_6_1_i (clk,7'd41,temp_b_3_3_i,out_6_1_i);
+delay delay_out_6_5_r (clk,7'd45,temp_b_3_4_r,out_6_5_r);
+delay delay_out_6_5_i (clk,7'd45,temp_b_3_4_i,out_6_5_i);
+
+delay delay_out_2_2_r (clk,7'd10,temp_b_3_5_r,out_2_2_r);
+delay delay_out_2_2_i (clk,7'd10,temp_b_3_5_i,out_2_2_i);
+delay delay_out_2_6_r (clk,7'd14,temp_b_3_6_r,out_2_6_r);
+delay delay_out_2_6_i (clk,7'd14,temp_b_3_6_i,out_2_6_i);
+delay delay_out_6_2_r (clk,7'd42,temp_b_3_7_r,out_6_2_r);
+delay delay_out_6_2_i (clk,7'd42,temp_b_3_7_i,out_6_2_i);
+delay delay_out_6_6_r (clk,7'd46,temp_b_3_8_r,out_6_6_r);
+delay delay_out_6_6_i (clk,7'd46,temp_b_3_8_i,out_6_6_i);
+
+delay delay_out_2_3_r (clk,7'd11,temp_b_4_1_r,out_2_3_r);
+delay delay_out_2_3_i (clk,7'd11,temp_b_4_1_i,out_2_3_i);
+delay delay_out_2_7_r (clk,7'd15,temp_b_4_2_r,out_2_7_r);
+delay delay_out_2_7_i (clk,7'd15,temp_b_4_2_i,out_2_7_i);
+delay delay_out_6_3_r (clk,7'd43,temp_b_4_3_r,out_6_3_r);
+delay delay_out_6_3_i (clk,7'd43,temp_b_4_3_i,out_6_3_i);
+delay delay_out_6_7_r (clk,7'd47,temp_b_4_4_r,out_6_7_r);
+delay delay_out_6_7_i (clk,7'd47,temp_b_4_4_i,out_6_7_i);
+
+delay delay_out_2_4_r (clk,7'd12,temp_b_4_5_r,out_2_4_r);
+delay delay_out_2_4_i (clk,7'd12,temp_b_4_5_i,out_2_4_i);
+delay delay_out_2_8_r (clk,7'd16,temp_b_4_6_r,out_2_8_r);
+delay delay_out_2_8_i (clk,7'd16,temp_b_4_6_i,out_2_8_i);
+delay delay_out_6_4_r (clk,7'd44,temp_b_4_7_r,out_6_4_r);
+delay delay_out_6_4_i (clk,7'd44,temp_b_4_7_i,out_6_4_i);
+delay delay_out_6_8_r (clk,7'd48,temp_b_4_8_r,out_6_8_r);
+delay delay_out_6_8_i (clk,7'd48,temp_b_4_8_i,out_6_8_i);
+
+delay delay_out_3_1_r (clk,7'd17,temp_b_5_1_r,out_3_1_r);
+delay delay_out_3_1_i (clk,7'd17,temp_b_5_1_i,out_3_1_i);
+delay delay_out_3_5_r (clk,7'd21,temp_b_5_2_r,out_3_5_r);
+delay delay_out_3_5_i (clk,7'd21,temp_b_5_2_i,out_3_5_i);
+delay delay_out_7_1_r (clk,7'd49,temp_b_5_3_r,out_7_1_r);
+delay delay_out_7_1_i (clk,7'd49,temp_b_5_3_i,out_7_1_i);
+delay delay_out_7_5_r (clk,7'd53,temp_b_5_4_r,out_7_5_r);
+delay delay_out_7_5_i (clk,7'd53,temp_b_5_4_i,out_7_5_i);
+
+delay delay_out_3_2_r (clk,7'd18,temp_b_5_5_r,out_3_2_r);
+delay delay_out_3_2_i (clk,7'd18,temp_b_5_5_i,out_3_2_i);
+delay delay_out_3_6_r (clk,7'd22,temp_b_5_6_r,out_3_6_r);
+delay delay_out_3_6_i (clk,7'd22,temp_b_5_6_i,out_3_6_i);
+delay delay_out_7_2_r (clk,7'd50,temp_b_5_7_r,out_7_2_r);
+delay delay_out_7_2_i (clk,7'd50,temp_b_5_7_i,out_7_2_i);
+delay delay_out_7_6_r (clk,7'd54,temp_b_5_8_r,out_7_6_r);
+delay delay_out_7_6_i (clk,7'd54,temp_b_5_8_i,out_7_6_i);
+
+delay delay_out_3_3_r (clk,7'd19,temp_b_6_1_r,out_3_3_r);
+delay delay_out_3_3_i (clk,7'd19,temp_b_6_1_i,out_3_3_i);
+delay delay_out_3_7_r (clk,7'd23,temp_b_6_2_r,out_3_7_r);
+delay delay_out_3_7_i (clk,7'd23,temp_b_6_2_i,out_3_7_i);
+delay delay_out_7_3_r (clk,7'd51,temp_b_6_3_r,out_7_3_r);
+delay delay_out_7_3_i (clk,7'd51,temp_b_6_3_i,out_7_3_i);
+delay delay_out_7_7_r (clk,7'd55,temp_b_6_4_r,out_7_7_r);
+delay delay_out_7_7_i (clk,7'd55,temp_b_6_4_i,out_7_7_i);
+
+delay delay_out_3_4_r (clk,7'd20,temp_b_6_5_r,out_3_4_r);
+delay delay_out_3_4_i (clk,7'd20,temp_b_6_5_i,out_3_4_i);
+delay delay_out_3_8_r (clk,7'd24,temp_b_6_6_r,out_3_8_r);
+delay delay_out_3_8_i (clk,7'd24,temp_b_6_6_i,out_3_8_i);
+delay delay_out_7_4_r (clk,7'd52,temp_b_6_7_r,out_7_4_r);
+delay delay_out_7_4_i (clk,7'd52,temp_b_6_7_i,out_7_4_i);
+delay delay_out_7_8_r (clk,7'd56,temp_b_6_8_r,out_7_8_r);
+delay delay_out_7_8_i (clk,7'd56,temp_b_6_8_i,out_7_8_i);
+
+delay delay_out_4_1_r (clk,7'd25,temp_b_7_1_r,out_4_1_r);
+delay delay_out_4_1_i (clk,7'd25,temp_b_7_1_i,out_4_1_i);
+delay delay_out_4_5_r (clk,7'd29,temp_b_7_2_r,out_4_5_r);
+delay delay_out_4_5_i (clk,7'd29,temp_b_7_2_i,out_4_5_i);
+delay delay_out_8_1_r (clk,7'd57,temp_b_7_3_r,out_8_1_r);
+delay delay_out_8_1_i (clk,7'd57,temp_b_7_3_i,out_8_1_i);
+delay delay_out_8_5_r (clk,7'd61,temp_b_7_4_r,out_8_5_r);
+delay delay_out_8_5_i (clk,7'd61,temp_b_7_4_i,out_8_5_i);
+
+delay delay_out_4_2_r (clk,7'd26,temp_b_7_5_r,out_4_2_r);
+delay delay_out_4_2_i (clk,7'd26,temp_b_7_5_i,out_4_2_i);
+delay delay_out_4_6_r (clk,7'd30,temp_b_7_6_r,out_4_6_r);
+delay delay_out_4_6_i (clk,7'd30,temp_b_7_6_i,out_4_6_i);
+delay delay_out_8_2_r (clk,7'd58,temp_b_7_7_r,out_8_2_r);
+delay delay_out_8_2_i (clk,7'd58,temp_b_7_7_i,out_8_2_i);
+delay delay_out_8_6_r (clk,7'd62,temp_b_7_8_r,out_8_6_r);
+delay delay_out_8_6_i (clk,7'd62,temp_b_7_8_i,out_8_6_i);
+
+delay delay_out_4_3_r (clk,7'd27,temp_b_8_1_r,out_4_3_r);
+delay delay_out_4_3_i (clk,7'd27,temp_b_8_1_i,out_4_3_i);
+delay delay_out_4_7_r (clk,7'd31,temp_b_8_2_r,out_4_7_r);
+delay delay_out_4_7_i (clk,7'd31,temp_b_8_2_i,out_4_7_i);
+delay delay_out_8_3_r (clk,7'd59,temp_b_8_3_r,out_8_3_r);
+delay delay_out_8_3_i (clk,7'd59,temp_b_8_3_i,out_8_3_i);
+delay delay_out_8_7_r (clk,7'd63,temp_b_8_4_r,out_8_7_r);
+delay delay_out_8_7_i (clk,7'd63,temp_b_8_4_i,out_8_7_i);
+
+delay delay_out_4_4_r (clk,7'd28,temp_b_8_5_r,out_4_4_r);
+delay delay_out_4_4_i (clk,7'd28,temp_b_8_5_i,out_4_4_i);
+delay delay_out_4_8_r (clk,7'd32,temp_b_8_6_r,out_4_8_r);
+delay delay_out_4_8_i (clk,7'd32,temp_b_8_6_i,out_4_8_i);
+delay delay_out_8_4_r (clk,7'd60,temp_b_8_7_r,out_8_4_r);
+delay delay_out_8_4_i (clk,7'd60,temp_b_8_7_i,out_8_4_i);
+delay delay_out_8_8_r (clk,7'd64,temp_b_8_8_r,out_8_8_r);
+delay delay_out_8_8_i (clk,7'd64,temp_b_8_8_i,out_8_8_i);
+
+/*********************out => mux => out_r,out_i 1clock**************************/
+mux mux_r (clk,out_1_1_r,out_1_2_r,out_1_3_r,out_1_4_r,out_1_5_r,out_1_6_r,out_1_7_r,out_1_8_r,out_2_1_r,out_2_2_r,out_2_3_r,out_2_4_r,out_2_5_r,out_2_6_r,out_2_7_r,out_2_8_r,out_3_1_r,out_3_2_r,out_3_3_r,out_3_4_r,out_3_5_r,out_3_6_r,out_3_7_r,out_3_8_r,out_4_1_r,out_4_2_r,out_4_3_r,out_4_4_r,out_4_5_r,out_4_6_r,out_4_7_r,out_4_8_r,out_5_1_r,out_5_2_r,out_5_3_r,out_5_4_r,out_5_5_r,out_5_6_r,out_5_7_r,out_5_8_r,out_6_1_r,out_6_2_r,out_6_3_r,out_6_4_r,out_6_5_r,out_6_6_r,out_6_7_r,out_6_8_r,out_7_1_r,out_7_2_r,out_7_3_r,out_7_4_r,out_7_5_r,out_7_6_r,out_7_7_r,out_7_8_r,out_8_1_r,out_8_2_r,out_8_3_r,out_8_4_r,out_8_5_r,out_8_6_r,out_8_7_r,out_8_8_r,out_r);
+
+mux mux_i (clk,out_1_1_i,out_1_2_i,out_1_3_i,out_1_4_i,out_1_5_i,out_1_6_i,out_1_7_i,out_1_8_i,out_2_1_i,out_2_2_i,out_2_3_i,out_2_4_i,out_2_5_i,out_2_6_i,out_2_7_i,out_2_8_i,out_3_1_i,out_3_2_i,out_3_3_i,out_3_4_i,out_3_5_i,out_3_6_i,out_3_7_i,out_3_8_i,out_4_1_i,out_4_2_i,out_4_3_i,out_4_4_i,out_4_5_i,out_4_6_i,out_4_7_i,out_4_8_i,out_5_1_i,out_5_2_i,out_5_3_i,out_5_4_i,out_5_5_i,out_5_6_i,out_5_7_i,out_5_8_i,out_6_1_i,out_6_2_i,out_6_3_i,out_6_4_i,out_6_5_i,out_6_6_i,out_6_7_i,out_6_8_i,out_7_1_i,out_7_2_i,out_7_3_i,out_7_4_i,out_7_5_i,out_7_6_i,out_7_7_i,out_7_8_i,out_8_1_i,out_8_2_i,out_8_3_i,out_8_4_i,out_8_5_i,out_8_6_i,out_8_7_i,out_8_8_i,out_i);
+
+/*********************W_selecter**************************/
+/*********************input output**************************/
+module W_selecter(
+input wire [`SelBus]		sel,
+output reg signed [`WBus]		W_real_1_2,
+output reg signed [`WBus]		W_imag_1_2,
+output reg signed [`WBus]		W_real_1_3,
+output reg signed [`WBus]		W_imag_1_3,
+output reg signed [`WBus]		W_real_1_4,
+output reg signed [`WBus]		W_imag_1_4,
+output reg signed [`WBus]		W_real_2_2,
+output reg signed [`WBus]		W_imag_2_2,
+output reg signed [`WBus]		W_real_2_3,
+output reg signed [`WBus]		W_imag_2_3,
+output reg signed [`WBus]		W_real_2_4,
+output reg signed [`WBus]		W_imag_2_4,
+output reg signed [`WBus]		W_real_3_2,
+output reg signed [`WBus]		W_imag_3_2,
+output reg signed [`WBus]		W_real_3_3,
+output reg signed [`WBus]		W_imag_3_3,
+output reg signed [`WBus]		W_real_3_4,
+output reg signed [`WBus]		W_imag_3_4,
+output reg signed [`WBus]		W_real_4_2,
+output reg signed [`WBus]		W_imag_4_2,
+output reg signed [`WBus]		W_real_4_3,
+output reg signed [`WBus]		W_imag_4_3,
+output reg signed [`WBus]		W_real_4_4,
+output reg signed [`WBus]		W_imag_4_4,
+output reg signed [`WBus]		W_real_5_2,
+output reg signed [`WBus]		W_imag_5_2,
+output reg signed [`WBus]		W_real_5_3,
+output reg signed [`WBus]		W_imag_5_3,
+output reg signed [`WBus]		W_real_5_4,
+output reg signed [`WBus]		W_imag_5_4,
+output reg signed [`WBus]		W_real_6_2,
+output reg signed [`WBus]		W_imag_6_2,
+output reg signed [`WBus]		W_real_6_3,
+output reg signed [`WBus]		W_imag_6_3,
+output reg signed [`WBus]		W_real_6_4,
+output reg signed [`WBus]		W_imag_6_4,
+output reg signed [`WBus]		W_real_7_2,
+output reg signed [`WBus]		W_imag_7_2,
+output reg signed [`WBus]		W_real_7_3,
+output reg signed [`WBus]		W_imag_7_3,
+output reg signed [`WBus]		W_real_7_4,
+output reg signed [`WBus]		W_imag_7_4,
+output reg signed [`WBus]		W_real_8_2,
+output reg signed [`WBus]		W_imag_8_2,
+output reg signed [`WBus]		W_real_8_3,
+output reg signed [`WBus]		W_imag_8_3,
+output reg signed [`WBus]		W_real_8_4,
+output reg signed [`WBus]		W_imag_8_4,
+output reg signed [`WBus]		W_real_9_2,
+output reg signed [`WBus]		W_imag_9_2,
+output reg signed [`WBus]		W_real_9_3,
+output reg signed [`WBus]		W_imag_9_3,
+output reg signed [`WBus]		W_real_9_4,
+output reg signed [`WBus]		W_imag_9_4,
+output reg signed [`WBus]		W_real_10_2,
+output reg signed [`WBus]		W_imag_10_2,
+output reg signed [`WBus]		W_real_10_3,
+output reg signed [`WBus]		W_imag_10_3,
+output reg signed [`WBus]		W_real_10_4,
+output reg signed [`WBus]		W_imag_10_4,
+output reg signed [`WBus]		W_real_11_2,
+output reg signed [`WBus]		W_imag_11_2,
+output reg signed [`WBus]		W_real_11_3,
+output reg signed [`WBus]		W_imag_11_3,
+output reg signed [`WBus]		W_real_11_4,
+output reg signed [`WBus]		W_imag_11_4,
+output reg signed [`WBus]		W_real_12_2,
+output reg signed [`WBus]		W_imag_12_2,
+output reg signed [`WBus]		W_real_12_3,
+output reg signed [`WBus]		W_imag_12_3,
+output reg signed [`WBus]		W_real_12_4,
+output reg signed [`WBus]		W_imag_12_4,
+output reg signed [`WBus]		W_real_13_2,
+output reg signed [`WBus]		W_imag_13_2,
+output reg signed [`WBus]		W_real_13_3,
+output reg signed [`WBus]		W_imag_13_3,
+output reg signed [`WBus]		W_real_13_4,
+output reg signed [`WBus]		W_imag_13_4,
+output reg signed [`WBus]		W_real_14_2,
+output reg signed [`WBus]		W_imag_14_2,
+output reg signed [`WBus]		W_real_14_3,
+output reg signed [`WBus]		W_imag_14_3,
+output reg signed [`WBus]		W_real_14_4,
+output reg signed [`WBus]		W_imag_14_4,
+output reg signed [`WBus]		W_real_15_2,
+output reg signed [`WBus]		W_imag_15_2,
+output reg signed [`WBus]		W_real_15_3,
+output reg signed [`WBus]		W_imag_15_3,
+output reg signed [`WBus]		W_real_15_4,
+output reg signed [`WBus]		W_imag_15_4,
+output reg signed [`WBus]		W_real_16_2,
+output reg signed [`WBus]		W_imag_16_2,
+output reg signed [`WBus]		W_real_16_3,
+output reg signed [`WBus]		W_imag_16_3,
+output reg signed [`WBus]		W_real_16_4,
+output reg signed [`WBus]		W_imag_16_4);
+
+/*********************case**************************/
+always @(*) begin
+case(sel)
+3'd0	: begin
+W_real_1_2 <= `W0_real;
+W_imag_1_2 <= `W0_imag;
+W_real_1_3 <= `W0_real;
+W_imag_1_3 <= `W0_imag;
+W_real_1_4 <= `W0_real;
+W_imag_1_4 <= `W0_imag;
+
+
+W_real_2_2 <= `W0_real;
+W_imag_2_2 <= `W0_imag;
+W_real_2_3 <= `W0_real;
+W_imag_2_3 <= `W0_imag;
+W_real_2_4 <= `W0_real;
+W_imag_2_4 <= `W0_imag;
+
+
+W_real_3_2 <= `W0_real;
+W_imag_3_2 <= `W0_imag;
+W_real_3_3 <= `W0_real;
+W_imag_3_3 <= `W0_imag;
+W_real_3_4 <= `W0_real;
+W_imag_3_4 <= `W0_imag;
+
+
+W_real_4_2 <= `W0_real;
+W_imag_4_2 <= `W0_imag;
+W_real_4_3 <= `W0_real;
+W_imag_4_3 <= `W0_imag;
+W_real_4_4 <= `W0_real;
+W_imag_4_4 <= `W0_imag;
+
+
+W_real_5_2 <= `W0_real;
+W_imag_5_2 <= `W0_imag;
+W_real_5_3 <= `W0_real;
+W_imag_5_3 <= `W0_imag;
+W_real_5_4 <= `W0_real;
+W_imag_5_4 <= `W0_imag;
+
+
+W_real_6_2 <= `W0_real;
+W_imag_6_2 <= `W0_imag;
+W_real_6_3 <= `W0_real;
+W_imag_6_3 <= `W0_imag;
+W_real_6_4 <= `W0_real;
+W_imag_6_4 <= `W0_imag;
+
+
+W_real_7_2 <= `W0_real;
+W_imag_7_2 <= `W0_imag;
+W_real_7_3 <= `W0_real;
+W_imag_7_3 <= `W0_imag;
+W_real_7_4 <= `W0_real;
+W_imag_7_4 <= `W0_imag;
+
+
+W_real_8_2 <= `W0_real;
+W_imag_8_2 <= `W0_imag;
+W_real_8_3 <= `W0_real;
+W_imag_8_3 <= `W0_imag;
+W_real_8_4 <= `W0_real;
+W_imag_8_4 <= `W0_imag;
+
+
+W_real_9_2 <= `W0_real;
+W_imag_9_2 <= `W0_imag;
+W_real_9_3 <= `W0_real;
+W_imag_9_3 <= `W0_imag;
+W_real_9_4 <= `W0_real;
+W_imag_9_4 <= `W0_imag;
+
+
+W_real_10_2 <= `W0_real;
+W_imag_10_2 <= `W0_imag;
+W_real_10_3 <= `W0_real;
+W_imag_10_3 <= `W0_imag;
+W_real_10_4 <= `W0_real;
+W_imag_10_4 <= `W0_imag;
+
+
+W_real_11_2 <= `W0_real;
+W_imag_11_2 <= `W0_imag;
+W_real_11_3 <= `W0_real;
+W_imag_11_3 <= `W0_imag;
+W_real_11_4 <= `W0_real;
+W_imag_11_4 <= `W0_imag;
+
+
+W_real_12_2 <= `W0_real;
+W_imag_12_2 <= `W0_imag;
+W_real_12_3 <= `W0_real;
+W_imag_12_3 <= `W0_imag;
+W_real_12_4 <= `W0_real;
+W_imag_12_4 <= `W0_imag;
+
+
+W_real_13_2 <= `W0_real;
+W_imag_13_2 <= `W0_imag;
+W_real_13_3 <= `W0_real;
+W_imag_13_3 <= `W0_imag;
+W_real_13_4 <= `W0_real;
+W_imag_13_4 <= `W0_imag;
+
+
+W_real_14_2 <= `W0_real;
+W_imag_14_2 <= `W0_imag;
+W_real_14_3 <= `W0_real;
+W_imag_14_3 <= `W0_imag;
+W_real_14_4 <= `W0_real;
+W_imag_14_4 <= `W0_imag;
+
+
+W_real_15_2 <= `W0_real;
+W_imag_15_2 <= `W0_imag;
+W_real_15_3 <= `W0_real;
+W_imag_15_3 <= `W0_imag;
+W_real_15_4 <= `W0_real;
+W_imag_15_4 <= `W0_imag;
+
+
+W_real_16_2 <= `W0_real;
+W_imag_16_2 <= `W0_imag;
+W_real_16_3 <= `W0_real;
+W_imag_16_3 <= `W0_imag;
+W_real_16_4 <= `W0_real;
+W_imag_16_4 <= `W0_imag;
+
+
+end
+
+3'd1	: begin
+W_real_1_2 <= `W0_real;
+W_imag_1_2 <= `W0_imag;
+W_real_1_3 <= `W0_real;
+W_imag_1_3 <= `W0_imag;
+W_real_1_4 <= `W0_real;
+W_imag_1_4 <= `W0_imag;
+
+
+W_real_2_2 <= `W2_real;
+W_imag_2_2 <= `W2_imag;
+W_real_2_3 <= `W0_real;
+W_imag_2_3 <= `W0_imag;
+W_real_2_4 <= `W2_real;
+W_imag_2_4 <= `W2_imag;
+
+
+W_real_3_2 <= `W0_real;
+W_imag_3_2 <= `W0_imag;
+W_real_3_3 <= `W2_real;
+W_imag_3_3 <= `W2_imag;
+W_real_3_4 <= `W2_real;
+W_imag_3_4 <= `W2_imag;
+
+
+W_real_4_2 <= `W2_real;
+W_imag_4_2 <= `W2_imag;
+W_real_4_3 <= `W2_real;
+W_imag_4_3 <= `W2_imag;
+W_real_4_4 <= `W4_real;
+W_imag_4_4 <= `W4_imag;
+
+
+W_real_5_2 <= `W0_real;
+W_imag_5_2 <= `W0_imag;
+W_real_5_3 <= `W0_real;
+W_imag_5_3 <= `W0_imag;
+W_real_5_4 <= `W0_real;
+W_imag_5_4 <= `W0_imag;
+
+
+W_real_6_2 <= `W2_real;
+W_imag_6_2 <= `W2_imag;
+W_real_6_3 <= `W0_real;
+W_imag_6_3 <= `W0_imag;
+W_real_6_4 <= `W2_real;
+W_imag_6_4 <= `W2_imag;
+
+
+W_real_7_2 <= `W0_real;
+W_imag_7_2 <= `W0_imag;
+W_real_7_3 <= `W2_real;
+W_imag_7_3 <= `W2_imag;
+W_real_7_4 <= `W2_real;
+W_imag_7_4 <= `W2_imag;
+
+
+W_real_8_2 <= `W2_real;
+W_imag_8_2 <= `W2_imag;
+W_real_8_3 <= `W2_real;
+W_imag_8_3 <= `W2_imag;
+W_real_8_4 <= `W4_real;
+W_imag_8_4 <= `W4_imag;
+
+
+W_real_9_2 <= `W0_real;
+W_imag_9_2 <= `W0_imag;
+W_real_9_3 <= `W0_real;
+W_imag_9_3 <= `W0_imag;
+W_real_9_4 <= `W0_real;
+W_imag_9_4 <= `W0_imag;
+
+
+W_real_10_2 <= `W2_real;
+W_imag_10_2 <= `W2_imag;
+W_real_10_3 <= `W0_real;
+W_imag_10_3 <= `W0_imag;
+W_real_10_4 <= `W2_real;
+W_imag_10_4 <= `W2_imag;
+
+
+W_real_11_2 <= `W0_real;
+W_imag_11_2 <= `W0_imag;
+W_real_11_3 <= `W2_real;
+W_imag_11_3 <= `W2_imag;
+W_real_11_4 <= `W2_real;
+W_imag_11_4 <= `W2_imag;
+
+
+W_real_12_2 <= `W2_real;
+W_imag_12_2 <= `W2_imag;
+W_real_12_3 <= `W2_real;
+W_imag_12_3 <= `W2_imag;
+W_real_12_4 <= `W4_real;
+W_imag_12_4 <= `W4_imag;
+
+
+W_real_13_2 <= `W0_real;
+W_imag_13_2 <= `W0_imag;
+W_real_13_3 <= `W0_real;
+W_imag_13_3 <= `W0_imag;
+W_real_13_4 <= `W0_real;
+W_imag_13_4 <= `W0_imag;
+
+
+W_real_14_2 <= `W2_real;
+W_imag_14_2 <= `W2_imag;
+W_real_14_3 <= `W0_real;
+W_imag_14_3 <= `W0_imag;
+W_real_14_4 <= `W2_real;
+W_imag_14_4 <= `W2_imag;
+
+
+W_real_15_2 <= `W0_real;
+W_imag_15_2 <= `W0_imag;
+W_real_15_3 <= `W2_real;
+W_imag_15_3 <= `W2_imag;
+W_real_15_4 <= `W2_real;
+W_imag_15_4 <= `W2_imag;
+
+
+W_real_16_2 <= `W2_real;
+W_imag_16_2 <= `W2_imag;
+W_real_16_3 <= `W2_real;
+W_imag_16_3 <= `W2_imag;
+W_real_16_4 <= `W4_real;
+W_imag_16_4 <= `W4_imag;
+
+
+end
+
+3'd2	: begin
+W_real_1_2 <= `W0_real;
+W_imag_1_2 <= `W0_imag;
+W_real_1_3 <= `W0_real;
+W_imag_1_3 <= `W0_imag;
+W_real_1_4 <= `W0_real;
+W_imag_1_4 <= `W0_imag;
+
+
+W_real_2_2 <= `W1_real;
+W_imag_2_2 <= `W1_imag;
+W_real_2_3 <= `W0_real;
+W_imag_2_3 <= `W0_imag;
+W_real_2_4 <= `W1_real;
+W_imag_2_4 <= `W1_imag;
+
+
+W_real_3_2 <= `W2_real;
+W_imag_3_2 <= `W2_imag;
+W_real_3_3 <= `W0_real;
+W_imag_3_3 <= `W0_imag;
+W_real_3_4 <= `W2_real;
+W_imag_3_4 <= `W2_imag;
+
+
+W_real_4_2 <= `W3_real;
+W_imag_4_2 <= `W3_imag;
+W_real_4_3 <= `W0_real;
+W_imag_4_3 <= `W0_imag;
+W_real_4_4 <= `W3_real;
+W_imag_4_4 <= `W3_imag;
+
+
+W_real_5_2 <= `W0_real;
+W_imag_5_2 <= `W0_imag;
+W_real_5_3 <= `W1_real;
+W_imag_5_3 <= `W1_imag;
+W_real_5_4 <= `W1_real;
+W_imag_5_4 <= `W1_imag;
+
+
+W_real_6_2 <= `W1_real;
+W_imag_6_2 <= `W1_imag;
+W_real_6_3 <= `W1_real;
+W_imag_6_3 <= `W1_imag;
+W_real_6_4 <= `W2_real;
+W_imag_6_4 <= `W2_imag;
+
+
+W_real_7_2 <= `W2_real;
+W_imag_7_2 <= `W2_imag;
+W_real_7_3 <= `W1_real;
+W_imag_7_3 <= `W1_imag;
+W_real_7_4 <= `W3_real;
+W_imag_7_4 <= `W3_imag;
+
+
+W_real_8_2 <= `W3_real;
+W_imag_8_2 <= `W3_imag;
+W_real_8_3 <= `W1_real;
+W_imag_8_3 <= `W1_imag;
+W_real_8_4 <= `W4_real;
+W_imag_8_4 <= `W4_imag;
+
+
+W_real_9_2 <= `W0_real;
+W_imag_9_2 <= `W0_imag;
+W_real_9_3 <= `W2_real;
+W_imag_9_3 <= `W2_imag;
+W_real_9_4 <= `W2_real;
+W_imag_9_4 <= `W2_imag;
+
+
+W_real_10_2 <= `W1_real;
+W_imag_10_2 <= `W1_imag;
+W_real_10_3 <= `W2_real;
+W_imag_10_3 <= `W2_imag;
+W_real_10_4 <= `W3_real;
+W_imag_10_4 <= `W3_imag;
+
+
+W_real_11_2 <= `W2_real;
+W_imag_11_2 <= `W2_imag;
+W_real_11_3 <= `W2_real;
+W_imag_11_3 <= `W2_imag;
+W_real_11_4 <= `W4_real;
+W_imag_11_4 <= `W4_imag;
+
+
+W_real_12_2 <= `W3_real;
+W_imag_12_2 <= `W3_imag;
+W_real_12_3 <= `W2_real;
+W_imag_12_3 <= `W2_imag;
+W_real_12_4 <= `W5_real;
+W_imag_12_4 <= `W5_imag;
+
+
+W_real_13_2 <= `W0_real;
+W_imag_13_2 <= `W0_imag;
+W_real_13_3 <= `W3_real;
+W_imag_13_3 <= `W3_imag;
+W_real_13_4 <= `W3_real;
+W_imag_13_4 <= `W3_imag;
+
+
+W_real_14_2 <= `W1_real;
+W_imag_14_2 <= `W1_imag;
+W_real_14_3 <= `W3_real;
+W_imag_14_3 <= `W3_imag;
+W_real_14_4 <= `W4_real;
+W_imag_14_4 <= `W4_imag;
+
+
+W_real_15_2 <= `W2_real;
+W_imag_15_2 <= `W2_imag;
+W_real_15_3 <= `W3_real;
+W_imag_15_3 <= `W3_imag;
+W_real_15_4 <= `W5_real;
+W_imag_15_4 <= `W5_imag;
+
+
+W_real_16_2 <= `W3_real;
+W_imag_16_2 <= `W3_imag;
+W_real_16_3 <= `W3_real;
+W_imag_16_3 <= `W3_imag;
+W_real_16_4 <= `W6_real;
+W_imag_16_4 <= `W6_imag;
+
+
+end
+
+default : begin
+W_real_1_2 <= `W0_real;
+W_imag_1_2 <= `W0_imag;
+W_real_1_3 <= `W0_real;
+W_imag_1_3 <= `W0_imag;
+W_real_1_4 <= `W0_real;
+W_imag_1_4 <= `W0_imag;
+W_real_2_2 <= `W0_real;
+W_imag_2_2 <= `W0_imag;
+W_real_2_3 <= `W0_real;
+W_imag_2_3 <= `W0_imag;
+W_real_2_4 <= `W0_real;
+W_imag_2_4 <= `W0_imag;
+W_real_3_2 <= `W0_real;
+W_imag_3_2 <= `W0_imag;
+W_real_3_3 <= `W0_real;
+W_imag_3_3 <= `W0_imag;
+W_real_3_4 <= `W0_real;
+W_imag_3_4 <= `W0_imag;
+W_real_4_2 <= `W0_real;
+W_imag_4_2 <= `W0_imag;
+W_real_4_3 <= `W0_real;
+W_imag_4_3 <= `W0_imag;
+W_real_4_4 <= `W0_real;
+W_imag_4_4 <= `W0_imag;
+W_real_5_2 <= `W0_real;
+W_imag_5_2 <= `W0_imag;
+W_real_5_3 <= `W0_real;
+W_imag_5_3 <= `W0_imag;
+W_real_5_4 <= `W0_real;
+W_imag_5_4 <= `W0_imag;
+W_real_6_2 <= `W0_real;
+W_imag_6_2 <= `W0_imag;
+W_real_6_3 <= `W0_real;
+W_imag_6_3 <= `W0_imag;
+W_real_6_4 <= `W0_real;
+W_imag_6_4 <= `W0_imag;
+W_real_7_2 <= `W0_real;
+W_imag_7_2 <= `W0_imag;
+W_real_7_3 <= `W0_real;
+W_imag_7_3 <= `W0_imag;
+W_real_7_4 <= `W0_real;
+W_imag_7_4 <= `W0_imag;
+W_real_8_2 <= `W0_real;
+W_imag_8_2 <= `W0_imag;
+W_real_8_3 <= `W0_real;
+W_imag_8_3 <= `W0_imag;
+W_real_8_4 <= `W0_real;
+W_imag_8_4 <= `W0_imag;
+W_real_9_2 <= `W0_real;
+W_imag_9_2 <= `W0_imag;
+W_real_9_3 <= `W0_real;
+W_imag_9_3 <= `W0_imag;
+W_real_9_4 <= `W0_real;
+W_imag_9_4 <= `W0_imag;
+W_real_10_2 <= `W0_real;
+W_imag_10_2 <= `W0_imag;
+W_real_10_3 <= `W0_real;
+W_imag_10_3 <= `W0_imag;
+W_real_10_4 <= `W0_real;
+W_imag_10_4 <= `W0_imag;
+W_real_11_2 <= `W0_real;
+W_imag_11_2 <= `W0_imag;
+W_real_11_3 <= `W0_real;
+W_imag_11_3 <= `W0_imag;
+W_real_11_4 <= `W0_real;
+W_imag_11_4 <= `W0_imag;
+W_real_12_2 <= `W0_real;
+W_imag_12_2 <= `W0_imag;
+W_real_12_3 <= `W0_real;
+W_imag_12_3 <= `W0_imag;
+W_real_12_4 <= `W0_real;
+W_imag_12_4 <= `W0_imag;
+W_real_13_2 <= `W0_real;
+W_imag_13_2 <= `W0_imag;
+W_real_13_3 <= `W0_real;
+W_imag_13_3 <= `W0_imag;
+W_real_13_4 <= `W0_real;
+W_imag_13_4 <= `W0_imag;
+W_real_14_2 <= `W0_real;
+W_imag_14_2 <= `W0_imag;
+W_real_14_3 <= `W0_real;
+W_imag_14_3 <= `W0_imag;
+W_real_14_4 <= `W0_real;
+W_imag_14_4 <= `W0_imag;
+W_real_15_2 <= `W0_real;
+W_imag_15_2 <= `W0_imag;
+W_real_15_3 <= `W0_real;
+W_imag_15_3 <= `W0_imag;
+W_real_15_4 <= `W0_real;
+W_imag_15_4 <= `W0_imag;
+W_real_16_2 <= `W0_real;
+W_imag_16_2 <= `W0_imag;
+W_real_16_3 <= `W0_real;
+W_imag_16_3 <= `W0_imag;
+W_real_16_4 <= `W0_real;
+W_imag_16_4 <= `W0_imag;
+
+end
+endcase
+end
+endmodule
+
+/*********************W_selecter_control**************************/
+7'd1 : sel <= 3'd0;
+7'd2 : sel <= 3'd0;
+7'd3 : sel <= 3'd0;
+7'd4 : sel <= 3'd0;
+7'd5 : sel <= 3'd0;
+7'd6 : sel <= 3'd0;
+7'd7 : sel <= 3'd0;
+7'd8 : sel <= 3'd0;
+7'd9 : sel <= 3'd0;
+7'd10 : sel <= 3'd0;
+7'd11 : sel <= 3'd0;
+7'd12 : sel <= 3'd0;
+7'd13 : sel <= 3'd0;
+7'd14 : sel <= 3'd0;
+7'd15 : sel <= 3'd0;
+7'd16 : sel <= 3'd0;
+7'd17 : sel <= 3'd0;
+7'd18 : sel <= 3'd0;
+7'd19 : sel <= 3'd0;
+7'd20 : sel <= 3'd0;
+7'd21 : sel <= 3'd0;
+7'd22 : sel <= 3'd0;
+7'd23 : sel <= 3'd0;
+7'd24 : sel <= 3'd0;
+7'd25 : sel <= 3'd0;
+7'd26 : sel <= 3'd0;
+7'd27 : sel <= 3'd0;
+7'd28 : sel <= 3'd0;
+7'd29 : sel <= 3'd0;
+7'd30 : sel <= 3'd0;
+7'd31 : sel <= 3'd0;
+7'd32 : sel <= 3'd0;
+7'd33 : sel <= 3'd0;
+7'd34 : sel <= 3'd0;
+7'd35 : sel <= 3'd0;
+7'd36 : sel <= 3'd0;
+7'd37 : sel <= 3'd0;
+7'd38 : sel <= 3'd0;
+7'd39 : sel <= 3'd0;
+7'd40 : sel <= 3'd0;
+7'd41 : sel <= 3'd0;
+7'd42 : sel <= 3'd0;
+7'd43 : sel <= 3'd0;
+7'd44 : sel <= 3'd0;
+7'd45 : sel <= 3'd0;
+7'd46 : sel <= 3'd0;
+7'd47 : sel <= 3'd0;
+7'd48 : sel <= 3'd0;
+7'd49 : sel <= 3'd0;
+7'd50 : sel <= 3'd0;
+7'd51 : sel <= 3'd0;
+7'd52 : sel <= 3'd0;
+7'd53 : sel <= 3'd0;
+7'd54 : sel <= 3'd0;
+7'd55 : sel <= 3'd0;
+7'd56 : sel <= 3'd0;
+7'd57 : sel <= 3'd0;
+7'd58 : sel <= 3'd0;
+7'd59 : sel <= 3'd0;
+7'd60 : sel <= 3'd0;
+7'd61 : sel <= 3'd0;
+7'd62 : sel <= 3'd0;
+7'd63 : sel <= 3'd0;
+7'd64 : sel <= 3'd0;
+7'd65 : sel <= 3'd0;
+7'd66 : sel <= 3'd0;
+7'd67 : sel <= 3'd1;
+7'd68 : sel <= 3'd1;
+7'd69 : sel <= 3'd1;
+7'd70 : sel <= 3'd2;
+7'd71 : sel <= 3'd2;
+7'd72 : sel <= 3'd2;
+
+/*********************W_selecter_top**************************/
+output wire signed [`WBus]		W_real_1_2,
+output wire signed [`WBus]		W_imag_1_2,
+output wire signed [`WBus]		W_real_1_3,
+output wire signed [`WBus]		W_imag_1_3,
+output wire signed [`WBus]		W_real_1_4,
+output wire signed [`WBus]		W_imag_1_4,
+output wire signed [`WBus]		W_real_2_2,
+output wire signed [`WBus]		W_imag_2_2,
+output wire signed [`WBus]		W_real_2_3,
+output wire signed [`WBus]		W_imag_2_3,
+output wire signed [`WBus]		W_real_2_4,
+output wire signed [`WBus]		W_imag_2_4,
+output wire signed [`WBus]		W_real_3_2,
+output wire signed [`WBus]		W_imag_3_2,
+output wire signed [`WBus]		W_real_3_3,
+output wire signed [`WBus]		W_imag_3_3,
+output wire signed [`WBus]		W_real_3_4,
+output wire signed [`WBus]		W_imag_3_4,
+output wire signed [`WBus]		W_real_4_2,
+output wire signed [`WBus]		W_imag_4_2,
+output wire signed [`WBus]		W_real_4_3,
+output wire signed [`WBus]		W_imag_4_3,
+output wire signed [`WBus]		W_real_4_4,
+output wire signed [`WBus]		W_imag_4_4,
+output wire signed [`WBus]		W_real_5_2,
+output wire signed [`WBus]		W_imag_5_2,
+output wire signed [`WBus]		W_real_5_3,
+output wire signed [`WBus]		W_imag_5_3,
+output wire signed [`WBus]		W_real_5_4,
+output wire signed [`WBus]		W_imag_5_4,
+output wire signed [`WBus]		W_real_6_2,
+output wire signed [`WBus]		W_imag_6_2,
+output wire signed [`WBus]		W_real_6_3,
+output wire signed [`WBus]		W_imag_6_3,
+output wire signed [`WBus]		W_real_6_4,
+output wire signed [`WBus]		W_imag_6_4,
+output wire signed [`WBus]		W_real_7_2,
+output wire signed [`WBus]		W_imag_7_2,
+output wire signed [`WBus]		W_real_7_3,
+output wire signed [`WBus]		W_imag_7_3,
+output wire signed [`WBus]		W_real_7_4,
+output wire signed [`WBus]		W_imag_7_4,
+output wire signed [`WBus]		W_real_8_2,
+output wire signed [`WBus]		W_imag_8_2,
+output wire signed [`WBus]		W_real_8_3,
+output wire signed [`WBus]		W_imag_8_3,
+output wire signed [`WBus]		W_real_8_4,
+output wire signed [`WBus]		W_imag_8_4,
+output wire signed [`WBus]		W_real_9_2,
+output wire signed [`WBus]		W_imag_9_2,
+output wire signed [`WBus]		W_real_9_3,
+output wire signed [`WBus]		W_imag_9_3,
+output wire signed [`WBus]		W_real_9_4,
+output wire signed [`WBus]		W_imag_9_4,
+output wire signed [`WBus]		W_real_10_2,
+output wire signed [`WBus]		W_imag_10_2,
+output wire signed [`WBus]		W_real_10_3,
+output wire signed [`WBus]		W_imag_10_3,
+output wire signed [`WBus]		W_real_10_4,
+output wire signed [`WBus]		W_imag_10_4,
+output wire signed [`WBus]		W_real_11_2,
+output wire signed [`WBus]		W_imag_11_2,
+output wire signed [`WBus]		W_real_11_3,
+output wire signed [`WBus]		W_imag_11_3,
+output wire signed [`WBus]		W_real_11_4,
+output wire signed [`WBus]		W_imag_11_4,
+output wire signed [`WBus]		W_real_12_2,
+output wire signed [`WBus]		W_imag_12_2,
+output wire signed [`WBus]		W_real_12_3,
+output wire signed [`WBus]		W_imag_12_3,
+output wire signed [`WBus]		W_real_12_4,
+output wire signed [`WBus]		W_imag_12_4,
+output wire signed [`WBus]		W_real_13_2,
+output wire signed [`WBus]		W_imag_13_2,
+output wire signed [`WBus]		W_real_13_3,
+output wire signed [`WBus]		W_imag_13_3,
+output wire signed [`WBus]		W_real_13_4,
+output wire signed [`WBus]		W_imag_13_4,
+output wire signed [`WBus]		W_real_14_2,
+output wire signed [`WBus]		W_imag_14_2,
+output wire signed [`WBus]		W_real_14_3,
+output wire signed [`WBus]		W_imag_14_3,
+output wire signed [`WBus]		W_real_14_4,
+output wire signed [`WBus]		W_imag_14_4,
+output wire signed [`WBus]		W_real_15_2,
+output wire signed [`WBus]		W_imag_15_2,
+output wire signed [`WBus]		W_real_15_3,
+output wire signed [`WBus]		W_imag_15_3,
+output wire signed [`WBus]		W_real_15_4,
+output wire signed [`WBus]		W_imag_15_4,
+output wire signed [`WBus]		W_real_16_2,
+output wire signed [`WBus]		W_imag_16_2,
+output wire signed [`WBus]		W_real_16_3,
+output wire signed [`WBus]		W_imag_16_3,
+output wire signed [`WBus]		W_real_16_4,
+output wire signed [`WBus]		W_imag_16_4);
+
+W_selecter W_selecter (sel,W_real_1_2,W_imag_1_2,W_real_1_3,W_imag_1_3,W_real_1_4,W_imag_1_4,W_real_2_2,W_imag_2_2,W_real_2_3,W_imag_2_3,W_real_2_4,W_imag_2_4,W_real_3_2,W_imag_3_2,W_real_3_3,W_imag_3_3,W_real_3_4,W_imag_3_4,W_real_4_2,W_imag_4_2,W_real_4_3,W_imag_4_3,W_real_4_4,W_imag_4_4,W_real_5_2,W_imag_5_2,W_real_5_3,W_imag_5_3,W_real_5_4,W_imag_5_4,W_real_6_2,W_imag_6_2,W_real_6_3,W_imag_6_3,W_real_6_4,W_imag_6_4,W_real_7_2,W_imag_7_2,W_real_7_3,W_imag_7_3,W_real_7_4,W_imag_7_4,W_real_8_2,W_imag_8_2,W_real_8_3,W_imag_8_3,W_real_8_4,W_imag_8_4,W_real_9_2,W_imag_9_2,W_real_9_3,W_imag_9_3,W_real_9_4,W_imag_9_4,W_real_10_2,W_imag_10_2,W_real_10_3,W_imag_10_3,W_real_10_4,W_imag_10_4,W_real_11_2,W_imag_11_2,W_real_11_3,W_imag_11_3,W_real_11_4,W_imag_11_4,W_real_12_2,W_imag_12_2,W_real_12_3,W_imag_12_3,W_real_12_4,W_imag_12_4,W_real_13_2,W_imag_13_2,W_real_13_3,W_imag_13_3,W_real_13_4,W_imag_13_4,W_real_14_2,W_imag_14_2,W_real_14_3,W_imag_14_3,W_real_14_4,W_imag_14_4,W_real_15_2,W_imag_15_2,W_real_15_3,W_imag_15_3,W_real_15_4,W_imag_15_4,W_real_16_2,W_imag_16_2,W_real_16_3,W_imag_16_3,W_real_16_4,W_imag_16_4);
+
+/*********************input_selecter**************************/
+/*********************original input**************************/
+input wire signed [`InBus]		in_1_1_r,
+input wire signed [`InBus]		in_1_1_i,
+input wire signed [`InBus]		in_1_2_r,
+input wire signed [`InBus]		in_1_2_i,
+input wire signed [`InBus]		in_1_3_r,
+input wire signed [`InBus]		in_1_3_i,
+input wire signed [`InBus]		in_1_4_r,
+input wire signed [`InBus]		in_1_4_i,
+input wire signed [`InBus]		in_1_5_r,
+input wire signed [`InBus]		in_1_5_i,
+input wire signed [`InBus]		in_1_6_r,
+input wire signed [`InBus]		in_1_6_i,
+input wire signed [`InBus]		in_1_7_r,
+input wire signed [`InBus]		in_1_7_i,
+input wire signed [`InBus]		in_1_8_r,
+input wire signed [`InBus]		in_1_8_i,
+input wire signed [`InBus]		in_2_1_r,
+input wire signed [`InBus]		in_2_1_i,
+input wire signed [`InBus]		in_2_2_r,
+input wire signed [`InBus]		in_2_2_i,
+input wire signed [`InBus]		in_2_3_r,
+input wire signed [`InBus]		in_2_3_i,
+input wire signed [`InBus]		in_2_4_r,
+input wire signed [`InBus]		in_2_4_i,
+input wire signed [`InBus]		in_2_5_r,
+input wire signed [`InBus]		in_2_5_i,
+input wire signed [`InBus]		in_2_6_r,
+input wire signed [`InBus]		in_2_6_i,
+input wire signed [`InBus]		in_2_7_r,
+input wire signed [`InBus]		in_2_7_i,
+input wire signed [`InBus]		in_2_8_r,
+input wire signed [`InBus]		in_2_8_i,
+input wire signed [`InBus]		in_3_1_r,
+input wire signed [`InBus]		in_3_1_i,
+input wire signed [`InBus]		in_3_2_r,
+input wire signed [`InBus]		in_3_2_i,
+input wire signed [`InBus]		in_3_3_r,
+input wire signed [`InBus]		in_3_3_i,
+input wire signed [`InBus]		in_3_4_r,
+input wire signed [`InBus]		in_3_4_i,
+input wire signed [`InBus]		in_3_5_r,
+input wire signed [`InBus]		in_3_5_i,
+input wire signed [`InBus]		in_3_6_r,
+input wire signed [`InBus]		in_3_6_i,
+input wire signed [`InBus]		in_3_7_r,
+input wire signed [`InBus]		in_3_7_i,
+input wire signed [`InBus]		in_3_8_r,
+input wire signed [`InBus]		in_3_8_i,
+input wire signed [`InBus]		in_4_1_r,
+input wire signed [`InBus]		in_4_1_i,
+input wire signed [`InBus]		in_4_2_r,
+input wire signed [`InBus]		in_4_2_i,
+input wire signed [`InBus]		in_4_3_r,
+input wire signed [`InBus]		in_4_3_i,
+input wire signed [`InBus]		in_4_4_r,
+input wire signed [`InBus]		in_4_4_i,
+input wire signed [`InBus]		in_4_5_r,
+input wire signed [`InBus]		in_4_5_i,
+input wire signed [`InBus]		in_4_6_r,
+input wire signed [`InBus]		in_4_6_i,
+input wire signed [`InBus]		in_4_7_r,
+input wire signed [`InBus]		in_4_7_i,
+input wire signed [`InBus]		in_4_8_r,
+input wire signed [`InBus]		in_4_8_i,
+input wire signed [`InBus]		in_5_1_r,
+input wire signed [`InBus]		in_5_1_i,
+input wire signed [`InBus]		in_5_2_r,
+input wire signed [`InBus]		in_5_2_i,
+input wire signed [`InBus]		in_5_3_r,
+input wire signed [`InBus]		in_5_3_i,
+input wire signed [`InBus]		in_5_4_r,
+input wire signed [`InBus]		in_5_4_i,
+input wire signed [`InBus]		in_5_5_r,
+input wire signed [`InBus]		in_5_5_i,
+input wire signed [`InBus]		in_5_6_r,
+input wire signed [`InBus]		in_5_6_i,
+input wire signed [`InBus]		in_5_7_r,
+input wire signed [`InBus]		in_5_7_i,
+input wire signed [`InBus]		in_5_8_r,
+input wire signed [`InBus]		in_5_8_i,
+input wire signed [`InBus]		in_6_1_r,
+input wire signed [`InBus]		in_6_1_i,
+input wire signed [`InBus]		in_6_2_r,
+input wire signed [`InBus]		in_6_2_i,
+input wire signed [`InBus]		in_6_3_r,
+input wire signed [`InBus]		in_6_3_i,
+input wire signed [`InBus]		in_6_4_r,
+input wire signed [`InBus]		in_6_4_i,
+input wire signed [`InBus]		in_6_5_r,
+input wire signed [`InBus]		in_6_5_i,
+input wire signed [`InBus]		in_6_6_r,
+input wire signed [`InBus]		in_6_6_i,
+input wire signed [`InBus]		in_6_7_r,
+input wire signed [`InBus]		in_6_7_i,
+input wire signed [`InBus]		in_6_8_r,
+input wire signed [`InBus]		in_6_8_i,
+input wire signed [`InBus]		in_7_1_r,
+input wire signed [`InBus]		in_7_1_i,
+input wire signed [`InBus]		in_7_2_r,
+input wire signed [`InBus]		in_7_2_i,
+input wire signed [`InBus]		in_7_3_r,
+input wire signed [`InBus]		in_7_3_i,
+input wire signed [`InBus]		in_7_4_r,
+input wire signed [`InBus]		in_7_4_i,
+input wire signed [`InBus]		in_7_5_r,
+input wire signed [`InBus]		in_7_5_i,
+input wire signed [`InBus]		in_7_6_r,
+input wire signed [`InBus]		in_7_6_i,
+input wire signed [`InBus]		in_7_7_r,
+input wire signed [`InBus]		in_7_7_i,
+input wire signed [`InBus]		in_7_8_r,
+input wire signed [`InBus]		in_7_8_i,
+input wire signed [`InBus]		in_8_1_r,
+input wire signed [`InBus]		in_8_1_i,
+input wire signed [`InBus]		in_8_2_r,
+input wire signed [`InBus]		in_8_2_i,
+input wire signed [`InBus]		in_8_3_r,
+input wire signed [`InBus]		in_8_3_i,
+input wire signed [`InBus]		in_8_4_r,
+input wire signed [`InBus]		in_8_4_i,
+input wire signed [`InBus]		in_8_5_r,
+input wire signed [`InBus]		in_8_5_i,
+input wire signed [`InBus]		in_8_6_r,
+input wire signed [`InBus]		in_8_6_i,
+input wire signed [`InBus]		in_8_7_r,
+input wire signed [`InBus]		in_8_7_i,
+input wire signed [`InBus]		in_8_8_r,
+input wire signed [`InBus]		in_8_8_i,
+
+/*********************output_selecter => input_selecter**************************/
+input wire signed [`InBus]		rt_in_1_1_r,
+input wire signed [`InBus]		rt_in_1_1_i,
+input wire signed [`InBus]		rt_in_1_2_r,
+input wire signed [`InBus]		rt_in_1_2_i,
+input wire signed [`InBus]		rt_in_1_3_r,
+input wire signed [`InBus]		rt_in_1_3_i,
+input wire signed [`InBus]		rt_in_1_4_r,
+input wire signed [`InBus]		rt_in_1_4_i,
+input wire signed [`InBus]		rt_in_1_5_r,
+input wire signed [`InBus]		rt_in_1_5_i,
+input wire signed [`InBus]		rt_in_1_6_r,
+input wire signed [`InBus]		rt_in_1_6_i,
+input wire signed [`InBus]		rt_in_1_7_r,
+input wire signed [`InBus]		rt_in_1_7_i,
+input wire signed [`InBus]		rt_in_1_8_r,
+input wire signed [`InBus]		rt_in_1_8_i,
+input wire signed [`InBus]		rt_in_2_1_r,
+input wire signed [`InBus]		rt_in_2_1_i,
+input wire signed [`InBus]		rt_in_2_2_r,
+input wire signed [`InBus]		rt_in_2_2_i,
+input wire signed [`InBus]		rt_in_2_3_r,
+input wire signed [`InBus]		rt_in_2_3_i,
+input wire signed [`InBus]		rt_in_2_4_r,
+input wire signed [`InBus]		rt_in_2_4_i,
+input wire signed [`InBus]		rt_in_2_5_r,
+input wire signed [`InBus]		rt_in_2_5_i,
+input wire signed [`InBus]		rt_in_2_6_r,
+input wire signed [`InBus]		rt_in_2_6_i,
+input wire signed [`InBus]		rt_in_2_7_r,
+input wire signed [`InBus]		rt_in_2_7_i,
+input wire signed [`InBus]		rt_in_2_8_r,
+input wire signed [`InBus]		rt_in_2_8_i,
+input wire signed [`InBus]		rt_in_3_1_r,
+input wire signed [`InBus]		rt_in_3_1_i,
+input wire signed [`InBus]		rt_in_3_2_r,
+input wire signed [`InBus]		rt_in_3_2_i,
+input wire signed [`InBus]		rt_in_3_3_r,
+input wire signed [`InBus]		rt_in_3_3_i,
+input wire signed [`InBus]		rt_in_3_4_r,
+input wire signed [`InBus]		rt_in_3_4_i,
+input wire signed [`InBus]		rt_in_3_5_r,
+input wire signed [`InBus]		rt_in_3_5_i,
+input wire signed [`InBus]		rt_in_3_6_r,
+input wire signed [`InBus]		rt_in_3_6_i,
+input wire signed [`InBus]		rt_in_3_7_r,
+input wire signed [`InBus]		rt_in_3_7_i,
+input wire signed [`InBus]		rt_in_3_8_r,
+input wire signed [`InBus]		rt_in_3_8_i,
+input wire signed [`InBus]		rt_in_4_1_r,
+input wire signed [`InBus]		rt_in_4_1_i,
+input wire signed [`InBus]		rt_in_4_2_r,
+input wire signed [`InBus]		rt_in_4_2_i,
+input wire signed [`InBus]		rt_in_4_3_r,
+input wire signed [`InBus]		rt_in_4_3_i,
+input wire signed [`InBus]		rt_in_4_4_r,
+input wire signed [`InBus]		rt_in_4_4_i,
+input wire signed [`InBus]		rt_in_4_5_r,
+input wire signed [`InBus]		rt_in_4_5_i,
+input wire signed [`InBus]		rt_in_4_6_r,
+input wire signed [`InBus]		rt_in_4_6_i,
+input wire signed [`InBus]		rt_in_4_7_r,
+input wire signed [`InBus]		rt_in_4_7_i,
+input wire signed [`InBus]		rt_in_4_8_r,
+input wire signed [`InBus]		rt_in_4_8_i,
+input wire signed [`InBus]		rt_in_5_1_r,
+input wire signed [`InBus]		rt_in_5_1_i,
+input wire signed [`InBus]		rt_in_5_2_r,
+input wire signed [`InBus]		rt_in_5_2_i,
+input wire signed [`InBus]		rt_in_5_3_r,
+input wire signed [`InBus]		rt_in_5_3_i,
+input wire signed [`InBus]		rt_in_5_4_r,
+input wire signed [`InBus]		rt_in_5_4_i,
+input wire signed [`InBus]		rt_in_5_5_r,
+input wire signed [`InBus]		rt_in_5_5_i,
+input wire signed [`InBus]		rt_in_5_6_r,
+input wire signed [`InBus]		rt_in_5_6_i,
+input wire signed [`InBus]		rt_in_5_7_r,
+input wire signed [`InBus]		rt_in_5_7_i,
+input wire signed [`InBus]		rt_in_5_8_r,
+input wire signed [`InBus]		rt_in_5_8_i,
+input wire signed [`InBus]		rt_in_6_1_r,
+input wire signed [`InBus]		rt_in_6_1_i,
+input wire signed [`InBus]		rt_in_6_2_r,
+input wire signed [`InBus]		rt_in_6_2_i,
+input wire signed [`InBus]		rt_in_6_3_r,
+input wire signed [`InBus]		rt_in_6_3_i,
+input wire signed [`InBus]		rt_in_6_4_r,
+input wire signed [`InBus]		rt_in_6_4_i,
+input wire signed [`InBus]		rt_in_6_5_r,
+input wire signed [`InBus]		rt_in_6_5_i,
+input wire signed [`InBus]		rt_in_6_6_r,
+input wire signed [`InBus]		rt_in_6_6_i,
+input wire signed [`InBus]		rt_in_6_7_r,
+input wire signed [`InBus]		rt_in_6_7_i,
+input wire signed [`InBus]		rt_in_6_8_r,
+input wire signed [`InBus]		rt_in_6_8_i,
+input wire signed [`InBus]		rt_in_7_1_r,
+input wire signed [`InBus]		rt_in_7_1_i,
+input wire signed [`InBus]		rt_in_7_2_r,
+input wire signed [`InBus]		rt_in_7_2_i,
+input wire signed [`InBus]		rt_in_7_3_r,
+input wire signed [`InBus]		rt_in_7_3_i,
+input wire signed [`InBus]		rt_in_7_4_r,
+input wire signed [`InBus]		rt_in_7_4_i,
+input wire signed [`InBus]		rt_in_7_5_r,
+input wire signed [`InBus]		rt_in_7_5_i,
+input wire signed [`InBus]		rt_in_7_6_r,
+input wire signed [`InBus]		rt_in_7_6_i,
+input wire signed [`InBus]		rt_in_7_7_r,
+input wire signed [`InBus]		rt_in_7_7_i,
+input wire signed [`InBus]		rt_in_7_8_r,
+input wire signed [`InBus]		rt_in_7_8_i,
+input wire signed [`InBus]		rt_in_8_1_r,
+input wire signed [`InBus]		rt_in_8_1_i,
+input wire signed [`InBus]		rt_in_8_2_r,
+input wire signed [`InBus]		rt_in_8_2_i,
+input wire signed [`InBus]		rt_in_8_3_r,
+input wire signed [`InBus]		rt_in_8_3_i,
+input wire signed [`InBus]		rt_in_8_4_r,
+input wire signed [`InBus]		rt_in_8_4_i,
+input wire signed [`InBus]		rt_in_8_5_r,
+input wire signed [`InBus]		rt_in_8_5_i,
+input wire signed [`InBus]		rt_in_8_6_r,
+input wire signed [`InBus]		rt_in_8_6_i,
+input wire signed [`InBus]		rt_in_8_7_r,
+input wire signed [`InBus]		rt_in_8_7_i,
+input wire signed [`InBus]		rt_in_8_8_r,
+input wire signed [`InBus]		rt_in_8_8_i,
+
+/*********************output**************************/
+output reg signed [`InBus]		out_1_1_r,
+output reg signed [`InBus]		out_1_1_i,
+output reg signed [`InBus]		out_1_2_r,
+output reg signed [`InBus]		out_1_2_i,
+output reg signed [`InBus]		out_1_3_r,
+output reg signed [`InBus]		out_1_3_i,
+output reg signed [`InBus]		out_1_4_r,
+output reg signed [`InBus]		out_1_4_i,
+output reg signed [`InBus]		out_1_5_r,
+output reg signed [`InBus]		out_1_5_i,
+output reg signed [`InBus]		out_1_6_r,
+output reg signed [`InBus]		out_1_6_i,
+output reg signed [`InBus]		out_1_7_r,
+output reg signed [`InBus]		out_1_7_i,
+output reg signed [`InBus]		out_1_8_r,
+output reg signed [`InBus]		out_1_8_i,
+output reg signed [`InBus]		out_2_1_r,
+output reg signed [`InBus]		out_2_1_i,
+output reg signed [`InBus]		out_2_2_r,
+output reg signed [`InBus]		out_2_2_i,
+output reg signed [`InBus]		out_2_3_r,
+output reg signed [`InBus]		out_2_3_i,
+output reg signed [`InBus]		out_2_4_r,
+output reg signed [`InBus]		out_2_4_i,
+output reg signed [`InBus]		out_2_5_r,
+output reg signed [`InBus]		out_2_5_i,
+output reg signed [`InBus]		out_2_6_r,
+output reg signed [`InBus]		out_2_6_i,
+output reg signed [`InBus]		out_2_7_r,
+output reg signed [`InBus]		out_2_7_i,
+output reg signed [`InBus]		out_2_8_r,
+output reg signed [`InBus]		out_2_8_i,
+output reg signed [`InBus]		out_3_1_r,
+output reg signed [`InBus]		out_3_1_i,
+output reg signed [`InBus]		out_3_2_r,
+output reg signed [`InBus]		out_3_2_i,
+output reg signed [`InBus]		out_3_3_r,
+output reg signed [`InBus]		out_3_3_i,
+output reg signed [`InBus]		out_3_4_r,
+output reg signed [`InBus]		out_3_4_i,
+output reg signed [`InBus]		out_3_5_r,
+output reg signed [`InBus]		out_3_5_i,
+output reg signed [`InBus]		out_3_6_r,
+output reg signed [`InBus]		out_3_6_i,
+output reg signed [`InBus]		out_3_7_r,
+output reg signed [`InBus]		out_3_7_i,
+output reg signed [`InBus]		out_3_8_r,
+output reg signed [`InBus]		out_3_8_i,
+output reg signed [`InBus]		out_4_1_r,
+output reg signed [`InBus]		out_4_1_i,
+output reg signed [`InBus]		out_4_2_r,
+output reg signed [`InBus]		out_4_2_i,
+output reg signed [`InBus]		out_4_3_r,
+output reg signed [`InBus]		out_4_3_i,
+output reg signed [`InBus]		out_4_4_r,
+output reg signed [`InBus]		out_4_4_i,
+output reg signed [`InBus]		out_4_5_r,
+output reg signed [`InBus]		out_4_5_i,
+output reg signed [`InBus]		out_4_6_r,
+output reg signed [`InBus]		out_4_6_i,
+output reg signed [`InBus]		out_4_7_r,
+output reg signed [`InBus]		out_4_7_i,
+output reg signed [`InBus]		out_4_8_r,
+output reg signed [`InBus]		out_4_8_i,
+output reg signed [`InBus]		out_5_1_r,
+output reg signed [`InBus]		out_5_1_i,
+output reg signed [`InBus]		out_5_2_r,
+output reg signed [`InBus]		out_5_2_i,
+output reg signed [`InBus]		out_5_3_r,
+output reg signed [`InBus]		out_5_3_i,
+output reg signed [`InBus]		out_5_4_r,
+output reg signed [`InBus]		out_5_4_i,
+output reg signed [`InBus]		out_5_5_r,
+output reg signed [`InBus]		out_5_5_i,
+output reg signed [`InBus]		out_5_6_r,
+output reg signed [`InBus]		out_5_6_i,
+output reg signed [`InBus]		out_5_7_r,
+output reg signed [`InBus]		out_5_7_i,
+output reg signed [`InBus]		out_5_8_r,
+output reg signed [`InBus]		out_5_8_i,
+output reg signed [`InBus]		out_6_1_r,
+output reg signed [`InBus]		out_6_1_i,
+output reg signed [`InBus]		out_6_2_r,
+output reg signed [`InBus]		out_6_2_i,
+output reg signed [`InBus]		out_6_3_r,
+output reg signed [`InBus]		out_6_3_i,
+output reg signed [`InBus]		out_6_4_r,
+output reg signed [`InBus]		out_6_4_i,
+output reg signed [`InBus]		out_6_5_r,
+output reg signed [`InBus]		out_6_5_i,
+output reg signed [`InBus]		out_6_6_r,
+output reg signed [`InBus]		out_6_6_i,
+output reg signed [`InBus]		out_6_7_r,
+output reg signed [`InBus]		out_6_7_i,
+output reg signed [`InBus]		out_6_8_r,
+output reg signed [`InBus]		out_6_8_i,
+output reg signed [`InBus]		out_7_1_r,
+output reg signed [`InBus]		out_7_1_i,
+output reg signed [`InBus]		out_7_2_r,
+output reg signed [`InBus]		out_7_2_i,
+output reg signed [`InBus]		out_7_3_r,
+output reg signed [`InBus]		out_7_3_i,
+output reg signed [`InBus]		out_7_4_r,
+output reg signed [`InBus]		out_7_4_i,
+output reg signed [`InBus]		out_7_5_r,
+output reg signed [`InBus]		out_7_5_i,
+output reg signed [`InBus]		out_7_6_r,
+output reg signed [`InBus]		out_7_6_i,
+output reg signed [`InBus]		out_7_7_r,
+output reg signed [`InBus]		out_7_7_i,
+output reg signed [`InBus]		out_7_8_r,
+output reg signed [`InBus]		out_7_8_i,
+output reg signed [`InBus]		out_8_1_r,
+output reg signed [`InBus]		out_8_1_i,
+output reg signed [`InBus]		out_8_2_r,
+output reg signed [`InBus]		out_8_2_i,
+output reg signed [`InBus]		out_8_3_r,
+output reg signed [`InBus]		out_8_3_i,
+output reg signed [`InBus]		out_8_4_r,
+output reg signed [`InBus]		out_8_4_i,
+output reg signed [`InBus]		out_8_5_r,
+output reg signed [`InBus]		out_8_5_i,
+output reg signed [`InBus]		out_8_6_r,
+output reg signed [`InBus]		out_8_6_i,
+output reg signed [`InBus]		out_8_7_r,
+output reg signed [`InBus]		out_8_7_i,
+output reg signed [`InBus]		out_8_8_r,
+output reg signed [`InBus]		out_8_8_i);
+
+/*********************define rt_buf**************************/
+reg signed [`InBus]		rt_buf_in_1_1_r;
+reg signed [`InBus]		rt_buf_in_1_1_i;
+reg signed [`InBus]		rt_buf_in_1_2_r;
+reg signed [`InBus]		rt_buf_in_1_2_i;
+reg signed [`InBus]		rt_buf_in_1_3_r;
+reg signed [`InBus]		rt_buf_in_1_3_i;
+reg signed [`InBus]		rt_buf_in_1_4_r;
+reg signed [`InBus]		rt_buf_in_1_4_i;
+reg signed [`InBus]		rt_buf_in_1_5_r;
+reg signed [`InBus]		rt_buf_in_1_5_i;
+reg signed [`InBus]		rt_buf_in_1_6_r;
+reg signed [`InBus]		rt_buf_in_1_6_i;
+reg signed [`InBus]		rt_buf_in_1_7_r;
+reg signed [`InBus]		rt_buf_in_1_7_i;
+reg signed [`InBus]		rt_buf_in_1_8_r;
+reg signed [`InBus]		rt_buf_in_1_8_i;
+reg signed [`InBus]		rt_buf_in_2_1_r;
+reg signed [`InBus]		rt_buf_in_2_1_i;
+reg signed [`InBus]		rt_buf_in_2_2_r;
+reg signed [`InBus]		rt_buf_in_2_2_i;
+reg signed [`InBus]		rt_buf_in_2_3_r;
+reg signed [`InBus]		rt_buf_in_2_3_i;
+reg signed [`InBus]		rt_buf_in_2_4_r;
+reg signed [`InBus]		rt_buf_in_2_4_i;
+reg signed [`InBus]		rt_buf_in_2_5_r;
+reg signed [`InBus]		rt_buf_in_2_5_i;
+reg signed [`InBus]		rt_buf_in_2_6_r;
+reg signed [`InBus]		rt_buf_in_2_6_i;
+reg signed [`InBus]		rt_buf_in_2_7_r;
+reg signed [`InBus]		rt_buf_in_2_7_i;
+reg signed [`InBus]		rt_buf_in_2_8_r;
+reg signed [`InBus]		rt_buf_in_2_8_i;
+reg signed [`InBus]		rt_buf_in_3_1_r;
+reg signed [`InBus]		rt_buf_in_3_1_i;
+reg signed [`InBus]		rt_buf_in_3_2_r;
+reg signed [`InBus]		rt_buf_in_3_2_i;
+reg signed [`InBus]		rt_buf_in_3_3_r;
+reg signed [`InBus]		rt_buf_in_3_3_i;
+reg signed [`InBus]		rt_buf_in_3_4_r;
+reg signed [`InBus]		rt_buf_in_3_4_i;
+reg signed [`InBus]		rt_buf_in_3_5_r;
+reg signed [`InBus]		rt_buf_in_3_5_i;
+reg signed [`InBus]		rt_buf_in_3_6_r;
+reg signed [`InBus]		rt_buf_in_3_6_i;
+reg signed [`InBus]		rt_buf_in_3_7_r;
+reg signed [`InBus]		rt_buf_in_3_7_i;
+reg signed [`InBus]		rt_buf_in_3_8_r;
+reg signed [`InBus]		rt_buf_in_3_8_i;
+reg signed [`InBus]		rt_buf_in_4_1_r;
+reg signed [`InBus]		rt_buf_in_4_1_i;
+reg signed [`InBus]		rt_buf_in_4_2_r;
+reg signed [`InBus]		rt_buf_in_4_2_i;
+reg signed [`InBus]		rt_buf_in_4_3_r;
+reg signed [`InBus]		rt_buf_in_4_3_i;
+reg signed [`InBus]		rt_buf_in_4_4_r;
+reg signed [`InBus]		rt_buf_in_4_4_i;
+reg signed [`InBus]		rt_buf_in_4_5_r;
+reg signed [`InBus]		rt_buf_in_4_5_i;
+reg signed [`InBus]		rt_buf_in_4_6_r;
+reg signed [`InBus]		rt_buf_in_4_6_i;
+reg signed [`InBus]		rt_buf_in_4_7_r;
+reg signed [`InBus]		rt_buf_in_4_7_i;
+reg signed [`InBus]		rt_buf_in_4_8_r;
+reg signed [`InBus]		rt_buf_in_4_8_i;
+reg signed [`InBus]		rt_buf_in_5_1_r;
+reg signed [`InBus]		rt_buf_in_5_1_i;
+reg signed [`InBus]		rt_buf_in_5_2_r;
+reg signed [`InBus]		rt_buf_in_5_2_i;
+reg signed [`InBus]		rt_buf_in_5_3_r;
+reg signed [`InBus]		rt_buf_in_5_3_i;
+reg signed [`InBus]		rt_buf_in_5_4_r;
+reg signed [`InBus]		rt_buf_in_5_4_i;
+reg signed [`InBus]		rt_buf_in_5_5_r;
+reg signed [`InBus]		rt_buf_in_5_5_i;
+reg signed [`InBus]		rt_buf_in_5_6_r;
+reg signed [`InBus]		rt_buf_in_5_6_i;
+reg signed [`InBus]		rt_buf_in_5_7_r;
+reg signed [`InBus]		rt_buf_in_5_7_i;
+reg signed [`InBus]		rt_buf_in_5_8_r;
+reg signed [`InBus]		rt_buf_in_5_8_i;
+reg signed [`InBus]		rt_buf_in_6_1_r;
+reg signed [`InBus]		rt_buf_in_6_1_i;
+reg signed [`InBus]		rt_buf_in_6_2_r;
+reg signed [`InBus]		rt_buf_in_6_2_i;
+reg signed [`InBus]		rt_buf_in_6_3_r;
+reg signed [`InBus]		rt_buf_in_6_3_i;
+reg signed [`InBus]		rt_buf_in_6_4_r;
+reg signed [`InBus]		rt_buf_in_6_4_i;
+reg signed [`InBus]		rt_buf_in_6_5_r;
+reg signed [`InBus]		rt_buf_in_6_5_i;
+reg signed [`InBus]		rt_buf_in_6_6_r;
+reg signed [`InBus]		rt_buf_in_6_6_i;
+reg signed [`InBus]		rt_buf_in_6_7_r;
+reg signed [`InBus]		rt_buf_in_6_7_i;
+reg signed [`InBus]		rt_buf_in_6_8_r;
+reg signed [`InBus]		rt_buf_in_6_8_i;
+reg signed [`InBus]		rt_buf_in_7_1_r;
+reg signed [`InBus]		rt_buf_in_7_1_i;
+reg signed [`InBus]		rt_buf_in_7_2_r;
+reg signed [`InBus]		rt_buf_in_7_2_i;
+reg signed [`InBus]		rt_buf_in_7_3_r;
+reg signed [`InBus]		rt_buf_in_7_3_i;
+reg signed [`InBus]		rt_buf_in_7_4_r;
+reg signed [`InBus]		rt_buf_in_7_4_i;
+reg signed [`InBus]		rt_buf_in_7_5_r;
+reg signed [`InBus]		rt_buf_in_7_5_i;
+reg signed [`InBus]		rt_buf_in_7_6_r;
+reg signed [`InBus]		rt_buf_in_7_6_i;
+reg signed [`InBus]		rt_buf_in_7_7_r;
+reg signed [`InBus]		rt_buf_in_7_7_i;
+reg signed [`InBus]		rt_buf_in_7_8_r;
+reg signed [`InBus]		rt_buf_in_7_8_i;
+reg signed [`InBus]		rt_buf_in_8_1_r;
+reg signed [`InBus]		rt_buf_in_8_1_i;
+reg signed [`InBus]		rt_buf_in_8_2_r;
+reg signed [`InBus]		rt_buf_in_8_2_i;
+reg signed [`InBus]		rt_buf_in_8_3_r;
+reg signed [`InBus]		rt_buf_in_8_3_i;
+reg signed [`InBus]		rt_buf_in_8_4_r;
+reg signed [`InBus]		rt_buf_in_8_4_i;
+reg signed [`InBus]		rt_buf_in_8_5_r;
+reg signed [`InBus]		rt_buf_in_8_5_i;
+reg signed [`InBus]		rt_buf_in_8_6_r;
+reg signed [`InBus]		rt_buf_in_8_6_i;
+reg signed [`InBus]		rt_buf_in_8_7_r;
+reg signed [`InBus]		rt_buf_in_8_7_i;
+reg signed [`InBus]		rt_buf_in_8_8_r;
+reg signed [`InBus]		rt_buf_in_8_8_i;
+/*********************case**************************/
+always @(*) begin
+case(sel)
+3'd0	: begin
+out_1_1_r <= in_1_1_r;
+out_1_1_i <= in_1_1_i;
+out_1_2_r <= in_1_2_r;
+out_1_2_i <= in_1_2_i;
+out_1_3_r <= in_2_1_r;
+out_1_3_i <= in_2_1_i;
+out_1_4_r <= in_2_2_r;
+out_1_4_i <= in_2_2_i;
+out_1_5_r <= in_1_3_r;
+out_1_5_i <= in_1_3_i;
+out_1_6_r <= in_1_4_r;
+out_1_6_i <= in_1_4_i;
+out_1_7_r <= in_2_3_r;
+out_1_7_i <= in_2_3_i;
+out_1_8_r <= in_2_4_r;
+out_1_8_i <= in_2_4_i;
+out_2_1_r <= in_1_5_r;
+out_2_1_i <= in_1_5_i;
+out_2_2_r <= in_1_6_r;
+out_2_2_i <= in_1_6_i;
+out_2_3_r <= in_2_5_r;
+out_2_3_i <= in_2_5_i;
+out_2_4_r <= in_2_6_r;
+out_2_4_i <= in_2_6_i;
+out_2_5_r <= in_1_7_r;
+out_2_5_i <= in_1_7_i;
+out_2_6_r <= in_1_8_r;
+out_2_6_i <= in_1_8_i;
+out_2_7_r <= in_2_7_r;
+out_2_7_i <= in_2_7_i;
+out_2_8_r <= in_2_8_r;
+out_2_8_i <= in_2_8_i;
+out_3_1_r <= in_3_1_r;
+out_3_1_i <= in_3_1_i;
+out_3_2_r <= in_3_2_r;
+out_3_2_i <= in_3_2_i;
+out_3_3_r <= in_4_1_r;
+out_3_3_i <= in_4_1_i;
+out_3_4_r <= in_4_2_r;
+out_3_4_i <= in_4_2_i;
+out_3_5_r <= in_3_3_r;
+out_3_5_i <= in_3_3_i;
+out_3_6_r <= in_3_4_r;
+out_3_6_i <= in_3_4_i;
+out_3_7_r <= in_4_3_r;
+out_3_7_i <= in_4_3_i;
+out_3_8_r <= in_4_4_r;
+out_3_8_i <= in_4_4_i;
+out_4_1_r <= in_3_5_r;
+out_4_1_i <= in_3_5_i;
+out_4_2_r <= in_3_6_r;
+out_4_2_i <= in_3_6_i;
+out_4_3_r <= in_4_5_r;
+out_4_3_i <= in_4_5_i;
+out_4_4_r <= in_4_6_r;
+out_4_4_i <= in_4_6_i;
+out_4_5_r <= in_3_7_r;
+out_4_5_i <= in_3_7_i;
+out_4_6_r <= in_3_8_r;
+out_4_6_i <= in_3_8_i;
+out_4_7_r <= in_4_7_r;
+out_4_7_i <= in_4_7_i;
+out_4_8_r <= in_4_8_r;
+out_4_8_i <= in_4_8_i;
+out_5_1_r <= in_5_1_r;
+out_5_1_i <= in_5_1_i;
+out_5_2_r <= in_5_2_r;
+out_5_2_i <= in_5_2_i;
+out_5_3_r <= in_6_1_r;
+out_5_3_i <= in_6_1_i;
+out_5_4_r <= in_6_2_r;
+out_5_4_i <= in_6_2_i;
+out_5_5_r <= in_5_3_r;
+out_5_5_i <= in_5_3_i;
+out_5_6_r <= in_5_4_r;
+out_5_6_i <= in_5_4_i;
+out_5_7_r <= in_6_3_r;
+out_5_7_i <= in_6_3_i;
+out_5_8_r <= in_6_4_r;
+out_5_8_i <= in_6_4_i;
+out_6_1_r <= in_5_5_r;
+out_6_1_i <= in_5_5_i;
+out_6_2_r <= in_5_6_r;
+out_6_2_i <= in_5_6_i;
+out_6_3_r <= in_6_5_r;
+out_6_3_i <= in_6_5_i;
+out_6_4_r <= in_6_6_r;
+out_6_4_i <= in_6_6_i;
+out_6_5_r <= in_5_7_r;
+out_6_5_i <= in_5_7_i;
+out_6_6_r <= in_5_8_r;
+out_6_6_i <= in_5_8_i;
+out_6_7_r <= in_6_7_r;
+out_6_7_i <= in_6_7_i;
+out_6_8_r <= in_6_8_r;
+out_6_8_i <= in_6_8_i;
+out_7_1_r <= in_7_1_r;
+out_7_1_i <= in_7_1_i;
+out_7_2_r <= in_7_2_r;
+out_7_2_i <= in_7_2_i;
+out_7_3_r <= in_8_1_r;
+out_7_3_i <= in_8_1_i;
+out_7_4_r <= in_8_2_r;
+out_7_4_i <= in_8_2_i;
+out_7_5_r <= in_7_3_r;
+out_7_5_i <= in_7_3_i;
+out_7_6_r <= in_7_4_r;
+out_7_6_i <= in_7_4_i;
+out_7_7_r <= in_8_3_r;
+out_7_7_i <= in_8_3_i;
+out_7_8_r <= in_8_4_r;
+out_7_8_i <= in_8_4_i;
+out_8_1_r <= in_7_5_r;
+out_8_1_i <= in_7_5_i;
+out_8_2_r <= in_7_6_r;
+out_8_2_i <= in_7_6_i;
+out_8_3_r <= in_8_5_r;
+out_8_3_i <= in_8_5_i;
+out_8_4_r <= in_8_6_r;
+out_8_4_i <= in_8_6_i;
+out_8_5_r <= in_7_7_r;
+out_8_5_i <= in_7_7_i;
+out_8_6_r <= in_7_8_r;
+out_8_6_i <= in_7_8_i;
+out_8_7_r <= in_8_7_r;
+out_8_7_i <= in_8_7_i;
+out_8_8_r <= in_8_8_r;
+out_8_8_i <= in_8_8_i;
+end
+
+3'd1	: begin
+rt_buf_in_1_1_r <= rt_in_1_1_r;
+rt_buf_in_1_1_i <= rt_in_1_1_i;
+out_1_1_r <= rt_buf_in_1_1_r;
+out_1_1_i <= rt_buf_in_1_1_i;
+rt_buf_in_1_2_r <= rt_in_1_2_r;
+rt_buf_in_1_2_i <= rt_in_1_2_i;
+out_1_2_r <= rt_buf_in_1_3_r;
+out_1_2_i <= rt_buf_in_1_3_i;
+rt_buf_in_2_1_r <= rt_in_1_3_r;
+rt_buf_in_2_1_i <= rt_in_1_3_i;
+out_1_3_r <= rt_buf_in_3_1_r;
+out_1_3_i <= rt_buf_in_3_1_i;
+rt_buf_in_2_2_r <= rt_in_1_4_r;
+rt_buf_in_2_2_i <= rt_in_1_4_i;
+out_1_4_r <= rt_buf_in_3_3_r;
+out_1_4_i <= rt_buf_in_3_3_i;
+rt_buf_in_1_3_r <= rt_in_1_5_r;
+rt_buf_in_1_3_i <= rt_in_1_5_i;
+out_1_5_r <= rt_buf_in_1_2_r;
+out_1_5_i <= rt_buf_in_1_2_i;
+rt_buf_in_1_4_r <= rt_in_1_6_r;
+rt_buf_in_1_4_i <= rt_in_1_6_i;
+out_1_6_r <= rt_buf_in_1_4_r;
+out_1_6_i <= rt_buf_in_1_4_i;
+rt_buf_in_2_3_r <= rt_in_1_7_r;
+rt_buf_in_2_3_i <= rt_in_1_7_i;
+out_1_7_r <= rt_buf_in_3_2_r;
+out_1_7_i <= rt_buf_in_3_2_i;
+rt_buf_in_2_4_r <= rt_in_1_8_r;
+rt_buf_in_2_4_i <= rt_in_1_8_i;
+out_1_8_r <= rt_buf_in_3_4_r;
+out_1_8_i <= rt_buf_in_3_4_i;
+rt_buf_in_1_5_r <= rt_in_2_1_r;
+rt_buf_in_1_5_i <= rt_in_2_1_i;
+out_2_1_r <= rt_buf_in_2_1_r;
+out_2_1_i <= rt_buf_in_2_1_i;
+rt_buf_in_1_6_r <= rt_in_2_2_r;
+rt_buf_in_1_6_i <= rt_in_2_2_i;
+out_2_2_r <= rt_buf_in_2_3_r;
+out_2_2_i <= rt_buf_in_2_3_i;
+rt_buf_in_2_5_r <= rt_in_2_3_r;
+rt_buf_in_2_5_i <= rt_in_2_3_i;
+out_2_3_r <= rt_buf_in_4_1_r;
+out_2_3_i <= rt_buf_in_4_1_i;
+rt_buf_in_2_6_r <= rt_in_2_4_r;
+rt_buf_in_2_6_i <= rt_in_2_4_i;
+out_2_4_r <= rt_buf_in_4_3_r;
+out_2_4_i <= rt_buf_in_4_3_i;
+rt_buf_in_1_7_r <= rt_in_2_5_r;
+rt_buf_in_1_7_i <= rt_in_2_5_i;
+out_2_5_r <= rt_buf_in_2_2_r;
+out_2_5_i <= rt_buf_in_2_2_i;
+rt_buf_in_1_8_r <= rt_in_2_6_r;
+rt_buf_in_1_8_i <= rt_in_2_6_i;
+out_2_6_r <= rt_buf_in_2_4_r;
+out_2_6_i <= rt_buf_in_2_4_i;
+rt_buf_in_2_7_r <= rt_in_2_7_r;
+rt_buf_in_2_7_i <= rt_in_2_7_i;
+out_2_7_r <= rt_buf_in_4_2_r;
+out_2_7_i <= rt_buf_in_4_2_i;
+rt_buf_in_2_8_r <= rt_in_2_8_r;
+rt_buf_in_2_8_i <= rt_in_2_8_i;
+out_2_8_r <= rt_buf_in_4_4_r;
+out_2_8_i <= rt_buf_in_4_4_i;
+rt_buf_in_3_1_r <= rt_in_3_1_r;
+rt_buf_in_3_1_i <= rt_in_3_1_i;
+out_3_1_r <= rt_buf_in_1_5_r;
+out_3_1_i <= rt_buf_in_1_5_i;
+rt_buf_in_3_2_r <= rt_in_3_2_r;
+rt_buf_in_3_2_i <= rt_in_3_2_i;
+out_3_2_r <= rt_buf_in_1_7_r;
+out_3_2_i <= rt_buf_in_1_7_i;
+rt_buf_in_4_1_r <= rt_in_3_3_r;
+rt_buf_in_4_1_i <= rt_in_3_3_i;
+out_3_3_r <= rt_buf_in_3_5_r;
+out_3_3_i <= rt_buf_in_3_5_i;
+rt_buf_in_4_2_r <= rt_in_3_4_r;
+rt_buf_in_4_2_i <= rt_in_3_4_i;
+out_3_4_r <= rt_buf_in_3_7_r;
+out_3_4_i <= rt_buf_in_3_7_i;
+rt_buf_in_3_3_r <= rt_in_3_5_r;
+rt_buf_in_3_3_i <= rt_in_3_5_i;
+out_3_5_r <= rt_buf_in_1_6_r;
+out_3_5_i <= rt_buf_in_1_6_i;
+rt_buf_in_3_4_r <= rt_in_3_6_r;
+rt_buf_in_3_4_i <= rt_in_3_6_i;
+out_3_6_r <= rt_buf_in_1_8_r;
+out_3_6_i <= rt_buf_in_1_8_i;
+rt_buf_in_4_3_r <= rt_in_3_7_r;
+rt_buf_in_4_3_i <= rt_in_3_7_i;
+out_3_7_r <= rt_buf_in_3_6_r;
+out_3_7_i <= rt_buf_in_3_6_i;
+rt_buf_in_4_4_r <= rt_in_3_8_r;
+rt_buf_in_4_4_i <= rt_in_3_8_i;
+out_3_8_r <= rt_buf_in_3_8_r;
+out_3_8_i <= rt_buf_in_3_8_i;
+rt_buf_in_3_5_r <= rt_in_4_1_r;
+rt_buf_in_3_5_i <= rt_in_4_1_i;
+out_4_1_r <= rt_buf_in_2_5_r;
+out_4_1_i <= rt_buf_in_2_5_i;
+rt_buf_in_3_6_r <= rt_in_4_2_r;
+rt_buf_in_3_6_i <= rt_in_4_2_i;
+out_4_2_r <= rt_buf_in_2_7_r;
+out_4_2_i <= rt_buf_in_2_7_i;
+rt_buf_in_4_5_r <= rt_in_4_3_r;
+rt_buf_in_4_5_i <= rt_in_4_3_i;
+out_4_3_r <= rt_buf_in_4_5_r;
+out_4_3_i <= rt_buf_in_4_5_i;
+rt_buf_in_4_6_r <= rt_in_4_4_r;
+rt_buf_in_4_6_i <= rt_in_4_4_i;
+out_4_4_r <= rt_buf_in_4_7_r;
+out_4_4_i <= rt_buf_in_4_7_i;
+rt_buf_in_3_7_r <= rt_in_4_5_r;
+rt_buf_in_3_7_i <= rt_in_4_5_i;
+out_4_5_r <= rt_buf_in_2_6_r;
+out_4_5_i <= rt_buf_in_2_6_i;
+rt_buf_in_3_8_r <= rt_in_4_6_r;
+rt_buf_in_3_8_i <= rt_in_4_6_i;
+out_4_6_r <= rt_buf_in_2_8_r;
+out_4_6_i <= rt_buf_in_2_8_i;
+rt_buf_in_4_7_r <= rt_in_4_7_r;
+rt_buf_in_4_7_i <= rt_in_4_7_i;
+out_4_7_r <= rt_buf_in_4_6_r;
+out_4_7_i <= rt_buf_in_4_6_i;
+rt_buf_in_4_8_r <= rt_in_4_8_r;
+rt_buf_in_4_8_i <= rt_in_4_8_i;
+out_4_8_r <= rt_buf_in_4_8_r;
+out_4_8_i <= rt_buf_in_4_8_i;
+rt_buf_in_5_1_r <= rt_in_5_1_r;
+rt_buf_in_5_1_i <= rt_in_5_1_i;
+out_5_1_r <= rt_buf_in_5_1_r;
+out_5_1_i <= rt_buf_in_5_1_i;
+rt_buf_in_5_2_r <= rt_in_5_2_r;
+rt_buf_in_5_2_i <= rt_in_5_2_i;
+out_5_2_r <= rt_buf_in_5_3_r;
+out_5_2_i <= rt_buf_in_5_3_i;
+rt_buf_in_6_1_r <= rt_in_5_3_r;
+rt_buf_in_6_1_i <= rt_in_5_3_i;
+out_5_3_r <= rt_buf_in_7_1_r;
+out_5_3_i <= rt_buf_in_7_1_i;
+rt_buf_in_6_2_r <= rt_in_5_4_r;
+rt_buf_in_6_2_i <= rt_in_5_4_i;
+out_5_4_r <= rt_buf_in_7_3_r;
+out_5_4_i <= rt_buf_in_7_3_i;
+rt_buf_in_5_3_r <= rt_in_5_5_r;
+rt_buf_in_5_3_i <= rt_in_5_5_i;
+out_5_5_r <= rt_buf_in_5_2_r;
+out_5_5_i <= rt_buf_in_5_2_i;
+rt_buf_in_5_4_r <= rt_in_5_6_r;
+rt_buf_in_5_4_i <= rt_in_5_6_i;
+out_5_6_r <= rt_buf_in_5_4_r;
+out_5_6_i <= rt_buf_in_5_4_i;
+rt_buf_in_6_3_r <= rt_in_5_7_r;
+rt_buf_in_6_3_i <= rt_in_5_7_i;
+out_5_7_r <= rt_buf_in_7_2_r;
+out_5_7_i <= rt_buf_in_7_2_i;
+rt_buf_in_6_4_r <= rt_in_5_8_r;
+rt_buf_in_6_4_i <= rt_in_5_8_i;
+out_5_8_r <= rt_buf_in_7_4_r;
+out_5_8_i <= rt_buf_in_7_4_i;
+rt_buf_in_5_5_r <= rt_in_6_1_r;
+rt_buf_in_5_5_i <= rt_in_6_1_i;
+out_6_1_r <= rt_buf_in_6_1_r;
+out_6_1_i <= rt_buf_in_6_1_i;
+rt_buf_in_5_6_r <= rt_in_6_2_r;
+rt_buf_in_5_6_i <= rt_in_6_2_i;
+out_6_2_r <= rt_buf_in_6_3_r;
+out_6_2_i <= rt_buf_in_6_3_i;
+rt_buf_in_6_5_r <= rt_in_6_3_r;
+rt_buf_in_6_5_i <= rt_in_6_3_i;
+out_6_3_r <= rt_buf_in_8_1_r;
+out_6_3_i <= rt_buf_in_8_1_i;
+rt_buf_in_6_6_r <= rt_in_6_4_r;
+rt_buf_in_6_6_i <= rt_in_6_4_i;
+out_6_4_r <= rt_buf_in_8_3_r;
+out_6_4_i <= rt_buf_in_8_3_i;
+rt_buf_in_5_7_r <= rt_in_6_5_r;
+rt_buf_in_5_7_i <= rt_in_6_5_i;
+out_6_5_r <= rt_buf_in_6_2_r;
+out_6_5_i <= rt_buf_in_6_2_i;
+rt_buf_in_5_8_r <= rt_in_6_6_r;
+rt_buf_in_5_8_i <= rt_in_6_6_i;
+out_6_6_r <= rt_buf_in_6_4_r;
+out_6_6_i <= rt_buf_in_6_4_i;
+rt_buf_in_6_7_r <= rt_in_6_7_r;
+rt_buf_in_6_7_i <= rt_in_6_7_i;
+out_6_7_r <= rt_buf_in_8_2_r;
+out_6_7_i <= rt_buf_in_8_2_i;
+rt_buf_in_6_8_r <= rt_in_6_8_r;
+rt_buf_in_6_8_i <= rt_in_6_8_i;
+out_6_8_r <= rt_buf_in_8_4_r;
+out_6_8_i <= rt_buf_in_8_4_i;
+rt_buf_in_7_1_r <= rt_in_7_1_r;
+rt_buf_in_7_1_i <= rt_in_7_1_i;
+out_7_1_r <= rt_buf_in_5_5_r;
+out_7_1_i <= rt_buf_in_5_5_i;
+rt_buf_in_7_2_r <= rt_in_7_2_r;
+rt_buf_in_7_2_i <= rt_in_7_2_i;
+out_7_2_r <= rt_buf_in_5_7_r;
+out_7_2_i <= rt_buf_in_5_7_i;
+rt_buf_in_8_1_r <= rt_in_7_3_r;
+rt_buf_in_8_1_i <= rt_in_7_3_i;
+out_7_3_r <= rt_buf_in_7_5_r;
+out_7_3_i <= rt_buf_in_7_5_i;
+rt_buf_in_8_2_r <= rt_in_7_4_r;
+rt_buf_in_8_2_i <= rt_in_7_4_i;
+out_7_4_r <= rt_buf_in_7_7_r;
+out_7_4_i <= rt_buf_in_7_7_i;
+rt_buf_in_7_3_r <= rt_in_7_5_r;
+rt_buf_in_7_3_i <= rt_in_7_5_i;
+out_7_5_r <= rt_buf_in_5_6_r;
+out_7_5_i <= rt_buf_in_5_6_i;
+rt_buf_in_7_4_r <= rt_in_7_6_r;
+rt_buf_in_7_4_i <= rt_in_7_6_i;
+out_7_6_r <= rt_buf_in_5_8_r;
+out_7_6_i <= rt_buf_in_5_8_i;
+rt_buf_in_8_3_r <= rt_in_7_7_r;
+rt_buf_in_8_3_i <= rt_in_7_7_i;
+out_7_7_r <= rt_buf_in_7_6_r;
+out_7_7_i <= rt_buf_in_7_6_i;
+rt_buf_in_8_4_r <= rt_in_7_8_r;
+rt_buf_in_8_4_i <= rt_in_7_8_i;
+out_7_8_r <= rt_buf_in_7_8_r;
+out_7_8_i <= rt_buf_in_7_8_i;
+rt_buf_in_7_5_r <= rt_in_8_1_r;
+rt_buf_in_7_5_i <= rt_in_8_1_i;
+out_8_1_r <= rt_buf_in_6_5_r;
+out_8_1_i <= rt_buf_in_6_5_i;
+rt_buf_in_7_6_r <= rt_in_8_2_r;
+rt_buf_in_7_6_i <= rt_in_8_2_i;
+out_8_2_r <= rt_buf_in_6_7_r;
+out_8_2_i <= rt_buf_in_6_7_i;
+rt_buf_in_8_5_r <= rt_in_8_3_r;
+rt_buf_in_8_5_i <= rt_in_8_3_i;
+out_8_3_r <= rt_buf_in_8_5_r;
+out_8_3_i <= rt_buf_in_8_5_i;
+rt_buf_in_8_6_r <= rt_in_8_4_r;
+rt_buf_in_8_6_i <= rt_in_8_4_i;
+out_8_4_r <= rt_buf_in_8_7_r;
+out_8_4_i <= rt_buf_in_8_7_i;
+rt_buf_in_7_7_r <= rt_in_8_5_r;
+rt_buf_in_7_7_i <= rt_in_8_5_i;
+out_8_5_r <= rt_buf_in_6_6_r;
+out_8_5_i <= rt_buf_in_6_6_i;
+rt_buf_in_7_8_r <= rt_in_8_6_r;
+rt_buf_in_7_8_i <= rt_in_8_6_i;
+out_8_6_r <= rt_buf_in_6_8_r;
+out_8_6_i <= rt_buf_in_6_8_i;
+rt_buf_in_8_7_r <= rt_in_8_7_r;
+rt_buf_in_8_7_i <= rt_in_8_7_i;
+out_8_7_r <= rt_buf_in_8_6_r;
+out_8_7_i <= rt_buf_in_8_6_i;
+rt_buf_in_8_8_r <= rt_in_8_8_r;
+rt_buf_in_8_8_i <= rt_in_8_8_i;
+out_8_8_r <= rt_buf_in_8_8_r;
+out_8_8_i <= rt_buf_in_8_8_i;
+end
+
+3'd2	: begin
+rt_buf_in_1_1_r <= rt_in_1_1_r;
+rt_buf_in_1_1_i <= rt_in_1_1_i;
+out_1_1_r <= rt_buf_in_1_1_r;
+out_1_1_i <= rt_buf_in_1_1_i;
+rt_buf_in_1_3_r <= rt_in_1_2_r;
+rt_buf_in_1_3_i <= rt_in_1_2_i;
+out_1_2_r <= rt_buf_in_1_5_r;
+out_1_2_i <= rt_buf_in_1_5_i;
+rt_buf_in_3_1_r <= rt_in_1_3_r;
+rt_buf_in_3_1_i <= rt_in_1_3_i;
+out_1_3_r <= rt_buf_in_5_1_r;
+out_1_3_i <= rt_buf_in_5_1_i;
+rt_buf_in_3_3_r <= rt_in_1_4_r;
+rt_buf_in_3_3_i <= rt_in_1_4_i;
+out_1_4_r <= rt_buf_in_5_5_r;
+out_1_4_i <= rt_buf_in_5_5_i;
+rt_buf_in_1_2_r <= rt_in_1_5_r;
+rt_buf_in_1_2_i <= rt_in_1_5_i;
+out_1_5_r <= rt_buf_in_1_2_r;
+out_1_5_i <= rt_buf_in_1_2_i;
+rt_buf_in_1_4_r <= rt_in_1_6_r;
+rt_buf_in_1_4_i <= rt_in_1_6_i;
+out_1_6_r <= rt_buf_in_1_6_r;
+out_1_6_i <= rt_buf_in_1_6_i;
+rt_buf_in_3_2_r <= rt_in_1_7_r;
+rt_buf_in_3_2_i <= rt_in_1_7_i;
+out_1_7_r <= rt_buf_in_5_2_r;
+out_1_7_i <= rt_buf_in_5_2_i;
+rt_buf_in_3_4_r <= rt_in_1_8_r;
+rt_buf_in_3_4_i <= rt_in_1_8_i;
+out_1_8_r <= rt_buf_in_5_6_r;
+out_1_8_i <= rt_buf_in_5_6_i;
+rt_buf_in_2_1_r <= rt_in_2_1_r;
+rt_buf_in_2_1_i <= rt_in_2_1_i;
+out_2_1_r <= rt_buf_in_1_3_r;
+out_2_1_i <= rt_buf_in_1_3_i;
+rt_buf_in_2_3_r <= rt_in_2_2_r;
+rt_buf_in_2_3_i <= rt_in_2_2_i;
+out_2_2_r <= rt_buf_in_1_7_r;
+out_2_2_i <= rt_buf_in_1_7_i;
+rt_buf_in_4_1_r <= rt_in_2_3_r;
+rt_buf_in_4_1_i <= rt_in_2_3_i;
+out_2_3_r <= rt_buf_in_5_3_r;
+out_2_3_i <= rt_buf_in_5_3_i;
+rt_buf_in_4_3_r <= rt_in_2_4_r;
+rt_buf_in_4_3_i <= rt_in_2_4_i;
+out_2_4_r <= rt_buf_in_5_7_r;
+out_2_4_i <= rt_buf_in_5_7_i;
+rt_buf_in_2_2_r <= rt_in_2_5_r;
+rt_buf_in_2_2_i <= rt_in_2_5_i;
+out_2_5_r <= rt_buf_in_1_4_r;
+out_2_5_i <= rt_buf_in_1_4_i;
+rt_buf_in_2_4_r <= rt_in_2_6_r;
+rt_buf_in_2_4_i <= rt_in_2_6_i;
+out_2_6_r <= rt_buf_in_1_8_r;
+out_2_6_i <= rt_buf_in_1_8_i;
+rt_buf_in_4_2_r <= rt_in_2_7_r;
+rt_buf_in_4_2_i <= rt_in_2_7_i;
+out_2_7_r <= rt_buf_in_5_4_r;
+out_2_7_i <= rt_buf_in_5_4_i;
+rt_buf_in_4_4_r <= rt_in_2_8_r;
+rt_buf_in_4_4_i <= rt_in_2_8_i;
+out_2_8_r <= rt_buf_in_5_8_r;
+out_2_8_i <= rt_buf_in_5_8_i;
+rt_buf_in_1_5_r <= rt_in_3_1_r;
+rt_buf_in_1_5_i <= rt_in_3_1_i;
+out_3_1_r <= rt_buf_in_2_1_r;
+out_3_1_i <= rt_buf_in_2_1_i;
+rt_buf_in_1_7_r <= rt_in_3_2_r;
+rt_buf_in_1_7_i <= rt_in_3_2_i;
+out_3_2_r <= rt_buf_in_2_5_r;
+out_3_2_i <= rt_buf_in_2_5_i;
+rt_buf_in_3_5_r <= rt_in_3_3_r;
+rt_buf_in_3_5_i <= rt_in_3_3_i;
+out_3_3_r <= rt_buf_in_6_1_r;
+out_3_3_i <= rt_buf_in_6_1_i;
+rt_buf_in_3_7_r <= rt_in_3_4_r;
+rt_buf_in_3_7_i <= rt_in_3_4_i;
+out_3_4_r <= rt_buf_in_6_5_r;
+out_3_4_i <= rt_buf_in_6_5_i;
+rt_buf_in_1_6_r <= rt_in_3_5_r;
+rt_buf_in_1_6_i <= rt_in_3_5_i;
+out_3_5_r <= rt_buf_in_2_2_r;
+out_3_5_i <= rt_buf_in_2_2_i;
+rt_buf_in_1_8_r <= rt_in_3_6_r;
+rt_buf_in_1_8_i <= rt_in_3_6_i;
+out_3_6_r <= rt_buf_in_2_6_r;
+out_3_6_i <= rt_buf_in_2_6_i;
+rt_buf_in_3_6_r <= rt_in_3_7_r;
+rt_buf_in_3_6_i <= rt_in_3_7_i;
+out_3_7_r <= rt_buf_in_6_2_r;
+out_3_7_i <= rt_buf_in_6_2_i;
+rt_buf_in_3_8_r <= rt_in_3_8_r;
+rt_buf_in_3_8_i <= rt_in_3_8_i;
+out_3_8_r <= rt_buf_in_6_6_r;
+out_3_8_i <= rt_buf_in_6_6_i;
+rt_buf_in_2_5_r <= rt_in_4_1_r;
+rt_buf_in_2_5_i <= rt_in_4_1_i;
+out_4_1_r <= rt_buf_in_2_3_r;
+out_4_1_i <= rt_buf_in_2_3_i;
+rt_buf_in_2_7_r <= rt_in_4_2_r;
+rt_buf_in_2_7_i <= rt_in_4_2_i;
+out_4_2_r <= rt_buf_in_2_7_r;
+out_4_2_i <= rt_buf_in_2_7_i;
+rt_buf_in_4_5_r <= rt_in_4_3_r;
+rt_buf_in_4_5_i <= rt_in_4_3_i;
+out_4_3_r <= rt_buf_in_6_3_r;
+out_4_3_i <= rt_buf_in_6_3_i;
+rt_buf_in_4_7_r <= rt_in_4_4_r;
+rt_buf_in_4_7_i <= rt_in_4_4_i;
+out_4_4_r <= rt_buf_in_6_7_r;
+out_4_4_i <= rt_buf_in_6_7_i;
+rt_buf_in_2_6_r <= rt_in_4_5_r;
+rt_buf_in_2_6_i <= rt_in_4_5_i;
+out_4_5_r <= rt_buf_in_2_4_r;
+out_4_5_i <= rt_buf_in_2_4_i;
+rt_buf_in_2_8_r <= rt_in_4_6_r;
+rt_buf_in_2_8_i <= rt_in_4_6_i;
+out_4_6_r <= rt_buf_in_2_8_r;
+out_4_6_i <= rt_buf_in_2_8_i;
+rt_buf_in_4_6_r <= rt_in_4_7_r;
+rt_buf_in_4_6_i <= rt_in_4_7_i;
+out_4_7_r <= rt_buf_in_6_4_r;
+out_4_7_i <= rt_buf_in_6_4_i;
+rt_buf_in_4_8_r <= rt_in_4_8_r;
+rt_buf_in_4_8_i <= rt_in_4_8_i;
+out_4_8_r <= rt_buf_in_6_8_r;
+out_4_8_i <= rt_buf_in_6_8_i;
+rt_buf_in_5_1_r <= rt_in_5_1_r;
+rt_buf_in_5_1_i <= rt_in_5_1_i;
+out_5_1_r <= rt_buf_in_3_1_r;
+out_5_1_i <= rt_buf_in_3_1_i;
+rt_buf_in_5_3_r <= rt_in_5_2_r;
+rt_buf_in_5_3_i <= rt_in_5_2_i;
+out_5_2_r <= rt_buf_in_3_5_r;
+out_5_2_i <= rt_buf_in_3_5_i;
+rt_buf_in_7_1_r <= rt_in_5_3_r;
+rt_buf_in_7_1_i <= rt_in_5_3_i;
+out_5_3_r <= rt_buf_in_7_1_r;
+out_5_3_i <= rt_buf_in_7_1_i;
+rt_buf_in_7_3_r <= rt_in_5_4_r;
+rt_buf_in_7_3_i <= rt_in_5_4_i;
+out_5_4_r <= rt_buf_in_7_5_r;
+out_5_4_i <= rt_buf_in_7_5_i;
+rt_buf_in_5_2_r <= rt_in_5_5_r;
+rt_buf_in_5_2_i <= rt_in_5_5_i;
+out_5_5_r <= rt_buf_in_3_2_r;
+out_5_5_i <= rt_buf_in_3_2_i;
+rt_buf_in_5_4_r <= rt_in_5_6_r;
+rt_buf_in_5_4_i <= rt_in_5_6_i;
+out_5_6_r <= rt_buf_in_3_6_r;
+out_5_6_i <= rt_buf_in_3_6_i;
+rt_buf_in_7_2_r <= rt_in_5_7_r;
+rt_buf_in_7_2_i <= rt_in_5_7_i;
+out_5_7_r <= rt_buf_in_7_2_r;
+out_5_7_i <= rt_buf_in_7_2_i;
+rt_buf_in_7_4_r <= rt_in_5_8_r;
+rt_buf_in_7_4_i <= rt_in_5_8_i;
+out_5_8_r <= rt_buf_in_7_6_r;
+out_5_8_i <= rt_buf_in_7_6_i;
+rt_buf_in_6_1_r <= rt_in_6_1_r;
+rt_buf_in_6_1_i <= rt_in_6_1_i;
+out_6_1_r <= rt_buf_in_3_3_r;
+out_6_1_i <= rt_buf_in_3_3_i;
+rt_buf_in_6_3_r <= rt_in_6_2_r;
+rt_buf_in_6_3_i <= rt_in_6_2_i;
+out_6_2_r <= rt_buf_in_3_7_r;
+out_6_2_i <= rt_buf_in_3_7_i;
+rt_buf_in_8_1_r <= rt_in_6_3_r;
+rt_buf_in_8_1_i <= rt_in_6_3_i;
+out_6_3_r <= rt_buf_in_7_3_r;
+out_6_3_i <= rt_buf_in_7_3_i;
+rt_buf_in_8_3_r <= rt_in_6_4_r;
+rt_buf_in_8_3_i <= rt_in_6_4_i;
+out_6_4_r <= rt_buf_in_7_7_r;
+out_6_4_i <= rt_buf_in_7_7_i;
+rt_buf_in_6_2_r <= rt_in_6_5_r;
+rt_buf_in_6_2_i <= rt_in_6_5_i;
+out_6_5_r <= rt_buf_in_3_4_r;
+out_6_5_i <= rt_buf_in_3_4_i;
+rt_buf_in_6_4_r <= rt_in_6_6_r;
+rt_buf_in_6_4_i <= rt_in_6_6_i;
+out_6_6_r <= rt_buf_in_3_8_r;
+out_6_6_i <= rt_buf_in_3_8_i;
+rt_buf_in_8_2_r <= rt_in_6_7_r;
+rt_buf_in_8_2_i <= rt_in_6_7_i;
+out_6_7_r <= rt_buf_in_7_4_r;
+out_6_7_i <= rt_buf_in_7_4_i;
+rt_buf_in_8_4_r <= rt_in_6_8_r;
+rt_buf_in_8_4_i <= rt_in_6_8_i;
+out_6_8_r <= rt_buf_in_7_8_r;
+out_6_8_i <= rt_buf_in_7_8_i;
+rt_buf_in_5_5_r <= rt_in_7_1_r;
+rt_buf_in_5_5_i <= rt_in_7_1_i;
+out_7_1_r <= rt_buf_in_4_1_r;
+out_7_1_i <= rt_buf_in_4_1_i;
+rt_buf_in_5_7_r <= rt_in_7_2_r;
+rt_buf_in_5_7_i <= rt_in_7_2_i;
+out_7_2_r <= rt_buf_in_4_5_r;
+out_7_2_i <= rt_buf_in_4_5_i;
+rt_buf_in_7_5_r <= rt_in_7_3_r;
+rt_buf_in_7_5_i <= rt_in_7_3_i;
+out_7_3_r <= rt_buf_in_8_1_r;
+out_7_3_i <= rt_buf_in_8_1_i;
+rt_buf_in_7_7_r <= rt_in_7_4_r;
+rt_buf_in_7_7_i <= rt_in_7_4_i;
+out_7_4_r <= rt_buf_in_8_5_r;
+out_7_4_i <= rt_buf_in_8_5_i;
+rt_buf_in_5_6_r <= rt_in_7_5_r;
+rt_buf_in_5_6_i <= rt_in_7_5_i;
+out_7_5_r <= rt_buf_in_4_2_r;
+out_7_5_i <= rt_buf_in_4_2_i;
+rt_buf_in_5_8_r <= rt_in_7_6_r;
+rt_buf_in_5_8_i <= rt_in_7_6_i;
+out_7_6_r <= rt_buf_in_4_6_r;
+out_7_6_i <= rt_buf_in_4_6_i;
+rt_buf_in_7_6_r <= rt_in_7_7_r;
+rt_buf_in_7_6_i <= rt_in_7_7_i;
+out_7_7_r <= rt_buf_in_8_2_r;
+out_7_7_i <= rt_buf_in_8_2_i;
+rt_buf_in_7_8_r <= rt_in_7_8_r;
+rt_buf_in_7_8_i <= rt_in_7_8_i;
+out_7_8_r <= rt_buf_in_8_6_r;
+out_7_8_i <= rt_buf_in_8_6_i;
+rt_buf_in_6_5_r <= rt_in_8_1_r;
+rt_buf_in_6_5_i <= rt_in_8_1_i;
+out_8_1_r <= rt_buf_in_4_3_r;
+out_8_1_i <= rt_buf_in_4_3_i;
+rt_buf_in_6_7_r <= rt_in_8_2_r;
+rt_buf_in_6_7_i <= rt_in_8_2_i;
+out_8_2_r <= rt_buf_in_4_7_r;
+out_8_2_i <= rt_buf_in_4_7_i;
+rt_buf_in_8_5_r <= rt_in_8_3_r;
+rt_buf_in_8_5_i <= rt_in_8_3_i;
+out_8_3_r <= rt_buf_in_8_3_r;
+out_8_3_i <= rt_buf_in_8_3_i;
+rt_buf_in_8_7_r <= rt_in_8_4_r;
+rt_buf_in_8_7_i <= rt_in_8_4_i;
+out_8_4_r <= rt_buf_in_8_7_r;
+out_8_4_i <= rt_buf_in_8_7_i;
+rt_buf_in_6_6_r <= rt_in_8_5_r;
+rt_buf_in_6_6_i <= rt_in_8_5_i;
+out_8_5_r <= rt_buf_in_4_4_r;
+out_8_5_i <= rt_buf_in_4_4_i;
+rt_buf_in_6_8_r <= rt_in_8_6_r;
+rt_buf_in_6_8_i <= rt_in_8_6_i;
+out_8_6_r <= rt_buf_in_4_8_r;
+out_8_6_i <= rt_buf_in_4_8_i;
+rt_buf_in_8_6_r <= rt_in_8_7_r;
+rt_buf_in_8_6_i <= rt_in_8_7_i;
+out_8_7_r <= rt_buf_in_8_4_r;
+out_8_7_i <= rt_buf_in_8_4_i;
+rt_buf_in_8_8_r <= rt_in_8_8_r;
+rt_buf_in_8_8_i <= rt_in_8_8_i;
+out_8_8_r <= rt_buf_in_8_8_r;
+out_8_8_i <= rt_buf_in_8_8_i;
+end
+
+
+/*********************input_selecter_control**************************/
+7'd1 : sel <= 3'd0;
+7'd2 : sel <= 3'd0;
+7'd3 : sel <= 3'd0;
+7'd4 : sel <= 3'd0;
+7'd5 : sel <= 3'd0;
+7'd6 : sel <= 3'd0;
+7'd7 : sel <= 3'd0;
+7'd8 : sel <= 3'd0;
+7'd9 : sel <= 3'd0;
+7'd10 : sel <= 3'd0;
+7'd11 : sel <= 3'd0;
+7'd12 : sel <= 3'd0;
+7'd13 : sel <= 3'd0;
+7'd14 : sel <= 3'd0;
+7'd15 : sel <= 3'd0;
+7'd16 : sel <= 3'd0;
+7'd17 : sel <= 3'd0;
+7'd18 : sel <= 3'd0;
+7'd19 : sel <= 3'd0;
+7'd20 : sel <= 3'd0;
+7'd21 : sel <= 3'd0;
+7'd22 : sel <= 3'd0;
+7'd23 : sel <= 3'd0;
+7'd24 : sel <= 3'd0;
+7'd25 : sel <= 3'd0;
+7'd26 : sel <= 3'd0;
+7'd27 : sel <= 3'd0;
+7'd28 : sel <= 3'd0;
+7'd29 : sel <= 3'd0;
+7'd30 : sel <= 3'd0;
+7'd31 : sel <= 3'd0;
+7'd32 : sel <= 3'd0;
+7'd33 : sel <= 3'd0;
+7'd34 : sel <= 3'd0;
+7'd35 : sel <= 3'd0;
+7'd36 : sel <= 3'd0;
+7'd37 : sel <= 3'd0;
+7'd38 : sel <= 3'd0;
+7'd39 : sel <= 3'd0;
+7'd40 : sel <= 3'd0;
+7'd41 : sel <= 3'd0;
+7'd42 : sel <= 3'd0;
+7'd43 : sel <= 3'd0;
+7'd44 : sel <= 3'd0;
+7'd45 : sel <= 3'd0;
+7'd46 : sel <= 3'd0;
+7'd47 : sel <= 3'd0;
+7'd48 : sel <= 3'd0;
+7'd49 : sel <= 3'd0;
+7'd50 : sel <= 3'd0;
+7'd51 : sel <= 3'd0;
+7'd52 : sel <= 3'd0;
+7'd53 : sel <= 3'd0;
+7'd54 : sel <= 3'd0;
+7'd55 : sel <= 3'd0;
+7'd56 : sel <= 3'd0;
+7'd57 : sel <= 3'd0;
+7'd58 : sel <= 3'd0;
+7'd59 : sel <= 3'd0;
+7'd60 : sel <= 3'd0;
+7'd61 : sel <= 3'd0;
+7'd62 : sel <= 3'd0;
+7'd63 : sel <= 3'd0;
+7'd64 : sel <= 3'd0;
+7'd65 : sel <= 3'd0;
+7'd66 : sel <= 3'd0;
+7'd67 : sel <= 3'd1;
+7'd68 : sel <= 3'd1;
+7'd69 : sel <= 3'd1;
+7'd70 : sel <= 3'd2;
+7'd71 : sel <= 3'd2;
+7'd72 : sel <= 3'd2;
+
+/*********************input_selecter_top**************************/
+/*********************original input**************************/
+input wire signed [`InBus]		in_1_1_r,
+input wire signed [`InBus]		in_1_1_i,
+input wire signed [`InBus]		in_1_2_r,
+input wire signed [`InBus]		in_1_2_i,
+input wire signed [`InBus]		in_1_3_r,
+input wire signed [`InBus]		in_1_3_i,
+input wire signed [`InBus]		in_1_4_r,
+input wire signed [`InBus]		in_1_4_i,
+input wire signed [`InBus]		in_1_5_r,
+input wire signed [`InBus]		in_1_5_i,
+input wire signed [`InBus]		in_1_6_r,
+input wire signed [`InBus]		in_1_6_i,
+input wire signed [`InBus]		in_1_7_r,
+input wire signed [`InBus]		in_1_7_i,
+input wire signed [`InBus]		in_1_8_r,
+input wire signed [`InBus]		in_1_8_i,
+input wire signed [`InBus]		in_2_1_r,
+input wire signed [`InBus]		in_2_1_i,
+input wire signed [`InBus]		in_2_2_r,
+input wire signed [`InBus]		in_2_2_i,
+input wire signed [`InBus]		in_2_3_r,
+input wire signed [`InBus]		in_2_3_i,
+input wire signed [`InBus]		in_2_4_r,
+input wire signed [`InBus]		in_2_4_i,
+input wire signed [`InBus]		in_2_5_r,
+input wire signed [`InBus]		in_2_5_i,
+input wire signed [`InBus]		in_2_6_r,
+input wire signed [`InBus]		in_2_6_i,
+input wire signed [`InBus]		in_2_7_r,
+input wire signed [`InBus]		in_2_7_i,
+input wire signed [`InBus]		in_2_8_r,
+input wire signed [`InBus]		in_2_8_i,
+input wire signed [`InBus]		in_3_1_r,
+input wire signed [`InBus]		in_3_1_i,
+input wire signed [`InBus]		in_3_2_r,
+input wire signed [`InBus]		in_3_2_i,
+input wire signed [`InBus]		in_3_3_r,
+input wire signed [`InBus]		in_3_3_i,
+input wire signed [`InBus]		in_3_4_r,
+input wire signed [`InBus]		in_3_4_i,
+input wire signed [`InBus]		in_3_5_r,
+input wire signed [`InBus]		in_3_5_i,
+input wire signed [`InBus]		in_3_6_r,
+input wire signed [`InBus]		in_3_6_i,
+input wire signed [`InBus]		in_3_7_r,
+input wire signed [`InBus]		in_3_7_i,
+input wire signed [`InBus]		in_3_8_r,
+input wire signed [`InBus]		in_3_8_i,
+input wire signed [`InBus]		in_4_1_r,
+input wire signed [`InBus]		in_4_1_i,
+input wire signed [`InBus]		in_4_2_r,
+input wire signed [`InBus]		in_4_2_i,
+input wire signed [`InBus]		in_4_3_r,
+input wire signed [`InBus]		in_4_3_i,
+input wire signed [`InBus]		in_4_4_r,
+input wire signed [`InBus]		in_4_4_i,
+input wire signed [`InBus]		in_4_5_r,
+input wire signed [`InBus]		in_4_5_i,
+input wire signed [`InBus]		in_4_6_r,
+input wire signed [`InBus]		in_4_6_i,
+input wire signed [`InBus]		in_4_7_r,
+input wire signed [`InBus]		in_4_7_i,
+input wire signed [`InBus]		in_4_8_r,
+input wire signed [`InBus]		in_4_8_i,
+input wire signed [`InBus]		in_5_1_r,
+input wire signed [`InBus]		in_5_1_i,
+input wire signed [`InBus]		in_5_2_r,
+input wire signed [`InBus]		in_5_2_i,
+input wire signed [`InBus]		in_5_3_r,
+input wire signed [`InBus]		in_5_3_i,
+input wire signed [`InBus]		in_5_4_r,
+input wire signed [`InBus]		in_5_4_i,
+input wire signed [`InBus]		in_5_5_r,
+input wire signed [`InBus]		in_5_5_i,
+input wire signed [`InBus]		in_5_6_r,
+input wire signed [`InBus]		in_5_6_i,
+input wire signed [`InBus]		in_5_7_r,
+input wire signed [`InBus]		in_5_7_i,
+input wire signed [`InBus]		in_5_8_r,
+input wire signed [`InBus]		in_5_8_i,
+input wire signed [`InBus]		in_6_1_r,
+input wire signed [`InBus]		in_6_1_i,
+input wire signed [`InBus]		in_6_2_r,
+input wire signed [`InBus]		in_6_2_i,
+input wire signed [`InBus]		in_6_3_r,
+input wire signed [`InBus]		in_6_3_i,
+input wire signed [`InBus]		in_6_4_r,
+input wire signed [`InBus]		in_6_4_i,
+input wire signed [`InBus]		in_6_5_r,
+input wire signed [`InBus]		in_6_5_i,
+input wire signed [`InBus]		in_6_6_r,
+input wire signed [`InBus]		in_6_6_i,
+input wire signed [`InBus]		in_6_7_r,
+input wire signed [`InBus]		in_6_7_i,
+input wire signed [`InBus]		in_6_8_r,
+input wire signed [`InBus]		in_6_8_i,
+input wire signed [`InBus]		in_7_1_r,
+input wire signed [`InBus]		in_7_1_i,
+input wire signed [`InBus]		in_7_2_r,
+input wire signed [`InBus]		in_7_2_i,
+input wire signed [`InBus]		in_7_3_r,
+input wire signed [`InBus]		in_7_3_i,
+input wire signed [`InBus]		in_7_4_r,
+input wire signed [`InBus]		in_7_4_i,
+input wire signed [`InBus]		in_7_5_r,
+input wire signed [`InBus]		in_7_5_i,
+input wire signed [`InBus]		in_7_6_r,
+input wire signed [`InBus]		in_7_6_i,
+input wire signed [`InBus]		in_7_7_r,
+input wire signed [`InBus]		in_7_7_i,
+input wire signed [`InBus]		in_7_8_r,
+input wire signed [`InBus]		in_7_8_i,
+input wire signed [`InBus]		in_8_1_r,
+input wire signed [`InBus]		in_8_1_i,
+input wire signed [`InBus]		in_8_2_r,
+input wire signed [`InBus]		in_8_2_i,
+input wire signed [`InBus]		in_8_3_r,
+input wire signed [`InBus]		in_8_3_i,
+input wire signed [`InBus]		in_8_4_r,
+input wire signed [`InBus]		in_8_4_i,
+input wire signed [`InBus]		in_8_5_r,
+input wire signed [`InBus]		in_8_5_i,
+input wire signed [`InBus]		in_8_6_r,
+input wire signed [`InBus]		in_8_6_i,
+input wire signed [`InBus]		in_8_7_r,
+input wire signed [`InBus]		in_8_7_i,
+input wire signed [`InBus]		in_8_8_r,
+input wire signed [`InBus]		in_8_8_i,
+
+/*********************output_selecter => input_selecter**************************/
+input wire signed [`InBus]		rt_in_1_1_r,
+input wire signed [`InBus]		rt_in_1_1_i,
+input wire signed [`InBus]		rt_in_1_2_r,
+input wire signed [`InBus]		rt_in_1_2_i,
+input wire signed [`InBus]		rt_in_1_3_r,
+input wire signed [`InBus]		rt_in_1_3_i,
+input wire signed [`InBus]		rt_in_1_4_r,
+input wire signed [`InBus]		rt_in_1_4_i,
+input wire signed [`InBus]		rt_in_1_5_r,
+input wire signed [`InBus]		rt_in_1_5_i,
+input wire signed [`InBus]		rt_in_1_6_r,
+input wire signed [`InBus]		rt_in_1_6_i,
+input wire signed [`InBus]		rt_in_1_7_r,
+input wire signed [`InBus]		rt_in_1_7_i,
+input wire signed [`InBus]		rt_in_1_8_r,
+input wire signed [`InBus]		rt_in_1_8_i,
+input wire signed [`InBus]		rt_in_2_1_r,
+input wire signed [`InBus]		rt_in_2_1_i,
+input wire signed [`InBus]		rt_in_2_2_r,
+input wire signed [`InBus]		rt_in_2_2_i,
+input wire signed [`InBus]		rt_in_2_3_r,
+input wire signed [`InBus]		rt_in_2_3_i,
+input wire signed [`InBus]		rt_in_2_4_r,
+input wire signed [`InBus]		rt_in_2_4_i,
+input wire signed [`InBus]		rt_in_2_5_r,
+input wire signed [`InBus]		rt_in_2_5_i,
+input wire signed [`InBus]		rt_in_2_6_r,
+input wire signed [`InBus]		rt_in_2_6_i,
+input wire signed [`InBus]		rt_in_2_7_r,
+input wire signed [`InBus]		rt_in_2_7_i,
+input wire signed [`InBus]		rt_in_2_8_r,
+input wire signed [`InBus]		rt_in_2_8_i,
+input wire signed [`InBus]		rt_in_3_1_r,
+input wire signed [`InBus]		rt_in_3_1_i,
+input wire signed [`InBus]		rt_in_3_2_r,
+input wire signed [`InBus]		rt_in_3_2_i,
+input wire signed [`InBus]		rt_in_3_3_r,
+input wire signed [`InBus]		rt_in_3_3_i,
+input wire signed [`InBus]		rt_in_3_4_r,
+input wire signed [`InBus]		rt_in_3_4_i,
+input wire signed [`InBus]		rt_in_3_5_r,
+input wire signed [`InBus]		rt_in_3_5_i,
+input wire signed [`InBus]		rt_in_3_6_r,
+input wire signed [`InBus]		rt_in_3_6_i,
+input wire signed [`InBus]		rt_in_3_7_r,
+input wire signed [`InBus]		rt_in_3_7_i,
+input wire signed [`InBus]		rt_in_3_8_r,
+input wire signed [`InBus]		rt_in_3_8_i,
+input wire signed [`InBus]		rt_in_4_1_r,
+input wire signed [`InBus]		rt_in_4_1_i,
+input wire signed [`InBus]		rt_in_4_2_r,
+input wire signed [`InBus]		rt_in_4_2_i,
+input wire signed [`InBus]		rt_in_4_3_r,
+input wire signed [`InBus]		rt_in_4_3_i,
+input wire signed [`InBus]		rt_in_4_4_r,
+input wire signed [`InBus]		rt_in_4_4_i,
+input wire signed [`InBus]		rt_in_4_5_r,
+input wire signed [`InBus]		rt_in_4_5_i,
+input wire signed [`InBus]		rt_in_4_6_r,
+input wire signed [`InBus]		rt_in_4_6_i,
+input wire signed [`InBus]		rt_in_4_7_r,
+input wire signed [`InBus]		rt_in_4_7_i,
+input wire signed [`InBus]		rt_in_4_8_r,
+input wire signed [`InBus]		rt_in_4_8_i,
+input wire signed [`InBus]		rt_in_5_1_r,
+input wire signed [`InBus]		rt_in_5_1_i,
+input wire signed [`InBus]		rt_in_5_2_r,
+input wire signed [`InBus]		rt_in_5_2_i,
+input wire signed [`InBus]		rt_in_5_3_r,
+input wire signed [`InBus]		rt_in_5_3_i,
+input wire signed [`InBus]		rt_in_5_4_r,
+input wire signed [`InBus]		rt_in_5_4_i,
+input wire signed [`InBus]		rt_in_5_5_r,
+input wire signed [`InBus]		rt_in_5_5_i,
+input wire signed [`InBus]		rt_in_5_6_r,
+input wire signed [`InBus]		rt_in_5_6_i,
+input wire signed [`InBus]		rt_in_5_7_r,
+input wire signed [`InBus]		rt_in_5_7_i,
+input wire signed [`InBus]		rt_in_5_8_r,
+input wire signed [`InBus]		rt_in_5_8_i,
+input wire signed [`InBus]		rt_in_6_1_r,
+input wire signed [`InBus]		rt_in_6_1_i,
+input wire signed [`InBus]		rt_in_6_2_r,
+input wire signed [`InBus]		rt_in_6_2_i,
+input wire signed [`InBus]		rt_in_6_3_r,
+input wire signed [`InBus]		rt_in_6_3_i,
+input wire signed [`InBus]		rt_in_6_4_r,
+input wire signed [`InBus]		rt_in_6_4_i,
+input wire signed [`InBus]		rt_in_6_5_r,
+input wire signed [`InBus]		rt_in_6_5_i,
+input wire signed [`InBus]		rt_in_6_6_r,
+input wire signed [`InBus]		rt_in_6_6_i,
+input wire signed [`InBus]		rt_in_6_7_r,
+input wire signed [`InBus]		rt_in_6_7_i,
+input wire signed [`InBus]		rt_in_6_8_r,
+input wire signed [`InBus]		rt_in_6_8_i,
+input wire signed [`InBus]		rt_in_7_1_r,
+input wire signed [`InBus]		rt_in_7_1_i,
+input wire signed [`InBus]		rt_in_7_2_r,
+input wire signed [`InBus]		rt_in_7_2_i,
+input wire signed [`InBus]		rt_in_7_3_r,
+input wire signed [`InBus]		rt_in_7_3_i,
+input wire signed [`InBus]		rt_in_7_4_r,
+input wire signed [`InBus]		rt_in_7_4_i,
+input wire signed [`InBus]		rt_in_7_5_r,
+input wire signed [`InBus]		rt_in_7_5_i,
+input wire signed [`InBus]		rt_in_7_6_r,
+input wire signed [`InBus]		rt_in_7_6_i,
+input wire signed [`InBus]		rt_in_7_7_r,
+input wire signed [`InBus]		rt_in_7_7_i,
+input wire signed [`InBus]		rt_in_7_8_r,
+input wire signed [`InBus]		rt_in_7_8_i,
+input wire signed [`InBus]		rt_in_8_1_r,
+input wire signed [`InBus]		rt_in_8_1_i,
+input wire signed [`InBus]		rt_in_8_2_r,
+input wire signed [`InBus]		rt_in_8_2_i,
+input wire signed [`InBus]		rt_in_8_3_r,
+input wire signed [`InBus]		rt_in_8_3_i,
+input wire signed [`InBus]		rt_in_8_4_r,
+input wire signed [`InBus]		rt_in_8_4_i,
+input wire signed [`InBus]		rt_in_8_5_r,
+input wire signed [`InBus]		rt_in_8_5_i,
+input wire signed [`InBus]		rt_in_8_6_r,
+input wire signed [`InBus]		rt_in_8_6_i,
+input wire signed [`InBus]		rt_in_8_7_r,
+input wire signed [`InBus]		rt_in_8_7_i,
+input wire signed [`InBus]		rt_in_8_8_r,
+input wire signed [`InBus]		rt_in_8_8_i,
+
+/*********************output**************************/
+output wire signed [`InBus]		out_1_1_r,
+output wire signed [`InBus]		out_1_1_i,
+output wire signed [`InBus]		out_1_2_r,
+output wire signed [`InBus]		out_1_2_i,
+output wire signed [`InBus]		out_1_3_r,
+output wire signed [`InBus]		out_1_3_i,
+output wire signed [`InBus]		out_1_4_r,
+output wire signed [`InBus]		out_1_4_i,
+output wire signed [`InBus]		out_1_5_r,
+output wire signed [`InBus]		out_1_5_i,
+output wire signed [`InBus]		out_1_6_r,
+output wire signed [`InBus]		out_1_6_i,
+output wire signed [`InBus]		out_1_7_r,
+output wire signed [`InBus]		out_1_7_i,
+output wire signed [`InBus]		out_1_8_r,
+output wire signed [`InBus]		out_1_8_i,
+output wire signed [`InBus]		out_2_1_r,
+output wire signed [`InBus]		out_2_1_i,
+output wire signed [`InBus]		out_2_2_r,
+output wire signed [`InBus]		out_2_2_i,
+output wire signed [`InBus]		out_2_3_r,
+output wire signed [`InBus]		out_2_3_i,
+output wire signed [`InBus]		out_2_4_r,
+output wire signed [`InBus]		out_2_4_i,
+output wire signed [`InBus]		out_2_5_r,
+output wire signed [`InBus]		out_2_5_i,
+output wire signed [`InBus]		out_2_6_r,
+output wire signed [`InBus]		out_2_6_i,
+output wire signed [`InBus]		out_2_7_r,
+output wire signed [`InBus]		out_2_7_i,
+output wire signed [`InBus]		out_2_8_r,
+output wire signed [`InBus]		out_2_8_i,
+output wire signed [`InBus]		out_3_1_r,
+output wire signed [`InBus]		out_3_1_i,
+output wire signed [`InBus]		out_3_2_r,
+output wire signed [`InBus]		out_3_2_i,
+output wire signed [`InBus]		out_3_3_r,
+output wire signed [`InBus]		out_3_3_i,
+output wire signed [`InBus]		out_3_4_r,
+output wire signed [`InBus]		out_3_4_i,
+output wire signed [`InBus]		out_3_5_r,
+output wire signed [`InBus]		out_3_5_i,
+output wire signed [`InBus]		out_3_6_r,
+output wire signed [`InBus]		out_3_6_i,
+output wire signed [`InBus]		out_3_7_r,
+output wire signed [`InBus]		out_3_7_i,
+output wire signed [`InBus]		out_3_8_r,
+output wire signed [`InBus]		out_3_8_i,
+output wire signed [`InBus]		out_4_1_r,
+output wire signed [`InBus]		out_4_1_i,
+output wire signed [`InBus]		out_4_2_r,
+output wire signed [`InBus]		out_4_2_i,
+output wire signed [`InBus]		out_4_3_r,
+output wire signed [`InBus]		out_4_3_i,
+output wire signed [`InBus]		out_4_4_r,
+output wire signed [`InBus]		out_4_4_i,
+output wire signed [`InBus]		out_4_5_r,
+output wire signed [`InBus]		out_4_5_i,
+output wire signed [`InBus]		out_4_6_r,
+output wire signed [`InBus]		out_4_6_i,
+output wire signed [`InBus]		out_4_7_r,
+output wire signed [`InBus]		out_4_7_i,
+output wire signed [`InBus]		out_4_8_r,
+output wire signed [`InBus]		out_4_8_i,
+output wire signed [`InBus]		out_5_1_r,
+output wire signed [`InBus]		out_5_1_i,
+output wire signed [`InBus]		out_5_2_r,
+output wire signed [`InBus]		out_5_2_i,
+output wire signed [`InBus]		out_5_3_r,
+output wire signed [`InBus]		out_5_3_i,
+output wire signed [`InBus]		out_5_4_r,
+output wire signed [`InBus]		out_5_4_i,
+output wire signed [`InBus]		out_5_5_r,
+output wire signed [`InBus]		out_5_5_i,
+output wire signed [`InBus]		out_5_6_r,
+output wire signed [`InBus]		out_5_6_i,
+output wire signed [`InBus]		out_5_7_r,
+output wire signed [`InBus]		out_5_7_i,
+output wire signed [`InBus]		out_5_8_r,
+output wire signed [`InBus]		out_5_8_i,
+output wire signed [`InBus]		out_6_1_r,
+output wire signed [`InBus]		out_6_1_i,
+output wire signed [`InBus]		out_6_2_r,
+output wire signed [`InBus]		out_6_2_i,
+output wire signed [`InBus]		out_6_3_r,
+output wire signed [`InBus]		out_6_3_i,
+output wire signed [`InBus]		out_6_4_r,
+output wire signed [`InBus]		out_6_4_i,
+output wire signed [`InBus]		out_6_5_r,
+output wire signed [`InBus]		out_6_5_i,
+output wire signed [`InBus]		out_6_6_r,
+output wire signed [`InBus]		out_6_6_i,
+output wire signed [`InBus]		out_6_7_r,
+output wire signed [`InBus]		out_6_7_i,
+output wire signed [`InBus]		out_6_8_r,
+output wire signed [`InBus]		out_6_8_i,
+output wire signed [`InBus]		out_7_1_r,
+output wire signed [`InBus]		out_7_1_i,
+output wire signed [`InBus]		out_7_2_r,
+output wire signed [`InBus]		out_7_2_i,
+output wire signed [`InBus]		out_7_3_r,
+output wire signed [`InBus]		out_7_3_i,
+output wire signed [`InBus]		out_7_4_r,
+output wire signed [`InBus]		out_7_4_i,
+output wire signed [`InBus]		out_7_5_r,
+output wire signed [`InBus]		out_7_5_i,
+output wire signed [`InBus]		out_7_6_r,
+output wire signed [`InBus]		out_7_6_i,
+output wire signed [`InBus]		out_7_7_r,
+output wire signed [`InBus]		out_7_7_i,
+output wire signed [`InBus]		out_7_8_r,
+output wire signed [`InBus]		out_7_8_i,
+output wire signed [`InBus]		out_8_1_r,
+output wire signed [`InBus]		out_8_1_i,
+output wire signed [`InBus]		out_8_2_r,
+output wire signed [`InBus]		out_8_2_i,
+output wire signed [`InBus]		out_8_3_r,
+output wire signed [`InBus]		out_8_3_i,
+output wire signed [`InBus]		out_8_4_r,
+output wire signed [`InBus]		out_8_4_i,
+output wire signed [`InBus]		out_8_5_r,
+output wire signed [`InBus]		out_8_5_i,
+output wire signed [`InBus]		out_8_6_r,
+output wire signed [`InBus]		out_8_6_i,
+output wire signed [`InBus]		out_8_7_r,
+output wire signed [`InBus]		out_8_7_i,
+output wire signed [`InBus]		out_8_8_r,
+output wire signed [`InBus]		out_8_8_i);
+
+/************************port map***********************/
+input_selecter input_selecter (sel,in_1_1_r,in_1_1_i,in_1_2_r,in_1_2_i,in_1_3_r,in_1_3_i,in_1_4_r,in_1_4_i,in_1_5_r,in_1_5_i,in_1_6_r,in_1_6_i,in_1_7_r,in_1_7_i,in_1_8_r,in_1_8_i,in_2_1_r,in_2_1_i,in_2_2_r,in_2_2_i,in_2_3_r,in_2_3_i,in_2_4_r,in_2_4_i,in_2_5_r,in_2_5_i,in_2_6_r,in_2_6_i,in_2_7_r,in_2_7_i,in_2_8_r,in_2_8_i,in_3_1_r,in_3_1_i,in_3_2_r,in_3_2_i,in_3_3_r,in_3_3_i,in_3_4_r,in_3_4_i,in_3_5_r,in_3_5_i,in_3_6_r,in_3_6_i,in_3_7_r,in_3_7_i,in_3_8_r,in_3_8_i,in_4_1_r,in_4_1_i,in_4_2_r,in_4_2_i,in_4_3_r,in_4_3_i,in_4_4_r,in_4_4_i,in_4_5_r,in_4_5_i,in_4_6_r,in_4_6_i,in_4_7_r,in_4_7_i,in_4_8_r,in_4_8_i,in_5_1_r,in_5_1_i,in_5_2_r,in_5_2_i,in_5_3_r,in_5_3_i,in_5_4_r,in_5_4_i,in_5_5_r,in_5_5_i,in_5_6_r,in_5_6_i,in_5_7_r,in_5_7_i,in_5_8_r,in_5_8_i,in_6_1_r,in_6_1_i,in_6_2_r,in_6_2_i,in_6_3_r,in_6_3_i,in_6_4_r,in_6_4_i,in_6_5_r,in_6_5_i,in_6_6_r,in_6_6_i,in_6_7_r,in_6_7_i,in_6_8_r,in_6_8_i,in_7_1_r,in_7_1_i,in_7_2_r,in_7_2_i,in_7_3_r,in_7_3_i,in_7_4_r,in_7_4_i,in_7_5_r,in_7_5_i,in_7_6_r,in_7_6_i,in_7_7_r,in_7_7_i,in_7_8_r,in_7_8_i,in_8_1_r,in_8_1_i,in_8_2_r,in_8_2_i,in_8_3_r,in_8_3_i,in_8_4_r,in_8_4_i,in_8_5_r,in_8_5_i,in_8_6_r,in_8_6_i,in_8_7_r,in_8_7_i,in_8_8_r,in_8_8_i,rt_in_1_1_r,rt_in_1_1_i,rt_in_1_2_r,rt_in_1_2_i,rt_in_1_3_r,rt_in_1_3_i,rt_in_1_4_r,rt_in_1_4_i,rt_in_1_5_r,rt_in_1_5_i,rt_in_1_6_r,rt_in_1_6_i,rt_in_1_7_r,rt_in_1_7_i,rt_in_1_8_r,rt_in_1_8_i,rt_in_2_1_r,rt_in_2_1_i,rt_in_2_2_r,rt_in_2_2_i,rt_in_2_3_r,rt_in_2_3_i,rt_in_2_4_r,rt_in_2_4_i,rt_in_2_5_r,rt_in_2_5_i,rt_in_2_6_r,rt_in_2_6_i,rt_in_2_7_r,rt_in_2_7_i,rt_in_2_8_r,rt_in_2_8_i,rt_in_3_1_r,rt_in_3_1_i,rt_in_3_2_r,rt_in_3_2_i,rt_in_3_3_r,rt_in_3_3_i,rt_in_3_4_r,rt_in_3_4_i,rt_in_3_5_r,rt_in_3_5_i,rt_in_3_6_r,rt_in_3_6_i,rt_in_3_7_r,rt_in_3_7_i,rt_in_3_8_r,rt_in_3_8_i,rt_in_4_1_r,rt_in_4_1_i,rt_in_4_2_r,rt_in_4_2_i,rt_in_4_3_r,rt_in_4_3_i,rt_in_4_4_r,rt_in_4_4_i,rt_in_4_5_r,rt_in_4_5_i,rt_in_4_6_r,rt_in_4_6_i,rt_in_4_7_r,rt_in_4_7_i,rt_in_4_8_r,rt_in_4_8_i,rt_in_5_1_r,rt_in_5_1_i,rt_in_5_2_r,rt_in_5_2_i,rt_in_5_3_r,rt_in_5_3_i,rt_in_5_4_r,rt_in_5_4_i,rt_in_5_5_r,rt_in_5_5_i,rt_in_5_6_r,rt_in_5_6_i,rt_in_5_7_r,rt_in_5_7_i,rt_in_5_8_r,rt_in_5_8_i,rt_in_6_1_r,rt_in_6_1_i,rt_in_6_2_r,rt_in_6_2_i,rt_in_6_3_r,rt_in_6_3_i,rt_in_6_4_r,rt_in_6_4_i,rt_in_6_5_r,rt_in_6_5_i,rt_in_6_6_r,rt_in_6_6_i,rt_in_6_7_r,rt_in_6_7_i,rt_in_6_8_r,rt_in_6_8_i,rt_in_7_1_r,rt_in_7_1_i,rt_in_7_2_r,rt_in_7_2_i,rt_in_7_3_r,rt_in_7_3_i,rt_in_7_4_r,rt_in_7_4_i,rt_in_7_5_r,rt_in_7_5_i,rt_in_7_6_r,rt_in_7_6_i,rt_in_7_7_r,rt_in_7_7_i,rt_in_7_8_r,rt_in_7_8_i,rt_in_8_1_r,rt_in_8_1_i,rt_in_8_2_r,rt_in_8_2_i,rt_in_8_3_r,rt_in_8_3_i,rt_in_8_4_r,rt_in_8_4_i,rt_in_8_5_r,rt_in_8_5_i,rt_in_8_6_r,rt_in_8_6_i,rt_in_8_7_r,rt_in_8_7_i,rt_in_8_8_r,rt_in_8_8_i,out_1_1_r,out_1_1_i,out_1_2_r,out_1_2_i,out_1_3_r,out_1_3_i,out_1_4_r,out_1_4_i,out_1_5_r,out_1_5_i,out_1_6_r,out_1_6_i,out_1_7_r,out_1_7_i,out_1_8_r,out_1_8_i,out_2_1_r,out_2_1_i,out_2_2_r,out_2_2_i,out_2_3_r,out_2_3_i,out_2_4_r,out_2_4_i,out_2_5_r,out_2_5_i,out_2_6_r,out_2_6_i,out_2_7_r,out_2_7_i,out_2_8_r,out_2_8_i,out_3_1_r,out_3_1_i,out_3_2_r,out_3_2_i,out_3_3_r,out_3_3_i,out_3_4_r,out_3_4_i,out_3_5_r,out_3_5_i,out_3_6_r,out_3_6_i,out_3_7_r,out_3_7_i,out_3_8_r,out_3_8_i,out_4_1_r,out_4_1_i,out_4_2_r,out_4_2_i,out_4_3_r,out_4_3_i,out_4_4_r,out_4_4_i,out_4_5_r,out_4_5_i,out_4_6_r,out_4_6_i,out_4_7_r,out_4_7_i,out_4_8_r,out_4_8_i,out_5_1_r,out_5_1_i,out_5_2_r,out_5_2_i,out_5_3_r,out_5_3_i,out_5_4_r,out_5_4_i,out_5_5_r,out_5_5_i,out_5_6_r,out_5_6_i,out_5_7_r,out_5_7_i,out_5_8_r,out_5_8_i,out_6_1_r,out_6_1_i,out_6_2_r,out_6_2_i,out_6_3_r,out_6_3_i,out_6_4_r,out_6_4_i,out_6_5_r,out_6_5_i,out_6_6_r,out_6_6_i,out_6_7_r,out_6_7_i,out_6_8_r,out_6_8_i,out_7_1_r,out_7_1_i,out_7_2_r,out_7_2_i,out_7_3_r,out_7_3_i,out_7_4_r,out_7_4_i,out_7_5_r,out_7_5_i,out_7_6_r,out_7_6_i,out_7_7_r,out_7_7_i,out_7_8_r,out_7_8_i,out_8_1_r,out_8_1_i,out_8_2_r,out_8_2_i,out_8_3_r,out_8_3_i,out_8_4_r,out_8_4_i,out_8_5_r,out_8_5_i,out_8_6_r,out_8_6_i,out_8_7_r,out_8_7_i,out_8_8_r,out_8_8_i);
+
+/************************mux***********************/
+/************************input***********************/
+input wire signed [`CalcTempBus]       d1,
+input wire signed [`CalcTempBus]       d2,
+input wire signed [`CalcTempBus]       d3,
+input wire signed [`CalcTempBus]       d4,
+input wire signed [`CalcTempBus]       d5,
+input wire signed [`CalcTempBus]       d6,
+input wire signed [`CalcTempBus]       d7,
+input wire signed [`CalcTempBus]       d8,
+input wire signed [`CalcTempBus]       d9,
+input wire signed [`CalcTempBus]       d10,
+input wire signed [`CalcTempBus]       d11,
+input wire signed [`CalcTempBus]       d12,
+input wire signed [`CalcTempBus]       d13,
+input wire signed [`CalcTempBus]       d14,
+input wire signed [`CalcTempBus]       d15,
+input wire signed [`CalcTempBus]       d16,
+input wire signed [`CalcTempBus]       d17,
+input wire signed [`CalcTempBus]       d18,
+input wire signed [`CalcTempBus]       d19,
+input wire signed [`CalcTempBus]       d20,
+input wire signed [`CalcTempBus]       d21,
+input wire signed [`CalcTempBus]       d22,
+input wire signed [`CalcTempBus]       d23,
+input wire signed [`CalcTempBus]       d24,
+input wire signed [`CalcTempBus]       d25,
+input wire signed [`CalcTempBus]       d26,
+input wire signed [`CalcTempBus]       d27,
+input wire signed [`CalcTempBus]       d28,
+input wire signed [`CalcTempBus]       d29,
+input wire signed [`CalcTempBus]       d30,
+input wire signed [`CalcTempBus]       d31,
+input wire signed [`CalcTempBus]       d32,
+input wire signed [`CalcTempBus]       d33,
+input wire signed [`CalcTempBus]       d34,
+input wire signed [`CalcTempBus]       d35,
+input wire signed [`CalcTempBus]       d36,
+input wire signed [`CalcTempBus]       d37,
+input wire signed [`CalcTempBus]       d38,
+input wire signed [`CalcTempBus]       d39,
+input wire signed [`CalcTempBus]       d40,
+input wire signed [`CalcTempBus]       d41,
+input wire signed [`CalcTempBus]       d42,
+input wire signed [`CalcTempBus]       d43,
+input wire signed [`CalcTempBus]       d44,
+input wire signed [`CalcTempBus]       d45,
+input wire signed [`CalcTempBus]       d46,
+input wire signed [`CalcTempBus]       d47,
+input wire signed [`CalcTempBus]       d48,
+input wire signed [`CalcTempBus]       d49,
+input wire signed [`CalcTempBus]       d50,
+input wire signed [`CalcTempBus]       d51,
+input wire signed [`CalcTempBus]       d52,
+input wire signed [`CalcTempBus]       d53,
+input wire signed [`CalcTempBus]       d54,
+input wire signed [`CalcTempBus]       d55,
+input wire signed [`CalcTempBus]       d56,
+input wire signed [`CalcTempBus]       d57,
+input wire signed [`CalcTempBus]       d58,
+input wire signed [`CalcTempBus]       d59,
+input wire signed [`CalcTempBus]       d60,
+input wire signed [`CalcTempBus]       d61,
+input wire signed [`CalcTempBus]       d62,
+input wire signed [`CalcTempBus]       d63,
+input wire signed [`CalcTempBus]       d64,
+
+/************************case***********************/
+8'd76   : dout <= d1;
+8'd77   : dout <= d2;
+8'd78   : dout <= d3;
+8'd79   : dout <= d4;
+8'd80   : dout <= d5;
+8'd81   : dout <= d6;
+8'd82   : dout <= d7;
+8'd83   : dout <= d8;
+8'd84   : dout <= d9;
+8'd85   : dout <= d10;
+8'd86   : dout <= d11;
+8'd87   : dout <= d12;
+8'd88   : dout <= d13;
+8'd89   : dout <= d14;
+8'd90   : dout <= d15;
+8'd91   : dout <= d16;
+8'd92   : dout <= d17;
+8'd93   : dout <= d18;
+8'd94   : dout <= d19;
+8'd95   : dout <= d20;
+8'd96   : dout <= d21;
+8'd97   : dout <= d22;
+8'd98   : dout <= d23;
+8'd99   : dout <= d24;
+8'd100   : dout <= d25;
+8'd101   : dout <= d26;
+8'd102   : dout <= d27;
+8'd103   : dout <= d28;
+8'd104   : dout <= d29;
+8'd105   : dout <= d30;
+8'd106   : dout <= d31;
+8'd107   : dout <= d32;
+8'd108   : dout <= d33;
+8'd109   : dout <= d34;
+8'd110   : dout <= d35;
+8'd111   : dout <= d36;
+8'd112   : dout <= d37;
+8'd113   : dout <= d38;
+8'd114   : dout <= d39;
+8'd115   : dout <= d40;
+8'd116   : dout <= d41;
+8'd117   : dout <= d42;
+8'd118   : dout <= d43;
+8'd119   : dout <= d44;
+8'd120   : dout <= d45;
+8'd121   : dout <= d46;
+8'd122   : dout <= d47;
+8'd123   : dout <= d48;
+8'd124   : dout <= d49;
+8'd125   : dout <= d50;
+8'd126   : dout <= d51;
+8'd127   : dout <= d52;
+8'd128   : dout <= d53;
+8'd129   : dout <= d54;
+8'd130   : dout <= d55;
+8'd131   : dout <= d56;
+8'd132   : dout <= d57;
+8'd133   : dout <= d58;
+8'd134   : dout <= d59;
+8'd135   : dout <= d60;
+8'd136   : dout <= d61;
+8'd137   : dout <= d62;
+8'd138   : dout <= d63;
+8'd139   : dout <= d64;
+
+/************************delay***********************/
+wire signed [`CalcTempBus] temp1;
+wire signed [`CalcTempBus] temp2;
+wire signed [`CalcTempBus] temp3;
+wire signed [`CalcTempBus] temp4;
+wire signed [`CalcTempBus] temp5;
+wire signed [`CalcTempBus] temp6;
+wire signed [`CalcTempBus] temp7;
+wire signed [`CalcTempBus] temp8;
+wire signed [`CalcTempBus] temp9;
+wire signed [`CalcTempBus] temp10;
+wire signed [`CalcTempBus] temp11;
+wire signed [`CalcTempBus] temp12;
+wire signed [`CalcTempBus] temp13;
+wire signed [`CalcTempBus] temp14;
+wire signed [`CalcTempBus] temp15;
+wire signed [`CalcTempBus] temp16;
+wire signed [`CalcTempBus] temp17;
+wire signed [`CalcTempBus] temp18;
+wire signed [`CalcTempBus] temp19;
+wire signed [`CalcTempBus] temp20;
+wire signed [`CalcTempBus] temp21;
+wire signed [`CalcTempBus] temp22;
+wire signed [`CalcTempBus] temp23;
+wire signed [`CalcTempBus] temp24;
+wire signed [`CalcTempBus] temp25;
+wire signed [`CalcTempBus] temp26;
+wire signed [`CalcTempBus] temp27;
+wire signed [`CalcTempBus] temp28;
+wire signed [`CalcTempBus] temp29;
+wire signed [`CalcTempBus] temp30;
+wire signed [`CalcTempBus] temp31;
+wire signed [`CalcTempBus] temp32;
+wire signed [`CalcTempBus] temp33;
+wire signed [`CalcTempBus] temp34;
+wire signed [`CalcTempBus] temp35;
+wire signed [`CalcTempBus] temp36;
+wire signed [`CalcTempBus] temp37;
+wire signed [`CalcTempBus] temp38;
+wire signed [`CalcTempBus] temp39;
+wire signed [`CalcTempBus] temp40;
+wire signed [`CalcTempBus] temp41;
+wire signed [`CalcTempBus] temp42;
+wire signed [`CalcTempBus] temp43;
+wire signed [`CalcTempBus] temp44;
+wire signed [`CalcTempBus] temp45;
+wire signed [`CalcTempBus] temp46;
+wire signed [`CalcTempBus] temp47;
+wire signed [`CalcTempBus] temp48;
+wire signed [`CalcTempBus] temp49;
+wire signed [`CalcTempBus] temp50;
+wire signed [`CalcTempBus] temp51;
+wire signed [`CalcTempBus] temp52;
+wire signed [`CalcTempBus] temp53;
+wire signed [`CalcTempBus] temp54;
+wire signed [`CalcTempBus] temp55;
+wire signed [`CalcTempBus] temp56;
+wire signed [`CalcTempBus] temp57;
+wire signed [`CalcTempBus] temp58;
+wire signed [`CalcTempBus] temp59;
+wire signed [`CalcTempBus] temp60;
+wire signed [`CalcTempBus] temp61;
+wire signed [`CalcTempBus] temp62;
+wire signed [`CalcTempBus] temp63;
+wire signed [`CalcTempBus] temp64;
+
+delay_base delay1 (clk,in,temp1);
+delay_base delay2 (clk,temp1,temp2);
+delay_base delay3 (clk,temp2,temp3);
+delay_base delay4 (clk,temp3,temp4);
+delay_base delay5 (clk,temp4,temp5);
+delay_base delay6 (clk,temp5,temp6);
+delay_base delay7 (clk,temp6,temp7);
+delay_base delay8 (clk,temp7,temp8);
+delay_base delay9 (clk,temp8,temp9);
+delay_base delay10 (clk,temp9,temp10);
+delay_base delay11 (clk,temp10,temp11);
+delay_base delay12 (clk,temp11,temp12);
+delay_base delay13 (clk,temp12,temp13);
+delay_base delay14 (clk,temp13,temp14);
+delay_base delay15 (clk,temp14,temp15);
+delay_base delay16 (clk,temp15,temp16);
+delay_base delay17 (clk,temp16,temp17);
+delay_base delay18 (clk,temp17,temp18);
+delay_base delay19 (clk,temp18,temp19);
+delay_base delay20 (clk,temp19,temp20);
+delay_base delay21 (clk,temp20,temp21);
+delay_base delay22 (clk,temp21,temp22);
+delay_base delay23 (clk,temp22,temp23);
+delay_base delay24 (clk,temp23,temp24);
+delay_base delay25 (clk,temp24,temp25);
+delay_base delay26 (clk,temp25,temp26);
+delay_base delay27 (clk,temp26,temp27);
+delay_base delay28 (clk,temp27,temp28);
+delay_base delay29 (clk,temp28,temp29);
+delay_base delay30 (clk,temp29,temp30);
+delay_base delay31 (clk,temp30,temp31);
+delay_base delay32 (clk,temp31,temp32);
+delay_base delay33 (clk,temp32,temp33);
+delay_base delay34 (clk,temp33,temp34);
+delay_base delay35 (clk,temp34,temp35);
+delay_base delay36 (clk,temp35,temp36);
+delay_base delay37 (clk,temp36,temp37);
+delay_base delay38 (clk,temp37,temp38);
+delay_base delay39 (clk,temp38,temp39);
+delay_base delay40 (clk,temp39,temp40);
+delay_base delay41 (clk,temp40,temp41);
+delay_base delay42 (clk,temp41,temp42);
+delay_base delay43 (clk,temp42,temp43);
+delay_base delay44 (clk,temp43,temp44);
+delay_base delay45 (clk,temp44,temp45);
+delay_base delay46 (clk,temp45,temp46);
+delay_base delay47 (clk,temp46,temp47);
+delay_base delay48 (clk,temp47,temp48);
+delay_base delay49 (clk,temp48,temp49);
+delay_base delay50 (clk,temp49,temp50);
+delay_base delay51 (clk,temp50,temp51);
+delay_base delay52 (clk,temp51,temp52);
+delay_base delay53 (clk,temp52,temp53);
+delay_base delay54 (clk,temp53,temp54);
+delay_base delay55 (clk,temp54,temp55);
+delay_base delay56 (clk,temp55,temp56);
+delay_base delay57 (clk,temp56,temp57);
+delay_base delay58 (clk,temp57,temp58);
+delay_base delay59 (clk,temp58,temp59);
+delay_base delay60 (clk,temp59,temp60);
+delay_base delay61 (clk,temp60,temp61);
+delay_base delay62 (clk,temp61,temp62);
+delay_base delay63 (clk,temp62,temp63);
+delay_base delay64 (clk,temp63,temp64);
+
+7'd1	: out <= temp1;
+7'd2	: out <= temp2;
+7'd3	: out <= temp3;
+7'd4	: out <= temp4;
+7'd5	: out <= temp5;
+7'd6	: out <= temp6;
+7'd7	: out <= temp7;
+7'd8	: out <= temp8;
+7'd9	: out <= temp9;
+7'd10	: out <= temp10;
+7'd11	: out <= temp11;
+7'd12	: out <= temp12;
+7'd13	: out <= temp13;
+7'd14	: out <= temp14;
+7'd15	: out <= temp15;
+7'd16	: out <= temp16;
+7'd17	: out <= temp17;
+7'd18	: out <= temp18;
+7'd19	: out <= temp19;
+7'd20	: out <= temp20;
+7'd21	: out <= temp21;
+7'd22	: out <= temp22;
+7'd23	: out <= temp23;
+7'd24	: out <= temp24;
+7'd25	: out <= temp25;
+7'd26	: out <= temp26;
+7'd27	: out <= temp27;
+7'd28	: out <= temp28;
+7'd29	: out <= temp29;
+7'd30	: out <= temp30;
+7'd31	: out <= temp31;
+7'd32	: out <= temp32;
+7'd33	: out <= temp33;
+7'd34	: out <= temp34;
+7'd35	: out <= temp35;
+7'd36	: out <= temp36;
+7'd37	: out <= temp37;
+7'd38	: out <= temp38;
+7'd39	: out <= temp39;
+7'd40	: out <= temp40;
+7'd41	: out <= temp41;
+7'd42	: out <= temp42;
+7'd43	: out <= temp43;
+7'd44	: out <= temp44;
+7'd45	: out <= temp45;
+7'd46	: out <= temp46;
+7'd47	: out <= temp47;
+7'd48	: out <= temp48;
+7'd49	: out <= temp49;
+7'd50	: out <= temp50;
+7'd51	: out <= temp51;
+7'd52	: out <= temp52;
+7'd53	: out <= temp53;
+7'd54	: out <= temp54;
+7'd55	: out <= temp55;
+7'd56	: out <= temp56;
+7'd57	: out <= temp57;
+7'd58	: out <= temp58;
+7'd59	: out <= temp59;
+7'd60	: out <= temp60;
+7'd61	: out <= temp61;
+7'd62	: out <= temp62;
+7'd63	: out <= temp63;
+7'd64	: out <= temp64;
+
+/*********************sim*************************/
+#10//8_8
+in_r <= 16'sb0000000000010000;
+in_i <= 16'sb0000000000010000;
+
+#10//8_7
+in_r <= 16'sb0000000000001111;
+in_i <= 16'sb0000000000001111;
+
+#10//8_6
+in_r <= 16'sb0000000000001110;
+in_i <= 16'sb0000000000001110;
+
+#10//8_5
+in_r <= 16'sb0000000000001101;
+in_i <= 16'sb0000000000001101;
+
+#10//8_4
+in_r <= 16'sb0000000000001100;
+in_i <= 16'sb0000000000001100;
+
+#10//8_3
+in_r <= 16'sb0000000000001011;
+in_i <= 16'sb0000000000001011;
+
+#10//8_2
+in_r <= 16'sb0000000000001010;
+in_i <= 16'sb0000000000001010;
+
+#10//8_1
+in_r <= 16'sb0000000000001001;
+in_i <= 16'sb0000000000001001;
+
+#10//7_8
+in_r <= 16'sb0000000000001111;
+in_i <= 16'sb0000000000001111;
+
+#10//7_7
+in_r <= 16'sb0000000000001110;
+in_i <= 16'sb0000000000001110;
+
+#10//7_6
+in_r <= 16'sb0000000000001101;
+in_i <= 16'sb0000000000001101;
+
+#10//7_5
+in_r <= 16'sb0000000000001100;
+in_i <= 16'sb0000000000001100;
+
+#10//7_4
+in_r <= 16'sb0000000000001011;
+in_i <= 16'sb0000000000001011;
+
+#10//7_3
+in_r <= 16'sb0000000000001010;
+in_i <= 16'sb0000000000001010;
+
+#10//7_2
+in_r <= 16'sb0000000000001001;
+in_i <= 16'sb0000000000001001;
+
+#10//7_1
+in_r <= 16'sb0000000000001000;
+in_i <= 16'sb0000000000001000;
+
+#10//6_8
+in_r <= 16'sb0000000000001110;
+in_i <= 16'sb0000000000001110;
+
+#10//6_7
+in_r <= 16'sb0000000000001101;
+in_i <= 16'sb0000000000001101;
+
+#10//6_6
+in_r <= 16'sb0000000000001100;
+in_i <= 16'sb0000000000001100;
+
+#10//6_5
+in_r <= 16'sb0000000000001011;
+in_i <= 16'sb0000000000001011;
+
+#10//6_4
+in_r <= 16'sb0000000000001010;
+in_i <= 16'sb0000000000001010;
+
+#10//6_3
+in_r <= 16'sb0000000000001001;
+in_i <= 16'sb0000000000001001;
+
+#10//6_2
+in_r <= 16'sb0000000000001000;
+in_i <= 16'sb0000000000001000;
+
+#10//6_1
+in_r <= 16'sb0000000000000111;
+in_i <= 16'sb0000000000000111;
+
+#10//5_8
+in_r <= 16'sb0000000000001101;
+in_i <= 16'sb0000000000001101;
+
+#10//5_7
+in_r <= 16'sb0000000000001100;
+in_i <= 16'sb0000000000001100;
+
+#10//5_6
+in_r <= 16'sb0000000000001011;
+in_i <= 16'sb0000000000001011;
+
+#10//5_5
+in_r <= 16'sb0000000000001010;
+in_i <= 16'sb0000000000001010;
+
+#10//5_4
+in_r <= 16'sb0000000000001001;
+in_i <= 16'sb0000000000001001;
+
+#10//5_3
+in_r <= 16'sb0000000000001000;
+in_i <= 16'sb0000000000001000;
+
+#10//5_2
+in_r <= 16'sb0000000000000111;
+in_i <= 16'sb0000000000000111;
+
+#10//5_1
+in_r <= 16'sb0000000000000110;
+in_i <= 16'sb0000000000000110;
+
+#10//4_8
+in_r <= 16'sb0000000000001100;
+in_i <= 16'sb0000000000001100;
+
+#10//4_7
+in_r <= 16'sb0000000000001011;
+in_i <= 16'sb0000000000001011;
+
+#10//4_6
+in_r <= 16'sb0000000000001010;
+in_i <= 16'sb0000000000001010;
+
+#10//4_5
+in_r <= 16'sb0000000000001001;
+in_i <= 16'sb0000000000001001;
+
+#10//4_4
+in_r <= 16'sb0000000000001000;
+in_i <= 16'sb0000000000001000;
+
+#10//4_3
+in_r <= 16'sb0000000000000111;
+in_i <= 16'sb0000000000000111;
+
+#10//4_2
+in_r <= 16'sb0000000000000110;
+in_i <= 16'sb0000000000000110;
+
+#10//4_1
+in_r <= 16'sb0000000000000101;
+in_i <= 16'sb0000000000000101;
+
+#10//3_8
+in_r <= 16'sb0000000000001011;
+in_i <= 16'sb0000000000001011;
+
+#10//3_7
+in_r <= 16'sb0000000000001010;
+in_i <= 16'sb0000000000001010;
+
+#10//3_6
+in_r <= 16'sb0000000000001001;
+in_i <= 16'sb0000000000001001;
+
+#10//3_5
+in_r <= 16'sb0000000000001000;
+in_i <= 16'sb0000000000001000;
+
+#10//3_4
+in_r <= 16'sb0000000000000111;
+in_i <= 16'sb0000000000000111;
+
+#10//3_3
+in_r <= 16'sb0000000000000110;
+in_i <= 16'sb0000000000000110;
+
+#10//3_2
+in_r <= 16'sb0000000000000101;
+in_i <= 16'sb0000000000000101;
+
+#10//3_1
+in_r <= 16'sb0000000000000100;
+in_i <= 16'sb0000000000000100;
+
+#10//2_8
+in_r <= 16'sb0000000000001010;
+in_i <= 16'sb0000000000001010;
+
+#10//2_7
+in_r <= 16'sb0000000000001001;
+in_i <= 16'sb0000000000001001;
+
+#10//2_6
+in_r <= 16'sb0000000000001000;
+in_i <= 16'sb0000000000001000;
+
+#10//2_5
+in_r <= 16'sb0000000000000111;
+in_i <= 16'sb0000000000000111;
+
+#10//2_4
+in_r <= 16'sb0000000000000110;
+in_i <= 16'sb0000000000000110;
+
+#10//2_3
+in_r <= 16'sb0000000000000101;
+in_i <= 16'sb0000000000000101;
+
+#10//2_2
+in_r <= 16'sb0000000000000100;
+in_i <= 16'sb0000000000000100;
+
+#10//2_1
+in_r <= 16'sb0000000000000011;
+in_i <= 16'sb0000000000000011;
+
+#10//1_8
+in_r <= 16'sb0000000000001001;
+in_i <= 16'sb0000000000001001;
+
+#10//1_7
+in_r <= 16'sb0000000000001000;
+in_i <= 16'sb0000000000001000;
+
+#10//1_6
+in_r <= 16'sb0000000000000111;
+in_i <= 16'sb0000000000000111;
+
+#10//1_5
+in_r <= 16'sb0000000000000110;
+in_i <= 16'sb0000000000000110;
+
+#10//1_4
+in_r <= 16'sb0000000000000101;
+in_i <= 16'sb0000000000000101;
+
+#10//1_3
+in_r <= 16'sb0000000000000100;
+in_i <= 16'sb0000000000000100;
+
+#10//1_2
+in_r <= 16'sb0000000000000011;
+in_i <= 16'sb0000000000000011;
+
+#10//1_1
+in_r <= 16'sb0000000000000010;
+in_i <= 16'sb0000000000000010;
+
+#6400
+$finish;

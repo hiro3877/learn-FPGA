@@ -1,0 +1,983 @@
+
+/*******************rotation factor********************/
+
+//Xr[0] = 1.000000 , Xi[0] = 0.000000
+`define W0_real        16'sb0000000100000000
+`define W0_imag        16'sb0000000000000000
+
+//Xr[1] = 0.000000 , Xi[1] = -1.000000
+`define W1_real        16'sb0000000000000000
+`define W1_imag        16'sb1111111100000000
+
+//Xr[2] = -1.000000 , Xi[2] = -0.000000
+`define W2_real        16'sb1111111100000000
+`define W2_imag        16'sb0000000000000000
+
+/************************top***********************/
+/************************temp in out***********************/
+/************************input => input_selecter***********************/
+wire signed [`InBus]		in_1_1_r;
+wire signed [`InBus]		in_1_1_i;
+wire signed [`InBus]		in_1_2_r;
+wire signed [`InBus]		in_1_2_i;
+wire signed [`InBus]		in_1_3_r;
+wire signed [`InBus]		in_1_3_i;
+wire signed [`InBus]		in_1_4_r;
+wire signed [`InBus]		in_1_4_i;
+wire signed [`InBus]		in_2_1_r;
+wire signed [`InBus]		in_2_1_i;
+wire signed [`InBus]		in_2_2_r;
+wire signed [`InBus]		in_2_2_i;
+wire signed [`InBus]		in_2_3_r;
+wire signed [`InBus]		in_2_3_i;
+wire signed [`InBus]		in_2_4_r;
+wire signed [`InBus]		in_2_4_i;
+wire signed [`InBus]		in_3_1_r;
+wire signed [`InBus]		in_3_1_i;
+wire signed [`InBus]		in_3_2_r;
+wire signed [`InBus]		in_3_2_i;
+wire signed [`InBus]		in_3_3_r;
+wire signed [`InBus]		in_3_3_i;
+wire signed [`InBus]		in_3_4_r;
+wire signed [`InBus]		in_3_4_i;
+wire signed [`InBus]		in_4_1_r;
+wire signed [`InBus]		in_4_1_i;
+wire signed [`InBus]		in_4_2_r;
+wire signed [`InBus]		in_4_2_i;
+wire signed [`InBus]		in_4_3_r;
+wire signed [`InBus]		in_4_3_i;
+wire signed [`InBus]		in_4_4_r;
+wire signed [`InBus]		in_4_4_i;
+
+/************************output***********************/
+wire signed [`OutBus]		out_1_1_r;
+wire signed [`OutBus]		out_1_1_i;
+wire signed [`OutBus]		out_1_2_r;
+wire signed [`OutBus]		out_1_2_i;
+wire signed [`OutBus]		out_1_3_r;
+wire signed [`OutBus]		out_1_3_i;
+wire signed [`OutBus]		out_1_4_r;
+wire signed [`OutBus]		out_1_4_i;
+wire signed [`OutBus]		out_2_1_r;
+wire signed [`OutBus]		out_2_1_i;
+wire signed [`OutBus]		out_2_2_r;
+wire signed [`OutBus]		out_2_2_i;
+wire signed [`OutBus]		out_2_3_r;
+wire signed [`OutBus]		out_2_3_i;
+wire signed [`OutBus]		out_2_4_r;
+wire signed [`OutBus]		out_2_4_i;
+wire signed [`OutBus]		out_3_1_r;
+wire signed [`OutBus]		out_3_1_i;
+wire signed [`OutBus]		out_3_2_r;
+wire signed [`OutBus]		out_3_2_i;
+wire signed [`OutBus]		out_3_3_r;
+wire signed [`OutBus]		out_3_3_i;
+wire signed [`OutBus]		out_3_4_r;
+wire signed [`OutBus]		out_3_4_i;
+wire signed [`OutBus]		out_4_1_r;
+wire signed [`OutBus]		out_4_1_i;
+wire signed [`OutBus]		out_4_2_r;
+wire signed [`OutBus]		out_4_2_i;
+wire signed [`OutBus]		out_4_3_r;
+wire signed [`OutBus]		out_4_3_i;
+wire signed [`OutBus]		out_4_4_r;
+wire signed [`OutBus]		out_4_4_i;
+
+/************************input_selecter => Radix2-2***********************/
+wire signed [`OutBus]		I_out_1_1_r;
+wire signed [`OutBus]		I_out_1_1_i;
+wire signed [`OutBus]		I_out_1_2_r;
+wire signed [`OutBus]		I_out_1_2_i;
+wire signed [`OutBus]		I_out_1_3_r;
+wire signed [`OutBus]		I_out_1_3_i;
+wire signed [`OutBus]		I_out_1_4_r;
+wire signed [`OutBus]		I_out_1_4_i;
+wire signed [`OutBus]		I_out_2_1_r;
+wire signed [`OutBus]		I_out_2_1_i;
+wire signed [`OutBus]		I_out_2_2_r;
+wire signed [`OutBus]		I_out_2_2_i;
+wire signed [`OutBus]		I_out_2_3_r;
+wire signed [`OutBus]		I_out_2_3_i;
+wire signed [`OutBus]		I_out_2_4_r;
+wire signed [`OutBus]		I_out_2_4_i;
+wire signed [`OutBus]		I_out_3_1_r;
+wire signed [`OutBus]		I_out_3_1_i;
+wire signed [`OutBus]		I_out_3_2_r;
+wire signed [`OutBus]		I_out_3_2_i;
+wire signed [`OutBus]		I_out_3_3_r;
+wire signed [`OutBus]		I_out_3_3_i;
+wire signed [`OutBus]		I_out_3_4_r;
+wire signed [`OutBus]		I_out_3_4_i;
+wire signed [`OutBus]		I_out_4_1_r;
+wire signed [`OutBus]		I_out_4_1_i;
+wire signed [`OutBus]		I_out_4_2_r;
+wire signed [`OutBus]		I_out_4_2_i;
+wire signed [`OutBus]		I_out_4_3_r;
+wire signed [`OutBus]		I_out_4_3_i;
+wire signed [`OutBus]		I_out_4_4_r;
+wire signed [`OutBus]		I_out_4_4_i;
+
+/************************W_real , W_imag***********************/
+wire signed [`WBus]		W_real_1_2;
+wire signed [`WBus]		W_imag_1_2;
+wire signed [`WBus]		W_real_1_3;
+wire signed [`WBus]		W_imag_1_3;
+wire signed [`WBus]		W_real_1_4;
+wire signed [`WBus]		W_imag_1_4;
+wire signed [`WBus]		W_real_2_2;
+wire signed [`WBus]		W_imag_2_2;
+wire signed [`WBus]		W_real_2_3;
+wire signed [`WBus]		W_imag_2_3;
+wire signed [`WBus]		W_real_2_4;
+wire signed [`WBus]		W_imag_2_4;
+wire signed [`WBus]		W_real_3_2;
+wire signed [`WBus]		W_imag_3_2;
+wire signed [`WBus]		W_real_3_3;
+wire signed [`WBus]		W_imag_3_3;
+wire signed [`WBus]		W_real_3_4;
+wire signed [`WBus]		W_imag_3_4;
+wire signed [`WBus]		W_real_4_2;
+wire signed [`WBus]		W_imag_4_2;
+wire signed [`WBus]		W_real_4_3;
+wire signed [`WBus]		W_imag_4_3;
+wire signed [`WBus]		W_real_4_4;
+wire signed [`WBus]		W_imag_4_4;
+
+/************************Radix2-2 => output_selecter***********************/
+wire signed [`CalcTempBus]		temp_b_1_1_r;
+wire signed [`CalcTempBus]		temp_b_1_1_i;
+wire signed [`CalcTempBus]		temp_b_1_2_r;
+wire signed [`CalcTempBus]		temp_b_1_2_i;
+wire signed [`CalcTempBus]		temp_b_1_3_r;
+wire signed [`CalcTempBus]		temp_b_1_3_i;
+wire signed [`CalcTempBus]		temp_b_1_4_r;
+wire signed [`CalcTempBus]		temp_b_1_4_i;
+wire signed [`CalcTempBus]		temp_b_2_1_r;
+wire signed [`CalcTempBus]		temp_b_2_1_i;
+wire signed [`CalcTempBus]		temp_b_2_2_r;
+wire signed [`CalcTempBus]		temp_b_2_2_i;
+wire signed [`CalcTempBus]		temp_b_2_3_r;
+wire signed [`CalcTempBus]		temp_b_2_3_i;
+wire signed [`CalcTempBus]		temp_b_2_4_r;
+wire signed [`CalcTempBus]		temp_b_2_4_i;
+wire signed [`CalcTempBus]		temp_b_3_1_r;
+wire signed [`CalcTempBus]		temp_b_3_1_i;
+wire signed [`CalcTempBus]		temp_b_3_2_r;
+wire signed [`CalcTempBus]		temp_b_3_2_i;
+wire signed [`CalcTempBus]		temp_b_3_3_r;
+wire signed [`CalcTempBus]		temp_b_3_3_i;
+wire signed [`CalcTempBus]		temp_b_3_4_r;
+wire signed [`CalcTempBus]		temp_b_3_4_i;
+wire signed [`CalcTempBus]		temp_b_4_1_r;
+wire signed [`CalcTempBus]		temp_b_4_1_i;
+wire signed [`CalcTempBus]		temp_b_4_2_r;
+wire signed [`CalcTempBus]		temp_b_4_2_i;
+wire signed [`CalcTempBus]		temp_b_4_3_r;
+wire signed [`CalcTempBus]		temp_b_4_3_i;
+wire signed [`CalcTempBus]		temp_b_4_4_r;
+wire signed [`CalcTempBus]		temp_b_4_4_i;
+
+/************************port map***********************/
+/************************input delay***********************/
+delay delay_in_1_1_r (clk,5'd1,in_r,in_1_1_r);
+delay delay_in_1_1_i (clk,5'd1,in_i,in_1_1_i);
+delay delay_in_1_2_r (clk,5'd2,in_r,in_1_2_r);
+delay delay_in_1_2_i (clk,5'd2,in_i,in_1_2_i);
+delay delay_in_1_3_r (clk,5'd3,in_r,in_1_3_r);
+delay delay_in_1_3_i (clk,5'd3,in_i,in_1_3_i);
+delay delay_in_1_4_r (clk,5'd4,in_r,in_1_4_r);
+delay delay_in_1_4_i (clk,5'd4,in_i,in_1_4_i);
+delay delay_in_2_1_r (clk,5'd5,in_r,in_2_1_r);
+delay delay_in_2_1_i (clk,5'd5,in_i,in_2_1_i);
+delay delay_in_2_2_r (clk,5'd6,in_r,in_2_2_r);
+delay delay_in_2_2_i (clk,5'd6,in_i,in_2_2_i);
+delay delay_in_2_3_r (clk,5'd7,in_r,in_2_3_r);
+delay delay_in_2_3_i (clk,5'd7,in_i,in_2_3_i);
+delay delay_in_2_4_r (clk,5'd8,in_r,in_2_4_r);
+delay delay_in_2_4_i (clk,5'd8,in_i,in_2_4_i);
+delay delay_in_3_1_r (clk,5'd9,in_r,in_3_1_r);
+delay delay_in_3_1_i (clk,5'd9,in_i,in_3_1_i);
+delay delay_in_3_2_r (clk,5'd10,in_r,in_3_2_r);
+delay delay_in_3_2_i (clk,5'd10,in_i,in_3_2_i);
+delay delay_in_3_3_r (clk,5'd11,in_r,in_3_3_r);
+delay delay_in_3_3_i (clk,5'd11,in_i,in_3_3_i);
+delay delay_in_3_4_r (clk,5'd12,in_r,in_3_4_r);
+delay delay_in_3_4_i (clk,5'd12,in_i,in_3_4_i);
+delay delay_in_4_1_r (clk,5'd13,in_r,in_4_1_r);
+delay delay_in_4_1_i (clk,5'd13,in_i,in_4_1_i);
+delay delay_in_4_2_r (clk,5'd14,in_r,in_4_2_r);
+delay delay_in_4_2_i (clk,5'd14,in_i,in_4_2_i);
+delay delay_in_4_3_r (clk,5'd15,in_r,in_4_3_r);
+delay delay_in_4_3_i (clk,5'd15,in_i,in_4_3_i);
+delay delay_in_4_4_r (clk,5'd16,in_r,in_4_4_r);
+delay delay_in_4_4_i (clk,5'd16,in_i,in_4_4_i);
+
+/************************input => input_selecter***********************/
+input_selecter_top input_selecter (clk,in_1_1_r,in_1_1_i,in_1_2_r,in_1_2_i,in_1_3_r,in_1_3_i,in_1_4_r,in_1_4_i,in_2_1_r,in_2_1_i,in_2_2_r,in_2_2_i,in_2_3_r,in_2_3_i,in_2_4_r,in_2_4_i,in_3_1_r,in_3_1_i,in_3_2_r,in_3_2_i,in_3_3_r,in_3_3_i,in_3_4_r,in_3_4_i,in_4_1_r,in_4_1_i,in_4_2_r,in_4_2_i,in_4_3_r,in_4_3_i,in_4_4_r,in_4_4_i,temp_b_1_1_r,temp_b_1_1_i,temp_b_1_2_r,temp_b_1_2_i,temp_b_1_3_r,temp_b_1_3_i,temp_b_1_4_r,temp_b_1_4_i,temp_b_2_1_r,temp_b_2_1_i,temp_b_2_2_r,temp_b_2_2_i,temp_b_2_3_r,temp_b_2_3_i,temp_b_2_4_r,temp_b_2_4_i,temp_b_3_1_r,temp_b_3_1_i,temp_b_3_2_r,temp_b_3_2_i,temp_b_3_3_r,temp_b_3_3_i,temp_b_3_4_r,temp_b_3_4_i,temp_b_4_1_r,temp_b_4_1_i,temp_b_4_2_r,temp_b_4_2_i,temp_b_4_3_r,temp_b_4_3_i,temp_b_4_4_r,temp_b_4_4_i,I_out_1_1_r,I_out_1_1_i,I_out_1_2_r,I_out_1_2_i,I_out_1_3_r,I_out_1_3_i,I_out_1_4_r,I_out_1_4_i,I_out_2_1_r,I_out_2_1_i,I_out_2_2_r,I_out_2_2_i,I_out_2_3_r,I_out_2_3_i,I_out_2_4_r,I_out_2_4_i,I_out_3_1_r,I_out_3_1_i,I_out_3_2_r,I_out_3_2_i,I_out_3_3_r,I_out_3_3_i,I_out_3_4_r,I_out_3_4_i,I_out_4_1_r,I_out_4_1_i,I_out_4_2_r,I_out_4_2_i,I_out_4_3_r,I_out_4_3_i,I_out_4_4_r,I_out_4_4_i);
+
+/************************W_selecter => temp***********************/
+W_selecter_top W_selecter (clk,W_real_1_2,W_imag_1_2,W_real_1_3,W_imag_1_3,W_real_1_4,W_imag_1_4,W_real_2_2,W_imag_2_2,W_real_2_3,W_imag_2_3,W_real_2_4,W_imag_2_4,W_real_3_2,W_imag_3_2,W_real_3_3,W_imag_3_3,W_real_3_4,W_imag_3_4,W_real_4_2,W_imag_4_2,W_real_4_3,W_imag_4_3,W_real_4_4,W_imag_4_4);
+
+/************************input_selecter => Radix2-2***********************/
+radix2_2 radix2_2_1 (clk,I_out_1_1_r,I_out_1_1_i,I_out_1_2_r,I_out_1_2_i,I_out_1_3_r,I_out_1_3_i,I_out_1_4_r,I_out_1_4_i,temp_b_1_1_r,temp_b_1_1_i,temp_b_1_2_r,temp_b_1_2_i,temp_b_1_3_r,temp_b_1_3_i,temp_b_1_4_r,temp_b_1_4_i,W_real_1_2,W_imag_1_2,W_real_1_3,W_imag_1_3,W_real_1_4,W_imag_1_4);
+
+radix2_2 radix2_2_2 (clk,I_out_2_1_r,I_out_2_1_i,I_out_2_2_r,I_out_2_2_i,I_out_2_3_r,I_out_2_3_i,I_out_2_4_r,I_out_2_4_i,temp_b_2_1_r,temp_b_2_1_i,temp_b_2_2_r,temp_b_2_2_i,temp_b_2_3_r,temp_b_2_3_i,temp_b_2_4_r,temp_b_2_4_i,W_real_2_2,W_imag_2_2,W_real_2_3,W_imag_2_3,W_real_2_4,W_imag_2_4);
+
+radix2_2 radix2_2_3 (clk,I_out_3_1_r,I_out_3_1_i,I_out_3_2_r,I_out_3_2_i,I_out_3_3_r,I_out_3_3_i,I_out_3_4_r,I_out_3_4_i,temp_b_3_1_r,temp_b_3_1_i,temp_b_3_2_r,temp_b_3_2_i,temp_b_3_3_r,temp_b_3_3_i,temp_b_3_4_r,temp_b_3_4_i,W_real_3_2,W_imag_3_2,W_real_3_3,W_imag_3_3,W_real_3_4,W_imag_3_4);
+
+radix2_2 radix2_2_4 (clk,I_out_4_1_r,I_out_4_1_i,I_out_4_2_r,I_out_4_2_i,I_out_4_3_r,I_out_4_3_i,I_out_4_4_r,I_out_4_4_i,temp_b_4_1_r,temp_b_4_1_i,temp_b_4_2_r,temp_b_4_2_i,temp_b_4_3_r,temp_b_4_3_i,temp_b_4_4_r,temp_b_4_4_i,W_real_4_2,W_imag_4_2,W_real_4_3,W_imag_4_3,W_real_4_4,W_imag_4_4);
+
+
+/************************output delay***********************/
+delay delay_out_1_1_r (clk,5'd1,temp_b_1_1_r,out_1_1_r);
+delay delay_out_1_1_i (clk,5'd1,temp_b_1_1_i,out_1_1_i);
+delay delay_out_1_3_r (clk,5'd3,temp_b_1_2_r,out_1_3_r);
+delay delay_out_1_3_i (clk,5'd3,temp_b_1_2_i,out_1_3_i);
+delay delay_out_3_1_r (clk,5'd9,temp_b_1_3_r,out_3_1_r);
+delay delay_out_3_1_i (clk,5'd9,temp_b_1_3_i,out_3_1_i);
+delay delay_out_3_3_r (clk,5'd11,temp_b_1_4_r,out_3_3_r);
+delay delay_out_3_3_i (clk,5'd11,temp_b_1_4_i,out_3_3_i);
+
+delay delay_out_1_2_r (clk,5'd2,temp_b_2_1_r,out_1_2_r);
+delay delay_out_1_2_i (clk,5'd2,temp_b_2_1_i,out_1_2_i);
+delay delay_out_1_4_r (clk,5'd4,temp_b_2_2_r,out_1_4_r);
+delay delay_out_1_4_i (clk,5'd4,temp_b_2_2_i,out_1_4_i);
+delay delay_out_3_2_r (clk,5'd10,temp_b_2_3_r,out_3_2_r);
+delay delay_out_3_2_i (clk,5'd10,temp_b_2_3_i,out_3_2_i);
+delay delay_out_3_4_r (clk,5'd12,temp_b_2_4_r,out_3_4_r);
+delay delay_out_3_4_i (clk,5'd12,temp_b_2_4_i,out_3_4_i);
+
+delay delay_out_2_1_r (clk,5'd5,temp_b_3_1_r,out_2_1_r);
+delay delay_out_2_1_i (clk,5'd5,temp_b_3_1_i,out_2_1_i);
+delay delay_out_2_3_r (clk,5'd7,temp_b_3_2_r,out_2_3_r);
+delay delay_out_2_3_i (clk,5'd7,temp_b_3_2_i,out_2_3_i);
+delay delay_out_4_1_r (clk,5'd13,temp_b_3_3_r,out_4_1_r);
+delay delay_out_4_1_i (clk,5'd13,temp_b_3_3_i,out_4_1_i);
+delay delay_out_4_3_r (clk,5'd15,temp_b_3_4_r,out_4_3_r);
+delay delay_out_4_3_i (clk,5'd15,temp_b_3_4_i,out_4_3_i);
+
+delay delay_out_2_2_r (clk,5'd6,temp_b_4_1_r,out_2_2_r);
+delay delay_out_2_2_i (clk,5'd6,temp_b_4_1_i,out_2_2_i);
+delay delay_out_2_4_r (clk,5'd8,temp_b_4_2_r,out_2_4_r);
+delay delay_out_2_4_i (clk,5'd8,temp_b_4_2_i,out_2_4_i);
+delay delay_out_4_2_r (clk,5'd14,temp_b_4_3_r,out_4_2_r);
+delay delay_out_4_2_i (clk,5'd14,temp_b_4_3_i,out_4_2_i);
+delay delay_out_4_4_r (clk,5'd16,temp_b_4_4_r,out_4_4_r);
+delay delay_out_4_4_i (clk,5'd16,temp_b_4_4_i,out_4_4_i);
+
+/*********************out => mux => out_r,out_i 1clock**************************/
+mux mux_r (clk,out_1_1_r,out_1_2_r,out_1_3_r,out_1_4_r,out_2_1_r,out_2_2_r,out_2_3_r,out_2_4_r,out_3_1_r,out_3_2_r,out_3_3_r,out_3_4_r,out_4_1_r,out_4_2_r,out_4_3_r,out_4_4_r,out_r);
+
+mux mux_i (clk,out_1_1_i,out_1_2_i,out_1_3_i,out_1_4_i,out_2_1_i,out_2_2_i,out_2_3_i,out_2_4_i,out_3_1_i,out_3_2_i,out_3_3_i,out_3_4_i,out_4_1_i,out_4_2_i,out_4_3_i,out_4_4_i,out_i);
+
+/*********************W_selecter**************************/
+/*********************input output**************************/
+module W_selecter(
+input wire [`SelBus]		sel,
+output reg signed [`WBus]		W_real_1_2,
+output reg signed [`WBus]		W_imag_1_2,
+output reg signed [`WBus]		W_real_1_3,
+output reg signed [`WBus]		W_imag_1_3,
+output reg signed [`WBus]		W_real_1_4,
+output reg signed [`WBus]		W_imag_1_4,
+output reg signed [`WBus]		W_real_2_2,
+output reg signed [`WBus]		W_imag_2_2,
+output reg signed [`WBus]		W_real_2_3,
+output reg signed [`WBus]		W_imag_2_3,
+output reg signed [`WBus]		W_real_2_4,
+output reg signed [`WBus]		W_imag_2_4,
+output reg signed [`WBus]		W_real_3_2,
+output reg signed [`WBus]		W_imag_3_2,
+output reg signed [`WBus]		W_real_3_3,
+output reg signed [`WBus]		W_imag_3_3,
+output reg signed [`WBus]		W_real_3_4,
+output reg signed [`WBus]		W_imag_3_4,
+output reg signed [`WBus]		W_real_4_2,
+output reg signed [`WBus]		W_imag_4_2,
+output reg signed [`WBus]		W_real_4_3,
+output reg signed [`WBus]		W_imag_4_3,
+output reg signed [`WBus]		W_real_4_4,
+output reg signed [`WBus]		W_imag_4_4);
+
+/*********************case**************************/
+always @(*) begin
+case(sel)
+3'b0	: begin
+W_real_1_2 <= `W0_real;
+W_imag_1_2 <= `W0_imag;
+W_real_1_3 <= `W0_real;
+W_imag_1_3 <= `W0_imag;
+W_real_1_4 <= `W0_real;
+W_imag_1_4 <= `W0_imag;
+
+
+W_real_2_2 <= `W0_real;
+W_imag_2_2 <= `W0_imag;
+W_real_2_3 <= `W0_real;
+W_imag_2_3 <= `W0_imag;
+W_real_2_4 <= `W0_real;
+W_imag_2_4 <= `W0_imag;
+
+
+W_real_3_2 <= `W0_real;
+W_imag_3_2 <= `W0_imag;
+W_real_3_3 <= `W0_real;
+W_imag_3_3 <= `W0_imag;
+W_real_3_4 <= `W0_real;
+W_imag_3_4 <= `W0_imag;
+
+
+W_real_4_2 <= `W0_real;
+W_imag_4_2 <= `W0_imag;
+W_real_4_3 <= `W0_real;
+W_imag_4_3 <= `W0_imag;
+W_real_4_4 <= `W0_real;
+W_imag_4_4 <= `W0_imag;
+
+
+end
+
+3'b1	: begin
+W_real_1_2 <= `W0_real;
+W_imag_1_2 <= `W0_imag;
+W_real_1_3 <= `W0_real;
+W_imag_1_3 <= `W0_imag;
+W_real_1_4 <= `W0_real;
+W_imag_1_4 <= `W0_imag;
+
+
+W_real_2_2 <= `W1_real;
+W_imag_2_2 <= `W1_imag;
+W_real_2_3 <= `W0_real;
+W_imag_2_3 <= `W0_imag;
+W_real_2_4 <= `W1_real;
+W_imag_2_4 <= `W1_imag;
+
+
+W_real_3_2 <= `W0_real;
+W_imag_3_2 <= `W0_imag;
+W_real_3_3 <= `W1_real;
+W_imag_3_3 <= `W1_imag;
+W_real_3_4 <= `W1_real;
+W_imag_3_4 <= `W1_imag;
+
+
+W_real_4_2 <= `W1_real;
+W_imag_4_2 <= `W1_imag;
+W_real_4_3 <= `W1_real;
+W_imag_4_3 <= `W1_imag;
+W_real_4_4 <= `W2_real;
+W_imag_4_4 <= `W2_imag;
+
+
+end
+
+default : begin
+W_real_1_2 <= `W0_real;
+W_imag_1_2 <= `W0_imag;
+W_real_1_3 <= `W0_real;
+W_imag_1_3 <= `W0_imag;
+W_real_1_4 <= `W0_real;
+W_imag_1_4 <= `W0_imag;
+W_real_2_2 <= `W0_real;
+W_imag_2_2 <= `W0_imag;
+W_real_2_3 <= `W0_real;
+W_imag_2_3 <= `W0_imag;
+W_real_2_4 <= `W0_real;
+W_imag_2_4 <= `W0_imag;
+W_real_3_2 <= `W0_real;
+W_imag_3_2 <= `W0_imag;
+W_real_3_3 <= `W0_real;
+W_imag_3_3 <= `W0_imag;
+W_real_3_4 <= `W0_real;
+W_imag_3_4 <= `W0_imag;
+W_real_4_2 <= `W0_real;
+W_imag_4_2 <= `W0_imag;
+W_real_4_3 <= `W0_real;
+W_imag_4_3 <= `W0_imag;
+W_real_4_4 <= `W0_real;
+W_imag_4_4 <= `W0_imag;
+
+end
+endcase
+end
+endmodule
+
+/*********************W_selecter_control**************************/
+5'd1 : sel <= 3'd0;
+5'd2 : sel <= 3'd0;
+5'd3 : sel <= 3'd0;
+5'd4 : sel <= 3'd0;
+5'd5 : sel <= 3'd0;
+5'd6 : sel <= 3'd0;
+5'd7 : sel <= 3'd0;
+5'd8 : sel <= 3'd0;
+5'd9 : sel <= 3'd0;
+5'd10 : sel <= 3'd0;
+5'd11 : sel <= 3'd0;
+5'd12 : sel <= 3'd0;
+5'd13 : sel <= 3'd0;
+5'd14 : sel <= 3'd0;
+5'd15 : sel <= 3'd0;
+5'd16 : sel <= 3'd0;
+5'd17 : sel <= 3'd0;
+5'd18 : sel <= 3'd0;
+5'd19 : sel <= 3'd1;
+5'd20 : sel <= 3'd1;
+5'd21 : sel <= 3'd1;
+
+/*********************W_selecter_top**************************/
+output wire signed [`WBus]		W_real_1_2,
+output wire signed [`WBus]		W_imag_1_2,
+output wire signed [`WBus]		W_real_1_3,
+output wire signed [`WBus]		W_imag_1_3,
+output wire signed [`WBus]		W_real_1_4,
+output wire signed [`WBus]		W_imag_1_4,
+output wire signed [`WBus]		W_real_2_2,
+output wire signed [`WBus]		W_imag_2_2,
+output wire signed [`WBus]		W_real_2_3,
+output wire signed [`WBus]		W_imag_2_3,
+output wire signed [`WBus]		W_real_2_4,
+output wire signed [`WBus]		W_imag_2_4,
+output wire signed [`WBus]		W_real_3_2,
+output wire signed [`WBus]		W_imag_3_2,
+output wire signed [`WBus]		W_real_3_3,
+output wire signed [`WBus]		W_imag_3_3,
+output wire signed [`WBus]		W_real_3_4,
+output wire signed [`WBus]		W_imag_3_4,
+output wire signed [`WBus]		W_real_4_2,
+output wire signed [`WBus]		W_imag_4_2,
+output wire signed [`WBus]		W_real_4_3,
+output wire signed [`WBus]		W_imag_4_3,
+output wire signed [`WBus]		W_real_4_4,
+output wire signed [`WBus]		W_imag_4_4);
+
+W_selecter W_selecter (sel,W_real_1_2,W_imag_1_2,W_real_1_3,W_imag_1_3,W_real_1_4,W_imag_1_4,W_real_2_2,W_imag_2_2,W_real_2_3,W_imag_2_3,W_real_2_4,W_imag_2_4,W_real_3_2,W_imag_3_2,W_real_3_3,W_imag_3_3,W_real_3_4,W_imag_3_4,W_real_4_2,W_imag_4_2,W_real_4_3,W_imag_4_3,W_real_4_4,W_imag_4_4);
+
+/*********************input_selecter**************************/
+/*********************original input**************************/
+input wire signed [`InBus]		in_1_1_r,
+input wire signed [`InBus]		in_1_1_i,
+input wire signed [`InBus]		in_1_2_r,
+input wire signed [`InBus]		in_1_2_i,
+input wire signed [`InBus]		in_1_3_r,
+input wire signed [`InBus]		in_1_3_i,
+input wire signed [`InBus]		in_1_4_r,
+input wire signed [`InBus]		in_1_4_i,
+input wire signed [`InBus]		in_2_1_r,
+input wire signed [`InBus]		in_2_1_i,
+input wire signed [`InBus]		in_2_2_r,
+input wire signed [`InBus]		in_2_2_i,
+input wire signed [`InBus]		in_2_3_r,
+input wire signed [`InBus]		in_2_3_i,
+input wire signed [`InBus]		in_2_4_r,
+input wire signed [`InBus]		in_2_4_i,
+input wire signed [`InBus]		in_3_1_r,
+input wire signed [`InBus]		in_3_1_i,
+input wire signed [`InBus]		in_3_2_r,
+input wire signed [`InBus]		in_3_2_i,
+input wire signed [`InBus]		in_3_3_r,
+input wire signed [`InBus]		in_3_3_i,
+input wire signed [`InBus]		in_3_4_r,
+input wire signed [`InBus]		in_3_4_i,
+input wire signed [`InBus]		in_4_1_r,
+input wire signed [`InBus]		in_4_1_i,
+input wire signed [`InBus]		in_4_2_r,
+input wire signed [`InBus]		in_4_2_i,
+input wire signed [`InBus]		in_4_3_r,
+input wire signed [`InBus]		in_4_3_i,
+input wire signed [`InBus]		in_4_4_r,
+input wire signed [`InBus]		in_4_4_i,
+
+/*********************output_selecter => input_selecter**************************/
+input wire signed [`InBus]		rt_in_1_1_r,
+input wire signed [`InBus]		rt_in_1_1_i,
+input wire signed [`InBus]		rt_in_1_2_r,
+input wire signed [`InBus]		rt_in_1_2_i,
+input wire signed [`InBus]		rt_in_1_3_r,
+input wire signed [`InBus]		rt_in_1_3_i,
+input wire signed [`InBus]		rt_in_1_4_r,
+input wire signed [`InBus]		rt_in_1_4_i,
+input wire signed [`InBus]		rt_in_2_1_r,
+input wire signed [`InBus]		rt_in_2_1_i,
+input wire signed [`InBus]		rt_in_2_2_r,
+input wire signed [`InBus]		rt_in_2_2_i,
+input wire signed [`InBus]		rt_in_2_3_r,
+input wire signed [`InBus]		rt_in_2_3_i,
+input wire signed [`InBus]		rt_in_2_4_r,
+input wire signed [`InBus]		rt_in_2_4_i,
+input wire signed [`InBus]		rt_in_3_1_r,
+input wire signed [`InBus]		rt_in_3_1_i,
+input wire signed [`InBus]		rt_in_3_2_r,
+input wire signed [`InBus]		rt_in_3_2_i,
+input wire signed [`InBus]		rt_in_3_3_r,
+input wire signed [`InBus]		rt_in_3_3_i,
+input wire signed [`InBus]		rt_in_3_4_r,
+input wire signed [`InBus]		rt_in_3_4_i,
+input wire signed [`InBus]		rt_in_4_1_r,
+input wire signed [`InBus]		rt_in_4_1_i,
+input wire signed [`InBus]		rt_in_4_2_r,
+input wire signed [`InBus]		rt_in_4_2_i,
+input wire signed [`InBus]		rt_in_4_3_r,
+input wire signed [`InBus]		rt_in_4_3_i,
+input wire signed [`InBus]		rt_in_4_4_r,
+input wire signed [`InBus]		rt_in_4_4_i,
+
+/*********************output**************************/
+output reg signed [`InBus]		out_1_1_r,
+output reg signed [`InBus]		out_1_1_i,
+output reg signed [`InBus]		out_1_2_r,
+output reg signed [`InBus]		out_1_2_i,
+output reg signed [`InBus]		out_1_3_r,
+output reg signed [`InBus]		out_1_3_i,
+output reg signed [`InBus]		out_1_4_r,
+output reg signed [`InBus]		out_1_4_i,
+output reg signed [`InBus]		out_2_1_r,
+output reg signed [`InBus]		out_2_1_i,
+output reg signed [`InBus]		out_2_2_r,
+output reg signed [`InBus]		out_2_2_i,
+output reg signed [`InBus]		out_2_3_r,
+output reg signed [`InBus]		out_2_3_i,
+output reg signed [`InBus]		out_2_4_r,
+output reg signed [`InBus]		out_2_4_i,
+output reg signed [`InBus]		out_3_1_r,
+output reg signed [`InBus]		out_3_1_i,
+output reg signed [`InBus]		out_3_2_r,
+output reg signed [`InBus]		out_3_2_i,
+output reg signed [`InBus]		out_3_3_r,
+output reg signed [`InBus]		out_3_3_i,
+output reg signed [`InBus]		out_3_4_r,
+output reg signed [`InBus]		out_3_4_i,
+output reg signed [`InBus]		out_4_1_r,
+output reg signed [`InBus]		out_4_1_i,
+output reg signed [`InBus]		out_4_2_r,
+output reg signed [`InBus]		out_4_2_i,
+output reg signed [`InBus]		out_4_3_r,
+output reg signed [`InBus]		out_4_3_i,
+output reg signed [`InBus]		out_4_4_r,
+output reg signed [`InBus]		out_4_4_i);
+
+/*********************define rt_buf**************************/
+reg signed [`InBus]		rt_buf_in_1_1_r;
+reg signed [`InBus]		rt_buf_in_1_1_i;
+reg signed [`InBus]		rt_buf_in_1_2_r;
+reg signed [`InBus]		rt_buf_in_1_2_i;
+reg signed [`InBus]		rt_buf_in_1_3_r;
+reg signed [`InBus]		rt_buf_in_1_3_i;
+reg signed [`InBus]		rt_buf_in_1_4_r;
+reg signed [`InBus]		rt_buf_in_1_4_i;
+reg signed [`InBus]		rt_buf_in_2_1_r;
+reg signed [`InBus]		rt_buf_in_2_1_i;
+reg signed [`InBus]		rt_buf_in_2_2_r;
+reg signed [`InBus]		rt_buf_in_2_2_i;
+reg signed [`InBus]		rt_buf_in_2_3_r;
+reg signed [`InBus]		rt_buf_in_2_3_i;
+reg signed [`InBus]		rt_buf_in_2_4_r;
+reg signed [`InBus]		rt_buf_in_2_4_i;
+reg signed [`InBus]		rt_buf_in_3_1_r;
+reg signed [`InBus]		rt_buf_in_3_1_i;
+reg signed [`InBus]		rt_buf_in_3_2_r;
+reg signed [`InBus]		rt_buf_in_3_2_i;
+reg signed [`InBus]		rt_buf_in_3_3_r;
+reg signed [`InBus]		rt_buf_in_3_3_i;
+reg signed [`InBus]		rt_buf_in_3_4_r;
+reg signed [`InBus]		rt_buf_in_3_4_i;
+reg signed [`InBus]		rt_buf_in_4_1_r;
+reg signed [`InBus]		rt_buf_in_4_1_i;
+reg signed [`InBus]		rt_buf_in_4_2_r;
+reg signed [`InBus]		rt_buf_in_4_2_i;
+reg signed [`InBus]		rt_buf_in_4_3_r;
+reg signed [`InBus]		rt_buf_in_4_3_i;
+reg signed [`InBus]		rt_buf_in_4_4_r;
+reg signed [`InBus]		rt_buf_in_4_4_i;
+/*********************case**************************/
+always @(*) begin
+case(sel)
+3'b0	: begin
+out_1_1_r <= in_1_1_r;
+out_1_1_i <= in_1_1_i;
+out_1_2_r <= in_1_2_r;
+out_1_2_i <= in_1_2_i;
+out_1_3_r <= in_2_1_r;
+out_1_3_i <= in_2_1_i;
+out_1_4_r <= in_2_2_r;
+out_1_4_i <= in_2_2_i;
+out_2_1_r <= in_1_3_r;
+out_2_1_i <= in_1_3_i;
+out_2_2_r <= in_1_4_r;
+out_2_2_i <= in_1_4_i;
+out_2_3_r <= in_2_3_r;
+out_2_3_i <= in_2_3_i;
+out_2_4_r <= in_2_4_r;
+out_2_4_i <= in_2_4_i;
+out_3_1_r <= in_3_1_r;
+out_3_1_i <= in_3_1_i;
+out_3_2_r <= in_3_2_r;
+out_3_2_i <= in_3_2_i;
+out_3_3_r <= in_4_1_r;
+out_3_3_i <= in_4_1_i;
+out_3_4_r <= in_4_2_r;
+out_3_4_i <= in_4_2_i;
+out_4_1_r <= in_3_3_r;
+out_4_1_i <= in_3_3_i;
+out_4_2_r <= in_3_4_r;
+out_4_2_i <= in_3_4_i;
+out_4_3_r <= in_4_3_r;
+out_4_3_i <= in_4_3_i;
+out_4_4_r <= in_4_4_r;
+out_4_4_i <= in_4_4_i;
+end
+
+3'b1	: begin
+rt_buf_in_1_1_r <= rt_in_1_1_r;
+rt_buf_in_1_1_i <= rt_in_1_1_i;
+out_1_1_r <= rt_buf_in_1_1_r;
+out_1_1_i <= rt_buf_in_1_1_i;
+rt_buf_in_1_2_r <= rt_in_1_2_r;
+rt_buf_in_1_2_i <= rt_in_1_2_i;
+out_1_2_r <= rt_buf_in_1_3_r;
+out_1_2_i <= rt_buf_in_1_3_i;
+rt_buf_in_2_1_r <= rt_in_1_3_r;
+rt_buf_in_2_1_i <= rt_in_1_3_i;
+out_1_3_r <= rt_buf_in_3_1_r;
+out_1_3_i <= rt_buf_in_3_1_i;
+rt_buf_in_2_2_r <= rt_in_1_4_r;
+rt_buf_in_2_2_i <= rt_in_1_4_i;
+out_1_4_r <= rt_buf_in_3_3_r;
+out_1_4_i <= rt_buf_in_3_3_i;
+rt_buf_in_1_3_r <= rt_in_2_1_r;
+rt_buf_in_1_3_i <= rt_in_2_1_i;
+out_2_1_r <= rt_buf_in_1_2_r;
+out_2_1_i <= rt_buf_in_1_2_i;
+rt_buf_in_1_4_r <= rt_in_2_2_r;
+rt_buf_in_1_4_i <= rt_in_2_2_i;
+out_2_2_r <= rt_buf_in_1_4_r;
+out_2_2_i <= rt_buf_in_1_4_i;
+rt_buf_in_2_3_r <= rt_in_2_3_r;
+rt_buf_in_2_3_i <= rt_in_2_3_i;
+out_2_3_r <= rt_buf_in_3_2_r;
+out_2_3_i <= rt_buf_in_3_2_i;
+rt_buf_in_2_4_r <= rt_in_2_4_r;
+rt_buf_in_2_4_i <= rt_in_2_4_i;
+out_2_4_r <= rt_buf_in_3_4_r;
+out_2_4_i <= rt_buf_in_3_4_i;
+rt_buf_in_3_1_r <= rt_in_3_1_r;
+rt_buf_in_3_1_i <= rt_in_3_1_i;
+out_3_1_r <= rt_buf_in_2_1_r;
+out_3_1_i <= rt_buf_in_2_1_i;
+rt_buf_in_3_2_r <= rt_in_3_2_r;
+rt_buf_in_3_2_i <= rt_in_3_2_i;
+out_3_2_r <= rt_buf_in_2_3_r;
+out_3_2_i <= rt_buf_in_2_3_i;
+rt_buf_in_4_1_r <= rt_in_3_3_r;
+rt_buf_in_4_1_i <= rt_in_3_3_i;
+out_3_3_r <= rt_buf_in_4_1_r;
+out_3_3_i <= rt_buf_in_4_1_i;
+rt_buf_in_4_2_r <= rt_in_3_4_r;
+rt_buf_in_4_2_i <= rt_in_3_4_i;
+out_3_4_r <= rt_buf_in_4_3_r;
+out_3_4_i <= rt_buf_in_4_3_i;
+rt_buf_in_3_3_r <= rt_in_4_1_r;
+rt_buf_in_3_3_i <= rt_in_4_1_i;
+out_4_1_r <= rt_buf_in_2_2_r;
+out_4_1_i <= rt_buf_in_2_2_i;
+rt_buf_in_3_4_r <= rt_in_4_2_r;
+rt_buf_in_3_4_i <= rt_in_4_2_i;
+out_4_2_r <= rt_buf_in_2_4_r;
+out_4_2_i <= rt_buf_in_2_4_i;
+rt_buf_in_4_3_r <= rt_in_4_3_r;
+rt_buf_in_4_3_i <= rt_in_4_3_i;
+out_4_3_r <= rt_buf_in_4_2_r;
+out_4_3_i <= rt_buf_in_4_2_i;
+rt_buf_in_4_4_r <= rt_in_4_4_r;
+rt_buf_in_4_4_i <= rt_in_4_4_i;
+out_4_4_r <= rt_buf_in_4_4_r;
+out_4_4_i <= rt_buf_in_4_4_i;
+end
+
+
+/*********************input_selecter_control**************************/
+5'd1 : sel <= 3'd0;
+5'd2 : sel <= 3'd0;
+5'd3 : sel <= 3'd0;
+5'd4 : sel <= 3'd0;
+5'd5 : sel <= 3'd0;
+5'd6 : sel <= 3'd0;
+5'd7 : sel <= 3'd0;
+5'd8 : sel <= 3'd0;
+5'd9 : sel <= 3'd0;
+5'd10 : sel <= 3'd0;
+5'd11 : sel <= 3'd0;
+5'd12 : sel <= 3'd0;
+5'd13 : sel <= 3'd0;
+5'd14 : sel <= 3'd0;
+5'd15 : sel <= 3'd0;
+5'd16 : sel <= 3'd0;
+5'd17 : sel <= 3'd0;
+5'd18 : sel <= 3'd0;
+5'd19 : sel <= 3'd1;
+5'd20 : sel <= 3'd1;
+5'd21 : sel <= 3'd1;
+
+/*********************input_selecter_top**************************/
+/*********************original input**************************/
+input wire signed [`InBus]		in_1_1_r,
+input wire signed [`InBus]		in_1_1_i,
+input wire signed [`InBus]		in_1_2_r,
+input wire signed [`InBus]		in_1_2_i,
+input wire signed [`InBus]		in_1_3_r,
+input wire signed [`InBus]		in_1_3_i,
+input wire signed [`InBus]		in_1_4_r,
+input wire signed [`InBus]		in_1_4_i,
+input wire signed [`InBus]		in_2_1_r,
+input wire signed [`InBus]		in_2_1_i,
+input wire signed [`InBus]		in_2_2_r,
+input wire signed [`InBus]		in_2_2_i,
+input wire signed [`InBus]		in_2_3_r,
+input wire signed [`InBus]		in_2_3_i,
+input wire signed [`InBus]		in_2_4_r,
+input wire signed [`InBus]		in_2_4_i,
+input wire signed [`InBus]		in_3_1_r,
+input wire signed [`InBus]		in_3_1_i,
+input wire signed [`InBus]		in_3_2_r,
+input wire signed [`InBus]		in_3_2_i,
+input wire signed [`InBus]		in_3_3_r,
+input wire signed [`InBus]		in_3_3_i,
+input wire signed [`InBus]		in_3_4_r,
+input wire signed [`InBus]		in_3_4_i,
+input wire signed [`InBus]		in_4_1_r,
+input wire signed [`InBus]		in_4_1_i,
+input wire signed [`InBus]		in_4_2_r,
+input wire signed [`InBus]		in_4_2_i,
+input wire signed [`InBus]		in_4_3_r,
+input wire signed [`InBus]		in_4_3_i,
+input wire signed [`InBus]		in_4_4_r,
+input wire signed [`InBus]		in_4_4_i,
+
+/*********************output_selecter => input_selecter**************************/
+input wire signed [`InBus]		rt_in_1_1_r,
+input wire signed [`InBus]		rt_in_1_1_i,
+input wire signed [`InBus]		rt_in_1_2_r,
+input wire signed [`InBus]		rt_in_1_2_i,
+input wire signed [`InBus]		rt_in_1_3_r,
+input wire signed [`InBus]		rt_in_1_3_i,
+input wire signed [`InBus]		rt_in_1_4_r,
+input wire signed [`InBus]		rt_in_1_4_i,
+input wire signed [`InBus]		rt_in_2_1_r,
+input wire signed [`InBus]		rt_in_2_1_i,
+input wire signed [`InBus]		rt_in_2_2_r,
+input wire signed [`InBus]		rt_in_2_2_i,
+input wire signed [`InBus]		rt_in_2_3_r,
+input wire signed [`InBus]		rt_in_2_3_i,
+input wire signed [`InBus]		rt_in_2_4_r,
+input wire signed [`InBus]		rt_in_2_4_i,
+input wire signed [`InBus]		rt_in_3_1_r,
+input wire signed [`InBus]		rt_in_3_1_i,
+input wire signed [`InBus]		rt_in_3_2_r,
+input wire signed [`InBus]		rt_in_3_2_i,
+input wire signed [`InBus]		rt_in_3_3_r,
+input wire signed [`InBus]		rt_in_3_3_i,
+input wire signed [`InBus]		rt_in_3_4_r,
+input wire signed [`InBus]		rt_in_3_4_i,
+input wire signed [`InBus]		rt_in_4_1_r,
+input wire signed [`InBus]		rt_in_4_1_i,
+input wire signed [`InBus]		rt_in_4_2_r,
+input wire signed [`InBus]		rt_in_4_2_i,
+input wire signed [`InBus]		rt_in_4_3_r,
+input wire signed [`InBus]		rt_in_4_3_i,
+input wire signed [`InBus]		rt_in_4_4_r,
+input wire signed [`InBus]		rt_in_4_4_i,
+
+/*********************output**************************/
+output wire signed [`InBus]		out_1_1_r,
+output wire signed [`InBus]		out_1_1_i,
+output wire signed [`InBus]		out_1_2_r,
+output wire signed [`InBus]		out_1_2_i,
+output wire signed [`InBus]		out_1_3_r,
+output wire signed [`InBus]		out_1_3_i,
+output wire signed [`InBus]		out_1_4_r,
+output wire signed [`InBus]		out_1_4_i,
+output wire signed [`InBus]		out_2_1_r,
+output wire signed [`InBus]		out_2_1_i,
+output wire signed [`InBus]		out_2_2_r,
+output wire signed [`InBus]		out_2_2_i,
+output wire signed [`InBus]		out_2_3_r,
+output wire signed [`InBus]		out_2_3_i,
+output wire signed [`InBus]		out_2_4_r,
+output wire signed [`InBus]		out_2_4_i,
+output wire signed [`InBus]		out_3_1_r,
+output wire signed [`InBus]		out_3_1_i,
+output wire signed [`InBus]		out_3_2_r,
+output wire signed [`InBus]		out_3_2_i,
+output wire signed [`InBus]		out_3_3_r,
+output wire signed [`InBus]		out_3_3_i,
+output wire signed [`InBus]		out_3_4_r,
+output wire signed [`InBus]		out_3_4_i,
+output wire signed [`InBus]		out_4_1_r,
+output wire signed [`InBus]		out_4_1_i,
+output wire signed [`InBus]		out_4_2_r,
+output wire signed [`InBus]		out_4_2_i,
+output wire signed [`InBus]		out_4_3_r,
+output wire signed [`InBus]		out_4_3_i,
+output wire signed [`InBus]		out_4_4_r,
+output wire signed [`InBus]		out_4_4_i);
+
+/************************port map***********************/
+input_selecter input_selecter (sel,in_1_1_r,in_1_1_i,in_1_2_r,in_1_2_i,in_1_3_r,in_1_3_i,in_1_4_r,in_1_4_i,in_2_1_r,in_2_1_i,in_2_2_r,in_2_2_i,in_2_3_r,in_2_3_i,in_2_4_r,in_2_4_i,in_3_1_r,in_3_1_i,in_3_2_r,in_3_2_i,in_3_3_r,in_3_3_i,in_3_4_r,in_3_4_i,in_4_1_r,in_4_1_i,in_4_2_r,in_4_2_i,in_4_3_r,in_4_3_i,in_4_4_r,in_4_4_i,rt_in_1_1_r,rt_in_1_1_i,rt_in_1_2_r,rt_in_1_2_i,rt_in_1_3_r,rt_in_1_3_i,rt_in_1_4_r,rt_in_1_4_i,rt_in_2_1_r,rt_in_2_1_i,rt_in_2_2_r,rt_in_2_2_i,rt_in_2_3_r,rt_in_2_3_i,rt_in_2_4_r,rt_in_2_4_i,rt_in_3_1_r,rt_in_3_1_i,rt_in_3_2_r,rt_in_3_2_i,rt_in_3_3_r,rt_in_3_3_i,rt_in_3_4_r,rt_in_3_4_i,rt_in_4_1_r,rt_in_4_1_i,rt_in_4_2_r,rt_in_4_2_i,rt_in_4_3_r,rt_in_4_3_i,rt_in_4_4_r,rt_in_4_4_i,out_1_1_r,out_1_1_i,out_1_2_r,out_1_2_i,out_1_3_r,out_1_3_i,out_1_4_r,out_1_4_i,out_2_1_r,out_2_1_i,out_2_2_r,out_2_2_i,out_2_3_r,out_2_3_i,out_2_4_r,out_2_4_i,out_3_1_r,out_3_1_i,out_3_2_r,out_3_2_i,out_3_3_r,out_3_3_i,out_3_4_r,out_3_4_i,out_4_1_r,out_4_1_i,out_4_2_r,out_4_2_i,out_4_3_r,out_4_3_i,out_4_4_r,out_4_4_i);
+
+/************************mux***********************/
+/************************input***********************/
+input wire signed [`CalcTempBus]       d1,
+input wire signed [`CalcTempBus]       d2,
+input wire signed [`CalcTempBus]       d3,
+input wire signed [`CalcTempBus]       d4,
+input wire signed [`CalcTempBus]       d5,
+input wire signed [`CalcTempBus]       d6,
+input wire signed [`CalcTempBus]       d7,
+input wire signed [`CalcTempBus]       d8,
+input wire signed [`CalcTempBus]       d9,
+input wire signed [`CalcTempBus]       d10,
+input wire signed [`CalcTempBus]       d11,
+input wire signed [`CalcTempBus]       d12,
+input wire signed [`CalcTempBus]       d13,
+input wire signed [`CalcTempBus]       d14,
+input wire signed [`CalcTempBus]       d15,
+input wire signed [`CalcTempBus]       d16,
+
+/************************case***********************/
+6'd25   : dout <= d1;
+6'd26   : dout <= d2;
+6'd27   : dout <= d3;
+6'd28   : dout <= d4;
+6'd29   : dout <= d5;
+6'd30   : dout <= d6;
+6'd31   : dout <= d7;
+6'd32   : dout <= d8;
+6'd33   : dout <= d9;
+6'd34   : dout <= d10;
+6'd35   : dout <= d11;
+6'd36   : dout <= d12;
+6'd37   : dout <= d13;
+6'd38   : dout <= d14;
+6'd39   : dout <= d15;
+6'd40   : dout <= d16;
+
+/************************delay***********************/
+wire signed [`CalcTempBus] temp1;
+wire signed [`CalcTempBus] temp2;
+wire signed [`CalcTempBus] temp3;
+wire signed [`CalcTempBus] temp4;
+wire signed [`CalcTempBus] temp5;
+wire signed [`CalcTempBus] temp6;
+wire signed [`CalcTempBus] temp7;
+wire signed [`CalcTempBus] temp8;
+wire signed [`CalcTempBus] temp9;
+wire signed [`CalcTempBus] temp10;
+wire signed [`CalcTempBus] temp11;
+wire signed [`CalcTempBus] temp12;
+wire signed [`CalcTempBus] temp13;
+wire signed [`CalcTempBus] temp14;
+wire signed [`CalcTempBus] temp15;
+wire signed [`CalcTempBus] temp16;
+
+delay_base delay1 (clk,in,temp1);
+delay_base delay2 (clk,temp1,temp2);
+delay_base delay3 (clk,temp2,temp3);
+delay_base delay4 (clk,temp3,temp4);
+delay_base delay5 (clk,temp4,temp5);
+delay_base delay6 (clk,temp5,temp6);
+delay_base delay7 (clk,temp6,temp7);
+delay_base delay8 (clk,temp7,temp8);
+delay_base delay9 (clk,temp8,temp9);
+delay_base delay10 (clk,temp9,temp10);
+delay_base delay11 (clk,temp10,temp11);
+delay_base delay12 (clk,temp11,temp12);
+delay_base delay13 (clk,temp12,temp13);
+delay_base delay14 (clk,temp13,temp14);
+delay_base delay15 (clk,temp14,temp15);
+delay_base delay16 (clk,temp15,temp16);
+
+5'd1	: out <= temp1;
+5'd2	: out <= temp2;
+5'd3	: out <= temp3;
+5'd4	: out <= temp4;
+5'd5	: out <= temp5;
+5'd6	: out <= temp6;
+5'd7	: out <= temp7;
+5'd8	: out <= temp8;
+5'd9	: out <= temp9;
+5'd10	: out <= temp10;
+5'd11	: out <= temp11;
+5'd12	: out <= temp12;
+5'd13	: out <= temp13;
+5'd14	: out <= temp14;
+5'd15	: out <= temp15;
+5'd16	: out <= temp16;
+
+/*********************sim*************************/
+#10//4_4
+in_r <= 16'sb0000100000000000;
+in_i <= 16'sb0000100000000000;
+
+#10//4_3
+in_r <= 16'sb0000011100000000;
+in_i <= 16'sb0000011100000000;
+
+#10//4_2
+in_r <= 16'sb0000011000000000;
+in_i <= 16'sb0000011000000000;
+
+#10//4_1
+in_r <= 16'sb0000010100000000;
+in_i <= 16'sb0000010100000000;
+
+#10//3_4
+in_r <= 16'sb0000011100000000;
+in_i <= 16'sb0000011100000000;
+
+#10//3_3
+in_r <= 16'sb0000011000000000;
+in_i <= 16'sb0000011000000000;
+
+#10//3_2
+in_r <= 16'sb0000010100000000;
+in_i <= 16'sb0000010100000000;
+
+#10//3_1
+in_r <= 16'sb0000010000000000;
+in_i <= 16'sb0000010000000000;
+
+#10//2_4
+in_r <= 16'sb0000011000000000;
+in_i <= 16'sb0000011000000000;
+
+#10//2_3
+in_r <= 16'sb0000010100000000;
+in_i <= 16'sb0000010100000000;
+
+#10//2_2
+in_r <= 16'sb0000010000000000;
+in_i <= 16'sb0000010000000000;
+
+#10//2_1
+in_r <= 16'sb0000001100000000;
+in_i <= 16'sb0000001100000000;
+
+#10//1_4
+in_r <= 16'sb0000010100000000;
+in_i <= 16'sb0000010100000000;
+
+#10//1_3
+in_r <= 16'sb0000010000000000;
+in_i <= 16'sb0000010000000000;
+
+#10//1_2
+in_r <= 16'sb0000001100000000;
+in_i <= 16'sb0000001100000000;
+
+#10//1_1
+in_r <= 16'sb0000001000000000;
+in_i <= 16'sb0000001000000000;
+
+#1600
+$finish;
